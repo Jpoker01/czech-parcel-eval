@@ -48,8 +48,8 @@ The model gets data about one parcel copied from public registries (cadastre, LP
 ### Setup
 
 ```bash
-git clone https://github.com/Jpoker01/czech-parcel-triage.git
-cd czech-parcel-triage
+git clone https://github.com/Jpoker01/czech-parcel-eval.git
+cd czech-parcel-eval
 pip install -e ".[dev]"
 export ANTHROPIC_API_KEY=...
 ```
@@ -74,7 +74,7 @@ python run.py --prompt PROMPT --repeats 3
 python evaluate.py --prompt PROMPT
 ```
 
-The report in `runs/PROMPT/report.md` shows per-case match rates (decision, legal flags, exits, risky missing data), run-to-run consistency and every rule violation. The model can be changed with `--model` or the `PARCEL_TRIAGE_MODEL` environment variable.
+The report in `runs/PROMPT/report.md` shows per-case match rates (decision, legal flags, exits, risky missing data), run-to-run consistency and every rule violation. The model can be changed with `--model` or the `PARCEL_EVAL_MODEL` environment variable.
 
 ## Project structure
 

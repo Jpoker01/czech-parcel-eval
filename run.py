@@ -15,7 +15,7 @@ import anthropic
 from parcel_eval.llm import evaluate_parcel
 from parcel_eval.paths import INPUTS_DIR, PROMPTS_DIR, RUNS_DIR, SCHEMA_PATH
 
-DEFAULT_MODEL = os.environ.get("PARCEL_TRIAGE_MODEL", "claude-sonnet-5-5")
+DEFAULT_MODEL = os.environ.get("PARCEL_EVAL_MODEL", "claude-sonnet-5-5")
 DEFAULT_REPEATS = 3
 
 logger = logging.getLogger(__name__)
