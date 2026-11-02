@@ -1,4 +1,4 @@
-# Czech Parcel Triage
+# Czech Parcel Eval
 
 An LLM prompt and evaluation harness for triaging Czech land parcels before a buyout.
 The model gets data about one parcel copied from public registries (cadastre, LPIS, AOPK, flood maps, zoning plans) and returns a structured verdict: whether the parcel can be bought, who would buy it afterwards, and what data is missing to be sure.
