@@ -52,7 +52,12 @@ The model gets data about one parcel copied from public registries (cadastre, LP
 git clone https://github.com/Jpoker01/czech-parcel-eval.git
 cd czech-parcel-eval
 uv sync
-export ANTHROPIC_API_KEY=...
+```
+
+Copy `.env.example` to `.env` and fill in your API key. The `.env` file is ignored by git:
+
+```txt
+ANTHROPIC_API_KEY=sk-ant-...
 ```
 
 ### Test data
@@ -71,16 +76,17 @@ All cases are roads so far. Fields, forests, co-ownership shares and land under 
 **Substitute `PROMPT` with the prompt version, e.g. `v0`.**
 
 ```bash
-uv run python run.py --prompt PROMPT --repeats 3
+uv run --env-file .env python run.py --prompt PROMPT --repeats 3
 uv run python evaluate.py --prompt PROMPT
 ```
 
-The report in `runs/PROMPT/report.md` shows per-case match rates (decision, legal flags, exits, risky missing data), run-to-run consistency and every rule violation. The model can be changed with `--model` or the `PARCEL_EVAL_MODEL` environment variable.
+The report in `runs/PROMPT/report.md` shows per-case match rates (decision, legal flags, exits, risky missing data), run-to-run consistency and every rule violation. The model can be changed with `--model` or `PARCEL_EVAL_MODEL` in `.env`.
 
 ## Project structure
 
 * **pyproject.toml** - Dependencies and package configuration
 * **uv.lock** - Locked dependency versions for `uv sync`
+* **.env.example** - Template for the `.env` file with the API key
 * **run.py** - Runs a prompt version on the test cases
 * **evaluate.py** - Scores the runs against the expected outputs
 * **/prompts** - Versioned prompts

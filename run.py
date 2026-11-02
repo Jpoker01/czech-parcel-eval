@@ -1,8 +1,8 @@
 """Run a prompt version on all (or selected) test cases and save raw outputs.
 
 Usage:
-    uv run python run.py --prompt v0
-    uv run python run.py --prompt v0 --cases zalesni_lhota_1292-2 --repeats 3
+    uv run --env-file .env python run.py --prompt v0
+    uv run --env-file .env python run.py --prompt v0 --cases zalesni_lhota_1292-2 --repeats 3
 """
 
 import argparse
@@ -15,7 +15,8 @@ import anthropic
 from parcel_eval.llm import evaluate_parcel
 from parcel_eval.paths import INPUTS_DIR, PROMPTS_DIR, RUNS_DIR, SCHEMA_PATH
 
-DEFAULT_MODEL = os.environ.get("PARCEL_EVAL_MODEL", "claude-sonnet-5-5")
+# "or" also covers PARCEL_EVAL_MODEL left empty in .env
+DEFAULT_MODEL = os.environ.get("PARCEL_EVAL_MODEL") or "claude-sonnet-5-5"
 DEFAULT_REPEATS = 3
 
 logger = logging.getLogger(__name__)
