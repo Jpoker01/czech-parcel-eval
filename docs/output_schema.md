@@ -1,6 +1,6 @@
 # Výstupní schéma
 
-`output/schema.json` (JSON Schema 2020-12, `additionalProperties: false`, použitelné přímo jako structured output). Vzorový očekávaný výstup: `tests/expected/zalesni_lhota_1292-2.json`.
+`output/schema.json` (JSON Schema 2020-12, `additionalProperties: false`, posílá se do API jako `output_config.format`). Vzorový očekávaný výstup: `tests/expected/zalesni_lhota_1292-2.json`.
 
 ## Šest polí
 

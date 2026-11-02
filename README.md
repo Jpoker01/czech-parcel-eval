@@ -8,7 +8,7 @@ The model gets data about one parcel copied from public registries (cadastre, LP
 ## Tech Stack
 
 - **Language:** Python 3.11+
-- **Model:** Claude (`claude-sonnet-5-5` by default) through the Anthropic API, output forced through a tool call
+- **Model:** Claude (`claude-sonnet-5-5` by default) through the Anthropic API with structured outputs
 - **Schemas:** JSON Schema 2020-12 for the model output, a JSON template for the input
 - **Validation:** `jsonschema` plus custom consistency and evidence checks
 - **Data sources (manual):** Nahlížení do KN, Mapy.com, LPIS, AOPK and NATURA 2000, flood maps, municipal zoning plans
@@ -25,7 +25,7 @@ The model gets data about one parcel copied from public registries (cadastre, LP
     * **Kill check** - exits that do not survive (the owner is already the buyer, clear-cut forest, no LPIS user etc.).
     * **Verdict** - `CONDITIONAL` when risky data is missing or the buyer is not confirmed, otherwise `BUY_CANDIDATE`, or `NOT_WORTH_IT` when no exit survives.
 3. **Output (`output/schema.json`):** six fields (`decision`, `legal_flags`, `exits`, `missing_data`, `confidence`, `reasoning`). Codes are enums, so runs can be compared as sets.
-4. **Run (`run.py`):** sends each test case to the model N times at temperature 0 and saves the raw outputs to `runs/<prompt>/`.
+4. **Run (`run.py`):** sends each test case to the model N times and saves the raw outputs to `runs/<prompt>/`.
 5. **Evaluation (`evaluate.py`):** validates every output against the schema, checks 7 consistency rules and the evidence, compares it with the hand-written expected output and writes `runs/<prompt>/report.md`.
 
 ## Decisions and assumptions
@@ -90,14 +90,14 @@ The report in `runs/PROMPT/report.md` shows per-case match rates (decision, lega
   * **template.json** - Empty input form, one section per source
   * **/examples** - Filled inputs, one file per test case
 * **/output**
-  * **schema.json** - Output JSON schema, used as the tool input schema
+  * **schema.json** - Output JSON schema, passed to the API as the structured output format
 * **/tests**
   * **/expected** - Hand-written expected outputs
   * **build_synthetic_cases.py** - Generates rule-isolating variants of a real parcel
 * **/config**
   * **pricing.yaml** - Exit prices and fixed costs, kept out of the model
 * **/src/parcel_eval** - Importable package
-  * **llm.py** - API call with the output forced through a tool
+  * **llm.py** - API call with the output schema as a structured output format
   * **checks.py** - Schema, consistency and evidence checks
   * **paths.py** - Project paths
 * **/docs**

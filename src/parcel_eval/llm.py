@@ -4,17 +4,17 @@ from datetime import date
 
 import anthropic
 
-TOOL_NAME = "submit_evaluation"
+UNSUPPORTED_SCHEMA_KEYS = ("$schema", "$id", "title", "$defs")
 
 
-def build_tool_schema(schema: dict) -> dict:
-    """Inline $defs references so the schema works as a tool input_schema.
+def build_output_format_schema(schema: dict) -> dict:
+    """Inline $defs references and drop metadata keys for the structured output API.
 
     Args:
         schema: Output JSON schema loaded from output/schema.json.
 
     Returns:
-        A copy of the schema without $schema, title, $defs and $ref keys.
+        A copy of the schema without $schema, $id, title, $defs and $ref keys.
     """
     definitions = schema.get("$defs", {})
 
@@ -23,11 +23,7 @@ def build_tool_schema(schema: dict) -> dict:
             if "$ref" in node:
                 definition_name = node["$ref"].split("/")[-1]
                 return resolve(copy.deepcopy(definitions[definition_name]))
-            return {
-                key: resolve(value)
-                for key, value in node.items()
-                if key not in ("$schema", "title", "$defs", "$id")
-            }
+            return {key: resolve(value) for key, value in node.items() if key not in UNSUPPORTED_SCHEMA_KEYS}
         if isinstance(node, list):
             return [resolve(item) for item in node]
         return node
@@ -45,8 +41,8 @@ def evaluate_parcel(
 ) -> dict:
     """Send one parcel to the model and return its structured evaluation.
 
-    The output is forced through a single tool call, so the model can only
-    answer with JSON matching the output schema.
+    The output schema is passed as a structured output format, so the API only
+    returns JSON that matches it.
 
     Args:
         client: Anthropic API client.
@@ -60,7 +56,7 @@ def evaluate_parcel(
         The evaluation dict produced by the model.
 
     Raises:
-        ValueError: If the response contains no tool call.
+        ValueError: If the response contains no text block.
     """
     today = today or date.today()
     # Date goes into the message, not the prompt, so the prompt stays versioned and stable
@@ -72,20 +68,17 @@ def evaluate_parcel(
     response = client.messages.create(
         model=model,
         max_tokens=4_000,
-        temperature=0,
         system=system_prompt,
-        tools=[
-            {
-                "name": TOOL_NAME,
-                "description": "Vrátí strukturované vyhodnocení parcely.",
-                "input_schema": build_tool_schema(output_schema),
-            },
-        ],
-        tool_choice={"type": "tool", "name": TOOL_NAME},
         messages=[{"role": "user", "content": user_message}],
+        output_config={
+            "format": {
+                "type": "json_schema",
+                "schema": build_output_format_schema(output_schema),
+            },
+        },
     )
 
     for block in response.content:
-        if block.type == "tool_use" and block.name == TOOL_NAME:
-            return block.input
-    raise ValueError(f"Model returned no {TOOL_NAME} call, stop_reason={response.stop_reason}")
+        if block.type == "text":
+            return json.loads(block.text)
+    raise ValueError(f"Model returned no text block, stop_reason={response.stop_reason}")

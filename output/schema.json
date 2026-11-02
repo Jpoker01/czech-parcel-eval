@@ -106,17 +106,20 @@
             "type": "boolean"
           },
           "kill_reason": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "enum": [
-              "owner_is_buyer",
-              "clearcut",
-              "no_access",
-              "no_lpis_user",
-              "co_owner_insolvency",
-              null
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "owner_is_buyer",
+                  "clearcut",
+                  "no_access",
+                  "no_lpis_user",
+                  "co_owner_insolvency"
+                ]
+              },
+              {
+                "type": "null"
+              }
             ]
           },
           "evidence": {
