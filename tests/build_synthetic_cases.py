@@ -5,7 +5,7 @@ changes a few fields so it isolates one rule of the decision table. Inputs go to
 input/examples/syn_*.json, hand-written expected outputs to tests/expected/syn_*.json.
 
 Usage:
-    python tests/build_synthetic_cases.py
+    uv run python tests/build_synthetic_cases.py
 """
 
 import copy

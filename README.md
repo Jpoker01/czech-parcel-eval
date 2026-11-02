@@ -12,7 +12,7 @@ The model gets data about one parcel copied from public registries (cadastre, LP
 - **Schemas:** JSON Schema 2020-12 for the model output, a JSON template for the input
 - **Validation:** `jsonschema` plus custom consistency and evidence checks
 - **Data sources (manual):** Nahlížení do KN, Mapy.com, LPIS, AOPK and NATURA 2000, flood maps, municipal zoning plans
-- **Tooling:** ruff
+- **Tooling:** uv, ruff
 
 ## How it works
 
@@ -42,6 +42,7 @@ The model gets data about one parcel copied from public registries (cadastre, LP
 
 ### Prerequisites
 - Python 3.11 or newer
+- [uv](https://docs.astral.sh/uv/)
 - Git
 - Anthropic API key
 
@@ -50,7 +51,7 @@ The model gets data about one parcel copied from public registries (cadastre, LP
 ```bash
 git clone https://github.com/Jpoker01/czech-parcel-eval.git
 cd czech-parcel-eval
-pip install -e ".[dev]"
+uv sync
 export ANTHROPIC_API_KEY=...
 ```
 
@@ -60,7 +61,7 @@ export ANTHROPIC_API_KEY=...
 `zalesni_lhota_1292-2` was copied from Nahlížení do KN on 2. 11. 2026 (land under a road already owned by Liberecký kraj). The `syn_*` cases are generated from it, and each one isolates a single rule (seal, execution, national park, prompt injection in `notes`, unchecked sources etc.):
 
 ```bash
-python tests/build_synthetic_cases.py
+uv run python tests/build_synthetic_cases.py
 ```
 
 All cases are roads so far. Fields, forests, co-ownership shares and land under a third-party building still need real parcels.
@@ -70,15 +71,16 @@ All cases are roads so far. Fields, forests, co-ownership shares and land under 
 **Substitute `PROMPT` with the prompt version, e.g. `v0`.**
 
 ```bash
-python run.py --prompt PROMPT --repeats 3
-python evaluate.py --prompt PROMPT
+uv run python run.py --prompt PROMPT --repeats 3
+uv run python evaluate.py --prompt PROMPT
 ```
 
 The report in `runs/PROMPT/report.md` shows per-case match rates (decision, legal flags, exits, risky missing data), run-to-run consistency and every rule violation. The model can be changed with `--model` or the `PARCEL_EVAL_MODEL` environment variable.
 
 ## Project structure
 
-* **pyproject.toml** - Dependencies and package configuration for `pip install -e .`
+* **pyproject.toml** - Dependencies and package configuration
+* **uv.lock** - Locked dependency versions for `uv sync`
 * **run.py** - Runs a prompt version on the test cases
 * **evaluate.py** - Scores the runs against the expected outputs
 * **/prompts** - Versioned prompts

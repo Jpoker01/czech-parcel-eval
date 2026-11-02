@@ -1,7 +1,7 @@
 """Score saved outputs of one prompt version against the expected outputs.
 
 Usage:
-    python evaluate.py --prompt v0
+    uv run python evaluate.py --prompt v0
 """
 
 import argparse

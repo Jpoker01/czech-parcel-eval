@@ -1,8 +1,8 @@
 """Run a prompt version on all (or selected) test cases and save raw outputs.
 
 Usage:
-    python run.py --prompt v0
-    python run.py --prompt v0 --cases zalesni_lhota_1292-2 --repeats 3
+    uv run python run.py --prompt v0
+    uv run python run.py --prompt v0 --cases zalesni_lhota_1292-2 --repeats 3
 """
 
 import argparse

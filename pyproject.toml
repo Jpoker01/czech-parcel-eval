@@ -7,7 +7,7 @@ dependencies = [
     "jsonschema>=4.23",
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = ["ruff>=0.6"]
 
 [build-system]
