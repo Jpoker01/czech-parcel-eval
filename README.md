@@ -1,80 +1,110 @@
-# czech-parcel-triage
+# Czech Parcel Triage
 
-LLM triage of Czech land parcels for buyout decisions. The model gets data about one parcel copied from public registries (cadastre, LPIS, AOPK, flood maps, zoning plans) and returns a structured verdict: can the parcel be bought, who would buy it afterwards and what is missing to be sure.
+An LLM prompt and evaluation harness for triaging Czech land parcels before a buyout.
+The model gets data about one parcel copied from public registries (cadastre, LPIS, AOPK, flood maps, zoning plans) and returns a structured verdict: whether the parcel can be bought, who would buy it afterwards, and what data is missing to be sure.
 
-NOTE: This is a work in progress. Prompt v0, the eval harness and a first test set are in place; no evaluation results yet.
+**Work in progress: prompt v0 has not been evaluated yet**
 
-## WHAT IT DOES
+## Tech Stack
 
-- One parcel in, one JSON verdict out: `BLOCKED`, `CONDITIONAL`, `BUY_CANDIDATE`, `NOT_WORTH_IT` or `INSUFFICIENT_DATA`.
-- The verdict is triage for a human, not a final decision. Every `BUY_CANDIDATE` and `CONDITIONAL` still goes to a person who opens the LV.
-- The model never outputs a price. It names the exit (`road_class_3`, `field_arable`, `building_owner` etc.) and the price is looked up in `config/pricing.yaml`.
+- **Language:** Python 3.11+
+- **Model:** Claude (`claude-sonnet-5-5` by default) through the Anthropic API, output forced through a tool call
+- **Schemas:** JSON Schema 2020-12 for the model output, a JSON template for the input
+- **Validation:** `jsonschema` plus custom consistency and evidence checks
+- **Data sources (manual):** Nahlížení do KN, Mapy.com, LPIS, AOPK and NATURA 2000, flood maps, municipal zoning plans
+- **Tooling:** ruff
 
-## DESIGN DECISIONS
+## How it works
 
-**Unchecked is not the same as empty**
+1. **Input (`input/template.json`):** one JSON per parcel, with a section for each source. Every section has a `status` (`checked`, `not_checked` or `not_available`), so the model can tell "verified, nothing found" from "nobody looked". Values are copied verbatim from the Czech sources.
+2. **Prompt (`prompts/v0.md`):** walks the parcel through a fixed order of steps taken from `docs/decision_table.md`:
+    * **Data** - missing basic cadastre data ends with `INSUFFICIENT_DATA`.
+    * **Blockers** - a seal, execution, insolvency, alienation ban etc. ends with `BLOCKED`.
+    * **Pre-emption and consent** - a statutory offer (§ 61 of 114/1992 Sb., § 3056 and § 1124 NOZ) or an authority consent caps the result at `CONDITIONAL`.
+    * **Exits** - who would buy the parcel (region, municipality, farmer from LPIS, co-owners, building owner, neighbour).
+    * **Kill check** - exits that do not survive (the owner is already the buyer, clear-cut forest, no LPIS user etc.).
+    * **Verdict** - `CONDITIONAL` when risky data is missing or the buyer is not confirmed, otherwise `BUY_CANDIDATE`, or `NOT_WORTH_IT` when no exit survives.
+3. **Output (`output/schema.json`):** six fields (`decision`, `legal_flags`, `exits`, `missing_data`, `confidence`, `reasoning`). Codes are enums, so runs can be compared as sets.
+4. **Run (`run.py`):** sends each test case to the model N times at temperature 0 and saves the raw outputs to `runs/<prompt>/`.
+5. **Evaluation (`evaluate.py`):** validates every output against the schema, checks 7 consistency rules and the evidence, compares it with the hand-written expected output and writes `runs/<prompt>/report.md`.
 
-- Every source in the input has `status`: `checked`, `not_checked` or `not_available`.
-- An empty list in a checked source means "verified, nothing there". A `not_checked` source means nothing, and the model has to report it in `missing_data` instead of assuming the favourable value.
+## Decisions and assumptions
 
-**Every conclusion carries evidence**
+- **Triage, not a decision:** the verdict sorts parcels for a human. Every `BUY_CANDIDATE` and `CONDITIONAL` still goes to a person who opens the LV.
+- **Unchecked is not empty:** a `not_checked` source never counts as "nothing found". If it could change the result, the model has to list it in `missing_data` and the verdict is at most `CONDITIONAL`.
+- **Evidence for every conclusion:** each flag and exit carries `evidence` in the form `input.path = value` (e.g. `cadastre.owners[0].name = Liberecký kraj`). The evaluation resolves the path in the input and compares the value, so an invented restriction or buyer is caught automatically.
+- **No prices in the model:** the model only names the exit (`road_class_3`, `field_arable`, `building_owner` etc.). Prices live in `config/pricing.yaml` (2026 state subsidy caps for road buyouts, Farmy.cz 2025 farmland averages) and can be changed without touching the prompt.
+- **Value-lowering factors are left out:** mortgages, leases or a Q100 flood zone do not change the verdict, and the person checking a candidate sees them on the LV anyway.
+- **Manual input:** Nahlížení do KN shows owners only after login and does not allow automated scraping. Bulk use would need the paid cadastre web services (WSDP) and WMS/WFS layers for LPIS, AOPK and flood maps.
+- **Known blind spots:** statutory pre-emption rights are not always visible in the cadastre, and consent with public use of a road (Constitutional Court I. ÚS 2541/25) cannot be detected from any source. Facts only the seller knows go to `seller_facts`.
 
-- Each flag and exit includes `evidence` in the form `input.path = value`, e.g. `cadastre.owners[0].name = Liberecký kraj`.
-- The eval resolves the path in the input and compares the value, so an invented restriction or buyer is caught automatically.
+## Quickstart guide
 
-**Fixed order of evaluation**
+### Prerequisites
+- Python 3.11 or newer
+- Git
+- Anthropic API key
 
-1. Basic cadastre data missing - `INSUFFICIENT_DATA`.
-2. Seal, execution, insolvency, alienation ban etc. - `BLOCKED`.
-3. Pre-emption right or authority consent (§ 61 of 114/1992 Sb., § 3056 NOZ, § 1124 NOZ etc.) - caps the result at `CONDITIONAL`.
-4. Find exits (who buys), then kill the ones that do not survive (owner is already the buyer, clear-cut forest, no LPIS user etc.).
-5. Risky missing data or an unconfirmed buyer - `CONDITIONAL`, otherwise `BUY_CANDIDATE`.
+### Setup
 
-The full table is in `docs/decision_table.md`.
-
-## REPOSITORY LAYOUT
-
-```txt
-prompts/                 versioned prompts (v0.md) and iteration notes
-input/template.json      empty input form, one section per source
-input/examples/          filled inputs, one file per test case
-output/schema.json       output JSON schema, used as forced tool input
-tests/expected/          hand-written expected outputs
-tests/build_synthetic_cases.py   generates rule-isolating variants from a real parcel
-config/pricing.yaml      exit prices and fixed costs, kept out of the model
-src/parcel_eval/         API call, schema/consistency/evidence checks
-docs/                    decision table, signal map, field reference
-run.py                   runs a prompt version on the test cases
-evaluate.py              scores runs against expected outputs
-```
-
-## USAGE
-
-```txt
-pip install -e .
+```bash
+git clone https://github.com/Jpoker01/czech-parcel-triage.git
+cd czech-parcel-triage
+pip install -e ".[dev]"
 export ANTHROPIC_API_KEY=...
-python run.py --prompt v0 --repeats 3
-python evaluate.py --prompt v0
 ```
 
-- `run.py` calls the model with `temperature=0` and forces the output through a tool whose input schema is `output/schema.json`.
-- `evaluate.py` writes `runs/<prompt>/report.md` with per-case match rates (decision, legal flags, exits, risky missing data), run-to-run consistency and every rule violation.
-- The default model is `claude-sonnet-5-5`, override with `--model` or `PARCEL_TRIAGE_MODEL`.
+### Test data
 
-## TEST SET
+**The test set contains one real parcel and synthetic variants of it.**
+`zalesni_lhota_1292-2` was copied from Nahlížení do KN on 2. 11. 2026 (land under a road already owned by Liberecký kraj). The `syn_*` cases are generated from it, and each one isolates a single rule (seal, execution, national park, prompt injection in `notes`, unchecked sources etc.):
 
-- `zalesni_lhota_1292-2` is a real parcel (land under a road already owned by Liberecký kraj), copied from Nahlížení do KN on 2026-11-02.
-- `syn_*` cases are generated from it and each one isolates a single rule (seal, execution, national park, prompt injection in `notes`, unchecked sources etc.).
-- All cases are roads so far. Fields, forests, co-ownership shares and land under a third-party building need real parcels.
+```bash
+python tests/build_synthetic_cases.py
+```
 
-## KNOWN LIMITATIONS
+All cases are roads so far. Fields, forests, co-ownership shares and land under a third-party building still need real parcels.
 
-- Input is copied by hand. Nahlížení do KN shows owners only after login and forbids automated scraping; bulk use would need the paid cadastre web services (WSDP) and WMS/WFS layers for LPIS, AOPK and flood maps.
-- Restriction types on the LV are free text matched by substring rules in the prompt, so an unusual wording can slip through.
-- Statutory pre-emption rights (§ 3056, § 1124 NOZ, § 61 of 114/1992 Sb.) are not always visible in the cadastre and partly depend on facts from the seller (`seller_facts`).
-- Consent with public use of a road (Constitutional Court I. ÚS 2541/25) cannot be detected from any of the sources.
-- Prices in `config/pricing.yaml` are public reference points (2026 state subsidy caps for road buyouts, Farmy.cz 2025 farmland averages) and rough guesses for costs, not a valuation model.
+### Running the evaluation
 
-## DISCLAIMER
+**Substitute `PROMPT` with the prompt version, e.g. `v0`.**
 
-Not legal advice. Data from Nahlížení do KN is informative only; a current LV extract is needed before any purchase.
+```bash
+python run.py --prompt PROMPT --repeats 3
+python evaluate.py --prompt PROMPT
+```
+
+The report in `runs/PROMPT/report.md` shows per-case match rates (decision, legal flags, exits, risky missing data), run-to-run consistency and every rule violation. The model can be changed with `--model` or the `PARCEL_TRIAGE_MODEL` environment variable.
+
+## Project structure
+
+* **pyproject.toml** - Dependencies and package configuration for `pip install -e .`
+* **run.py** - Runs a prompt version on the test cases
+* **evaluate.py** - Scores the runs against the expected outputs
+* **/prompts** - Versioned prompts
+  * **v0.md** - First version, derived from the decision table
+  * **iterations.md** - What changed between versions and why
+* **/input**
+  * **template.json** - Empty input form, one section per source
+  * **/examples** - Filled inputs, one file per test case
+* **/output**
+  * **schema.json** - Output JSON schema, used as the tool input schema
+* **/tests**
+  * **/expected** - Hand-written expected outputs
+  * **build_synthetic_cases.py** - Generates rule-isolating variants of a real parcel
+* **/config**
+  * **pricing.yaml** - Exit prices and fixed costs, kept out of the model
+* **/src/parcel_eval** - Importable package
+  * **llm.py** - API call with the output forced through a tool
+  * **checks.py** - Schema, consistency and evidence checks
+  * **paths.py** - Project paths
+* **/docs**
+  * **decision_table.md** - Order of steps, signals and codes the prompt is built from
+  * **output_schema.md** - Output fields and consistency rules
+  * **signal_map.md** - Which source and field each signal comes from
+  * **template_reference.md** - Allowed values for the input fields
+* **/runs** - Raw model outputs and reports - **not included in git**
+
+## Disclaimer
+
+Not legal advice. Data from Nahlížení do KN is informative only, and a current LV extract is needed before any purchase.
