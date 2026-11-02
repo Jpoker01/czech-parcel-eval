@@ -1,0 +1,155 @@
+{
+  "meta": {
+    "case_id": "syn_road_execution",
+    "filled_by": "Jiri Pokorny",
+    "filled_at": "2026-11-02",
+    "notes": "Synthetic. Tests: step 1: free-text execution restriction"
+  },
+  "cadastre": {
+    "status": "checked",
+    "logged_in": true,
+    "owners_visible": true,
+    "retrieved_at": "2026-11-02T16:40:00+01:00",
+    "notes": null,
+    "identification": {
+      "municipality": "Studenec",
+      "cadastral_area": "Zálesní Lhota",
+      "cadastral_area_code": "790591",
+      "parcel_kind": "Parcela katastru nemovitostí",
+      "parcel_kind_code": "PKN",
+      "simplified_evidence_origin": null,
+      "numbering_type": null,
+      "parcel_number": "1292/2",
+      "lv_number": 404
+    },
+    "land": {
+      "area_m2": 1416,
+      "map_sheet": "KMD",
+      "area_determination": "Graficky nebo v digitalizované mapě",
+      "land_type": "ostatní plocha",
+      "land_use": "silnice"
+    },
+    "building": {
+      "present": false,
+      "relation": null,
+      "building_type": null,
+      "building_use": null,
+      "house_number": null,
+      "on_different_lv": null,
+      "building_lv_number": null,
+      "right_of_construction": null
+    },
+    "owners": [
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba A",
+        "share": "1/1",
+        "sjm": false,
+        "insufficiently_identified": false,
+        "foreign_address": false
+      }
+    ],
+    "protection": [],
+    "bpej": [],
+    "restrictions": [
+      {
+        "type": "Exekuční příkaz k prodeji nemovitosti",
+        "beneficiary": "Osoba A",
+        "applies_to_share_only": false,
+        "related_parcels": []
+      }
+    ],
+    "other_records": [],
+    "pending_proceedings": {
+      "seal_present": false,
+      "seal_text": null,
+      "proceedings": []
+    },
+    "price_proceedings_count": 0
+  },
+  "map": {
+    "status": "checked",
+    "source": "Mapy.com",
+    "notes": null,
+    "coordinates_wgs84": {
+      "lat": null,
+      "lon": null
+    },
+    "adjacent_roads": [
+      {
+        "road_number": "III/29317",
+        "road_class": "III. třída"
+      }
+    ],
+    "road_covers_parcel": "celá",
+    "access_type": "silnice",
+    "access_via_parcels": [],
+    "orthophoto_land_cover": "silnice",
+    "visible_structures_or_fences": null,
+    "neighbouring_parcels": []
+  },
+  "lpis": {
+    "status": "not_checked",
+    "notes": null,
+    "parcel_in_lpis": null,
+    "dpb_items": []
+  },
+  "nature_protection": {
+    "status": "checked",
+    "notes": null,
+    "large_protected_area": {
+      "type": null,
+      "name": null,
+      "zone": null,
+      "buffer_zone": null
+    },
+    "small_protected_area": {
+      "type": null,
+      "name": null,
+      "buffer_zone": null
+    },
+    "parcel_only_partially_inside": false,
+    "cave_related": false,
+    "natura2000": {
+      "evl": null,
+      "bird_area": null
+    },
+    "nature_park": null,
+    "uses_element": null
+  },
+  "flood": {
+    "status": "not_checked",
+    "notes": null,
+    "designated_flood_zone": null,
+    "active_zone": null,
+    "hazard_category": null
+  },
+  "zoning": {
+    "status": "checked",
+    "notes": null,
+    "municipality_has_zoning_plan": true,
+    "plan_name": null,
+    "area_type": "plocha dopravní infrastruktury",
+    "area_code": null,
+    "built_up_status": "nezastavěné území",
+    "public_benefit_construction": {
+      "type": null,
+      "id": null,
+      "expropriation_possible": null
+    },
+    "preemption_right_101": {
+      "holder": null,
+      "registered_in_kn": null
+    },
+    "building_ban": null,
+    "study_or_regulatory_plan_required": null
+  },
+  "seller_facts": {
+    "status": "not_checked",
+    "notes": null,
+    "inheritance_date": null,
+    "deceased_owner_in_sjm": null,
+    "inheritance_proceedings_open": null,
+    "lease_contract": null
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "exits": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Očekávaný výstup syntetického případu."
+}

@@ -1,0 +1,14 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "seal",
+      "evidence": "cadastre.pending_proceedings.seal_present = true"
+    }
+  ],
+  "exits": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Očekávaný výstup syntetického případu."
+}

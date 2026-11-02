@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ParcelEvaluation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decision",
+    "legal_flags",
+    "exits",
+    "missing_data",
+    "confidence",
+    "reasoning"
+  ],
+  "properties": {
+    "decision": {
+      "type": "string",
+      "enum": [
+        "BLOCKED",
+        "CONDITIONAL",
+        "BUY_CANDIDATE",
+        "NOT_WORTH_IT",
+        "INSUFFICIENT_DATA"
+      ]
+    },
+    "legal_flags": {
+      "type": "array",
+      "description": "Stage 1. Any 'block' forces BLOCKED. 'offer' or 'consent' caps the result at CONDITIONAL.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "code",
+          "evidence"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "block",
+              "offer",
+              "consent"
+            ]
+          },
+          "code": {
+            "type": "string",
+            "enum": [
+              "seal",
+              "execution",
+              "insolvency",
+              "alienation_ban",
+              "dispute_note",
+              "insufficiently_identified_owner",
+              "deceased_spouse_sjm",
+              "units_ownership",
+              "state_nature_protection_61",
+              "building_owner_3056",
+              "registered_preemption",
+              "municipality_or_region_101",
+              "co_owners_inheritance_1124",
+              "land_consolidation"
+            ]
+          },
+          "evidence": {
+            "$ref": "#/$defs/evidence"
+          }
+        }
+      }
+    },
+    "exits": {
+      "type": "array",
+      "description": "Stage 2 and 3. Every plausible buyer, including the ones stage 3 killed.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "exit_type",
+          "buyer",
+          "killed",
+          "kill_reason",
+          "evidence"
+        ],
+        "properties": {
+          "exit_type": {
+            "type": "string",
+            "enum": [
+              "road_class_2",
+              "road_class_3",
+              "local_road",
+              "co_owners",
+              "field_arable",
+              "field_grassland",
+              "building_owner",
+              "forest"
+            ],
+            "description": "Key into config/pricing.yaml. The model never outputs a price."
+          },
+          "buyer": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Counterparty as named in the input (e.g. 'Liberecký kraj', 'ZD Studenec'). null when the input does not name one."
+          },
+          "killed": {
+            "type": "boolean"
+          },
+          "kill_reason": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "owner_is_buyer",
+              "clearcut",
+              "no_access",
+              "no_lpis_user",
+              "co_owner_insolvency",
+              null
+            ]
+          },
+          "evidence": {
+            "$ref": "#/$defs/evidence"
+          }
+        }
+      }
+    },
+    "missing_data": {
+      "type": "array",
+      "description": "Unchecked or null input that could change the decision. Empty when nothing relevant is missing.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "field",
+          "impact"
+        ],
+        "properties": {
+          "field": {
+            "type": "string",
+            "description": "Input path, e.g. 'flood' (whole source) or 'cadastre.building.building_lv_number'."
+          },
+          "impact": {
+            "type": "string",
+            "enum": [
+              "could_block",
+              "could_require_offer",
+              "could_kill_exit",
+              "could_reduce_value"
+            ]
+          }
+        }
+      }
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "reasoning": {
+      "type": "string",
+      "description": "Max 4 sentences in Czech: what decided stages 1 to 3 and the verdict."
+    }
+  },
+  "$defs": {
+    "evidence": {
+      "type": "string",
+      "description": "'<input path> = <value copied verbatim>', e.g. 'cadastre.owners[0].name = Liberecký kraj'. One field per conclusion."
+    }
+  }
+}

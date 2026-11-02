@@ -1,0 +1,14 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "execution",
+      "evidence": "cadastre.restrictions[0].type = Exekuční příkaz k prodeji nemovitosti"
+    }
+  ],
+  "exits": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Očekávaný výstup syntetického případu."
+}

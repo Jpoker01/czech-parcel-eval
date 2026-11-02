@@ -1,0 +1,112 @@
+{
+  "meta": {
+    "case_id": null,
+    "filled_by": null,
+    "filled_at": null,
+    "notes": null
+  },
+  "cadastre": {
+    "status": "not_checked",
+    "logged_in": null,
+    "owners_visible": null,
+    "retrieved_at": null,
+    "notes": null,
+    "identification": {
+      "municipality": null,
+      "cadastral_area": null,
+      "cadastral_area_code": null,
+      "parcel_kind": null,
+      "parcel_kind_code": null,
+      "simplified_evidence_origin": null,
+      "numbering_type": null,
+      "parcel_number": null,
+      "lv_number": null
+    },
+    "land": {
+      "area_m2": null,
+      "map_sheet": null,
+      "area_determination": null,
+      "land_type": null,
+      "land_use": null
+    },
+    "building": {
+      "present": null,
+      "relation": null,
+      "building_type": null,
+      "building_use": null,
+      "house_number": null,
+      "on_different_lv": null,
+      "building_lv_number": null,
+      "right_of_construction": null
+    },
+    "owners": [],
+    "protection": [],
+    "bpej": [],
+    "restrictions": [],
+    "other_records": [],
+    "pending_proceedings": {
+      "seal_present": null,
+      "seal_text": null,
+      "proceedings": []
+    },
+    "price_proceedings_count": null
+  },
+  "map": {
+    "status": "not_checked",
+    "source": null,
+    "notes": null,
+    "coordinates_wgs84": {"lat": null, "lon": null},
+    "adjacent_roads": [],
+    "road_covers_parcel": null,
+    "access_type": null,
+    "access_via_parcels": [],
+    "orthophoto_land_cover": null,
+    "visible_structures_or_fences": null,
+    "neighbouring_parcels": []
+  },
+  "lpis": {
+    "status": "not_checked",
+    "notes": null,
+    "parcel_in_lpis": null,
+    "dpb_items": []
+  },
+  "nature_protection": {
+    "status": "not_checked",
+    "notes": null,
+    "large_protected_area": {"type": null, "name": null, "zone": null, "buffer_zone": null},
+    "small_protected_area": {"type": null, "name": null, "buffer_zone": null},
+    "parcel_only_partially_inside": null,
+    "cave_related": null,
+    "natura2000": {"evl": null, "bird_area": null},
+    "nature_park": null,
+    "uses_element": null
+  },
+  "flood": {
+    "status": "not_checked",
+    "notes": null,
+    "designated_flood_zone": null,
+    "active_zone": null,
+    "hazard_category": null
+  },
+  "zoning": {
+    "status": "not_checked",
+    "notes": null,
+    "municipality_has_zoning_plan": null,
+    "plan_name": null,
+    "area_type": null,
+    "area_code": null,
+    "built_up_status": null,
+    "public_benefit_construction": {"type": null, "id": null, "expropriation_possible": null},
+    "preemption_right_101": {"holder": null, "registered_in_kn": null},
+    "building_ban": null,
+    "study_or_regulatory_plan_required": null
+  },
+  "seller_facts": {
+    "status": "not_checked",
+    "notes": null,
+    "inheritance_date": null,
+    "deceased_owner_in_sjm": null,
+    "inheritance_proceedings_open": null,
+    "lease_contract": null
+  }
+}

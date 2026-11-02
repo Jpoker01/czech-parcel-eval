@@ -1,0 +1,21 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "exits": [
+    {
+      "exit_type": "road_class_3",
+      "buyer": "Liberecký kraj",
+      "killed": false,
+      "kill_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "nature_protection",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "high",
+  "reasoning": "Očekávaný výstup syntetického případu."
+}

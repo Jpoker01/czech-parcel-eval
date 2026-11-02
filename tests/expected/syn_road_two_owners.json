@@ -1,0 +1,28 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "exits": [
+    {
+      "exit_type": "road_class_3",
+      "buyer": "Liberecký kraj",
+      "killed": false,
+      "kill_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    },
+    {
+      "exit_type": "co_owners",
+      "buyer": "Osoba B",
+      "killed": false,
+      "kill_reason": null,
+      "evidence": "cadastre.owners[1].name = Osoba B"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "high",
+  "reasoning": "Očekávaný výstup syntetického případu."
+}
