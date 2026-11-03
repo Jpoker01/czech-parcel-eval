@@ -39,7 +39,7 @@ To be filled after the v0 baseline run. Each case runs 3 times and the scores ar
     * **Data** - missing basic land register data ends with `INSUFFICIENT_DATA`.
     * **Blockers** - a seal (plomba), seizure of property (exekuce), insolvency, alienation ban (zákaz zcizení) etc. ends with `BLOCKED`.
     * **Pre-emption and consent** - a statutory offer (§ 61 of 114/1992 Sb., § 3056 and § 1124 NOZ) or an authority consent caps the result at `CONDITIONAL`.
-    * **Resale options** - who would buy the parcel (region, municipality, farmer from LPIS, co-owners, building owner, neighbour).
+    * **Resale options** - Finds who could buy the parcel (region, municipality, farmer from LPIS, co-owners, building owner, neighbour).
     * **Exclusion check** - resale options that are excluded (the owner is already the buyer, clear-cut forest, no LPIS user etc.).
     * **Verdict** - `CONDITIONAL` when risky data is missing or the buyer is not confirmed, otherwise `BUY_CANDIDATE`, or `NOT_WORTH_IT` when no resale option remains.
 3. **Output (`output/schema.json`):** six fields (`decision`, `legal_flags`, `resale_options`, `missing_data`, `confidence`, `reasoning`). Codes are enums, so runs can be compared as sets.
