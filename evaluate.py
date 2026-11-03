@@ -36,16 +36,10 @@ def format_metadata(prompt_version: str) -> list[str]:
         return ["- Metadata: not recorded (the run has no meta.json)"]
 
     metadata = load_json(metadata_path)
-    code = metadata["code"]
-    if code["commit"] is None:
-        code_text = "unknown (git not available)"
-    else:
-        code_text = f"commit {code['commit']}" + (", with uncommitted changes" if code["dirty"] else "")
     return [
         f"- Model: {metadata['model']}",
         f"- Prompt: {metadata['prompt_version']} (sha256 {metadata['prompt_sha256']})",
         f"- Run at: {metadata['run_at']}",
-        f"- Code: {code_text}",
         f"- Cases: {len(metadata['cases'])}, repeats per case: {metadata['repeats']}",
     ]
 

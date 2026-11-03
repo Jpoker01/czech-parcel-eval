@@ -11,7 +11,6 @@ import hashlib
 import json
 import logging
 import os
-import subprocess
 from datetime import datetime
 from pathlib import Path
 
@@ -21,7 +20,6 @@ from dotenv import load_dotenv
 from parcel_eval.llm import evaluate_parcel
 from parcel_eval.paths import (
     INPUTS_DIR,
-    PROJECT_ROOT,
     PROMPTS_DIR,
     RUN_METADATA_FILE_NAME,
     RUNS_DIR,
@@ -47,35 +45,6 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def get_code_version() -> dict[str, str | bool | None]:
-    """Read the git commit of the code and whether it has uncommitted changes.
-
-    The runs/ folder is left out of the check, because it holds the results themselves.
-
-    Returns:
-        Dict with "commit" (short hash) and "dirty" (True when the code differs from the commit).
-        Both are None when git is not available or this is not a repository.
-    """
-    try:
-        commit = subprocess.run(
-            ["git", "rev-parse", "--short", "HEAD"],
-            cwd=PROJECT_ROOT,
-            capture_output=True,
-            text=True,
-            check=True,
-        ).stdout.strip()
-        changes = subprocess.run(
-            ["git", "status", "--porcelain", "--", ".", ":(exclude)runs"],
-            cwd=PROJECT_ROOT,
-            capture_output=True,
-            text=True,
-            check=True,
-        ).stdout.strip()
-    except (FileNotFoundError, subprocess.CalledProcessError):
-        return {"commit": None, "dirty": None}
-    return {"commit": commit, "dirty": bool(changes)}
-
-
 def build_run_metadata(args: argparse.Namespace, case_ids: list[str], system_prompt: str) -> dict:
     """Describe how a run was made, so a saved result can be traced back.
 
@@ -95,7 +64,6 @@ def build_run_metadata(args: argparse.Namespace, case_ids: list[str], system_pro
         "repeats": args.repeats,
         "cases": case_ids,
         "run_at": datetime.now().astimezone().isoformat(timespec="seconds"),
-        "code": get_code_version(),
     }
 
 

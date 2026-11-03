@@ -63,9 +63,13 @@ def check_evidence(output: dict, parcel_input: dict) -> list[str]:
         except (KeyError, IndexError, TypeError):
             errors.append(f"evidence: path does not exist '{path}'")
             continue
-        # Model may write a bool as true or True, so accept both str() and JSON forms
-        accepted_forms = {str(actual_value), json.dumps(actual_value, ensure_ascii=False)}
-        if claimed_value.strip() not in accepted_forms:
+        # The claim is text but the real value can be any type, so turn the real value into text.
+        # Two ways, because the model writes strings without quotes but booleans and null as in JSON.
+        # "silnice" -> silnice, False -> False, None -> None
+        python_text = str(actual_value)
+        # "silnice" -> "silnice" (with quotes), False -> false, None -> null
+        json_text = json.dumps(actual_value, ensure_ascii=False)
+        if claimed_value.strip() not in (python_text, json_text):
             errors.append(f"evidence: '{path}' is '{actual_value}', model claims '{claimed_value}'")
     return errors
 
@@ -78,7 +82,10 @@ def has_basic_land_register_data(parcel_input: dict) -> bool:
     land = land_register.get("land", {})
     if land.get("area_m2") is None or land.get("land_type") is None:
         return False
-    return not (land_register.get("owners_visible") and not land_register.get("owners"))
+    # Owners are visible in the land register, but none were filled in
+    if land_register.get("owners_visible") and not land_register.get("owners"):
+        return False
+    return True
 
 
 def check_consistency(output: dict, parcel_input: dict) -> list[str]:
@@ -93,37 +100,68 @@ def check_consistency(output: dict, parcel_input: dict) -> list[str]:
     """
     errors = []
     decision = output.get("decision")
-    flag_types = {flag["type"] for flag in output.get("legal_flags", [])}
     resale_options = output.get("resale_options", [])
+    # Types of the legal flags the model raised, e.g. {"block", "offer"}
+    flag_types = {flag["type"] for flag in output.get("legal_flags", [])}
+    # Impacts of the data the model says is missing, e.g. {"could_block", "could_reduce_value"}
     impacts = {item["impact"] for item in output.get("missing_data", [])}
 
-    if ("block" in flag_types) != (decision == "BLOCKED"):
+    # Rule 1: a block flag and BLOCKED always go together
+    has_block_flag = "block" in flag_types
+    is_blocked = decision == "BLOCKED"
+    if has_block_flag != is_blocked:
         errors.append("rule 1: block flag and BLOCKED must go together")
 
-    if flag_types & {"offer", "consent"} and decision == "BUY_CANDIDATE":
+    # Rule 2: an offer or consent flag rules out BUY_CANDIDATE
+    has_offer_or_consent_flag = "offer" in flag_types or "consent" in flag_types
+    if has_offer_or_consent_flag and decision == "BUY_CANDIDATE":
         errors.append("rule 2: offer or consent flag cannot end as BUY_CANDIDATE")
 
+    # Rule 3: BUY_CANDIDATE needs someone to sell to and no risky missing data
     if decision == "BUY_CANDIDATE":
-        has_live_named_resale_option = any(
-            not resale_option["excluded"] and resale_option["buyer"] for resale_option in resale_options
-        )
-        if not has_live_named_resale_option or impacts & RISKY_IMPACTS:
+        # Is at least one resale option still open and has a buyer filled in (not null or empty)?
+        has_open_option_with_buyer = False
+        for resale_option in resale_options:
+            if not resale_option["excluded"] and resale_option["buyer"]:
+                has_open_option_with_buyer = True
+
+        # Is any of the missing data risky, e.g. could_block?
+        has_risky_missing_data = False
+        for impact in impacts:
+            if impact in RISKY_IMPACTS:
+                has_risky_missing_data = True
+
+        if not has_open_option_with_buyer or has_risky_missing_data:
             errors.append("rule 3: BUY_CANDIDATE needs a live named resale option and no risky missing data")
 
+    # Rule 4: NOT_WORTH_IT means there is nobody left to sell to
     if decision == "NOT_WORTH_IT":
-        if (
-            any(not resale_option["excluded"] for resale_option in resale_options)
-            or "could_exclude_resale" in impacts
-        ):
+        # Is at least one resale option still open?
+        has_open_option = False
+        for resale_option in resale_options:
+            if not resale_option["excluded"]:
+                has_open_option = True
+
+        # Does the model itself say missing data could still exclude a resale?
+        exclusion_is_uncertain = "could_exclude_resale" in impacts
+
+        if has_open_option or exclusion_is_uncertain:
             errors.append(
                 "rule 4: NOT_WORTH_IT needs all resale options excluded and no could_exclude_resale"
             )
 
-    if (decision == "INSUFFICIENT_DATA") == has_basic_land_register_data(parcel_input):
+    # Rule 5: INSUFFICIENT_DATA exactly when the basic land register data is missing
+    says_insufficient_data = decision == "INSUFFICIENT_DATA"
+    data_is_missing = not has_basic_land_register_data(parcel_input)
+    if says_insufficient_data != data_is_missing:
         errors.append("rule 5: INSUFFICIENT_DATA must match missing basic land register data")
 
+    # Rule 6 (evidence matches the input) is checked in check_evidence
+
+    # Rule 7: an excluded option has a reason, an open option does not
     for resale_option in resale_options:
-        if resale_option["excluded"] != (resale_option["exclusion_reason"] is not None):
+        has_exclusion_reason = resale_option["exclusion_reason"] is not None
+        if resale_option["excluded"] != has_exclusion_reason:
             errors.append(
                 f"rule 7: resale option {resale_option['resale_type']} excluded and exclusion_reason disagree"
             )
@@ -146,20 +184,37 @@ def compare_with_expected(output: dict, expected: dict) -> dict[str, bool]:
     """
 
     def flag_set(data: dict) -> set[tuple[str, str]]:
-        return {(flag["type"], flag["code"]) for flag in data.get("legal_flags", [])}
+        """Reduce each legal flag to (type, code), e.g. ("block", "seal")."""
+        flags = set()
+        for flag in data.get("legal_flags", []):
+            flags.add((flag["type"], flag["code"]))
+        return flags
 
     def resale_option_set(data: dict) -> set[tuple[str, bool]]:
-        return {
-            (resale_option["resale_type"], resale_option["excluded"])
-            for resale_option in data.get("resale_options", [])
-        }
+        """Reduce each resale option to (resale_type, excluded), e.g. ("co_owners", False)."""
+        resale_options = set()
+        for resale_option in data.get("resale_options", []):
+            resale_options.add((resale_option["resale_type"], resale_option["excluded"]))
+        return resale_options
 
     def risky_set(data: dict) -> set[str]:
-        return {item["impact"] for item in data.get("missing_data", [])} & RISKY_IMPACTS
+        """Collect the impacts of missing data that are risky, e.g. {"could_block"}."""
+        risky_impacts = set()
+        for item in data.get("missing_data", []):
+            if item["impact"] in RISKY_IMPACTS:
+                risky_impacts.add(item["impact"])
+        return risky_impacts
+
+    # Each part matches only when it is exactly the same, there is no partial credit.
+    # Sets ignore order, so the model may list flags and options in any order.
+    decision_matches = output.get("decision") == expected.get("decision")
+    flags_match = flag_set(output) == flag_set(expected)
+    resale_options_match = resale_option_set(output) == resale_option_set(expected)
+    risky_missing_data_matches = risky_set(output) == risky_set(expected)
 
     return {
-        "decision": output.get("decision") == expected.get("decision"),
-        "legal_flags": flag_set(output) == flag_set(expected),
-        "resale_options": resale_option_set(output) == resale_option_set(expected),
-        "risky_missing_data": risky_set(output) == risky_set(expected),
+        "decision": decision_matches,
+        "legal_flags": flags_match,
+        "resale_options": resale_options_match,
+        "risky_missing_data": risky_missing_data_matches,
     }
