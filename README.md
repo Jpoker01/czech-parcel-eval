@@ -12,7 +12,7 @@ The model gets data about one parcel copied from public registries (land registe
 - **Schemas:** JSON Schema 2020-12 for the model output, an empty JSON form for the input
 - **Validation:** `jsonschema` plus custom consistency and evidence checks
 - **Data sources (manual):** Nahlížení do KN, Mapy.com, LPIS, AOPK, municipal zoning plans
-- **Tooling:** uv, ruff
+- **Tooling:** uv, ruff, GitHub Actions
 
 ## How it works
 
@@ -82,6 +82,22 @@ uv run python evaluate.py --prompt PROMPT
 
 The report in `runs/PROMPT/report.md` shows per-case match rates (decision, legal flags, resale options, risky missing data), run-to-run consistency and every rule violation. The run folders are committed, so the results cited in `prompts/iterations.md` can be checked. `run.py` refuses to write into a folder that already has results, so use a new prompt version or pass `--force`. The model can be changed with `--model` or `PARCEL_EVAL_MODEL` in `.env`.
 
+### CI
+
+GitHub Actions (`.github/workflows/ci.yml`) runs on every push to `main` and every pull request. It does not call the API, so model runs stay manual. It checks that:
+
+* the code passes `ruff check` and `ruff format --check`
+* `uv.lock` matches `pyproject.toml`
+* every expected output passes the same schema, consistency and evidence checks as a model output, and every input has one
+
+To run the same checks locally:
+
+```bash
+uv run ruff check .
+uv run ruff format --check .
+uv run python tests/check_expected.py
+```
+
 ## Project structure
 
 * **run.py** - Runs a prompt version on the test cases
@@ -97,6 +113,7 @@ The report in `runs/PROMPT/report.md` shows per-case match rates (decision, lega
 * **/tests**
   * **/expected** - Hand-written expected outputs
   * **build_synthetic_cases.py** - Generates rule-isolating variants of a real parcel
+  * **check_expected.py** - Validates the expected outputs against their inputs (run in CI)
 * **/config**
   * **pricing.yaml** - Resale prices and fixed costs, kept out of the model
 * **/src/parcel_eval** - Importable package
@@ -108,6 +125,8 @@ The report in `runs/PROMPT/report.md` shows per-case match rates (decision, lega
   * **input_schema.md** - Where each input value is found in the source and which values are allowed
   * **output_schema.md** - Output fields and consistency rules
 * **/runs** - Raw model outputs, `meta.json` and `report.md` for each prompt version
+* **/.github/workflows**
+  * **ci.yml** - Lint, format and test-data checks on push and pull request
 
 ## Disclaimer
 
