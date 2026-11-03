@@ -9,7 +9,7 @@ Doplňuje `input/template.json`. Hodnoty se píšou česky tak, jak je zobrazuje
 - Texty z KN se opisují doslova (typ omezení, způsob využití). Interpretace patří promptu.
 - `notes`: volný text pro člověka. Prompt ho nečte jako data, jen jako kontext.
 
-## cadastre
+## land_register
 
 | Pole | Hodnoty |
 |---|---|

@@ -27,7 +27,7 @@ Co model nevrací, protože to spočítá Python ze vstupu nebo z configu: ceny,
 2. `legal_flags` obsahuje `offer` nebo `consent` ⇒ `decision` není `BUY_CANDIDATE`.
 3. `decision = BUY_CANDIDATE` ⇒ aspoň jeden exit `killed = false` s `buyer != null` a v `missing_data` nic s `could_block` ani `could_kill_exit`.
 4. `decision = NOT_WORTH_IT` ⇒ všechny exity `killed = true` (nebo žádný exit) a v `missing_data` nic s `could_kill_exit`.
-5. `decision = INSUFFICIENT_DATA` ⇔ `cadastre.status != checked` nebo chybí výměra, druh pozemku či vlastníci.
+5. `decision = INSUFFICIENT_DATA` ⇔ `land_register.status != checked` nebo chybí výměra, druh pozemku či vlastníci.
 6. Každé `evidence` ukazuje na existující pole vstupu a hodnota se shoduje.
 7. `killed = true` ⇔ `kill_reason != null`.
 

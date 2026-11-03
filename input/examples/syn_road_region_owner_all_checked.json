@@ -3,7 +3,7 @@
     "case_id": "syn_road_region_owner_all_checked",
     "notes": "Synthetic. Tests: step 4: owner_is_buyer with complete data"
   },
-  "cadastre": {
+  "land_register": {
     "status": "checked",
     "owners_visible": true,
     "notes": null,

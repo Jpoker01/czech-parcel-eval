@@ -14,7 +14,7 @@
       "buyer": "Osoba B",
       "killed": false,
       "kill_reason": null,
-      "evidence": "cadastre.owners[1].name = Osoba B"
+      "evidence": "land_register.owners[1].name = Osoba B"
     }
   ],
   "missing_data": [

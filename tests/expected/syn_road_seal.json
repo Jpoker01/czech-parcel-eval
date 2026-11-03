@@ -4,7 +4,7 @@
     {
       "type": "block",
       "code": "seal",
-      "evidence": "cadastre.seal_present = true"
+      "evidence": "land_register.seal_present = true"
     }
   ],
   "exits": [],

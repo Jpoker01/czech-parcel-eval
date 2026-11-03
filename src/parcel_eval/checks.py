@@ -22,7 +22,7 @@ def validate_schema(output: dict, schema: dict) -> list[str]:
 
 
 def resolve_path(data: dict, path: str) -> object:
-    """Read a value from nested input by a path like cadastre.owners[0].name.
+    """Read a value from nested input by a path like land_register.owners[0].name.
 
     Args:
         data: Parcel input.
@@ -70,15 +70,15 @@ def check_evidence(output: dict, parcel_input: dict) -> list[str]:
     return errors
 
 
-def has_basic_cadastre_data(parcel_input: dict) -> bool:
-    """Return True when the input has enough cadastre data to evaluate the parcel."""
-    cadastre = parcel_input.get("cadastre", {})
-    if cadastre.get("status") != "checked":
+def has_basic_land_register_data(parcel_input: dict) -> bool:
+    """Return True when the input has enough land register data to evaluate the parcel."""
+    land_register = parcel_input.get("land_register", {})
+    if land_register.get("status") != "checked":
         return False
-    land = cadastre.get("land", {})
+    land = land_register.get("land", {})
     if land.get("area_m2") is None or land.get("land_type") is None:
         return False
-    return not (cadastre.get("owners_visible") and not cadastre.get("owners"))
+    return not (land_register.get("owners_visible") and not land_register.get("owners"))
 
 
 def check_consistency(output: dict, parcel_input: dict) -> list[str]:
@@ -112,8 +112,8 @@ def check_consistency(output: dict, parcel_input: dict) -> list[str]:
         if any(not exit_["killed"] for exit_ in exits) or "could_kill_exit" in impacts:
             errors.append("rule 4: NOT_WORTH_IT needs all exits killed and no could_kill_exit")
 
-    if (decision == "INSUFFICIENT_DATA") == has_basic_cadastre_data(parcel_input):
-        errors.append("rule 5: INSUFFICIENT_DATA must match missing basic cadastre data")
+    if (decision == "INSUFFICIENT_DATA") == has_basic_land_register_data(parcel_input):
+        errors.append("rule 5: INSUFFICIENT_DATA must match missing basic land register data")
 
     for exit_ in exits:
         if exit_["killed"] != (exit_["kill_reason"] is not None):

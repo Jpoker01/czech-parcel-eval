@@ -141,7 +141,7 @@
         "properties": {
           "field": {
             "type": "string",
-            "description": "Input path, e.g. 'lpis' (whole source) or 'cadastre.building.on_different_lv'."
+            "description": "Input path, e.g. 'lpis' (whole source) or 'land_register.building.on_different_lv'."
           },
           "impact": {
             "type": "string",
@@ -171,7 +171,7 @@
   "$defs": {
     "evidence": {
       "type": "string",
-      "description": "'<input path> = <value copied verbatim>', e.g. 'cadastre.owners[0].name = Liberecký kraj'. One field per conclusion."
+      "description": "'<input path> = <value copied verbatim>', e.g. 'land_register.owners[0].name = Liberecký kraj'. One field per conclusion."
     }
   }
 }

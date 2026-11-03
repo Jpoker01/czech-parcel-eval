@@ -8,7 +8,7 @@ Faktory, které jen snižují hodnotu (zástava, pacht, Q100 mimo aktivní zónu
 
 | # | Otázka | Podmínka (pole vstupu) | Výsledek | Pokračovat? |
 |---|---|---|---|---|
-| 0 | Mám základní data? | `cadastre.status != checked` nebo chybí `area_m2`, `land_type`, nebo `owners` je prázdné při `owners_visible = true` | **INSUFFICIENT_DATA** | ne |
+| 0 | Mám základní data? | `land_register.status != checked` nebo chybí `area_m2`, `land_type`, nebo `owners` je prázdné při `owners_visible = true` | **INSUFFICIENT_DATA** | ne |
 | 1 | Brání něco prodeji? | jakýkoli `legal_flags[].type = block` (plomba, exekuce, insolvence, zákaz zcizení, spornost, neidentifikovaný vlastník, SJM se zemřelým, jednotky) | **BLOCKED** | ne |
 | 2 | Musí se nejdřív nabídnout někomu jinému nebo získat souhlas? | `legal_flags[].type` ∈ {offer, consent} | nastaví strop **CONDITIONAL** | ano |
 | 3 | Komu se dá prodat? | aspoň jeden `exits[]` | žádný exit → **NOT_WORTH_IT** | ano, pokud exit existuje |
@@ -23,14 +23,14 @@ Faktory, které jen snižují hodnotu (zástava, pacht, Q100 mimo aktivní zónu
 
 | Kód | Signál ve vstupu |
 |---|---|
-| `seal` | `cadastre.seal_present = true` |
-| `execution` | `cadastre.restrictions[].type` obsahuje "exekuc" |
-| `insolvency` | `cadastre.restrictions[].type` obsahuje "insolvenc", "konkurs", "úpadk" |
-| `alienation_ban` | `cadastre.restrictions[].type` obsahuje "Zákaz zcizení" |
-| `dispute_note` | `cadastre.other_records[].type` obsahuje "spornost" nebo "žaloba" |
-| `insufficiently_identified_owner` | `cadastre.owners[].insufficiently_identified = true` |
+| `seal` | `land_register.seal_present = true` |
+| `execution` | `land_register.restrictions[].type` obsahuje "exekuc" |
+| `insolvency` | `land_register.restrictions[].type` obsahuje "insolvenc", "konkurs", "úpadk" |
+| `alienation_ban` | `land_register.restrictions[].type` obsahuje "Zákaz zcizení" |
+| `dispute_note` | `land_register.other_records[].type` obsahuje "spornost" nebo "žaloba" |
+| `insufficiently_identified_owner` | `land_register.owners[].insufficiently_identified = true` |
 | `deceased_spouse_sjm` | `seller_facts.deceased_owner_in_sjm = true` a `inheritance_proceedings_open = true` |
-| `units_ownership` | `cadastre.owners[].relation_type` = "Vlastnictví jednotek" |
+| `units_ownership` | `land_register.owners[].relation_type` = "Vlastnictví jednotek" |
 
 Bloker u jiného spoluvlastníka než prodávajícího (např. exekuce na cizí podíl) NENÍ bloker koupě podílu, ale `kill_reason = co_owner_insolvency` pro exit `co_owners` v kroku 4.
 
@@ -39,11 +39,11 @@ Bloker u jiného spoluvlastníka než prodávajícího (např. exekuce na cizí 
 | Kód | Typ | Signál | Komu |
 |---|---|---|---|
 | `state_nature_protection_61` | offer | `nature_protection.large_protected_area.type = NP` nebo `small_protected_area.type` ∈ {NPR, NPP} nebo `cave_related = true`, a zároveň `zoning.built_up_status != zastavěné území` | AOPK ČR / správa NP |
-| `building_owner_3056` | offer | `cadastre.building.relation = Stavba na parcele` nebo `on_different_lv = true` | vlastník stavby |
-| `registered_preemption` | offer | `cadastre.restrictions[].type` obsahuje "Předkupní právo" | oprávněný z LV |
+| `building_owner_3056` | offer | `land_register.building.relation = Stavba na parcele` nebo `on_different_lv = true` | vlastník stavby |
+| `registered_preemption` | offer | `land_register.restrictions[].type` obsahuje "Předkupní právo" | oprávněný z LV |
 | `municipality_or_region_101` | offer | `zoning.preemption_right_101_holder != null` | obec / kraj |
 | `co_owners_inheritance_1124` | offer | `seller_facts.inheritance_date` mladší než 6 měsíců a víc než jeden vlastník | ostatní spoluvlastníci |
-| `land_consolidation` | consent | `cadastre.other_records[].type` obsahuje "pozemkové úpravy" | pozemkový úřad |
+| `land_consolidation` | consent | `land_register.other_records[].type` obsahuje "pozemkové úpravy" | pozemkový úřad |
 
 Pokud je zdroj potřebný pro některé z těchto pravidel `not_checked` (AOPK, územní plán, seller_facts), jde do `missing_data` s `could_require_offer`.
 
@@ -51,12 +51,12 @@ Pokud je zdroj potřebný pro některé z těchto pravidel `not_checked` (AOPK, 
 
 | `exit_type` | Signál | Kupec (`buyer`) |
 |---|---|---|
-| `road_class_2` / `road_class_3` | `cadastre.land.land_use = silnice`; třída z `map.adjacent_roads[].road_class` | kraj dle sídla KÚ |
-| `local_road` | `cadastre.land.land_use = ostatní komunikace` | obec |
+| `road_class_2` / `road_class_3` | `land_register.land.land_use = silnice`; třída z `map.adjacent_roads[].road_class` | kraj dle sídla KÚ |
+| `local_road` | `land_register.land.land_use = ostatní komunikace` | obec |
 | `co_owners` | víc než jeden vlastník mimo SJM | ostatní spoluvlastníci |
-| `field_arable` / `field_grassland` | `cadastre.land.land_type` zemědělský; typ dle `lpis.dpb_items[].culture` | `lpis.dpb_items[].user_name` |
+| `field_arable` / `field_grassland` | `land_register.land.land_type` zemědělský; typ dle `lpis.dpb_items[].culture` | `lpis.dpb_items[].user_name` |
 | `building_owner` | stavba jiného vlastníka | vlastník stavby |
-| `forest` | `cadastre.land.land_type = lesní pozemek` | soused z `map.neighbouring_parcels[]` nebo `null` |
+| `forest` | `land_register.land.land_type = lesní pozemek` | soused z `map.neighbouring_parcels[]` nebo `null` |
 
 Jedna parcela může mít víc exitů (podíl na poli = `co_owners` + `field_*`). Všechny se vypíší.
 
@@ -84,4 +84,4 @@ Pokud zdroj pro kill-check chybí (`not_checked`), exit se nezabíjí, ale jde d
 | Louka v NP mimo zastavěné území | 2 + 6 | CONDITIONAL |
 | Les, holina, bez přístupu | 4 | NOT_WORTH_IT |
 | Cokoli s plombou | 1 | BLOCKED |
-| `cadastre.status = not_checked` | 0 | INSUFFICIENT_DATA |
+| `land_register.status = not_checked` | 0 | INSUFFICIENT_DATA |

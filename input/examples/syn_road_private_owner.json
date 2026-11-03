@@ -3,7 +3,7 @@
     "case_id": "syn_road_private_owner",
     "notes": "Synthetic. Tests: happy path: private owner under class III road, all relevant sources checked"
   },
-  "cadastre": {
+  "land_register": {
     "status": "checked",
     "owners_visible": true,
     "notes": null,

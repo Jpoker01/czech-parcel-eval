@@ -7,7 +7,7 @@
       "buyer": "Liberecký kraj",
       "killed": true,
       "kill_reason": "owner_is_buyer",
-      "evidence": "cadastre.owners[0].name = Liberecký kraj"
+      "evidence": "land_register.owners[0].name = Liberecký kraj"
     }
   ],
   "missing_data": [],

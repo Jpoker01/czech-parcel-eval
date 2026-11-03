@@ -7,7 +7,7 @@
       "buyer": "Liberecký kraj",
       "killed": false,
       "kill_reason": null,
-      "evidence": "cadastre.land.land_use = silnice"
+      "evidence": "land_register.land.land_use = silnice"
     }
   ],
   "missing_data": [

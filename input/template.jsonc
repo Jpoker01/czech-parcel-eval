@@ -11,7 +11,7 @@
   },
 
   // Source: Nahlížení do KN (nahlizenidokn.cuzk.gov.cz), page "Informace o pozemku", logged in
-  "cadastre": {
+  "land_register": {
     "status": "not_checked",
     "owners_visible": null,                // true when logged in; section "Vlastníci, jiní oprávnění" is shown
     "notes": null,
