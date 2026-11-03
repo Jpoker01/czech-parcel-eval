@@ -5,6 +5,7 @@ requires-python = ">=3.11"
 dependencies = [
     "anthropic>=2.4",
     "jsonschema>=4.23",
+    "python-dotenv>=1.2.4",
 ]
 
 [dependency-groups]

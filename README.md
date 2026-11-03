@@ -1,42 +1,34 @@
 # Czech Parcel Eval
 
-An LLM prompt and evaluation harness for triaging Czech land parcels before a buyout.
-The model gets data about one parcel copied from public registries (cadastre, LPIS, AOPK, flood maps, zoning plans) and returns a structured verdict: whether the parcel can be bought, who would buy it afterwards, and what data is missing to be sure.
-
-**Work in progress: prompt v0 has not been evaluated yet**
+An LLM prompt and evaluation harness for checking Czech land parcels before a buyout.
+The model gets data about one parcel copied from public registries (KN, LPIS, AOPK, flood maps, zoning plans) and returns a structured verdict on whether the parcel can be bought, who could be a potential buyer, and what data is missing to be certain.
 
 ## Tech Stack
 
-- **Language:** Python 3.11+
-- **Model:** Claude (`claude-sonnet-5-5` by default) through the Anthropic API with structured outputs
-- **Schemas:** JSON Schema 2020-12 for the model output, a JSON template for the input
+- **Language:** Python 3.11
+- **Model:** Claude (`claude-sonnet-5-5` by default due to speed/lower costs) through the Anthropic API with structured outputs
+- **Schemas:** JSON schema for the model output, a JSON template for the input
 - **Validation:** `jsonschema` plus custom consistency and evidence checks
-- **Data sources (manual):** Nahlížení do KN, Mapy.com, LPIS, AOPK and NATURA 2000, flood maps, municipal zoning plans
+- **Data sources:** Inspection of **Katastr Nemovitostí (KN), Mapy.com, LPIS, AOPK, NATURA 2000, flood maps, municipal zoning plans**
 - **Tooling:** uv, ruff
 
 ## How it works
 
-1. **Input (`input/template.json`):** one JSON per parcel, with a section for each source. Every section has a `status` (`checked`, `not_checked` or `not_available`), so the model can tell "verified, nothing found" from "nobody looked". Values are copied verbatim from the Czech sources.
-2. **Prompt (`prompts/v0.md`):** walks the parcel through a fixed order of steps taken from `docs/decision_table.md`:
-    * **Data** - missing basic cadastre data ends with `INSUFFICIENT_DATA`.
-    * **Blockers** - a seal, execution, insolvency, alienation ban etc. ends with `BLOCKED`.
-    * **Pre-emption and consent** - a statutory offer (§ 61 of 114/1992 Sb., § 3056 and § 1124 NOZ) or an authority consent caps the result at `CONDITIONAL`.
-    * **Exits** - who would buy the parcel (region, municipality, farmer from LPIS, co-owners, building owner, neighbour).
-    * **Kill check** - exits that do not survive (the owner is already the buyer, clear-cut forest, no LPIS user etc.).
-    * **Verdict** - `CONDITIONAL` when risky data is missing or the buyer is not confirmed, otherwise `BUY_CANDIDATE`, or `NOT_WORTH_IT` when no exit survives.
-3. **Output (`output/schema.json`):** six fields (`decision`, `legal_flags`, `exits`, `missing_data`, `confidence`, `reasoning`). Codes are enums, so runs can be compared as sets.
-4. **Run (`run.py`):** sends each test case to the model N times and saves the raw outputs to `runs/<prompt>/`.
-5. **Evaluation (`evaluate.py`):** validates every output against the schema, checks 7 consistency rules and the evidence, compares it with the hand-written expected output and writes `runs/<prompt>/report.md`.
+1. **Input (`input/template.json`):** each parcel is one JSON file with data from public sources and from KN through a logged-in account. Every source in the file says whether it was checked, so the model can tell "nothing was found" from "nobody looked".
+2. **Prompt (`prompts/v0.md`):** the model checks the parcel in a fixed order. First whether there is enough data, then whether anything is halting the purchase, then whether someone else must be offered the parcel first, and finally who could be a potential buyer. The full rules are in `docs/decision_table.md`.
+3. **Output (`output/schema.json`):** the model returns its decision, the problems it found, the potential buyers, the missing data and a short explanation of its reasoning. Always in the same format.
+4. **Run (`run.py`):** sends each test parcel to the model several times and saves the answers in `runs/<prompt>/`.
+5. **Evaluation (`evaluate.py`):** checks that each answer is consistent, that it is based on real values from the input, and that it matches the expected answer. The results are saved to `runs/<prompt>/report.md`.
 
 ## Decisions and assumptions
 
-- **Triage, not a decision:** the verdict sorts parcels for a human. Every `BUY_CANDIDATE` and `CONDITIONAL` still goes to a person who opens the LV.
-- **Unchecked is not empty:** a `not_checked` source never counts as "nothing found". If it could change the result, the model has to list it in `missing_data` and the verdict is at most `CONDITIONAL`.
-- **Evidence for every conclusion:** each flag and exit carries `evidence` in the form `input.path = value` (e.g. `cadastre.owners[0].name = Liberecký kraj`). The evaluation resolves the path in the input and compares the value, so an invented restriction or buyer is caught automatically.
-- **No prices in the model:** the model only names the exit (`road_class_3`, `field_arable`, `building_owner` etc.). Prices live in `config/pricing.yaml` (2026 state subsidy caps for road buyouts, Farmy.cz 2025 farmland averages) and can be changed without touching the prompt.
-- **Value-lowering factors are left out:** mortgages, leases or a Q100 flood zone do not change the verdict, and the person checking a candidate sees them on the LV anyway.
-- **Manual input:** Nahlížení do KN shows owners only after login and does not allow automated scraping. Bulk use would need the paid cadastre web services (WSDP) and WMS/WFS layers for LPIS, AOPK and flood maps.
-- **Known blind spots:** statutory pre-emption rights are not always visible in the cadastre, and consent with public use of a road (Constitutional Court I. ÚS 2541/25) cannot be detected from any source. Facts only the seller knows go to `seller_facts`.
+- **The model only evaluates the potential of a parcel purchase** - a person still checks all the data about a parcel before anything is bought.
+- **An unchecked source is never treated as clean** - if it could change the result, the model has to say that this data is missing.
+- **Every conclusion must point to the input** - the model names the field it based each conclusion on, so the evaluation can catch anything it made up.
+- **The model does not work with prices** - it decides whether the parcel is worth buying and names how it could be sold later (for example, a road to the municipality, or a field to a farmer). The prices for each option, the fixed costs and the minimum margin are in `config/pricing.yaml` and can be changed without touching the prompt.
+- **Things that only lower the price are ignored** - a mortgage or a lease does not change whether the parcel is worth buying, and the person checking it sees them in KN anyway.
+- **KN data comes from a logged-in account** - the KN website shows owners only to logged-in users and does not allow automated downloads. Large-scale use would need the paid KN services.
+- **Some facts are not in any source** - for example, some rights to buy a parcel first are not written in KN. Facts that only the seller knows are therefore outside of the scope of this agent.
 
 ## Quickstart guide
 
@@ -52,13 +44,15 @@ The model gets data about one parcel copied from public registries (cadastre, LP
 git clone https://github.com/Jpoker01/czech-parcel-eval.git
 cd czech-parcel-eval
 uv sync
-export ANTHROPIC_API_KEY=...
+```
+
+Copy `.env.example` to `.env` and add your API key:
+
+```txt
+ANTHROPIC_API_KEY=sk-ant-...
 ```
 
 ### Test data
-
-**The test set contains one real parcel and synthetic variants of it.**
-`zalesni_lhota_1292-2` was copied from Nahlížení do KN on 2. 11. 2026 (land under a road already owned by Liberecký kraj). The `syn_*` cases are generated from it, and each one isolates a single rule (seal, execution, national park, prompt injection in `notes`, unchecked sources etc.):
 
 ```bash
 uv run python tests/build_synthetic_cases.py
@@ -79,8 +73,6 @@ The report in `runs/PROMPT/report.md` shows per-case match rates (decision, lega
 
 ## Project structure
 
-* **pyproject.toml** - Dependencies and package configuration
-* **uv.lock** - Locked dependency versions for `uv sync`
 * **run.py** - Runs a prompt version on the test cases
 * **evaluate.py** - Scores the runs against the expected outputs
 * **/prompts** - Versioned prompts
@@ -109,4 +101,4 @@ The report in `runs/PROMPT/report.md` shows per-case match rates (decision, lega
 
 ## Disclaimer
 
-Not legal advice. Data from Nahlížení do KN is informative only, and a current LV extract is needed before any purchase.
+Not legal advice. Data from Katastr Nemovitostí is informative only, and a current LV extract is needed before any purchase.

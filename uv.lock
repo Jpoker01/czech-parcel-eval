@@ -1,5 +1,5 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = ">=3.11"
 resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'emscripten'",
@@ -281,6 +281,7 @@ source = { editable = "." }
 dependencies = [
     { name = "anthropic" },
     { name = "jsonschema" },
+    { name = "python-dotenv" },
 ]
 
 [package.dev-dependencies]
@@ -292,6 +293,7 @@ dev = [
 requires-dist = [
     { name = "anthropic", specifier = ">=2.4" },
     { name = "jsonschema", specifier = ">=4.23" },
+    { name = "python-dotenv", specifier = ">=1.2.4" },
 ]
 
 [package.metadata.requires-dev]
@@ -447,6 +449,15 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/0c/4b/e2eb5b51f46411ceb80451a7bf4aee215fd84012eeba22a183b4699006b5/pydantic_core-2.50.2-pp311-pypy311_pp80-macosx_11_0_arm64.whl", hash = "sha256:3435c443da7510a6de1a30c68beae338852a11f0440cc8320ea756a162f38dbe", size = 2075771, upload-time = "2026-10-29T16:34:53.469Z" },
     { url = "https://files.pythonhosted.org/packages/d5/99/e9703785468d1e644f19d602985b722ff97cc8ca67389e2d79f8fb562cfa/pydantic_core-2.50.2-pp311-pypy311_pp80-manylinux_2_28_x86_64.whl", hash = "sha256:b5675a12a7b67063fe3ca187e735b0463cf13fabc10166ae4d4b2f775fd0632d", size = 2265708, upload-time = "2026-10-29T16:34:54.662Z" },
     { url = "https://files.pythonhosted.org/packages/bd/d7/079d3d36aa6ee0333847d968d91ff185837541741d3c58ed0316103309bf/pydantic_core-2.50.2-pp311-pypy311_pp80-win_amd64.whl", hash = "sha256:f5ba7ef10ce82737e173fa95cafa1c8210918f7e653715b2c7a7a31877a74848", size = 2323087, upload-time = "2026-10-29T16:34:56.176Z" },
+]
+
+[[package]]
+name = "python-dotenv"
+version = "1.2.4"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/74/26/2fbeedb218a787a5eea551c7532cac4e009f83d689dd2faa0d0353473f86/python_dotenv-1.2.4.tar.gz", hash = "sha256:f0d53e69935a851c0dcc78f3ab7aaccd8cabef0b92382b576b824212902873c0", size = 60824, upload-time = "2026-10-01T05:36:10Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/60/d1/38f3a3405989a89ac18390803e70c6ad7c7760da4f9b83cbeca0c44a0c72/python_dotenv-1.2.4-py3-none-any.whl", hash = "sha256:42269a8a5b3fd54ffa6f3d84b18abed50064717576b4ecf03dc4a55d8aa04fdc", size = 23266, upload-time = "2026-10-01T05:36:08.633Z" },
 ]
 
 [[package]]

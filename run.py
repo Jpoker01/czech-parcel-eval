@@ -11,9 +11,12 @@ import logging
 import os
 
 import anthropic
+from dotenv import load_dotenv
 
 from parcel_eval.llm import evaluate_parcel
 from parcel_eval.paths import INPUTS_DIR, PROMPTS_DIR, RUNS_DIR, SCHEMA_PATH
+
+load_dotenv()
 
 DEFAULT_MODEL = os.environ.get("PARCEL_EVAL_MODEL", "claude-sonnet-5-5")
 DEFAULT_REPEATS = 3

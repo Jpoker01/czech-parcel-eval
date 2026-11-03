@@ -1,4 +1,5 @@
 # Pricing parameters for the value calculation.
+
 # The LLM never sees or computes prices. It returns exit_type;
 # the value is computed from this file outside the model.
 # Replace the defaults with your own buyout and resale numbers.
@@ -8,7 +9,7 @@ currency: CZK
 # Exit price per m2 for the whole parcel (before share).
 # null = no reliable public price, the parcel gets only a value band.
 exit_price_czk_m2:
-  road_class_2: 100        # state subsidy cap for regions 2026 (MF, call no. 5, podprogram 298D2460)
+  road_class_2: 100        # state subsidy cap for regions 2026
   road_class_3: 60         # same source
   field_arable: 39.6       # Farmy.cz market report 2025, arable land average
   field_grassland: 30.3    # Farmy.cz market report 2025, permanent grassland average
