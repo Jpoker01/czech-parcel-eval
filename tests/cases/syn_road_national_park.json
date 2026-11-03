@@ -1,0 +1,32 @@
+{
+  "description": "Step 2: a national park outside the built-up area requires an offer to the state.",
+  "base": "syn_road_private_owner",
+  "changes": {
+    "nature_protection.large_protected_area": {
+      "type": "NP",
+      "name": "Krkonošský národní park"
+    }
+  },
+  "expected": {
+    "decision": "CONDITIONAL",
+    "legal_flags": [
+      {
+        "type": "offer",
+        "code": "state_nature_protection_61",
+        "evidence": "nature_protection.large_protected_area.type = NP"
+      }
+    ],
+    "resale_options": [
+      {
+        "resale_type": "road_class_3",
+        "buyer": "Liberecký kraj",
+        "excluded": false,
+        "exclusion_reason": null,
+        "evidence": "map.adjacent_roads[0].road_class = III. třída"
+      }
+    ],
+    "missing_data": [],
+    "confidence": "high",
+    "reasoning": "Očekávaný výstup syntetického případu."
+  }
+}

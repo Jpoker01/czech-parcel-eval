@@ -1,0 +1,18 @@
+{
+  "description": "Step 0: no land register data ends with INSUFFICIENT_DATA.",
+  "base": "syn_road_private_owner",
+  "changes": {
+    "land_register.status": "not_checked",
+    "land_register.owners": [],
+    "land_register.land.area_m2": null,
+    "land_register.land.land_type": null
+  },
+  "expected": {
+    "decision": "INSUFFICIENT_DATA",
+    "legal_flags": [],
+    "resale_options": [],
+    "missing_data": [],
+    "confidence": "high",
+    "reasoning": "Očekávaný výstup syntetického případu."
+  }
+}

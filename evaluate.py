@@ -5,23 +5,17 @@ Usage:
 """
 
 import argparse
-import json
 import logging
 from collections import Counter, defaultdict
-from pathlib import Path
 
-from parcel_eval.checks import check_consistency, check_evidence, compare_with_expected, validate_schema
+from parcel_eval.cases import load_expected, load_input, load_json
+from parcel_eval.checks import check_output, compare_with_expected
 from parcel_eval.metrics import build_confusion_matrix, compute_decision_scores, format_decision_metrics
-from parcel_eval.paths import EXPECTED_DIR, INPUTS_DIR, RUN_METADATA_FILE_NAME, RUNS_DIR, SCHEMA_PATH
+from parcel_eval.paths import RUN_METADATA_FILE_NAME, RUNS_DIR, SCHEMA_PATH
 
 SCORED_PARTS = ["decision", "legal_flags", "resale_options", "risky_missing_data"]
 
 logger = logging.getLogger(__name__)
-
-
-def load_json(path: Path) -> dict:
-    """Read a UTF-8 JSON file."""
-    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def format_metadata(prompt_version: str) -> list[str]:
@@ -70,8 +64,8 @@ def build_report(prompt_version: str) -> str:
     total_runs = 0
 
     for case_id, outputs in outputs_by_case.items():
-        parcel_input = load_json(INPUTS_DIR / f"{case_id}.json")
-        expected = load_json(EXPECTED_DIR / f"{case_id}.json")
+        parcel_input = load_input(case_id)
+        expected = load_expected(case_id)
         decisions = Counter(output.get("decision") for _, output in outputs)
         modal_decision, modal_count = decisions.most_common(1)[0]
 
@@ -79,11 +73,7 @@ def build_report(prompt_version: str) -> str:
         case_error_count = 0
         for repeat, output in outputs:
             decision_pairs.append((expected["decision"], output.get("decision")))
-            errors = (
-                validate_schema(output, schema)
-                + check_consistency(output, parcel_input)
-                + check_evidence(output, parcel_input)
-            )
+            errors = check_output(output, parcel_input, schema)
             case_error_count += len(errors)
             error_lines += [f"- `{case_id}` #{repeat}: {error}" for error in errors]
             for part, matched in compare_with_expected(output, expected).items():

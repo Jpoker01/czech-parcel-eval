@@ -1,0 +1,35 @@
+{
+  "description": "An unchecked map only lowers the value and must not cause CONDITIONAL.",
+  "base": "syn_road_private_owner",
+  "changes": {
+    "map": {
+      "status": "not_checked",
+      "notes": null,
+      "adjacent_roads": [],
+      "access_type": null,
+      "orthophoto_land_cover": null,
+      "neighbouring_parcels": []
+    }
+  },
+  "expected": {
+    "decision": "BUY_CANDIDATE",
+    "legal_flags": [],
+    "resale_options": [
+      {
+        "resale_type": "road_class_3",
+        "buyer": "Liberecký kraj",
+        "excluded": false,
+        "exclusion_reason": null,
+        "evidence": "land_register.land.land_use = silnice"
+      }
+    ],
+    "missing_data": [
+      {
+        "field": "map.adjacent_roads",
+        "impact": "could_reduce_value"
+      }
+    ],
+    "confidence": "high",
+    "reasoning": "Očekávaný výstup syntetického případu."
+  }
+}

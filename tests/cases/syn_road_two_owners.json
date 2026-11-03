@@ -1,0 +1,50 @@
+{
+  "description": "Two resale options at once; unchecked seller_facts could hide the § 1124 inheritance offer.",
+  "base": "syn_road_private_owner",
+  "changes": {
+    "land_register.owners": [
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba A",
+        "share": "1/2",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba B",
+        "share": "1/2",
+        "sjm": false,
+        "insufficiently_identified": false
+      }
+    ]
+  },
+  "expected": {
+    "decision": "CONDITIONAL",
+    "legal_flags": [],
+    "resale_options": [
+      {
+        "resale_type": "road_class_3",
+        "buyer": "Liberecký kraj",
+        "excluded": false,
+        "exclusion_reason": null,
+        "evidence": "map.adjacent_roads[0].road_class = III. třída"
+      },
+      {
+        "resale_type": "co_owners",
+        "buyer": "Osoba B",
+        "excluded": false,
+        "exclusion_reason": null,
+        "evidence": "land_register.owners[1].name = Osoba B"
+      }
+    ],
+    "missing_data": [
+      {
+        "field": "seller_facts",
+        "impact": "could_require_offer"
+      }
+    ],
+    "confidence": "high",
+    "reasoning": "Očekávaný výstup syntetického případu."
+  }
+}

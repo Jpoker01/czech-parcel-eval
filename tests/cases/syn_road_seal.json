@@ -1,0 +1,21 @@
+{
+  "description": "Step 1: a seal blocks an otherwise perfect parcel.",
+  "base": "syn_road_private_owner",
+  "changes": {
+    "land_register.seal_present": true
+  },
+  "expected": {
+    "decision": "BLOCKED",
+    "legal_flags": [
+      {
+        "type": "block",
+        "code": "seal",
+        "evidence": "land_register.seal_present = true"
+      }
+    ],
+    "resale_options": [],
+    "missing_data": [],
+    "confidence": "high",
+    "reasoning": "Očekávaný výstup syntetického případu."
+  }
+}

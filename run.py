@@ -17,9 +17,9 @@ from pathlib import Path
 import anthropic
 from dotenv import load_dotenv
 
+from parcel_eval.cases import list_case_ids, load_input
 from parcel_eval.llm import evaluate_parcel
 from parcel_eval.paths import (
-    INPUTS_DIR,
     PROMPTS_DIR,
     RUN_METADATA_FILE_NAME,
     RUNS_DIR,
@@ -38,7 +38,7 @@ def parse_args() -> argparse.Namespace:
     """Parse command line arguments."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--prompt", required=True, help="Prompt version, e.g. v0")
-    parser.add_argument("--cases", nargs="*", help="Case IDs, default all in input/examples")
+    parser.add_argument("--cases", nargs="*", help="Case IDs, default all real and synthetic cases")
     parser.add_argument("--repeats", type=int, default=DEFAULT_REPEATS)
     parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--force", action="store_true", help="Replace an existing run of this prompt version")
@@ -99,7 +99,7 @@ def main() -> None:
 
     system_prompt = (PROMPTS_DIR / f"{args.prompt}.md").read_text(encoding="utf-8")
     output_schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
-    case_ids = args.cases or sorted(path.stem for path in INPUTS_DIR.glob("*.json"))
+    case_ids = args.cases or list_case_ids()
 
     run_dir = RUNS_DIR / args.prompt
     try:
@@ -115,7 +115,7 @@ def main() -> None:
     client = anthropic.Anthropic()
 
     for case_id in case_ids:
-        parcel_input = json.loads((INPUTS_DIR / f"{case_id}.json").read_text(encoding="utf-8"))
+        parcel_input = load_input(case_id)
         for repeat in range(args.repeats):
             output = evaluate_parcel(
                 client=client,

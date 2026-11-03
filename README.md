@@ -84,10 +84,15 @@ ANTHROPIC_API_KEY=sk-ant-...
 **The test set contains real parcels and synthetic variants of them.**
 Real parcels are copied by hand from Nahlížení do KN and the other sources, with names of private persons replaced by `Osoba A`, `Osoba B` etc. Each one covers a resale option or a legal flag (field with an LPIS user, land under a third-party garage, forest, national park, execution etc.). So far only `zalesni_lhota_1292-2` (land under a road already owned by Liberecký kraj, copied on 2. 11. 2026) is collected; the others are prepared as fill-in files in `input/drafts/`.
 
-The `syn_*` cases change one field of a real parcel, so that each one isolates a single rule (seal, execution, national park, prompt injection in `notes`, unchecked sources etc.):
+The `syn_*` cases in `tests/cases/` change one field of a real parcel, so that each one isolates a single rule (seal, execution, national park, prompt injection in `notes`, unchecked sources etc.). Each case is one self-contained file with a description, the base case, the changed input fields and the expected output:
 
-```bash
-uv run python tests/build_synthetic_cases.py
+```json
+{
+  "description": "Step 1: a seal blocks an otherwise perfect parcel.",
+  "base": "syn_road_private_owner",
+  "changes": {"land_register.seal_present": true},
+  "expected": {"decision": "BLOCKED", "...": "..."}
+}
 ```
 
 ### Running the evaluation
@@ -131,8 +136,8 @@ uv run python tests/check_expected.py
 * **/output**
   * **schema.json** - Output JSON schema, passed to the API as the structured output format
 * **/tests**
-  * **/expected** - Hand-written expected outputs
-  * **build_synthetic_cases.py** - Generates rule-isolating variants of a real parcel
+  * **/expected** - Hand-written expected outputs of the real parcels
+  * **/cases** - Synthetic cases, each with a base case, the changed input fields and the expected output
   * **check_expected.py** - Validates the expected outputs against their inputs (run in CI)
 * **/config**
   * **pricing.yaml** - Resale prices and fixed costs, kept out of the model
@@ -140,6 +145,7 @@ uv run python tests/check_expected.py
   * **llm.py** - API call with the output schema as a structured output format
   * **checks.py** - Schema, consistency and evidence checks
   * **metrics.py** - Decision confusion matrix, precision and recall
+  * **cases.py** - Loading real and synthetic test cases
   * **paths.py** - Project paths
 * **/docs**
   * **decision_table.md** - Order of steps, and the source, field and code of every signal the prompt is built from

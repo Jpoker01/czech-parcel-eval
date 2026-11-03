@@ -169,6 +169,27 @@ def check_consistency(output: dict, parcel_input: dict) -> list[str]:
     return errors
 
 
+def check_output(output: dict, parcel_input: dict, schema: dict) -> list[str]:
+    """Run every rule check on one output: schema, consistency rules and evidence.
+
+    Used for model outputs in evaluate.py and for hand-written expected outputs in
+    tests/check_expected.py, so both are held to exactly the same rules.
+
+    Args:
+        output: Model output or expected output.
+        parcel_input: Parcel input of the case.
+        schema: Output JSON schema.
+
+    Returns:
+        Error messages, empty when the output passes every check.
+    """
+    return (
+        validate_schema(output, schema)
+        + check_consistency(output, parcel_input)
+        + check_evidence(output, parcel_input)
+    )
+
+
 def compare_with_expected(output: dict, expected: dict) -> dict[str, bool]:
     """Compare the parts of the output that the eval scores.
 

@@ -1,0 +1,38 @@
+{
+  "description": "Happy path: a private person owns land under a class III road and every relevant source is checked.",
+  "base": "zalesni_lhota_1292-2",
+  "changes": {
+    "meta.notes": null,
+    "land_register.owners[0].name": "Osoba A",
+    "map.status": "checked",
+    "map.adjacent_roads": [
+      {
+        "road_number": "III/29317",
+        "road_class": "III. třída"
+      }
+    ],
+    "map.access_type": "silnice",
+    "map.orthophoto_land_cover": "silnice",
+    "nature_protection.status": "checked",
+    "nature_protection.parcel_only_partially_inside": false,
+    "nature_protection.cave_related": false,
+    "zoning.status": "checked",
+    "zoning.built_up_status": "nezastavěné území"
+  },
+  "expected": {
+    "decision": "BUY_CANDIDATE",
+    "legal_flags": [],
+    "resale_options": [
+      {
+        "resale_type": "road_class_3",
+        "buyer": "Liberecký kraj",
+        "excluded": false,
+        "exclusion_reason": null,
+        "evidence": "map.adjacent_roads[0].road_class = III. třída"
+      }
+    ],
+    "missing_data": [],
+    "confidence": "high",
+    "reasoning": "Očekávaný výstup syntetického případu."
+  }
+}

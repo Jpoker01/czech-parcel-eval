@@ -1,0 +1,23 @@
+{
+  "description": "Step 4: the region already owns the road, so the only resale option is excluded with owner_is_buyer.",
+  "base": "syn_road_private_owner",
+  "changes": {
+    "land_register.owners[0].name": "Liberecký kraj"
+  },
+  "expected": {
+    "decision": "NOT_WORTH_IT",
+    "legal_flags": [],
+    "resale_options": [
+      {
+        "resale_type": "road_class_3",
+        "buyer": "Liberecký kraj",
+        "excluded": true,
+        "exclusion_reason": "owner_is_buyer",
+        "evidence": "map.adjacent_roads[0].road_class = III. třída"
+      }
+    ],
+    "missing_data": [],
+    "confidence": "high",
+    "reasoning": "Očekávaný výstup syntetického případu."
+  }
+}
