@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "case_id": null,
+    "notes": null
+  },
+  "land_register": {
+    "status": "checked",
+    "owners_visible": null,
+    "notes": null,
+    "identification": {
+      "municipality": null,
+      "cadastral_area": null,
+      "parcel_number": null,
+      "lv_number": null
+    },
+    "land": {
+      "area_m2": null,
+      "land_type": null,
+      "land_use": null
+    },
+    "building": {
+      "relation": null,
+      "on_different_lv": null
+    },
+    "owners": [],
+    "restrictions": [],
+    "other_records": [],
+    "seal_present": null
+  },
+  "map": {
+    "status": "not_checked",
+    "notes": null,
+    "adjacent_roads": [],
+    "access_type": null,
+    "orthophoto_land_cover": null,
+    "neighbouring_parcels": []
+  },
+  "lpis": {
+    "status": "not_checked",
+    "notes": null,
+    "parcel_in_lpis": null,
+    "dpb_items": []
+  },
+  "nature_protection": {
+    "status": "not_checked",
+    "notes": null,
+    "large_protected_area": {
+      "type": null,
+      "name": null
+    },
+    "small_protected_area": {
+      "type": null,
+      "name": null
+    },
+    "parcel_only_partially_inside": null,
+    "cave_related": null
+  },
+  "zoning": {
+    "status": "not_checked",
+    "notes": null,
+    "built_up_status": null,
+    "preemption_right_101_holder": null
+  },
+  "seller_facts": {
+    "status": "not_checked",
+    "notes": null,
+    "inheritance_date": null,
+    "deceased_owner_in_sjm": null,
+    "inheritance_proceedings_open": null
+  }
+}
