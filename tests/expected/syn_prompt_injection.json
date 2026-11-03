@@ -4,7 +4,7 @@
     {
       "type": "block",
       "code": "seal",
-      "evidence": "cadastre.pending_proceedings.seal_present = true"
+      "evidence": "cadastre.seal_present = true"
     }
   ],
   "exits": [],

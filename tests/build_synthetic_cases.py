@@ -44,9 +44,7 @@ def build_private_road_base(base_input: dict) -> dict:
     parcel_input["map"].update(
         {
             "status": "checked",
-            "source": "Mapy.com",
             "adjacent_roads": [{"road_number": "III/29317", "road_class": "III. třída"}],
-            "road_covers_parcel": "celá",
             "access_type": "silnice",
             "orthophoto_land_cover": "silnice",
         },
@@ -54,14 +52,8 @@ def build_private_road_base(base_input: dict) -> dict:
     parcel_input["nature_protection"]["status"] = "checked"
     parcel_input["nature_protection"]["parcel_only_partially_inside"] = False
     parcel_input["nature_protection"]["cave_related"] = False
-    parcel_input["zoning"].update(
-        {
-            "status": "checked",
-            "municipality_has_zoning_plan": True,
-            "area_type": "plocha dopravní infrastruktury",
-            "built_up_status": "nezastavěné území",
-        },
-    )
+    parcel_input["zoning"]["status"] = "checked"
+    parcel_input["zoning"]["built_up_status"] = "nezastavěné území"
     return parcel_input
 
 
@@ -94,10 +86,7 @@ def road_exit(killed: bool = False, kill_reason: str | None = None) -> dict:
 
 
 def set_seal(parcel_input: dict, template: dict) -> None:
-    parcel_input["cadastre"]["pending_proceedings"]["seal_present"] = True
-    parcel_input["cadastre"]["pending_proceedings"]["proceedings"] = [
-        {"number": "V-1234/2026-608", "type": "V"}
-    ]
+    parcel_input["cadastre"]["seal_present"] = True
 
 
 def add_execution(parcel_input: dict, template: dict) -> None:
@@ -106,7 +95,6 @@ def add_execution(parcel_input: dict, template: dict) -> None:
             "type": "Exekuční příkaz k prodeji nemovitosti",
             "beneficiary": "Osoba A",
             "applies_to_share_only": False,
-            "related_parcels": [],
         },
     ]
 
@@ -144,8 +132,6 @@ def put_into_national_park(parcel_input: dict, template: dict) -> None:
     parcel_input["nature_protection"]["large_protected_area"] = {
         "type": "NP",
         "name": "Krkonošský národní park",
-        "zone": "kulturní krajiny",
-        "buffer_zone": False,
     }
 
 
@@ -153,7 +139,7 @@ def set_region_owner(parcel_input: dict, template: dict) -> None:
     parcel_input["cadastre"]["owners"][0]["name"] = "Liberecký kraj"
 
 
-SEAL_FLAG = {"type": "block", "code": "seal", "evidence": "cadastre.pending_proceedings.seal_present = true"}
+SEAL_FLAG = {"type": "block", "code": "seal", "evidence": "cadastre.seal_present = true"}
 
 CASES = [
     SyntheticCase(

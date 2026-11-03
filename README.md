@@ -1,7 +1,7 @@
 # Czech Parcel Eval
 
 An LLM prompt and evaluation harness for triaging Czech land parcels before a buyout.
-The model gets data about one parcel copied from public registries (cadastre, LPIS, AOPK, flood maps, zoning plans) and returns a structured verdict: whether the parcel can be bought, who would buy it afterwards, and what data is missing to be sure.
+The model gets data about one parcel copied from public registries (cadastre, LPIS, AOPK, zoning plans) and returns a structured verdict: whether the parcel can be bought, who would buy it afterwards, and what data is missing to be sure.
 
 **Work in progress: prompt v0 has not been evaluated yet**
 
@@ -11,7 +11,7 @@ The model gets data about one parcel copied from public registries (cadastre, LP
 - **Model:** Claude (`claude-sonnet-5-5` by default) through the Anthropic API with structured outputs
 - **Schemas:** JSON Schema 2020-12 for the model output, a JSON template for the input
 - **Validation:** `jsonschema` plus custom consistency and evidence checks
-- **Data sources (manual):** Nahlížení do KN, Mapy.com, LPIS, AOPK and NATURA 2000, flood maps, municipal zoning plans
+- **Data sources (manual):** Nahlížení do KN, Mapy.com, LPIS, AOPK, municipal zoning plans
 - **Tooling:** uv, ruff
 
 ## How it works
@@ -35,7 +35,7 @@ The model gets data about one parcel copied from public registries (cadastre, LP
 - **Evidence for every conclusion:** each flag and exit carries `evidence` in the form `input.path = value` (e.g. `cadastre.owners[0].name = Liberecký kraj`). The evaluation resolves the path in the input and compares the value, so an invented restriction or buyer is caught automatically.
 - **No prices in the model:** the model only names the exit (`road_class_3`, `field_arable`, `building_owner` etc.). Prices live in `config/pricing.yaml` (2026 state subsidy caps for road buyouts, Farmy.cz 2025 farmland averages) and can be changed without touching the prompt.
 - **Value-lowering factors are left out:** mortgages, leases or a Q100 flood zone do not change the verdict, and the person checking a candidate sees them on the LV anyway.
-- **Manual input:** Nahlížení do KN shows owners only after login and does not allow automated scraping. Bulk use would need the paid cadastre web services (WSDP) and WMS/WFS layers for LPIS, AOPK and flood maps.
+- **Manual input:** Nahlížení do KN shows owners only after login and does not allow automated scraping. Bulk use would need the paid cadastre web services (WSDP) and WMS/WFS layers for LPIS and AOPK.
 - **Known blind spots:** statutory pre-emption rights are not always visible in the cadastre, and consent with public use of a road (Constitutional Court I. ÚS 2541/25) cannot be detected from any source. Facts only the seller knows go to `seller_facts`.
 
 ## Quickstart guide
@@ -94,6 +94,7 @@ The report in `runs/PROMPT/report.md` shows per-case match rates (decision, lega
   * **iterations.md** - What changed between versions and why
 * **/input**
   * **template.json** - Empty input form, one section per source
+  * **template.jsonc** - The same form with a comment on every key saying where the value comes from
   * **/examples** - Filled inputs, one file per test case
 * **/output**
   * **schema.json** - Output JSON schema, passed to the API as the structured output format

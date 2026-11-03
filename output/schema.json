@@ -141,7 +141,7 @@
         "properties": {
           "field": {
             "type": "string",
-            "description": "Input path, e.g. 'flood' (whole source) or 'cadastre.building.building_lv_number'."
+            "description": "Input path, e.g. 'lpis' (whole source) or 'cadastre.building.on_different_lv'."
           },
           "impact": {
             "type": "string",

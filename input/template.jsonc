@@ -1,0 +1,114 @@
+// Same structure as template.json, with a comment on every key saying where
+// the value comes from. This file is documentation only, the code reads template.json.
+//
+// Status of every source: "checked" = opened and copied (empty list or false means
+// "nothing there"), "not_checked" = not opened (values inside are null and mean
+// nothing), "not_available" = the source has nothing for this parcel (reason in notes).
+{
+  "meta": {
+    "case_id": null,                       // your own ID, usually <cadastral area>_<parcel number>
+    "notes": null                          // free text for the person reading the file
+  },
+
+  // Source: Nahlížení do KN (nahlizenidokn.cuzk.gov.cz), page "Informace o pozemku", logged in
+  "cadastre": {
+    "status": "not_checked",
+    "owners_visible": null,                // true when logged in; section "Vlastníci, jiní oprávnění" is shown
+    "notes": null,
+    "identification": {
+      "municipality": null,                // row "Obec" (without the code in brackets)
+      "cadastral_area": null,              // row "Katastrální území" (without the code)
+      "parcel_number": null,               // row "Parcelní číslo", e.g. "1292/2"
+      "lv_number": null                    // row "Číslo LV"
+    },
+    "land": {
+      "area_m2": null,                     // row "Výměra [m2]"
+      "land_type": null,                   // row "Druh pozemku", verbatim
+      "land_use": null                     // row "Způsob využití", verbatim, or null when the row is missing
+    },
+    "building": {
+      "relation": null,                    // heading above the building block: "Součástí je stavba" or "Stavba na parcele"
+      "on_different_lv": null              // true when the building's "Číslo LV" differs from the parcel's LV
+    },
+    "owners": [                            // section "Vlastníci, jiní oprávnění", one item per row
+      // {
+      //   "relation_type": "Vlastnické právo",   // column "Vlastnické právo" / relation type
+      //   "name": "Osoba A",                     // name as shown, anonymise private persons
+      //   "share": "1/1",                        // column "Podíl", "1/1" when empty
+      //   "sjm": false,                          // true when the row says SJM
+      //   "insufficiently_identified": false     // true when the row is flagged as insufficiently identified
+      // }
+    ],
+    "restrictions": [                      // section "Omezení vlastnického práva", one item per row
+      // {
+      //   "type": "Zástavní právo smluvní",      // column "Typ", verbatim
+      //   "beneficiary": "Banka a.s.",           // column "Oprávnění pro"
+      //   "applies_to_share_only": false         // true when "Povinnost k" names a share, not the whole parcel
+      // }
+    ],
+    "other_records": [                     // section "Jiné zápisy", one item per row
+      // { "type": "Změna výměr obnovou operátu" }   // column "Typ", verbatim
+    ],
+    "seal_present": null                   // true when the page shows a plomba / running proceeding
+  },
+
+  // Source: Mapy.com (layer "Katastrální data" + aerial view) or the map in Nahlížení do KN
+  "map": {
+    "status": "not_checked",
+    "notes": null,
+    "adjacent_roads": [                    // roads touching the parcel, number read from the map label
+      // { "road_number": "III/29317", "road_class": "III. třída" }   // class from the number: 3 digits = II., 4-5 digits = III.
+    ],
+    "access_type": null,                   // what the parcel touches: "silnice" / "místní komunikace" / "polní cesta" / "bez viditelného přístupu"
+    "orthophoto_land_cover": null,         // aerial view: "orná půda" / "louka" / "les" / "holina" / "zástavba" / "zarůstání" / "silnice"
+    "neighbouring_parcels": [              // parcels sharing a border, owner only needed for forests
+      // { "number": "1293/1", "owner": "Osoba B" }
+    ]
+  },
+
+  // Source: Veřejný registr půdy LPIS (eagri.cz), tab "Parcela", search by k.ú. + parcel number
+  "lpis": {
+    "status": "not_checked",
+    "notes": null,
+    "parcel_in_lpis": null,                // false when the search returns no díl půdního bloku (DPB)
+    "dpb_items": [                         // one item per DPB the parcel belongs to
+      // {
+      //   "user_name": "ZD Studenec",            // field "Uživatel"
+      //   "culture": "standardní orná půda"      // field "Kultura", verbatim
+      // }
+    ]
+  },
+
+  // Source: AOPK map portal (webgis.nature.cz / drusop.nature.cz), layers of protected areas at the parcel
+  "nature_protection": {
+    "status": "not_checked",
+    "notes": null,
+    "large_protected_area": {
+      "type": null,                        // "NP" or "CHKO" when a large protected area covers the parcel
+      "name": null                         // name of the area, for the reader
+    },
+    "small_protected_area": {
+      "type": null,                        // "NPR" / "NPP" / "PR" / "PP"
+      "name": null
+    },
+    "parcel_only_partially_inside": null,  // true when the area boundary cuts through the parcel
+    "cave_related": null                   // true when the parcel is listed as related to a cave
+  },
+
+  // Source: municipal zoning plan (Národní geoportál územního plánování or the municipality's website)
+  "zoning": {
+    "status": "not_checked",               // "not_available" when the municipality has no zoning plan
+    "notes": null,
+    "built_up_status": null,               // "zastavěné území" / "zastavitelná plocha" / "plocha přestavby" / "nezastavěné území" / "územní rezerva"
+    "preemption_right_101_holder": null    // "obec" / "kraj" / "stát" when the plan lists a pre-emption right under old § 101
+  },
+
+  // Source: the seller. Nothing public shows these facts.
+  "seller_facts": {
+    "status": "not_checked",
+    "notes": null,
+    "inheritance_date": null,              // "YYYY-MM-DD", when the seller's share came from inheritance
+    "deceased_owner_in_sjm": null,         // true when a co-owner in SJM has died
+    "inheritance_proceedings_open": null   // true when that inheritance has not been settled yet
+  }
+}

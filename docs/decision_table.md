@@ -23,7 +23,7 @@ Faktory, které jen snižují hodnotu (zástava, pacht, Q100 mimo aktivní zónu
 
 | Kód | Signál ve vstupu |
 |---|---|
-| `seal` | `cadastre.pending_proceedings.seal_present = true` |
+| `seal` | `cadastre.seal_present = true` |
 | `execution` | `cadastre.restrictions[].type` obsahuje "exekuc" |
 | `insolvency` | `cadastre.restrictions[].type` obsahuje "insolvenc", "konkurs", "úpadk" |
 | `alienation_ban` | `cadastre.restrictions[].type` obsahuje "Zákaz zcizení" |
@@ -41,7 +41,7 @@ Bloker u jiného spoluvlastníka než prodávajícího (např. exekuce na cizí 
 | `state_nature_protection_61` | offer | `nature_protection.large_protected_area.type = NP` nebo `small_protected_area.type` ∈ {NPR, NPP} nebo `cave_related = true`, a zároveň `zoning.built_up_status != zastavěné území` | AOPK ČR / správa NP |
 | `building_owner_3056` | offer | `cadastre.building.relation = Stavba na parcele` nebo `on_different_lv = true` | vlastník stavby |
 | `registered_preemption` | offer | `cadastre.restrictions[].type` obsahuje "Předkupní právo" | oprávněný z LV |
-| `municipality_or_region_101` | offer | `zoning.preemption_right_101.holder != null` | obec / kraj |
+| `municipality_or_region_101` | offer | `zoning.preemption_right_101_holder != null` | obec / kraj |
 | `co_owners_inheritance_1124` | offer | `seller_facts.inheritance_date` mladší než 6 měsíců a víc než jeden vlastník | ostatní spoluvlastníci |
 | `land_consolidation` | consent | `cadastre.other_records[].type` obsahuje "pozemkové úpravy" | pozemkový úřad |
 
@@ -78,7 +78,7 @@ Pokud zdroj pro kill-check chybí (`not_checked`), exit se nezabíjí, ale jde d
 |---|---|---|
 | Zálesní Lhota 1292/2 (silnice, vlastník kraj) | 4: `owner_is_buyer` | NOT_WORTH_IT |
 | Silnice III. třídy, soukromý vlastník, čistý LV, mapa `checked`, celá pod silnicí | 7 | BUY_CANDIDATE |
-| Totéž, ale `map.status = not_checked` | 5: `map.road_covers_parcel` je `could_reduce_value`, nic rizikového → 7 | BUY_CANDIDATE s poznámkou v `missing_data` |
+| Totéž, ale `map.status = not_checked` | 5: `map.adjacent_roads` je `could_reduce_value`, nic rizikového → 7 | BUY_CANDIDATE s poznámkou v `missing_data` |
 | Pole s uživatelem v LPIS, LPIS `not_checked` | 5: `could_kill_exit` | CONDITIONAL |
 | Podíl 1/48, dědictví před 2 měsíci | 2 + 6 | CONDITIONAL |
 | Louka v NP mimo zastavěné území | 2 + 6 | CONDITIONAL |
