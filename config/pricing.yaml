@@ -4,26 +4,28 @@
 # the value is computed from this file outside the model.
 # Replace the defaults with your own buyout and resale numbers.
 
-currency: CZK
-
-# Exit price per m2 for the whole parcel (before share).
+# Exit price per m2 for the whole parcel.
 # null = no reliable public price, the parcel gets only a value band.
 exit_price_czk_m2:
-  road_class_2: 100        # state subsidy cap for regions 2026
-  road_class_3: 60         # same source
-  field_arable: 39.6       # Farmy.cz market report 2025, arable land average
-  field_grassland: 30.3    # Farmy.cz market report 2025, permanent grassland average
-  building_owner: null     # land under a third-party building, needs per-case valuation
-  forest: null             # depends on stand age and access, needs per-case valuation
-  local_road: null         # municipal buyout prices vary by municipality
+  # https://mf.gov.cz/assets/attachments/2026-04-08_Vyzvac-5-k-predlozeni-zadosti-o-dotaci-v-podprogramu-298D2460.pdf
+  road_class_2: 100
+  road_class_3: 60
+
+  # https://www.farmy.cz/download/zpravy_o_trhu/ZPRAVA-o-trhu-s-pudou-FARMYCZ-leden-2026.pdf
+  field_arable: 40
+  field_grassland: 30
+
+  #needs per-case valuation
+  building_owner: null
+  forest: null
+
+  # regulated buyout prices that vary by municipality
+  local_road: null
 
 # Value band used when the exit price is null.
 value_band_without_price: [low, medium, high]
 
 # Fixed costs per deal.
 fixed_costs_czk:
-  transaction: 5000        # guess: contract, cadastre fee, courier
-  court_dissolution: 40000 # guess: expert valuation + court fee + lawyer
-
-# Minimum margin for BUY_CANDIDATE: (value - offer_price) / value.
-min_margin: 0.30
+  transaction: 5000        # estimate - contract, KN fee, courier
+  court_dissolution: 40000 # estimate - expert valuation + court fee + lawyer
