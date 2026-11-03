@@ -1,7 +1,7 @@
 {
   "meta": {
     "case_id": "zalesni_lhota_1292-2",
-    "notes": "Silnice už vykoupená krajem. Negativní test: land_use silnice nestačí, rozhoduje vlastník."
+    "notes": null
   },
   "land_register": {
     "status": "checked",

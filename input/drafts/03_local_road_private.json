@@ -1,39 +1,71 @@
 {
   "meta": {
-    "case_id": null,
+    "case_id": "plumlov_1183-3",
     "notes": null
   },
   "land_register": {
     "status": "checked",
-    "owners_visible": null,
+    "owners_visible": true,
     "notes": null,
     "identification": {
-      "municipality": null,
-      "cadastral_area": null,
-      "parcel_number": null,
-      "lv_number": null
+      "municipality": "Plumlov",
+      "cadastral_area": "Plumlov",
+      "parcel_number": "1183/3",
+      "lv_number": 486
     },
     "land": {
-      "area_m2": null,
-      "land_type": null,
-      "land_use": null
+      "area_m2": 728,
+      "land_type": "ostatní plocha",
+      "land_use": "ostatní komunikace"
     },
     "building": {
       "relation": null,
       "on_different_lv": null
     },
-    "owners": [],
+    "owners": [
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba A",
+        "share": "1/2",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba B",
+        "share": "1/2",
+        "sjm": false,
+        "insufficiently_identified": false
+      }
+    ],
     "restrictions": [],
     "other_records": [],
-    "seal_present": null
+    "seal_present": false
   },
   "map": {
     "status": "checked",
-    "notes": null,
+    "notes": "Úzký pruh podél okraje pole od polní cesty Roudník (p. č. 2037) k zemědělskému areálu.",
     "adjacent_roads": [],
-    "access_type": null,
-    "orthophoto_land_cover": null,
-    "neighbouring_parcels": []
+    "access_type": "polní cesta",
+    "orthophoto_land_cover": "louka",
+    "neighbouring_parcels": [
+      {
+        "number": "1182/4",
+        "owner": null
+      },
+      {
+        "number": "1183/9",
+        "owner": null
+      },
+      {
+        "number": "2037",
+        "owner": null
+      },
+      {
+        "number": "2300",
+        "owner": null
+      }
+    ]
   },
   "lpis": {
     "status": "not_checked",
@@ -52,12 +84,12 @@
       "type": null,
       "name": null
     },
-    "parcel_only_partially_inside": null,
-    "cave_related": null
+    "parcel_only_partially_inside": false,
+    "cave_related": false
   },
   "zoning": {
     "status": "checked",
-    "notes": null,
+    "notes": "Textová část ÚP Plumlov (návrh, leden 2020), kap. 9.2: plochy s předkupním právem se nevymezují.",
     "built_up_status": null,
     "preemption_right_101_holder": null
   },

@@ -1,8 +1,28 @@
 {
-  "decision": null,
+  "decision": "CONDITIONAL",
   "legal_flags": [],
-  "resale_options": [],
-  "missing_data": [],
+  "resale_options": [
+    {
+      "resale_type": "local_road",
+      "buyer": "Plumlov",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_use = ostatní komunikace"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].share = 1/2"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts",
+      "impact": "could_require_offer"
+    }
+  ],
   "confidence": "high",
-  "reasoning": ""
+  "reasoning": "LV je čistý, bez plomby, omezení a jiných zápisů. Způsob využití ostatní komunikace dává prodej obci Plumlov a vlastníci jsou soukromé osoby, takže možnost zůstává nevyloučená. Parcelu vlastní dva spoluvlastníci po 1/2 a bez údajů od prodávajícího nejde vyloučit povinnou nabídku spoluvlastníkovi podle § 1124 NOZ. Proto CONDITIONAL."
 }
