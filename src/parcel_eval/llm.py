@@ -49,7 +49,7 @@ def evaluate_parcel(
         model: Model ID, e.g. claude-sonnet-5-5.
         system_prompt: Prompt text from prompts/<version>.md.
         output_schema: Output JSON schema.
-        parcel_input: Filled input template for one parcel.
+        parcel_input: Filled input for one parcel.
         today: Date used for time-based rules (6-month inheritance window).
 
     Returns:

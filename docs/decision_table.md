@@ -2,7 +2,7 @@
 
 Pořadí kroků: **data → bloker → povinná nabídka / souhlas úřadu → možnost dalšího prodeje → kontrola vyloučení → verdikt**. První krok, který rozhodne, vyhrává; další se už nevyhodnocují, s jednou výjimkou (krok 2 hodnocení neukončí, jen zakáže `BUY_CANDIDATE`).
 
-Zkratky zdrojů: **KN** = Nahlížení do KN (přihlášený uživatel), **MAP** = Mapy.com / ortofoto / mapa v Nahlížení do KN, **LPIS** = Veřejný registr půdy, **AOPK** = mapy AOPK, **ZONING** = územní plán (Národní geoportál územního plánování nebo web obce), **SELLER** = údaje od prodávajícího. Pole jsou z `input/template.json`, povolené hodnoty v `docs/template_reference.md`.
+Zkratky zdrojů: **KN** = Nahlížení do KN (přihlášený uživatel), **MAP** = Mapy.com / ortofoto / mapa v Nahlížení do KN, **LPIS** = Veřejný registr půdy, **AOPK** = mapy AOPK, **ZONING** = územní plán (Národní geoportál územního plánování nebo web obce), **SELLER** = údaje od prodávajícího. Pole jsou z `input/schema.json`, povolené hodnoty v `docs/input_schema.md`.
 
 ## Kroky
 
@@ -32,7 +32,7 @@ Zkratky zdrojů: **KN** = Nahlížení do KN (přihlášený uživatel), **MAP**
 | `deceased_spouse_sjm` | SELLER | `seller_facts.deceased_owner_in_sjm = true` a `inheritance_proceedings_open = true` |
 | `units_ownership` | KN | `land_register.owners[].relation_type` = "Vlastnictví jednotek" |
 
-Bloker platí pro kteréhokoli vlastníka parcely, ne jen pro prodávajícího. Exekuce nebo insolvence zapsaná u spoluvlastníka tedy také končí výsledkem **BLOCKED**.
+Bloker platí pro kteréhokoli vlastníka parcely, ne jen pro prodávajícího. Exekuce nebo insolvence zapsaná u spoluvlastníka tedy také končí výsledkem **BLOCKED**, protože zisk vzniká až prodejem celé parcely a zatížený podíl ho komplikuje.
 
 ## Krok 2: povinná nabídka a souhlas
 

@@ -15,6 +15,6 @@ Očekávaná slabá místa (k ověření při iteracích):
 - Volný text v `restrictions[].type` může mít varianty, které substring testy nechytí.
 - Odvození kraje z katastrálního pracoviště je implicitní znalost, model ji může mít špatně.
 - `co_owners` + `field_*` u podílu na poli: model může jednu z možností dalšího prodeje vynechat.
-- Exekuce nebo insolvence u kteréhokoli vlastníka blokuje bez výjimky (jednodušší pravidlo, ze vstupu nejde spolehlivě poznat, čí podíl zápis zasahuje). Cena: zablokuje i parcely s jinou platnou možností dalšího prodeje, např. podíl pod silnicí. Ověřit na testech.
+- Exekuce nebo insolvence u kteréhokoli spoluvlastníka je bloker, i když právně zasahuje jen jeho podíl. Zisk vzniká až prodejem celé parcely a zatížený podíl ho komplikuje. Cena: model zahodí i parcely, kde by šly koupit podíly ostatních spoluvlastníků.
 
 Výsledek na dev sadě: zatím nespuštěno.

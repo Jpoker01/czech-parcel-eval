@@ -9,14 +9,14 @@ The model gets data about one parcel copied from public registries (land registe
 
 - **Language:** Python 3.11+
 - **Model:** Claude (`claude-sonnet-5-5` by default) through the Anthropic API with structured outputs
-- **Schemas:** JSON Schema 2020-12 for the model output, a JSON template for the input
+- **Schemas:** JSON Schema 2020-12 for the model output, an empty JSON form for the input
 - **Validation:** `jsonschema` plus custom consistency and evidence checks
 - **Data sources (manual):** Nahlížení do KN, Mapy.com, LPIS, AOPK, municipal zoning plans
 - **Tooling:** uv, ruff
 
 ## How it works
 
-1. **Input (`input/template.json`):** one JSON per parcel, with a section for each source. Every section has a `status` (`checked`, `not_checked` or `not_available`), so the model can tell "verified, nothing found" from "nobody looked". Values are copied verbatim from the Czech sources.
+1. **Input (`input/schema.json`):** one JSON per parcel, with a section for each source. Every section has a `status` (`checked`, `not_checked` or `not_available`), so the model can tell "verified, nothing found" from "nobody looked". Values are copied verbatim from the Czech sources.
 2. **Prompt (`prompts/v0.md`):** walks the parcel through a fixed order of steps taken from `docs/decision_table.md`:
     * **Data** - missing basic land register data ends with `INSUFFICIENT_DATA`.
     * **Blockers** - a seal (plomba), seizure of property (exekuce), insolvency, alienation ban etc. ends with `BLOCKED`.
@@ -90,8 +90,7 @@ The report in `runs/PROMPT/report.md` shows per-case match rates (decision, lega
   * **v0.md** - First version, derived from the decision table
   * **iterations.md** - What changed between versions and why
 * **/input**
-  * **template.json** - Empty input form, one section per source
-  * **template.jsonc** - The same form with a comment on every key saying where the value comes from
+  * **schema.json** - Empty input form, one section per source
   * **/examples** - Filled inputs, one file per test case
 * **/output**
   * **schema.json** - Output JSON schema, passed to the API as the structured output format
@@ -106,8 +105,8 @@ The report in `runs/PROMPT/report.md` shows per-case match rates (decision, lega
   * **paths.py** - Project paths
 * **/docs**
   * **decision_table.md** - Order of steps, and the source, field and code of every signal the prompt is built from
+  * **input_schema.md** - Where each input value is found in the source and which values are allowed
   * **output_schema.md** - Output fields and consistency rules
-  * **template_reference.md** - Allowed values for the input fields
 * **/runs** - Raw model outputs, `meta.json` and `report.md` for each prompt version
 
 ## Disclaimer
