@@ -1,0 +1,21 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "exits": [
+    {
+      "exit_type": "road_class_3",
+      "buyer": "kraj",
+      "killed": false,
+      "kill_reason": null,
+      "evidence": "cadastre.land.land_use = silnice"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "map.adjacent_roads",
+      "impact": "could_reduce_value"
+    }
+  ],
+  "confidence": "high",
+  "reasoning": "V katastru nebyl nalezen žádný bloker ani omezení a žádná povinná nabídka nebo souhlas nevznikají. Parcela je silnice a mapa není zkontrolována, proto je použit exit road_class_3 s kupcem kraj; chybějící třída silnice mění jen hodnotu, ne rozhodnutí. Vlastníkem je fyzická osoba, takže exit nezabíjí owner_is_buyer, a přeživší exit má kupce, proto BUY_CANDIDATE."
+}

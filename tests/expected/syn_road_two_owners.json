@@ -1,19 +1,19 @@
 {
   "decision": "CONDITIONAL",
   "legal_flags": [],
-  "exits": [
+  "resale_options": [
     {
-      "exit_type": "road_class_3",
+      "resale_type": "road_class_3",
       "buyer": "Liberecký kraj",
-      "killed": false,
-      "kill_reason": null,
+      "excluded": false,
+      "exclusion_reason": null,
       "evidence": "map.adjacent_roads[0].road_class = III. třída"
     },
     {
-      "exit_type": "co_owners",
+      "resale_type": "co_owners",
       "buyer": "Osoba B",
-      "killed": false,
-      "kill_reason": null,
+      "excluded": false,
+      "exclusion_reason": null,
       "evidence": "land_register.owners[1].name = Osoba B"
     }
   ],

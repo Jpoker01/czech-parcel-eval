@@ -6,7 +6,7 @@
   "required": [
     "decision",
     "legal_flags",
-    "exits",
+    "resale_options",
     "missing_data",
     "confidence",
     "reasoning"
@@ -67,21 +67,21 @@
         }
       }
     },
-    "exits": {
+    "resale_options": {
       "type": "array",
-      "description": "Stage 2 and 3. Every plausible buyer, including the ones stage 3 killed.",
+      "description": "Steps 3 and 4. Every plausible buyer, including the ones step 4 excluded.",
       "items": {
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "exit_type",
+          "resale_type",
           "buyer",
-          "killed",
-          "kill_reason",
+          "excluded",
+          "exclusion_reason",
           "evidence"
         ],
         "properties": {
-          "exit_type": {
+          "resale_type": {
             "type": "string",
             "enum": [
               "road_class_2",
@@ -102,10 +102,10 @@
             ],
             "description": "Counterparty as named in the input (e.g. 'Liberecký kraj', 'ZD Studenec'). null when the input does not name one."
           },
-          "killed": {
+          "excluded": {
             "type": "boolean"
           },
-          "kill_reason": {
+          "exclusion_reason": {
             "anyOf": [
               {
                 "type": "string",
@@ -113,8 +113,7 @@
                   "owner_is_buyer",
                   "clearcut",
                   "no_access",
-                  "no_lpis_user",
-                  "co_owner_insolvency"
+                  "no_lpis_user"
                 ]
               },
               {
@@ -148,7 +147,7 @@
             "enum": [
               "could_block",
               "could_require_offer",
-              "could_kill_exit",
+              "could_exclude_resale",
               "could_reduce_value"
             ]
           }

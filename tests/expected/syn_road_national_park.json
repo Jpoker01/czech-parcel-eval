@@ -7,12 +7,12 @@
       "evidence": "nature_protection.large_protected_area.type = NP"
     }
   ],
-  "exits": [
+  "resale_options": [
     {
-      "exit_type": "road_class_3",
+      "resale_type": "road_class_3",
       "buyer": "Liberecký kraj",
-      "killed": false,
-      "kill_reason": null,
+      "excluded": false,
+      "exclusion_reason": null,
       "evidence": "map.adjacent_roads[0].road_class = III. třída"
     }
   ],

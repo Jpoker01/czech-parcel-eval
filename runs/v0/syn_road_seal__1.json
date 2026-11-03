@@ -1,0 +1,14 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "seal",
+      "evidence": "cadastre.pending_proceedings.seal_present = true"
+    }
+  ],
+  "exits": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Základní data v kroku 0 jsou úplná. Krok 1 rozhodl: na parcele je v katastru plomba (probíhá řízení V-1234/2026-608), což je bloker. Hodnocení tím skončilo, další kroky se neposuzovaly."
+}

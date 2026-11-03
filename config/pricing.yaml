@@ -1,12 +1,12 @@
 # Pricing parameters for the value calculation.
 
-# The LLM never sees or computes prices. It returns exit_type;
+# The LLM never sees or computes prices. It returns resale_type;
 # the value is computed from this file outside the model.
 # Replace the defaults with your own buyout and resale numbers.
 
-# Exit price per m2 for the whole parcel.
+# Resale price per m2 for the whole parcel.
 # null = no reliable public price, the parcel gets only a value band.
-exit_price_czk_m2:
+resale_price_czk_m2:
   # https://mf.gov.cz/assets/attachments/2026-04-08_Vyzvac-5-k-predlozeni-zadosti-o-dotaci-v-podprogramu-298D2460.pdf
   road_class_2: 100
   road_class_3: 60
@@ -21,9 +21,6 @@ exit_price_czk_m2:
 
   # regulated buyout prices that vary by municipality
   local_road: null
-
-# Value band used when the exit price is null.
-value_band_without_price: [low, medium, high]
 
 # Fixed costs per deal.
 fixed_costs_czk:

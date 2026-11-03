@@ -1,0 +1,8 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "exits": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 rozhodl: katastr má status not_checked, chybí plocha (cadastre.land.area_m2) i druh pozemku (cadastre.land.land_type) a vlastníci jsou prázdní. Bez základních dat z katastru nelze posoudit blokery, nabídky ani exity, proto je výsledek INSUFFICIENT_DATA."
+}

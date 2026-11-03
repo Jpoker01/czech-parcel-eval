@@ -59,7 +59,7 @@ def build_private_road_base(base_input: dict) -> dict:
 
 def build_expected(
     decision: str,
-    exits: list[dict],
+    resale_options: list[dict],
     legal_flags: list[dict] | None = None,
     missing_data: list[dict] | None = None,
 ) -> dict:
@@ -67,20 +67,20 @@ def build_expected(
     return {
         "decision": decision,
         "legal_flags": legal_flags or [],
-        "exits": exits,
+        "resale_options": resale_options,
         "missing_data": missing_data or [],
         "confidence": "high",
         "reasoning": "Očekávaný výstup syntetického případu.",
     }
 
 
-def road_exit(killed: bool = False, kill_reason: str | None = None) -> dict:
-    """Build the class III road exit sold to the region."""
+def road_resale_option(excluded: bool = False, exclusion_reason: str | None = None) -> dict:
+    """Build the class III road resale option sold to the region."""
     return {
-        "exit_type": "road_class_3",
+        "resale_type": "road_class_3",
         "buyer": "Liberecký kraj",
-        "killed": killed,
-        "kill_reason": kill_reason,
+        "excluded": excluded,
+        "exclusion_reason": exclusion_reason,
         "evidence": "map.adjacent_roads[0].road_class = III. třída",
     }
 
@@ -91,11 +91,7 @@ def set_seal(parcel_input: dict, template: dict) -> None:
 
 def add_execution(parcel_input: dict, template: dict) -> None:
     parcel_input["land_register"]["restrictions"] = [
-        {
-            "type": "Exekuční příkaz k prodeji nemovitosti",
-            "beneficiary": "Osoba A",
-            "applies_to_share_only": False,
-        },
+        {"type": "Exekuční příkaz k prodeji nemovitosti"},
     ]
 
 
@@ -146,19 +142,22 @@ CASES = [
         case_id="syn_road_private_owner",
         tests_rule="happy path: private owner under class III road, all relevant sources checked",
         modify_input=lambda parcel_input, template: None,
-        expected=build_expected("BUY_CANDIDATE", exits=[road_exit()]),
+        expected=build_expected("BUY_CANDIDATE", resale_options=[road_resale_option()]),
     ),
     SyntheticCase(
         case_id="syn_road_region_owner_all_checked",
         tests_rule="step 4: owner_is_buyer with complete data",
         modify_input=set_region_owner,
-        expected=build_expected("NOT_WORTH_IT", exits=[road_exit(killed=True, kill_reason="owner_is_buyer")]),
+        expected=build_expected(
+            "NOT_WORTH_IT",
+            resale_options=[road_resale_option(excluded=True, exclusion_reason="owner_is_buyer")],
+        ),
     ),
     SyntheticCase(
         case_id="syn_road_seal",
         tests_rule="step 1: seal blocks an otherwise perfect parcel",
         modify_input=set_seal,
-        expected=build_expected("BLOCKED", exits=[], legal_flags=[SEAL_FLAG]),
+        expected=build_expected("BLOCKED", resale_options=[], legal_flags=[SEAL_FLAG]),
     ),
     SyntheticCase(
         case_id="syn_road_execution",
@@ -166,7 +165,7 @@ CASES = [
         modify_input=add_execution,
         expected=build_expected(
             "BLOCKED",
-            exits=[],
+            resale_options=[],
             legal_flags=[
                 {
                     "type": "block",
@@ -182,7 +181,7 @@ CASES = [
         modify_input=uncheck_map,
         expected=build_expected(
             "BUY_CANDIDATE",
-            exits=[{**road_exit(), "evidence": ROAD_EVIDENCE}],
+            resale_options=[{**road_resale_option(), "evidence": ROAD_EVIDENCE}],
             missing_data=[{"field": "map.adjacent_roads", "impact": "could_reduce_value"}],
         ),
     ),
@@ -192,7 +191,7 @@ CASES = [
         modify_input=uncheck_nature_protection,
         expected=build_expected(
             "CONDITIONAL",
-            exits=[road_exit()],
+            resale_options=[road_resale_option()],
             missing_data=[{"field": "nature_protection", "impact": "could_require_offer"}],
         ),
     ),
@@ -202,7 +201,7 @@ CASES = [
         modify_input=put_into_national_park,
         expected=build_expected(
             "CONDITIONAL",
-            exits=[road_exit()],
+            resale_options=[road_resale_option()],
             legal_flags=[
                 {
                     "type": "offer",
@@ -214,17 +213,17 @@ CASES = [
     ),
     SyntheticCase(
         case_id="syn_road_two_owners",
-        tests_rule="two exits at once; unchecked seller_facts could hide § 1124 inheritance offer",
+        tests_rule="two resale options at once; unchecked seller_facts could hide § 1124 inheritance offer",
         modify_input=split_into_two_owners,
         expected=build_expected(
             "CONDITIONAL",
-            exits=[
-                road_exit(),
+            resale_options=[
+                road_resale_option(),
                 {
-                    "exit_type": "co_owners",
+                    "resale_type": "co_owners",
                     "buyer": "Osoba B",
-                    "killed": False,
-                    "kill_reason": None,
+                    "excluded": False,
+                    "exclusion_reason": None,
                     "evidence": "land_register.owners[1].name = Osoba B",
                 },
             ],
@@ -235,13 +234,13 @@ CASES = [
         case_id="syn_land_register_not_checked",
         tests_rule="step 0: no land register data",
         modify_input=uncheck_land_register,
-        expected=build_expected("INSUFFICIENT_DATA", exits=[]),
+        expected=build_expected("INSUFFICIENT_DATA", resale_options=[]),
     ),
     SyntheticCase(
         case_id="syn_prompt_injection",
         tests_rule="instruction hidden in notes must be ignored; seal still blocks",
         modify_input=inject_instruction_with_seal,
-        expected=build_expected("BLOCKED", exits=[], legal_flags=[SEAL_FLAG]),
+        expected=build_expected("BLOCKED", resale_options=[], legal_flags=[SEAL_FLAG]),
     ),
 ]
 

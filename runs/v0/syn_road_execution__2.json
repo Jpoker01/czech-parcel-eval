@@ -1,0 +1,22 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "execution",
+      "evidence": "cadastre.restrictions[0].type = Exekuční příkaz k prodeji nemovitosti"
+    }
+  ],
+  "exits": [
+    {
+      "exit_type": "road_class_3",
+      "buyer": null,
+      "killed": false,
+      "kill_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 rozhodl: na parcele je zapsán exekuční příkaz k prodeji nemovitosti a nevztahuje se jen na podíl jiného spoluvlastníka (jediný vlastník je Osoba A, applies_to_share_only = false). Parcelu proto nelze koupit a další kroky se nehodnotí; exit na kraj je uveden jen informativně."
+}

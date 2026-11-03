@@ -1,7 +1,7 @@
 {
   "meta": {
     "case_id": "syn_road_two_owners",
-    "notes": "Synthetic. Tests: two exits at once; unchecked seller_facts could hide § 1124 inheritance offer"
+    "notes": "Synthetic. Tests: two resale options at once; unchecked seller_facts could hide § 1124 inheritance offer"
   },
   "land_register": {
     "status": "checked",

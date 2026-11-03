@@ -1,0 +1,25 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "exits": [
+    {
+      "exit_type": "road_class_3",
+      "buyer": "kraj",
+      "killed": false,
+      "kill_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "nature_protection",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "seller_facts",
+      "impact": "could_block"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "V katastru nebyl nalezen žádný bloker a parcela je silnice III. třídy, takže exit road_class_3 (kraj) přežil, protože vlastníkem není kraj, obec ani stát. Zdroj nature_protection nebyl zkontrolován, a protože zoning uvádí nezastavěné území, mohlo by vzniknout státní předkupní právo podle § 61. Zdroj seller_facts také nebyl zkontrolován a mohl by odhalit blokující zemřelého vlastníka v SJM. Kvůli těmto chybějícím datům je výsledek nejvýš CONDITIONAL (krok 5)."
+}

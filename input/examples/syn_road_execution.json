@@ -33,9 +33,7 @@
     ],
     "restrictions": [
       {
-        "type": "Exekuční příkaz k prodeji nemovitosti",
-        "beneficiary": "Osoba A",
-        "applies_to_share_only": false
+        "type": "Exekuční příkaz k prodeji nemovitosti"
       }
     ],
     "other_records": [],

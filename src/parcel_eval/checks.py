@@ -3,7 +3,7 @@ import re
 
 import jsonschema
 
-RISKY_IMPACTS = {"could_block", "could_require_offer", "could_kill_exit"}
+RISKY_IMPACTS = {"could_block", "could_require_offer", "could_exclude_resale"}
 PATH_PART_PATTERN = re.compile(r"[^.\[\]]+")
 
 
@@ -51,7 +51,7 @@ def check_evidence(output: dict, parcel_input: dict) -> list[str]:
         Error messages for evidence that does not match the input.
     """
     errors = []
-    items = output.get("legal_flags", []) + output.get("exits", [])
+    items = output.get("legal_flags", []) + output.get("resale_options", [])
     for item in items:
         evidence = item.get("evidence", "")
         if " = " not in evidence:
@@ -94,7 +94,7 @@ def check_consistency(output: dict, parcel_input: dict) -> list[str]:
     errors = []
     decision = output.get("decision")
     flag_types = {flag["type"] for flag in output.get("legal_flags", [])}
-    exits = output.get("exits", [])
+    resale_options = output.get("resale_options", [])
     impacts = {item["impact"] for item in output.get("missing_data", [])}
 
     if ("block" in flag_types) != (decision == "BLOCKED"):
@@ -104,20 +104,31 @@ def check_consistency(output: dict, parcel_input: dict) -> list[str]:
         errors.append("rule 2: offer or consent flag cannot end as BUY_CANDIDATE")
 
     if decision == "BUY_CANDIDATE":
-        has_live_named_exit = any(not exit_["killed"] and exit_["buyer"] for exit_ in exits)
-        if not has_live_named_exit or impacts & {"could_block", "could_kill_exit"}:
-            errors.append("rule 3: BUY_CANDIDATE needs a live named exit and no blocking missing data")
+        has_live_named_resale_option = any(
+            not resale_option["excluded"] and resale_option["buyer"] for resale_option in resale_options
+        )
+        if not has_live_named_resale_option or impacts & {"could_block", "could_exclude_resale"}:
+            errors.append(
+                "rule 3: BUY_CANDIDATE needs a live named resale option and no blocking missing data"
+            )
 
     if decision == "NOT_WORTH_IT":
-        if any(not exit_["killed"] for exit_ in exits) or "could_kill_exit" in impacts:
-            errors.append("rule 4: NOT_WORTH_IT needs all exits killed and no could_kill_exit")
+        if (
+            any(not resale_option["excluded"] for resale_option in resale_options)
+            or "could_exclude_resale" in impacts
+        ):
+            errors.append(
+                "rule 4: NOT_WORTH_IT needs all resale options excluded and no could_exclude_resale"
+            )
 
     if (decision == "INSUFFICIENT_DATA") == has_basic_land_register_data(parcel_input):
         errors.append("rule 5: INSUFFICIENT_DATA must match missing basic land register data")
 
-    for exit_ in exits:
-        if exit_["killed"] != (exit_["kill_reason"] is not None):
-            errors.append(f"rule 7: exit {exit_['exit_type']} killed and kill_reason disagree")
+    for resale_option in resale_options:
+        if resale_option["excluded"] != (resale_option["exclusion_reason"] is not None):
+            errors.append(
+                f"rule 7: resale option {resale_option['resale_type']} excluded and exclusion_reason disagree"
+            )
 
     return errors
 
@@ -133,14 +144,17 @@ def compare_with_expected(output: dict, expected: dict) -> dict[str, bool]:
         expected: Hand-written expected output.
 
     Returns:
-        Match flags for decision, legal_flags, exits and risky missing data.
+        Match flags for decision, legal_flags, resale_options and risky missing data.
     """
 
     def flag_set(data: dict) -> set[tuple[str, str]]:
         return {(flag["type"], flag["code"]) for flag in data.get("legal_flags", [])}
 
-    def exit_set(data: dict) -> set[tuple[str, bool]]:
-        return {(exit_["exit_type"], exit_["killed"]) for exit_ in data.get("exits", [])}
+    def resale_option_set(data: dict) -> set[tuple[str, bool]]:
+        return {
+            (resale_option["resale_type"], resale_option["excluded"])
+            for resale_option in data.get("resale_options", [])
+        }
 
     def risky_set(data: dict) -> set[str]:
         return {item["impact"] for item in data.get("missing_data", [])} & RISKY_IMPACTS
@@ -148,6 +162,6 @@ def compare_with_expected(output: dict, expected: dict) -> dict[str, bool]:
     return {
         "decision": output.get("decision") == expected.get("decision"),
         "legal_flags": flag_set(output) == flag_set(expected),
-        "exits": exit_set(output) == exit_set(expected),
+        "resale_options": resale_option_set(output) == resale_option_set(expected),
         "risky_missing_data": risky_set(output) == risky_set(expected),
     }

@@ -1,12 +1,12 @@
 {
   "decision": "BUY_CANDIDATE",
   "legal_flags": [],
-  "exits": [
+  "resale_options": [
     {
-      "exit_type": "road_class_3",
+      "resale_type": "road_class_3",
       "buyer": "Liberecký kraj",
-      "killed": false,
-      "kill_reason": null,
+      "excluded": false,
+      "exclusion_reason": null,
       "evidence": "land_register.land.land_use = silnice"
     }
   ],

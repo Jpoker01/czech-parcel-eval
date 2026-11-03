@@ -42,13 +42,13 @@ Doplňuje `input/template.json`. Hodnoty se píšou česky tak, jak je zobrazuje
 
 ```json
 "restrictions": [
-  {"type": "Zástavní právo smluvní", "beneficiary": "Banka a.s.", "applies_to_share_only": false}
+  {"type": "Zástavní právo smluvní"}
 ],
 "other_records": [{"type": "Změna výměr obnovou operátu"}]
 ```
 
 - `type` doslova z KN.
-- `beneficiary` a `applies_to_share_only` slouží k rozlišení exekuce na prodávajícího od exekuce na jiného spoluvlastníka.
+- Opisují se VŠECHNY zápisy na LV, i ty, které se týkají jen jiného spoluvlastníka než prodávajícího (důvod v kroku 1 `docs/decision_table.md`).
 
 ## map
 

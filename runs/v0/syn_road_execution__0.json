@@ -1,0 +1,22 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "execution",
+      "evidence": "cadastre.restrictions[0].type = Exekuční příkaz k prodeji nemovitosti"
+    }
+  ],
+  "exits": [
+    {
+      "exit_type": "road_class_3",
+      "buyer": null,
+      "killed": false,
+      "kill_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Rozhodl krok 1: na parcele s jediným vlastníkem (Osoba A) vázne exekuční příkaz k prodeji nemovitosti, který se netýká podílu jiného spoluvlastníka, takže jde o bloker. Výjimka pro exekuci na cizím podílu se neuplatní. Případný exit na silnici III. třídy je tak bezpředmětný, dokud exekuce trvá."
+}

@@ -1,0 +1,21 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "exits": [
+    {
+      "exit_type": "road_class_3",
+      "buyer": "kraj, v jehož obvodu parcela leží",
+      "killed": false,
+      "kill_reason": null,
+      "evidence": "cadastre.land.land_use = silnice"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "map.adjacent_roads",
+      "impact": "could_reduce_value"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Kroky 1 a 2 nenašly žádný bloker ani nabídkový flag: vlastník je jediný, bez omezení, plomby a stavby a v ochraně přírody nic nenašlo. Parcela je silnice, a protože mapa není zkontrolována, použije se road_class_3 s kupcem kraj. Žádná kontrola kroku 4 exit nezabíjí a chybějící třída silnice může jen snížit hodnotu, takže výsledek je BUY_CANDIDATE."
+}

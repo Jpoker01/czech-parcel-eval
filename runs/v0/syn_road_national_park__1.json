@@ -1,0 +1,27 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "state_nature_protection_61",
+      "evidence": "nature_protection.large_protected_area.type = NP"
+    }
+  ],
+  "exits": [
+    {
+      "exit_type": "road_class_3",
+      "buyer": null,
+      "killed": false,
+      "kill_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts",
+      "impact": "could_block"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Žádný bloker v kroku 1 nenalezen, ale parcela leží v NP mimo zastavěné území, takže vzniká povinná nabídka státu (krok 2) a strop CONDITIONAL. Exit road_class_3 (silnice III. třídy) přežil, protože vlastník Osoba A není kraj, obec ani stát; kupec ve vstupu není jmenován. Zdroj seller_facts nebyl zkontrolován a mohl by odhalit blokující situaci (zemřelý spoluvlastník v SJM s probíhajícím dědictvím)."
+}

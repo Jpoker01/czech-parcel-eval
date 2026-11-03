@@ -10,9 +10,9 @@ import logging
 from collections import Counter, defaultdict
 
 from parcel_eval.checks import check_consistency, check_evidence, compare_with_expected, validate_schema
-from parcel_eval.paths import EXPECTED_DIR, INPUTS_DIR, RUNS_DIR, SCHEMA_PATH
+from parcel_eval.paths import EXPECTED_DIR, INPUTS_DIR, RUN_METADATA_FILE_NAME, RUNS_DIR, SCHEMA_PATH
 
-SCORED_PARTS = ["decision", "legal_flags", "exits", "risky_missing_data"]
+SCORED_PARTS = ["decision", "legal_flags", "resale_options", "risky_missing_data"]
 
 logger = logging.getLogger(__name__)
 
@@ -20,6 +20,34 @@ logger = logging.getLogger(__name__)
 def load_json(path) -> dict:
     """Read a UTF-8 JSON file."""
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def format_metadata(prompt_version: str) -> list[str]:
+    """Describe how the run was made, from runs/<prompt>/meta.json.
+
+    Args:
+        prompt_version: Folder name under runs/, e.g. v0.
+
+    Returns:
+        Markdown bullet lines for the top of the report.
+    """
+    metadata_path = RUNS_DIR / prompt_version / RUN_METADATA_FILE_NAME
+    if not metadata_path.exists():
+        return ["- Metadata: not recorded (the run has no meta.json)"]
+
+    metadata = load_json(metadata_path)
+    code = metadata["code"]
+    if code["commit"] is None:
+        code_text = "unknown (git not available)"
+    else:
+        code_text = f"commit {code['commit']}" + (", with uncommitted changes" if code["dirty"] else "")
+    return [
+        f"- Model: {metadata['model']}",
+        f"- Prompt: {metadata['prompt_version']} (sha256 {metadata['prompt_sha256']})",
+        f"- Run at: {metadata['run_at']}",
+        f"- Code: {code_text}",
+        f"- Cases: {len(metadata['cases'])}, repeats per case: {metadata['repeats']}",
+    ]
 
 
 def build_report(prompt_version: str) -> str:
@@ -73,7 +101,16 @@ def build_report(prompt_version: str) -> str:
     total_scores = " | ".join(f"{totals[part]}/{total_runs}" for part in SCORED_PARTS)
     rows.append(f"| **total** | | | {total_scores} | | {len(error_lines)} |")
 
-    report = [f"# Report {prompt_version}", "", *rows, "", "## Errors", ""]
+    report = [
+        f"# Report {prompt_version}",
+        "",
+        *format_metadata(prompt_version),
+        "",
+        *rows,
+        "",
+        "## Errors",
+        "",
+    ]
     report += error_lines or ["None."]
     return "\n".join(report) + "\n"
 

@@ -1,6 +1,6 @@
 // Same structure as template.json, with a comment on every key saying where
 // the value comes from. This file is documentation only, the code reads template.json.
-//
+
 // Status of every source: "checked" = opened and copied (empty list or false means
 // "nothing there"), "not_checked" = not opened (values inside are null and mean
 // nothing), "not_available" = the source has nothing for this parcel (reason in notes).
@@ -40,11 +40,7 @@
       // }
     ],
     "restrictions": [                      // section "Omezení vlastnického práva", one item per row
-      // {
-      //   "type": "Zástavní právo smluvní",      // column "Typ", verbatim
-      //   "beneficiary": "Banka a.s.",           // column "Oprávnění pro"
-      //   "applies_to_share_only": false         // true when "Povinnost k" names a share, not the whole parcel
-      // }
+      // { "type": "Zástavní právo smluvní" }   // column "Typ", verbatim; copy the rows of ALL owners, not only the seller
     ],
     "other_records": [                     // section "Jiné zápisy", one item per row
       // { "type": "Změna výměr obnovou operátu" }   // column "Typ", verbatim

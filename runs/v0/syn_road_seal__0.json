@@ -1,0 +1,14 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "seal",
+      "evidence": "cadastre.pending_proceedings.seal_present = true"
+    }
+  ],
+  "exits": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Rozhodl krok 1: na listu vlastnictví je přítomna plomba (probíhá řízení V-1234/2026-608), což je bloker. Hodnocení tím skončilo a další kroky se neprováděly."
+}

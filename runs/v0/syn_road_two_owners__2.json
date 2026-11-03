@@ -1,0 +1,36 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "exits": [
+    {
+      "exit_type": "road_class_3",
+      "buyer": "kraj",
+      "killed": false,
+      "kill_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    },
+    {
+      "exit_type": "co_owners",
+      "buyer": "ostatní spoluvlastníci",
+      "killed": false,
+      "kill_reason": null,
+      "evidence": "cadastre.owners[1].name = Osoba B"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "seller_facts.deceased_owner_in_sjm",
+      "impact": "could_block"
+    },
+    {
+      "field": "seller_facts.inheritance_proceedings_open",
+      "impact": "could_block"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 nenastavil žádnou povinnou nabídku. Parcela je silnice III. třídy s neveřejnými vlastníky, takže přežívají dva exity: kraj (road_class_3) a spoluvlastníci. Zdroj seller_facts nebyl zkontrolován a mohl by skrýt nabídku podle § 1124 nebo blokaci kvůli zemřelému vlastníku v SJM, proto je výsledek v kroku 5 CONDITIONAL."
+}

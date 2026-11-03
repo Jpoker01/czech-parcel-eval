@@ -1,0 +1,14 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "execution",
+      "evidence": "cadastre.restrictions[0].type = Exekuční příkaz k prodeji nemovitosti"
+    }
+  ],
+  "exits": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 rozhodl: na parcele váznoucí exekuční příkaz k prodeji nemovitosti je bloker. Parcela má jediného vlastníka a omezení se netýká podílu, proto nejde o výjimku pro jiného spoluvlastníka. Hodnocení tím končí a další kroky se neprovádějí."
+}

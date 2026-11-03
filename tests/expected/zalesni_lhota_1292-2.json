@@ -1,16 +1,16 @@
 {
   "decision": "NOT_WORTH_IT",
   "legal_flags": [],
-  "exits": [
+  "resale_options": [
     {
-      "exit_type": "road_class_2",
+      "resale_type": "road_class_2",
       "buyer": "Liberecký kraj",
-      "killed": true,
-      "kill_reason": "owner_is_buyer",
+      "excluded": true,
+      "exclusion_reason": "owner_is_buyer",
       "evidence": "land_register.owners[0].name = Liberecký kraj"
     }
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "LV je čistý, bez plomby a omezení. Způsob využití silnice dává jediný exit, prodej kraji. Vlastníkem celé parcely už je Liberecký kraj, takže kupec a prodávající jsou tatáž osoba. Chybějící zdroje na tom nic nezmění."
+  "reasoning": "LV je čistý, bez plomby a omezení. Způsob využití silnice dává jedinou možnost dalšího prodeje, a to prodej kraji. Vlastníkem celé parcely už je Liberecký kraj, takže kupec a prodávající jsou tatáž osoba. Chybějící zdroje na tom nic nezmění."
 }

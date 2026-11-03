@@ -1,7 +1,7 @@
 {
   "decision": "INSUFFICIENT_DATA",
   "legal_flags": [],
-  "exits": [],
+  "resale_options": [],
   "missing_data": [],
   "confidence": "high",
   "reasoning": "Očekávaný výstup syntetického případu."

@@ -1,0 +1,21 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "exits": [
+    {
+      "exit_type": "road_class_3",
+      "buyer": "Liberecký kraj",
+      "killed": true,
+      "kill_reason": "owner_is_buyer",
+      "evidence": "cadastre.owners[0].name = Liberecký kraj"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "map.adjacent_roads",
+      "impact": "could_reduce_value"
+    }
+  ],
+  "confidence": "high",
+  "reasoning": "Krok 0 a 1 neodhalily žádné blokery, parcela má způsob využití silnice, takže v kroku 3 vznikl jediný exit. Protože mapa není zkontrolovaná, byl zvolen exit road_class_3. V kroku 4 byl tento exit zabit, protože vlastníkem parcely je již Liberecký kraj, tedy samotný kupec. Žádný další exit neexistuje, proto je výsledek NOT_WORTH_IT."
+}

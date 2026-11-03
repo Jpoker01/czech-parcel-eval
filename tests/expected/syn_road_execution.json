@@ -7,7 +7,7 @@
       "evidence": "land_register.restrictions[0].type = Exekuční příkaz k prodeji nemovitosti"
     }
   ],
-  "exits": [],
+  "resale_options": [],
   "missing_data": [],
   "confidence": "high",
   "reasoning": "Očekávaný výstup syntetického případu."
