@@ -11,7 +11,7 @@ Some companies buy small land parcels and co-ownership shares that their owners 
 
 - **Inherited shares** - people often inherit a share of a field (a couple of percent) they cannot use on their own. They cannot rent it out, fence it or build on it, and it is NOT specified which part of the parcel is theirs, so for the owner such a share is almost worthless.
 - **Natural buyers** - the same parcel usually has someone who needs it - the region (kraj) for land under a II. or III. class road, the municipality (obec) for a local road, the farmer who uses the field according to LPIS, the owner of a building standing on the land (§ 3056 NOZ), the other co-owners, or a neighbour for a forest.
-- **Co-ownership** - a co-owner can sell the share to anybody or ask the court to dissolve the co-ownership (žaloba na zrušení a vypořádání spoluvlastnictví), which the court HAS TO do. The other co-owners are therefore a resale option too, just not a confirmed one.
+- **Co-ownership** - a co-owner can sell the share to anybody or ask the court to dissolve the co-ownership (žaloba na zrušení a vypořádání spoluvlastnictví), which the court HAS TO process. The other co-owners are therefore a resale option too, just not a confirmed one.
 
 The model does the first pass over each parcel, so a person only reviews the candidates it finds.
 
