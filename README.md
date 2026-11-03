@@ -15,13 +15,22 @@ Some companies buy small land parcels and co-ownership shares that their owners 
 
 The model does the first pass over each parcel, so a person only reviews the candidates it finds.
 
+## Evaluation metrics
+
+Every run is scored on its own, with no partial credit.
+
+- **Decision, legal flags, resale options, risky missing data** - exact match with the expected output. Flags, resale options and risky impacts are compared as sets, so their order does not matter.
+- **Consistency** - share of a case's runs that return its most common verdict.
+- **Rule violations** - outputs that break the schema, one of the 7 consistency rules or the evidence check, counted even when the verdict is right.
+- **Precision and recall** - per decision, from the confusion matrix of expected vs returned verdicts.
+
 ## Results
 
 To be filled after the v0 baseline run. Each case runs 3 times and the scores are counted per run.
 
-| Prompt | Model | Decision | Legal flags | Resale options | Risky missing data | Consistency | Rule violations |
-|---|---|---|---|---|---|---|---|
-| v0 | claude-sonnet-5-5 | - | - | - | - | - | - |
+| Prompt | Model | Decision | Legal flags | Resale options | Risky missing data | Consistency | Rule violations | BUY_CANDIDATE precision | BUY_CANDIDATE recall |
+|---|---|---|---|---|---|---|---|---|---|
+| v0 | claude-sonnet-5-5 | - | - | - | - | - | - | - | - |
 
 ## Tech Stack
 
@@ -84,7 +93,7 @@ ANTHROPIC_API_KEY=sk-ant-...
 **The test set contains real parcels and synthetic variants of them.**
 Real parcels are copied by hand from Nahlížení do KN and the other sources, with names of private persons replaced by `Osoba A`, `Osoba B` etc. Each one covers a resale option or a legal flag (field with an LPIS user, land under a third-party garage, forest, national park, execution etc.). So far only `zalesni_lhota_1292-2` (land under a road already owned by Liberecký kraj, copied on 2. 11. 2026) is collected; the others are prepared as fill-in files in `input/drafts/`.
 
-The `syn_*` cases in `tests/cases/` change one field of a real parcel, so that each one isolates a single rule (seal, execution, national park, prompt injection in `notes`, unchecked sources etc.). Each case is one self-contained file with a description, the base case, the changed input fields and the expected output:
+The `syn_*` cases in `tests/cases/` take a real parcel or another synthetic case and change one thing, so that each one isolates a single rule (seal, execution, national park, prompt injection in `notes`, unchecked sources etc.). `syn_road_private_owner` is the shared starting point, which turns the real parcel into a buyable one. Each case is one self-contained file with a description, the base case, the changed input fields and the expected output:
 
 ```json
 {
@@ -104,7 +113,7 @@ uv run --env-file .env python run.py --prompt PROMPT --repeats 3
 uv run python evaluate.py --prompt PROMPT
 ```
 
-The report in `runs/PROMPT/report.md` shows per-case match rates (decision, legal flags, resale options, risky missing data), run-to-run consistency, a decision confusion matrix with precision and recall, and every rule violation. The run folders are committed, so the results cited in `prompts/iterations.md` can be checked. `run.py` refuses to write into a folder that already has results, so use a new prompt version or pass `--force`. The model can be changed with `--model` or `PARCEL_EVAL_MODEL` in `.env`.
+The report in `runs/PROMPT/report.md` shows per-case match rates (decision, legal flags, resale options, risky missing data), run-to-run consistency, a decision confusion matrix with precision and recall, and every rule violation. The run folders are committed, so the results cited in `prompts/iterations.md` can be checked. `run.py` refuses to write into a folder that already has results, so use a new prompt version or pass `--force`. The model can be changed with `--model` or `PARCEL_EVAL_MODEL` in `.env`. By default every real and synthetic case runs, `--cases` picks a subset by case ID.
 
 ### CI
 
@@ -113,6 +122,7 @@ GitHub Actions (`.github/workflows/ci.yml`) runs on every push to `main` and eve
 * the code passes `ruff check` and `ruff format --check`
 * `uv.lock` matches `pyproject.toml`
 * every expected output passes the same schema, consistency and evidence checks as a model output, and every input has one
+* every synthetic case can be built from its base case
 
 To run the same checks locally:
 
@@ -131,7 +141,7 @@ uv run python tests/check_expected.py
   * **iterations.md** - What changed between versions and why
 * **/input**
   * **schema.json** - Empty input form, one section per source
-  * **/examples** - Filled inputs, one file per test case
+  * **/examples** - Filled inputs of the real parcels
   * **/drafts** - Fill-in copies of the input form and the expected output for real parcels not collected yet; not read by `run.py`
 * **/output**
   * **schema.json** - Output JSON schema, passed to the API as the structured output format
