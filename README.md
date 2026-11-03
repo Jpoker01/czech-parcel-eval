@@ -37,7 +37,7 @@ To be filled after the v0 baseline run. Each case runs 3 times and the scores ar
 1. **Input (`input/schema.json`):** one JSON per parcel, with a section for each source. Every section has a `status` (`checked`, `not_checked` or `not_available`), so the model can tell "verified, nothing found" from "nobody looked". Values are copied verbatim from the Czech sources.
 2. **Prompt (`prompts/v0.md`):** walks the parcel through a fixed order of steps taken from `docs/decision_table.md`:
     * **Data** - missing basic land register data ends with `INSUFFICIENT_DATA`.
-    * **Blockers** - a seal (plomba), seizure of property (exekuce), insolvency, alienation ban etc. ends with `BLOCKED`.
+    * **Blockers** - a seal (plomba), seizure of property (exekuce), insolvency, alienation ban (zákaz zcizení) etc. ends with `BLOCKED`.
     * **Pre-emption and consent** - a statutory offer (§ 61 of 114/1992 Sb., § 3056 and § 1124 NOZ) or an authority consent caps the result at `CONDITIONAL`.
     * **Resale options** - who would buy the parcel (region, municipality, farmer from LPIS, co-owners, building owner, neighbour).
     * **Exclusion check** - resale options that are excluded (the owner is already the buyer, clear-cut forest, no LPIS user etc.).
