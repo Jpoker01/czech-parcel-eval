@@ -1,7 +1,7 @@
 # Czech Parcel Eval
 
 An LLM prompt and eval harness that evaluates Czech land parcels before a buyout.
-The model gets data about one parcel copied from public registries (KN, LPIS, AOPK, zoning plans) and returns a structured verdict: whether the parcel can be bought, who would buy it afterwards, and what data is missing to be sure.
+The model gets data about one parcel copied from public registries (KN, LPIS, AOPK, zoning plans) and returns a structured verdict - whether the parcel can be bought, who would buy it afterwards, and what data is missing to be sure.
 
 **Built as a technical assignment. Work in progress: prompt v0 has not been evaluated yet**
 
