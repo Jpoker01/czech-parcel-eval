@@ -93,7 +93,7 @@
               "building_owner",
               "forest"
             ],
-            "description": "Key into config/pricing.yaml. The model never outputs a price."
+            "description": "Who the parcel can be resold to. The model never outputs a price."
           },
           "buyer": {
             "type": [

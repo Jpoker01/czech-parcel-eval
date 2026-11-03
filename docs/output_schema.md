@@ -8,7 +8,7 @@
 |---|---|---|
 | `decision` | verdikt | BLOCKED / CONDITIONAL / BUY_CANDIDATE / NOT_WORTH_IT / INSUFFICIENT_DATA |
 | `legal_flags[]` | kroky 1 + 2 | `type` block / offer / consent, `code`, `evidence` |
-| `resale_options[]` | kroky 3 + 4 | `resale_type` (klíč do `pricing.yaml`), `buyer`, `excluded`, `exclusion_reason`, `evidence` |
+| `resale_options[]` | kroky 3 + 4 | `resale_type`, `buyer`, `excluded`, `exclusion_reason`, `evidence` |
 | `missing_data[]` | průřezové | `field` ze vstupu, `impact` |
 | `confidence` | verdikt | high / medium / low |
 | `reasoning` | verdikt | max 4 věty česky |
@@ -19,7 +19,7 @@ Co model nevrací, protože to spočítá Python ze vstupu nebo z configu: ceny,
 
 - **Enumy všude.** Eval porovnává množiny kódů, ne volný text, a konzistenci mezi běhy jde měřit.
 - **`evidence` u každého závěru** ve tvaru `cesta = hodnota`. Eval ověří, že cesta ve vstupu existuje a hodnota sedí. Model si tak nemůže domyslet omezení, kupce ani zákaz.
-- **`resale_type` místo ceny.** Model řekne, komu se dá prodat; cenu doplní `pricing.yaml`. Parametry jde přepsat bez změny promptu.
+- **`resale_type` místo ceny.** Model řekne jen, komu se dá prodat. Cenu nikdy neodhaduje, z paměti by si ji vymyslel.
 
 ## Pravidla konzistence
 

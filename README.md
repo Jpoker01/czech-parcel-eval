@@ -42,11 +42,12 @@ To be filled after the v0 baseline run. Each case runs 3 times and the scores ar
     * **Resale options** - who would buy the parcel (region, municipality, farmer from LPIS, co-owners, building owner, neighbour).
     * **Exclusion check** - resale options that are excluded (the owner is already the buyer, clear-cut forest, no LPIS user etc.).
     * **Verdict** - `CONDITIONAL` when risky data is missing or the buyer is not confirmed, otherwise `BUY_CANDIDATE`, or `NOT_WORTH_IT` when no resale option remains.
+
     ![Decision flow](docs/images/decision_flow.png)
 
 3. **Output (`output/schema.json`)** - six fields (`decision`, `legal_flags`, `resale_options`, `missing_data`, `confidence`, `reasoning`). Codes are enums, so runs can be compared as sets.
-4. **Run (`run.py`)** - sends each test case to the model N times and saves the raw outputs and a `meta.json` (model, prompt hash, date) to `runs/<prompt>/`.
-5. **Evaluation (`evaluate.py`)** - validates every output against the schema, checks 7 consistency rules and the evidence, compares it with the hand-written expected output and writes `runs/<prompt>/report.md`. The report also has a confusion matrix of expected vs returned decisions with precision and recall per decision, because the two mistakes cost different things - a false `BUY_CANDIDATE` wastes a person's time, a false `NOT_WORTH_IT` loses a parcel.
+4. **Run (`run.py`)** - sends each test case to the model N times and saves the raw outputs and a `meta.json` (model, prompt hash, date) to `runs/PROMPT/`.
+5. **Evaluation (`evaluate.py`)** - validates every output against the schema, checks the 7 consistency rules (including the evidence), compares it with the hand-written expected output and writes `runs/PROMPT/report.md`. The report also has a confusion matrix of expected vs returned decisions with precision and recall per decision, because the two mistakes cost different things - a false `BUY_CANDIDATE` wastes a person's time, a false `NOT_WORTH_IT` loses a parcel.
 
 ![Evaluation pipeline](docs/images/eval_pipeline.png)  
 
@@ -56,7 +57,7 @@ To be filled after the v0 baseline run. Each case runs 3 times and the scores ar
 - **Unchecked is not empty** - a `not_checked` source never counts as "nothing found". If it could change the result, the model has to list it in `missing_data` and the verdict is at most `CONDITIONAL`.
 - **Evidence for every conclusion** - each flag and resale option carries `evidence` in the form `input.path = value` (e.g. `land_register.owners[0].name = Liberecký kraj`). The evaluation resolves the path in the input and compares the value, so an invented restriction or buyer is caught automatically.
 - **Whole parcel or nothing** - an execution or insolvency of ANY co-owner blocks the parcel, even though legally it only affects that owner's share. The profit comes from selling the whole parcel, which such a share complicates.
-- **No prices in the model** - the model only names the resale option (`road_class_3`, `field_arable`, `building_owner` etc.). Prices live in `config/pricing.yaml` (2026 state subsidy caps for road buyouts, Farmy.cz 2025 farmland averages) and can be changed without touching the prompt.
+- **No prices in the model** - the model only names the resale option (`road_class_3`, `field_arable`, `building_owner` etc.) and never estimates a price, since a price from the model's memory would be invented.
 - **Value-lowering factors are left out** - mortgages, leases or a flood zone do not change the verdict, and the person checking a candidate sees them on the LV anyway.
 - **Manual input** - Nahlížení do KN shows owners only after login and does not allow automated scraping. Bulk use would need the paid land register web services (WSDP) and WMS/WFS layers for LPIS and AOPK.
 - **Known blind spots** - statutory pre-emption rights are not always visible in the land register, and consent with public use of a road (Constitutional Court I. ÚS 2541/25) cannot be detected from any source. Facts only the seller knows go to `seller_facts`.
@@ -108,7 +109,7 @@ uv run --env-file .env python run.py --prompt PROMPT --repeats 3
 uv run python evaluate.py --prompt PROMPT
 ```
 
-The report in `runs/PROMPT/report.md` shows per-case match rates (decision, legal flags, resale options, risky missing data), run-to-run consistency, a decision confusion matrix with precision and recall, and every rule violation. The run folders are committed, so the results cited in `prompts/iterations.md` can be checked. `run.py` refuses to write into a folder that already has results, so use a new prompt version or pass `--force`. The model can be changed with `--model` or `PARCEL_EVAL_MODEL` in `.env`. By default every real and synthetic case runs, `--cases` picks a subset by case ID.
+The report in `runs/PROMPT/report.md` shows per-case match rates (decision, legal flags, resale options, risky missing data), run-to-run consistency, a decision confusion matrix with precision and recall, and every rule violation. Once a prompt version is evaluated, its run folder is committed, so the results cited in `prompts/iterations.md` can be checked. `run.py` refuses to write into a folder that already has results, so use a new prompt version or pass `--force`. The model can be changed with `--model` or `PARCEL_EVAL_MODEL` in `.env`. By default every real and synthetic case runs, `--cases` picks a subset by case ID.
 
 ### CI
 
@@ -144,8 +145,6 @@ uv run python tests/check_expected.py
   * **/expected** - Hand-written expected outputs of the real parcels
   * **/cases** - Synthetic cases, each with a base case, the changed input fields and the expected output
   * **check_expected.py** - Validates the expected outputs against their inputs (run in CI)
-* **/config**
-  * **pricing.yaml** - Resale prices and fixed costs, kept out of the model
 * **/src/parcel_eval** - Importable package
   * **llm.py** - API call with the output schema as a structured output format
   * **checks.py** - Schema, consistency and evidence checks
