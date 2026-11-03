@@ -42,7 +42,7 @@ To be filled after the v0 baseline run. Each case runs 3 times and the scores ar
     * **Resale options** - who would buy the parcel (region, municipality, farmer from LPIS, co-owners, building owner, neighbour).
     * **Exclusion check** - resale options that are excluded (the owner is already the buyer, clear-cut forest, no LPIS user etc.).
     * **Verdict** - `CONDITIONAL` when risky data is missing or the buyer is not confirmed, otherwise `BUY_CANDIDATE`, or `NOT_WORTH_IT` when no resale option remains.
-   ![Decision flow](docs/images/decision_flow.png)
+    ![Decision flow](docs/images/decision_flow.png)
 
 3. **Output (`output/schema.json`)** - six fields (`decision`, `legal_flags`, `resale_options`, `missing_data`, `confidence`, `reasoning`). Codes are enums, so runs can be compared as sets.
 4. **Run (`run.py`)** - sends each test case to the model N times and saves the raw outputs and a `meta.json` (model, prompt hash, date) to `runs/<prompt>/`.
