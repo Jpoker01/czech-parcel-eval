@@ -1,34 +1,10 @@
-import copy
 import json
 from datetime import date
 
 import anthropic
 
-UNSUPPORTED_SCHEMA_KEYS = ("$schema", "$id", "title", "$defs")
-
-
-def build_output_format_schema(schema: dict) -> dict:
-    """Inline $defs references and drop metadata keys for the structured output API.
-
-    Args:
-        schema: Output JSON schema loaded from output/schema.json.
-
-    Returns:
-        A copy of the schema without $schema, $id, title, $defs and $ref keys.
-    """
-    definitions = schema.get("$defs", {})
-
-    def resolve(node: object) -> object:
-        if isinstance(node, dict):
-            if "$ref" in node:
-                definition_name = node["$ref"].split("/")[-1]
-                return resolve(copy.deepcopy(definitions[definition_name]))
-            return {key: resolve(value) for key, value in node.items() if key not in UNSUPPORTED_SCHEMA_KEYS}
-        if isinstance(node, list):
-            return [resolve(item) for item in node]
-        return node
-
-    return resolve(schema)
+# A full output is roughly 300 - 1,000 tokens; the cap only prevents truncated JSON and costs nothing extra
+MAX_OUTPUT_TOKENS = 4_000
 
 
 def evaluate_parcel(
@@ -56,7 +32,7 @@ def evaluate_parcel(
         The evaluation dict produced by the model.
 
     Raises:
-        ValueError: If the response contains no text block.
+        ValueError: If the output was cut off at MAX_OUTPUT_TOKENS or the response contains no text block.
     """
     today = today or date.today()
     # Date goes into the message, not the prompt, so the prompt stays versioned and stable
@@ -67,16 +43,19 @@ def evaluate_parcel(
 
     response = client.messages.create(
         model=model,
-        max_tokens=4_000,
+        max_tokens=MAX_OUTPUT_TOKENS,
         system=system_prompt,
         messages=[{"role": "user", "content": user_message}],
         output_config={
             "format": {
                 "type": "json_schema",
-                "schema": build_output_format_schema(output_schema),
+                "schema": output_schema,
             },
         },
     )
+
+    if response.stop_reason == "max_tokens":
+        raise ValueError(f"Output was cut off at {MAX_OUTPUT_TOKENS} tokens, raise MAX_OUTPUT_TOKENS")
 
     for block in response.content:
         if block.type == "text":
