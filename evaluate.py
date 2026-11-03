@@ -8,8 +8,10 @@ import argparse
 import json
 import logging
 from collections import Counter, defaultdict
+from pathlib import Path
 
 from parcel_eval.checks import check_consistency, check_evidence, compare_with_expected, validate_schema
+from parcel_eval.metrics import build_confusion_matrix, compute_decision_scores, format_decision_metrics
 from parcel_eval.paths import EXPECTED_DIR, INPUTS_DIR, RUN_METADATA_FILE_NAME, RUNS_DIR, SCHEMA_PATH
 
 SCORED_PARTS = ["decision", "legal_flags", "resale_options", "risky_missing_data"]
@@ -17,7 +19,7 @@ SCORED_PARTS = ["decision", "legal_flags", "resale_options", "risky_missing_data
 logger = logging.getLogger(__name__)
 
 
-def load_json(path) -> dict:
+def load_json(path: Path) -> dict:
     """Read a UTF-8 JSON file."""
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -51,29 +53,32 @@ def build_report(prompt_version: str) -> str:
         prompt_version: Folder name under runs/, e.g. v0.
 
     Returns:
-        Markdown with a per-case table, totals and all errors found.
+        Markdown with a per-case table, totals, a decision confusion matrix and all errors found.
     """
     schema = load_json(SCHEMA_PATH)
+    run_dir = RUNS_DIR / prompt_version
     outputs_by_case = defaultdict(list)
-    for output_path in sorted((RUNS_DIR / prompt_version).glob("*__*.json")):
-        case_id = output_path.stem.rsplit("__", 1)[0]
-        outputs_by_case[case_id].append(load_json(output_path))
+    for output_path in sorted(run_dir.glob("*__*.json")):
+        case_id, repeat = output_path.stem.rsplit("__", 1)
+        outputs_by_case[case_id].append((int(repeat), load_json(output_path)))
 
     header = "| Case | Expected | Got | " + " | ".join(SCORED_PARTS) + " | Consistency | Errors |"
     rows = [header, "|" + "---|" * (len(SCORED_PARTS) + 5)]
     error_lines = []
+    decision_pairs = []
     totals = Counter()
     total_runs = 0
 
     for case_id, outputs in outputs_by_case.items():
         parcel_input = load_json(INPUTS_DIR / f"{case_id}.json")
         expected = load_json(EXPECTED_DIR / f"{case_id}.json")
-        decisions = Counter(output.get("decision") for output in outputs)
+        decisions = Counter(output.get("decision") for _, output in outputs)
         modal_decision, modal_count = decisions.most_common(1)[0]
 
         case_scores = Counter()
         case_error_count = 0
-        for repeat, output in enumerate(outputs):
+        for repeat, output in outputs:
+            decision_pairs.append((expected["decision"], output.get("decision")))
             errors = (
                 validate_schema(output, schema)
                 + check_consistency(output, parcel_input)
@@ -95,6 +100,7 @@ def build_report(prompt_version: str) -> str:
     total_scores = " | ".join(f"{totals[part]}/{total_runs}" for part in SCORED_PARTS)
     rows.append(f"| **total** | | | {total_scores} | | {len(error_lines)} |")
 
+    matrix = build_confusion_matrix(decision_pairs)
     report = [
         f"# Report {prompt_version}",
         "",
@@ -102,10 +108,16 @@ def build_report(prompt_version: str) -> str:
         "",
         *rows,
         "",
+        "## Decision confusion matrix",
+        "",
+        "Rows are the expected decision, columns the returned one, counted over every run.",
+        "",
+        *format_decision_metrics(matrix, compute_decision_scores(matrix)),
+        "",
         "## Errors",
         "",
+        *(error_lines or ["None."]),
     ]
-    report += error_lines or ["None."]
     return "\n".join(report) + "\n"
 
 
