@@ -107,10 +107,8 @@ def check_consistency(output: dict, parcel_input: dict) -> list[str]:
         has_live_named_resale_option = any(
             not resale_option["excluded"] and resale_option["buyer"] for resale_option in resale_options
         )
-        if not has_live_named_resale_option or impacts & {"could_block", "could_exclude_resale"}:
-            errors.append(
-                "rule 3: BUY_CANDIDATE needs a live named resale option and no blocking missing data"
-            )
+        if not has_live_named_resale_option or impacts & RISKY_IMPACTS:
+            errors.append("rule 3: BUY_CANDIDATE needs a live named resale option and no risky missing data")
 
     if decision == "NOT_WORTH_IT":
         if (
