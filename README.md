@@ -15,15 +15,6 @@ Some companies buy small land parcels and co-ownership shares that their owners 
 
 The model does the first pass over each parcel, so a person only reviews the candidates it finds.
 
-## Evaluation metrics
-
-Every run is scored on its own, with no partial credit.
-
-- **Decision, legal flags, resale options, risky missing data** - exact match with the expected output. Flags, resale options and risky impacts are compared as sets, so their order does not matter.
-- **Consistency** - share of a case's runs that return its most common verdict.
-- **Rule violations** - outputs that break the schema, one of the 7 consistency rules or the evidence check, counted even when the verdict is right.
-- **Precision and recall** - per decision, from the confusion matrix of expected vs returned verdicts.
-
 ## Results
 
 To be filled after the v0 baseline run. Each case runs 3 times and the scores are counted per run.
