@@ -1,0 +1,16 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_grassland",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = trvalý travní porost"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Základní data jsou úplná a v katastru není žádný bloker (plomba, exekuce, insolvence ani zákaz zcizení), zápis „Změna číslování parcel“ nic neblokuje. Nevznikla žádná povinnost nabídky ani souhlasu, protože nejsou stavba, předkupní právo ani chráněné území a § 101 se nevymezuje. Parcela je v LPIS a lze ji dále prodat uživateli „Osoba B“ jako travní porost. Neotevřená mapa a prodejní údaje výsledek nemění, protože je jediný vlastník a nejde o les ani silnici."
+}

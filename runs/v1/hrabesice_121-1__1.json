@@ -1,0 +1,21 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_grassland",
+      "buyer": "Osoba C",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = trvalý travní porost"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "V katastru není žádný bloker: zástavní práva ze správního rozhodnutí a od zdravotní pojišťovny nejsou exekuce, insolvence ani zákaz zcizení, a plomba chybí. Parcela jde dále prodat uživateli LPIS Osobě C jako travní porost a tato možnost není vyloučená. Zdroj seller_facts nebyl zkontrolován, takže nelze vyloučit povinnou nabídku spoluvlastníkům podle § 1124 (u SJM je to sporné), a výsledek je proto nejvýš CONDITIONAL."
+}

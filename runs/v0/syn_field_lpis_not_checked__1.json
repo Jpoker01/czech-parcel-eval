@@ -1,0 +1,21 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = orná půda"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "lpis",
+      "impact": "could_exclude_resale"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Základní data jsou úplná a v kroku 1 ani 2 nebyl nalezen bloker ani povinná nabídka. Jediná možnost dalšího prodeje je prodej zemědělci (orná půda), ale LPIS nebyl zkontrolován, takže nelze určit kupce ani ověřit, zda parcela v LPIS je. Proto je výsledek podle kroku 5 CONDITIONAL."
+}

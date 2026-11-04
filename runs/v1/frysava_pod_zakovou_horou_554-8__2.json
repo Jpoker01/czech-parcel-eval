@@ -1,0 +1,16 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": true,
+      "exclusion_reason": "no_access",
+      "evidence": "map.access_type = bez viditelného přístupu"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 a 1 prošly, žádný bloker v katastru není. Jediná možnost dalšího prodeje je lesní pozemek (soused Lesy ČR), ale podle kroku 4 je vyloučena kvůli chybějícímu viditelnému přístupu. SJM manželů je jeden vlastník, takže `co_owners` nepřichází v úvahu, a protože žádná možnost nezbývá, výsledek je NOT_WORTH_IT. Nekontrolované zdroje ho nemohou změnit."
+}

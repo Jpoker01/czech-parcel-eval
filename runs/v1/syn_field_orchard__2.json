@@ -1,0 +1,16 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_orchard",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = ovocný sad"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Základní data jsou úplná a v katastru není žádný bloker, plomba ani omezení. Nevzniká žádná povinná nabídka ani souhlas: stavba na parcele není, ochrana přírody ani § 101 se neuplatňují a vlastník je jen jeden, takže se nemůže uplatnit ani § 1124. Parcela je v LPIS a uživatel Osoba B je potvrzený kupec sadu, takže možnost dalšího prodeje není vyloučená. Neotevřená mapa a data prodávajícího výsledek změnit nemohou."
+}

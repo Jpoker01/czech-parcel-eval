@@ -1,0 +1,16 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road_class_2",
+      "buyer": "Liberecký kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = II. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "medium",
+  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 žádnou povinnou nabídku ani souhlas: nejde o NP/NPR/NPP, nejsou zde omezení, spoluvlastníci ani předkupní právo. Parcela je silnice a mapa je zkontrolovaná, takže ji lze dále prodat kraji jako silnici II. třídy (II/293). Vlastník je soukromá osoba, takže možnost není vyloučena. Kraj vyplývá z obce a katastrálního území, ne přímo z pole ve vstupu, a údaj o stavbě je null, proto jen střední jistota."
+}

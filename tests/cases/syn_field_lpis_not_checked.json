@@ -1,0 +1,30 @@
+{
+  "description": "Step 5: unchecked LPIS could hide a missing farmer, so the result is conditional.",
+  "base": "hustopece_u_brna_4813-68",
+  "changes": {
+    "lpis.status": "not_checked",
+    "lpis.parcel_in_lpis": null,
+    "lpis.dpb_items": []
+  },
+  "expected": {
+    "decision": "CONDITIONAL",
+    "legal_flags": [],
+    "resale_options": [
+      {
+        "resale_type": "field_arable",
+        "buyer": null,
+        "excluded": false,
+        "exclusion_reason": null,
+        "evidence": "land_register.land.land_type = orná půda"
+      }
+    ],
+    "missing_data": [
+      {
+        "field": "lpis",
+        "impact": "could_exclude_resale"
+      }
+    ],
+    "confidence": "medium",
+    "reasoning": "Očekávaný výstup syntetického případu."
+  }
+}

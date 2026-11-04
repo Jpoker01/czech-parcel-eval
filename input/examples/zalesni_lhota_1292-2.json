@@ -1,6 +1,7 @@
 {
   "meta": {
     "case_id": "zalesni_lhota_1292-2",
+    "checked_at": "2026-11-02",
     "notes": null
   },
   "land_register": {
@@ -52,8 +53,14 @@
   "nature_protection": {
     "status": "not_checked",
     "notes": null,
-    "large_protected_area": {"type": null, "name": null},
-    "small_protected_area": {"type": null, "name": null},
+    "large_protected_area": {
+      "type": null,
+      "name": null
+    },
+    "small_protected_area": {
+      "type": null,
+      "name": null
+    },
     "parcel_only_partially_inside": null,
     "cave_related": null
   },
@@ -66,8 +73,6 @@
   "seller_facts": {
     "status": "not_checked",
     "notes": null,
-    "inheritance_date": null,
-    "deceased_owner_in_sjm": null,
-    "inheritance_proceedings_open": null
+    "inheritance_date": null
   }
 }

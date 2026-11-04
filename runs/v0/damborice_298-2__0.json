@@ -1,0 +1,29 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_grassland",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = trvalý travní porost"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "land_register.building.relation",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "land_register.building.on_different_lv",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "zoning.preemption_right_101_holder",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 a 1 prošly: žádný bloker, jeden jasně identifikovaný vlastník. Jako možnost dalšího prodeje zbývá travní pozemek pro uživatele z LPIS (Osoba B), parcela v LPIS je. Nezjištěný vztah stavby k parcele a nezjištěný držitel předkupního práva podle § 101 by ale mohly vyvolat povinnou nabídku, proto podle kroku 5 vychází CONDITIONAL."
+}

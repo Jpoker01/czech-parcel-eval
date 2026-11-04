@@ -1,0 +1,25 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_grassland",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = trvalý travní porost"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "land_register.building.on_different_lv",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "zoning.preemption_right_101_holder",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 a 1 prošly, žádný bloker ani jistý flag nabídky nebyl nalezen. Krok 3 dává jedinou možnost dalšího prodeje, a to field_grassland s uživatelem Osoba B podle LPIS (kultura se liší od druhu pozemku v KN, ale parcela je v LPIS). Pole o stavbě na parcele a o předkupním právu obce nebo kraje jsou nezjištěná (null) a mohla by založit povinnou nabídku, proto krok 5 vrací CONDITIONAL."
+}

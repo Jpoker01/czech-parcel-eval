@@ -1,0 +1,40 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "AGRO - Měřín, a.s.",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = AGRO - Měřín, a.s."
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": "ostatní spoluvlastníci",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Česká republika"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "land_register.building.relation",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "land_register.building.on_different_lv",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "zoning.preemption_right_101_holder",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "seller_facts",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Žádný bloker v katastru nebyl nalezen a CHKO Žďárské vrchy předkupní právo státu nezakládá. Možnosti dalšího prodeje jsou zemědělec AGRO - Měřín (LPIS, orná půda) a spoluvlastníci, žádná není vyloučená. Nezjištěné údaje o stavbě na parcele, předkupním právu obce či kraje podle § 101 a o datu dědictví (seller_facts) by mohly vyvolat povinnou nabídku, proto je výsledek nejvýš CONDITIONAL."
+}

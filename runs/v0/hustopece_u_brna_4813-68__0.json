@@ -1,0 +1,29 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = standardní orná půda"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "land_register.building.relation",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "land_register.building.on_different_lv",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "zoning.preemption_right_101_holder",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 a 1 prošly bez blokerů a nebyl nalezen žádný potvrzený flag z kroku 2. Existuje nevyloučená možnost dalšího prodeje zemědělci Osoba B (field_arable, parcela je v LPIS). Nezjištěné údaje o stavbě na parcele a o předkupním právu obce či kraje podle § 101 by ale mohly založit povinnou nabídku, proto je výsledek nejvýš CONDITIONAL (krok 5)."
+}

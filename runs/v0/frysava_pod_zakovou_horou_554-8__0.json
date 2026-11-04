@@ -1,0 +1,16 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": true,
+      "exclusion_reason": "no_access",
+      "evidence": "map.access_type = bez viditelného přístupu"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Základní data jsou úplná a žádný bloker v kroku 1 se nevyskytuje. Jedinou možností dalšího prodeje je les (soused Lesy ČR), ale parcela je bez viditelného přístupu, takže ji krok 4 vylučuje. Spoluvlastníci nejsou, protože SJM je jeden vlastník, a LPIS u lesního pozemku neřeší. Žádná nevyloučená možnost nezbývá, výsledek je NOT_WORTH_IT."
+}

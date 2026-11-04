@@ -1,0 +1,14 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "execution",
+      "evidence": "land_register.other_records[1].type = Exekuční příkaz k prodeji nemovitosti"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Rozhodl krok 1: v Jiných zápisech je exekuční příkaz k prodeji nemovitosti a zahájení exekuce u vlastníka, což je bloker. Další kroky se proto již nehodnotily a nezkoumané zdroje výsledek změnit nemohou."
+}

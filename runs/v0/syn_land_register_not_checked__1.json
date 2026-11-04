@@ -1,0 +1,8 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 rozhodl: katastr nemovitostí (land_register) má status not_checked a chybí land_type i area_m2. Bez těchto základních dat nelze parcelu hodnotit, proto hodnocení končí výsledkem INSUFFICIENT_DATA."
+}

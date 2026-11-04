@@ -1,0 +1,16 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.neighbouring_parcels[3].owner = Osoba B"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "V kroku 1 ani 2 nebyl nalezen žádný bloker, nabídka ani souhlas: plomba, omezení i jiné zápisy jsou prázdné, ochrana přírody a územní plán jsou zkontrolované. Jde o lesní pozemek s možným prodejem sousedovi (Osoba B), přičemž ortofoto ukazuje les a přístup je po polní cestě, takže se nevylučuje. LPIS ani údaje o dědictví výsledek neovlivní, protože jde o les a jediného vlastníka."
+}

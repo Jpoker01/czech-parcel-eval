@@ -1,0 +1,16 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Osoba B",
+      "excluded": true,
+      "exclusion_reason": "clearcut",
+      "evidence": "map.orthophoto_land_cover = holina"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 a 1 prošly bez blokerů a krok 2 nenašel žádnou povinnou nabídku ani souhlas. Parcela je lesní pozemek s jediným vlastníkem, takže jedinou možností dalšího prodeje je les sousedovi. Ta je v kroku 4 vyloučena, protože ortofoto ukazuje holinu, a zbývající možnosti žádné nejsou, proto NOT_WORTH_IT."
+}

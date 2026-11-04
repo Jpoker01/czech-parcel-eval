@@ -1,0 +1,22 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "insolvency",
+      "evidence": "land_register.restrictions[0].type = Zahájení insolvenčního řízení"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": "Liberecký kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 rozhodl: v omezeních je zapsáno zahájení insolvenčního řízení, což je bloker, takže hodnocení končí výsledkem BLOCKED. Možnost dalšího prodeje kraji jako silnice III. třídy by jinak existovala, ale bloker ji přebíjí."
+}

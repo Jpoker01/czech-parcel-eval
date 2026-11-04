@@ -1,0 +1,28 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Česká republika"
+    },
+    {
+      "resale_type": "field_arable",
+      "buyer": "AGRO - Měřín, a.s.",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = AGRO - Měřín, a.s."
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Žádný bloker ani povinná nabídka nebyly nalezeny (CHKO § 61 nezakládá, stavba ani § 101 nejsou). Možnosti dalšího prodeje jsou spoluvlastníci a zemědělec AGRO - Měřín, a.s. z LPIS, který není vyloučen. Zdroj seller_facts nebyl zkontrolován a při více vlastnících by případná čerstvá dědická událost (§ 1124) vyžadovala nabídku spoluvlastníkům, proto je výsledek nejvýš CONDITIONAL (krok 5)."
+}

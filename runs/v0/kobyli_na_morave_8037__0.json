@@ -1,0 +1,40 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": "ostatní spoluvlastníci",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[0].name = Osoba A"
+    },
+    {
+      "resale_type": "field_vineyard",
+      "buyer": "Osoba F",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = vinice"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "land_register.building.relation",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "land_register.building.on_different_lv",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "zoning.preemption_right_101_holder",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Základní data jsou v pořádku a žádný bloker v kroku 1 se nenašel. Jako další prodej přichází v úvahu vinař Osoba F z LPIS (parcela v LPIS je) a spoluvlastníci. Nezjištěné údaje o stavbě na parcele, předkupním právu obce či kraje a datu dědictví by ale mohly založit povinnou nabídku, proto je výsledek nejvýš CONDITIONAL."
+}

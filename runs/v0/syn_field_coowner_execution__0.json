@@ -1,0 +1,29 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "execution",
+      "evidence": "land_register.other_records[0].type = Exekuční příkaz k prodeji podílu - Osoba A"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": "Osoba B, Osoba C, Osoba D, Osoba E",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Osoba B"
+    },
+    {
+      "resale_type": "field_vineyard",
+      "buyer": "Osoba F",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = vinice"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 rozhodl: v Jiných zápisech je exekuční příkaz k prodeji podílu spoluvlastníka (Osoba A), a bloker platí pro kteréhokoli vlastníka parcely. Hodnocení tedy končí výsledkem BLOCKED bez ohledu na možnosti dalšího prodeje (spoluvlastníci, vinař z LPIS) a chybějící zdroje ho nemohou změnit."
+}

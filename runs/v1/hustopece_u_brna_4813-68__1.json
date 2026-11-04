@@ -1,0 +1,16 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = standardní orná půda"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Základní data jsou úplná a v katastru nejsou žádné blokery (plomba, exekuce, insolvence, zákaz zcizení ani omezení). Přírodní ochrana, územní plán ani stavba na parcele nezakládají nabídku ani souhlas a parcela má jediného vlastníka, takže se § 1124 neuplatní. Parcela je v LPIS a orná půda se dá dále prodat uživateli Osoba B. Nechybí žádný zdroj, který by mohl výsledek změnit, proto BUY_CANDIDATE."
+}

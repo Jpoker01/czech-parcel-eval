@@ -1,0 +1,29 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "co_owners_inheritance_1124",
+      "evidence": "seller_facts.inheritance_date = 2026-09-01"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "field_vineyard",
+      "buyer": "Osoba F",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = vinice"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": "ostatní spoluvlastníci",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[4].share = 1/2"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 nenašel žádný bloker. V kroku 2 vznikla povinnost nabídky spoluvlastníkům, protože dědictví z 2026-09-01 je mladší než 6 měsíců a parcela má pět vlastníků. Krok 3 našel možnost dalšího prodeje vinaři Osobě F v LPIS a spoluvlastníkům, žádná není vyloučena. Kvůli povinné nabídce je podle kroku 6 nejlepší výsledek CONDITIONAL."
+}

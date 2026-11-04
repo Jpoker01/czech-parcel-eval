@@ -1,0 +1,37 @@
+{
+  "description": "Step 2: a share inherited less than 6 months ago triggers the § 1124 offer to the other co-owners.",
+  "base": "kobyli_na_morave_8037",
+  "changes": {
+    "seller_facts.status": "checked",
+    "seller_facts.inheritance_date": "2026-09-01"
+  },
+  "expected": {
+    "decision": "CONDITIONAL",
+    "legal_flags": [
+      {
+        "type": "offer",
+        "code": "co_owners_inheritance_1124",
+        "evidence": "seller_facts.inheritance_date = 2026-09-01"
+      }
+    ],
+    "resale_options": [
+      {
+        "resale_type": "field_vineyard",
+        "buyer": "Osoba F",
+        "excluded": false,
+        "exclusion_reason": null,
+        "evidence": "lpis.dpb_items[0].culture = vinice"
+      },
+      {
+        "resale_type": "co_owners",
+        "buyer": null,
+        "excluded": false,
+        "exclusion_reason": null,
+        "evidence": "land_register.owners[4].share = 1/2"
+      }
+    ],
+    "missing_data": [],
+    "confidence": "high",
+    "reasoning": "Očekávaný výstup syntetického případu."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "description": "Step 3: a hop field in LPIS gives the field_hopfield resale type with the hop grower as buyer.",
+  "base": "hustopece_u_brna_4813-68",
+  "changes": {
+    "land_register.land.land_type": "chmelnice",
+    "lpis.dpb_items[0].culture": "chmelnice"
+  },
+  "expected": {
+    "decision": "BUY_CANDIDATE",
+    "legal_flags": [],
+    "resale_options": [
+      {
+        "resale_type": "field_hopfield",
+        "buyer": "Osoba B",
+        "excluded": false,
+        "exclusion_reason": null,
+        "evidence": "lpis.dpb_items[0].culture = chmelnice"
+      }
+    ],
+    "missing_data": [],
+    "confidence": "high",
+    "reasoning": "Očekávaný výstup syntetického případu."
+  }
+}

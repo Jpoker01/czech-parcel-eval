@@ -1,0 +1,14 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "execution",
+      "evidence": "land_register.other_records[2].type = Zahájení exekuce - Osoba A"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Rozhodl krok 1: v Jiných zápisech je zahájení exekuce a exekuční příkaz k prodeji nemovitosti u jediného vlastníka. Parcela je proto BLOCKED a další kroky se nehodnotí. Nezkontrolované zdroje (mapa, LPIS, ochrana přírody, územní plán, údaje prodávajícího) výsledek nezmění."
+}

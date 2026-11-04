@@ -1,0 +1,16 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = lesní pozemek"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Základní data jsou kompletní a v katastru není plomba, exekuce, insolvence ani jiný bloker. Zkontrolované zdroje (příroda, územní plán, stavba) nezakládají žádnou povinnou nabídku ani souhlas a parcela má jediného vlastníka, takže dědické pravidlo se neuplatní. Jde o lesní pozemek s možným kupcem mezi sousedy (Osoba B), který není vyloučen: ortofoto ukazuje les a přístup je polní cestou. Nenechaný LPIS a seller_facts výsledek nemění, proto BUY_CANDIDATE."
+}

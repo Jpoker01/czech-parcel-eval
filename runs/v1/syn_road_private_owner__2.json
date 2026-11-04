@@ -1,0 +1,16 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": "Liberecký kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Kroky 0 až 2 nenašly žádný bloker, nabídku ani souhlas, protože zdroje katastr, příroda a územní plán jsou zkontrolované a bez zápisů. Parcela je silnice sousedící s komunikací III. třídy, takže ji lze dále prodat kraji, a vlastník (Osoba A) není kraj, obec ani stát. Nezkontrolovaný LPIS a údaje od prodávajícího výsledek nemění, protože jde o silnici s jedním vlastníkem."
+}

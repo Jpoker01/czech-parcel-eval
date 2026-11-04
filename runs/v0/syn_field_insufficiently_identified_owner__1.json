@@ -1,0 +1,14 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "insufficiently_identified_owner",
+      "evidence": "land_register.owners[0].insufficiently_identified = true"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 prošel, protože základní data z katastru jsou úplná. Krok 1 rozhodl: spoluvlastník Osoba A je nedostatečně identifikovaný, což je bloker platný pro všechny vlastníky parcely. Hodnocení tím končí výsledkem BLOCKED."
+}

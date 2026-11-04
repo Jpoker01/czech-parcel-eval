@@ -1,0 +1,16 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.neighbouring_parcels[1].owner = Lesy ČR"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 ani krok 2 nenašel žádný bloker, nabídku ani souhlas: v KN nejsou omezení, plomba ani jiné zápisy, parcela leží mimo NP, NPR a NPP a má jediného vlastníka. Jde o lesní pozemek s pojmenovaným sousedem jako možným kupcem. Ten není vyloučen, protože ortofoto ukazuje les (ne holinu) a přístup je polní cestou. Chybějící LPIS a údaje od prodávajícího výsledek u lesa s jedním vlastníkem nemění."
+}

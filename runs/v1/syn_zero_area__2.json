@@ -1,0 +1,8 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0: u parcely je land_register.land.area_m2 = 0, tedy není větší než 0, a základní data jsou proto nedostatečná. Hodnocení se tím ukončuje, další kroky se neprovádějí."
+}

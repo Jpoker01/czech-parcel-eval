@@ -1,0 +1,15 @@
+{
+  "description": "Step 0: area of 0 m² is treated as missing basic data.",
+  "base": "syn_road_private_owner",
+  "changes": {
+    "land_register.land.area_m2": 0
+  },
+  "expected": {
+    "decision": "INSUFFICIENT_DATA",
+    "legal_flags": [],
+    "resale_options": [],
+    "missing_data": [],
+    "confidence": "high",
+    "reasoning": "Očekávaný výstup syntetického případu."
+  }
+}

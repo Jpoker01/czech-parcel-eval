@@ -27,7 +27,7 @@ Python po každém běhu ověří, že si výstup sám neodporuje. Výstup přit
 
 1. **Bloker a `BLOCKED` jdou vždy spolu.** Když `legal_flags` obsahuje flag s `type = block`, musí být `decision = BLOCKED`. Naopak `BLOCKED` musí mít aspoň jeden takový flag.
 2. **Nabídka nebo souhlas vylučují `BUY_CANDIDATE`.** Když `legal_flags` obsahuje flag s `type = offer` nebo `consent`, `decision` nesmí být `BUY_CANDIDATE`.
-3. **`BUY_CANDIDATE` potřebuje kupce a žádná riziková chybějící data.** Aspoň jedna možnost dalšího prodeje musí mít `excluded = false` a vyplněný `buyer`. `missing_data` nesmí obsahovat `could_block`, `could_require_offer` ani `could_exclude_resale`.
+3. **`BUY_CANDIDATE` potřebuje kupce a žádná riziková chybějící data.** Aspoň jedna možnost dalšího prodeje musí mít `excluded = false` a vyplněný `buyer`. `missing_data` nesmí obsahovat `could_require_offer` ani `could_exclude_resale`.
 4. **`NOT_WORTH_IT` znamená, že parcelu není komu prodat.** Všechny možnosti dalšího prodeje musí mít `excluded = true`, nebo žádná neexistuje. `missing_data` nesmí obsahovat `could_exclude_resale`, protože pak vyloučení není jisté.
 5. **`INSUFFICIENT_DATA` právě tehdy, když chybí základní data.** Python ze vstupu vyhodnotí podmínku kroku 0 z `docs/decision_table.md`. Když platí, musí být `decision = INSUFFICIENT_DATA`. Když neplatí, nesmí.
 6. **Každý důkaz sedí se vstupem.** Každé `evidence` ve tvaru `cesta = hodnota` musí ukazovat na pole, které ve vstupu existuje, a hodnota se musí shodovat.

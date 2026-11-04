@@ -1,0 +1,24 @@
+{
+  "description": "Step 3: an orchard in LPIS gives the field_orchard resale type with the orchardist as buyer.",
+  "base": "hustopece_u_brna_4813-68",
+  "changes": {
+    "land_register.land.land_type": "ovocný sad",
+    "lpis.dpb_items[0].culture": "ovocný sad"
+  },
+  "expected": {
+    "decision": "BUY_CANDIDATE",
+    "legal_flags": [],
+    "resale_options": [
+      {
+        "resale_type": "field_orchard",
+        "buyer": "Osoba B",
+        "excluded": false,
+        "exclusion_reason": null,
+        "evidence": "lpis.dpb_items[0].culture = ovocný sad"
+      }
+    ],
+    "missing_data": [],
+    "confidence": "high",
+    "reasoning": "Očekávaný výstup syntetického případu."
+  }
+}

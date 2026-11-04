@@ -1,0 +1,28 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[0].name = Osoba A"
+    },
+    {
+      "resale_type": "field_vineyard",
+      "buyer": "Osoba F",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = vinice"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 žádný flag nabídky ani souhlasu. Jako kupce lze oslovit vinaře Osobu F z LPIS (parcela v LPIS je) a také spoluvlastníky. Parcela má pět vlastníků a zdroj seller_facts nebyl zkontrolován, proto nelze vyloučit povinnou nabídku spoluvlastníkům podle § 1124 (dědictví). Krok 5 proto vrací CONDITIONAL."
+}

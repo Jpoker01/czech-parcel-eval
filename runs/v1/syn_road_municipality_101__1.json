@@ -1,0 +1,22 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "municipality_or_region_101",
+      "evidence": "zoning.preemption_right_101_holder = obec"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": "Liberecký kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 a 1 prošly: data jsou úplná a žádný bloker nebyl nalezen. V kroku 2 má obec předkupní právo podle § 101, proto je nutná nabídka a výsledek nemůže být BUY_CANDIDATE. Parcela je silnice III. třídy s možným kupcem krajem, který nebyl vyloučen, takže výsledek je CONDITIONAL."
+}

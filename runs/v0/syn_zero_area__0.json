@@ -1,0 +1,8 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0: výměra parcely je v katastru uvedena jako 0 m2 (land_register.land.area_m2 = 0), což nesplňuje podmínku area_m2 > 0. Základní data jsou tedy nepoužitelná a hodnocení končí výsledkem INSUFFICIENT_DATA, další kroky se neprovádějí."
+}

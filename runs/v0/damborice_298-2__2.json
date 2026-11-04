@@ -1,0 +1,25 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_grassland",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = trvalý travní porost"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "land_register.building.relation",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "land_register.building.on_different_lv",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 1 nenašel žádný bloker (bez plomby, exekuce, insolvence i omezení) a krok 2 nenašel žádné právo nabídky. Parcelu lze dále prodat uživateli LPIS (Osoba B) jako travní porost a tato možnost není vyloučena. Není však zjištěno, zda na parcele stojí cizí stavba (building.relation a on_different_lv jsou null), což by mohlo založit povinnou nabídku vlastníku stavby, proto krok 5 vrací CONDITIONAL."
+}

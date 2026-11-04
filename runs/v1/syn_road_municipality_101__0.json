@@ -1,0 +1,22 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "municipality_or_region_101",
+      "evidence": "zoning.preemption_right_101_holder = obec"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": "kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 nenašel žádný bloker a vlastníkem je soukromá osoba, takže kupec silnice není vyloučen. Parcela je silnice III. třídy, tedy možný prodej kraji (road_class_3). Podle kroku 2 je ale u parcely vymezeno předkupní právo obce podle § 101, takže ji je nutné nejdřív nabídnout obci a výsledek je nejvýš CONDITIONAL."
+}

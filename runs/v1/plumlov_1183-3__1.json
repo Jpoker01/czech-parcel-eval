@@ -1,0 +1,28 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "local_road",
+      "buyer": "Plumlov",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_use = ostatní komunikace"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].share = 1/2"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 a 1 prošly bez blokerů a krok 2 nenašel žádnou povinnou nabídku ani souhlas u zkontrolovaných zdrojů. Možnost dalšího prodeje je obci Plumlov (místní komunikace) a spoluvlastníkům, žádná není vyloučena, protože vlastníky jsou fyzické osoby. Zdroj seller_facts nebyl zkontrolován a parcela má dva vlastníky, takže případná čerstvá dědická nabídka spoluvlastníkům (§ 1124) může změnit výsledek, proto CONDITIONAL."
+}

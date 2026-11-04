@@ -1,0 +1,14 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "seal",
+      "evidence": "land_register.seal_present = true"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 prošel, základní data jsou úplná. Krok 1 rozhodl: v katastru je u parcely vyznačená plomba (probíhá řízení, které může změnit práva k parcele), proto je výsledek BLOCKED a další kroky se nehodnotí."
+}

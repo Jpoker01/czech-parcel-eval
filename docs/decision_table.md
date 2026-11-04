@@ -8,12 +8,12 @@ Zkratky zdrojů: **KN** = Nahlížení do KN (přihlášený uživatel), **MAP**
 
 | # | Otázka | Podmínka (pole vstupu) | Výsledek | Pokračovat? |
 |---|---|---|---|---|
-| 0 | Mám základní data? | `land_register.status != checked` nebo chybí `area_m2`, `land_type`, nebo `owners` je prázdné při `owners_visible = true` | **INSUFFICIENT_DATA** | ne |
+| 0 | Mám základní data? | `land_register.status != checked` nebo chybí `land_type`, nebo `area_m2` je `null` nebo `<= 0`, nebo `owners` je prázdné při `owners_visible = true` | **INSUFFICIENT_DATA** | ne |
 | 1 | Brání něco prodeji? | jakýkoli `legal_flags[].type = block` | **BLOCKED** | ne |
 | 2 | Musí se nejdřív nabídnout někomu jinému nebo získat souhlas? | `legal_flags[].type` ∈ {offer, consent} | zakáže `BUY_CANDIDATE`, nejlepší možný výsledek je **CONDITIONAL** | ano |
 | 3 | Komu se dá prodat? | aspoň jedna položka `resale_options[]` | žádná možnost dalšího prodeje → **NOT_WORTH_IT** | ano, pokud nějaká existuje |
 | 4 | Zůstane možnost dalšího prodeje nevyloučená? | každá možnost dalšího prodeje dostane `excluded` + `exclusion_reason` | všechny `excluded = true` → **NOT_WORTH_IT** | ano, pokud aspoň jedna zůstala |
-| 5 | Chybí data, která by mohla výsledek zhoršit? | `missing_data[].impact` ∈ {could_block, could_require_offer, could_exclude_resale} | **CONDITIONAL** | ne |
+| 5 | Chybí data, která by mohla výsledek zhoršit? | `missing_data[].impact` ∈ {could_require_offer, could_exclude_resale} | **CONDITIONAL** | ne |
 | 6 | Našel krok 2 nabídku nebo souhlas, nebo je kupec jen odhadnutý? | krok 2 našel flag `offer` nebo `consent`, nebo nevyloučená možnost dalšího prodeje má `buyer = null`, nebo jediná nevyloučená možnost dalšího prodeje je `co_owners` | **CONDITIONAL** | ne |
 | 7 | Zbytek | nevyloučená možnost dalšího prodeje s pojmenovaným kupcem, bez flagu `offer` nebo `consent`, bez rizikových chybějících dat | **BUY_CANDIDATE** | ne |
 
@@ -29,7 +29,6 @@ Zkratky zdrojů: **KN** = Nahlížení do KN (přihlášený uživatel), **MAP**
 | `alienation_ban` | KN | `land_register.restrictions[].type` obsahuje "Zákaz zcizení" |
 | `dispute_note` | KN | `land_register.other_records[].type` obsahuje "spornost" nebo "žaloba" |
 | `insufficiently_identified_owner` | KN | `land_register.owners[].insufficiently_identified = true` |
-| `deceased_spouse_sjm` | SELLER | `seller_facts.deceased_owner_in_sjm = true` a `inheritance_proceedings_open = true` |
 | `units_ownership` | KN | `land_register.owners[].relation_type` = "Vlastnictví jednotek" |
 
 Bloker platí pro kteréhokoli vlastníka parcely, ne jen pro prodávajícího. Exekuce nebo insolvence zapsaná u spoluvlastníka tedy také končí výsledkem **BLOCKED**, protože zisk vzniká až prodejem celé parcely a zatížený podíl ho komplikuje.
@@ -42,7 +41,7 @@ Bloker platí pro kteréhokoli vlastníka parcely, ne jen pro prodávajícího. 
 | `building_owner_3056` | offer | KN | `land_register.building.relation = Stavba na parcele` nebo `on_different_lv = true` (§ 3056 NOZ) | vlastník stavby |
 | `registered_preemption` | offer | KN | `land_register.restrictions[].type` obsahuje "Předkupní právo" | oprávněný z LV |
 | `municipality_or_region_101` | offer | ZONING | `zoning.preemption_right_101_holder != null` (starý § 101 stavebního zákona) | obec / kraj |
-| `co_owners_inheritance_1124` | offer | SELLER | `seller_facts.inheritance_date` mladší než 6 měsíců a víc než jeden vlastník (§ 1124 NOZ) | ostatní spoluvlastníci |
+| `co_owners_inheritance_1124` | offer | SELLER | `seller_facts.inheritance_date` mladší než 6 měsíců k datu `meta.checked_at` a víc než jeden vlastník (§ 1124 NOZ) | ostatní spoluvlastníci |
 | `land_consolidation` | consent | KN | `land_register.other_records[].type` obsahuje "pozemkové úpravy" | pozemkový úřad |
 
 Pokud je zdroj potřebný pro některé z těchto pravidel `not_checked` (AOPK, územní plán, seller_facts), jde do `missing_data` s `could_require_offer`.
@@ -51,6 +50,7 @@ Pokud je zdroj potřebný pro některé z těchto pravidel `not_checked` (AOPK, 
 
 | `resale_type` | Zdroj | Signál | Kupec (`buyer`) |
 |---|---|---|---|
+| `road` | KN | `land_register.land.land_use = silnice` a `map` je `not_checked` (třída neznámá) | kraj dle sídla KÚ |
 | `road_class_2` / `road_class_3` | KN + MAP | `land_register.land.land_use = silnice`; třída z `map.adjacent_roads[].road_class` | kraj dle sídla KÚ |
 | `local_road` | KN | `land_register.land.land_use = ostatní komunikace` | obec z `identification.municipality` |
 | `co_owners` | KN | víc než jeden vlastník v `land_register.owners[]` mimo SJM | ostatní spoluvlastníci |
@@ -64,6 +64,8 @@ Pokud je zdroj potřebný pro některé z těchto pravidel `not_checked` (AOPK, 
 
 Jedna parcela může mít víc možností dalšího prodeje (podíl na poli = `co_owners` + `field_*`). Všechny se vypíší.
 
+Když je `land_use = silnice`, ale `map` je `not_checked`, třídu silnice neznáš - použij obecný `road` (kupec kraj je znám bez ohledu na třídu) a `map.adjacent_roads` jde do `missing_data` s `could_reduce_value`, protože přesná třída a tím cena nejsou jisté. Konkrétní `road_class_2` / `road_class_3` se použije jen s otevřenou mapou.
+
 ## Krok 4: co vyloučí možnost dalšího prodeje
 
 | `exclusion_reason` | Možnost dalšího prodeje | Zdroj | Signál |
@@ -75,9 +77,10 @@ Jedna parcela může mít víc možností dalšího prodeje (podíl na poli = `c
 
 Pokud zdroj pro kontrolu vyloučení chybí (`not_checked`), možnost dalšího prodeje se nevylučuje, ale údaj jde do `missing_data` s `could_exclude_resale`, což v kroku 5 dá CONDITIONAL.
 
-## Co se nesbírá a proč
+## Co nemění verdikt a proč
 
-- **Záplavy, BPEJ, zástavy, pacht, CHKO a Natura 2000:** jen snižují hodnotu, verdikt nemění. Kontrolující člověk je uvidí na LV, model je nehodnotí.
+- **Zástavy, pacht, CHKO, Natura 2000:** jen snižují hodnotu, verdikt nemění. Ve vstupu jsou (zástava v `restrictions`, CHKO v `nature_protection`), ale žádné pravidlo je nečte; kontrolující člověk je uvidí na LV.
+- **Záplavy, BPEJ, parcela zjednodušené evidence:** nesbírají se vůbec, ze stejného důvodu.
 - **Souhlas s veřejným užíváním cesty (I. ÚS 2541/25):** z žádného zdroje nejde zjistit.
 - **Podrobnosti stavby (č. p., typ):** pro rozhodnutí stačí, že stavba jiného vlastníka existuje.
 

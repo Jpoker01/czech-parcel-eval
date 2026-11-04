@@ -1,0 +1,29 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_hopfield",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = chmelnice"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "zoning.preemption_right_101_holder",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "land_register.building.on_different_lv",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "land_register.building.relation",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 nenašel žádný prokázaný flag nabídky ani souhlasu. Jako možnost dalšího prodeje zůstává chmelař Osoba B z LPIS, kterého krok 4 nevylučuje. Není ale zjištěn vztah stavby k parcele ani držitel předkupního práva podle § 101, což by mohlo vyvolat povinnou nabídku, proto podle kroku 5 vychází CONDITIONAL."
+}

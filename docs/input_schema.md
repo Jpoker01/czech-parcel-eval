@@ -13,8 +13,9 @@
 
 | Pole | Hodnoty |
 |---|---|
-| `case_id` | vlastní ID, obvykle `<katastrální území>_<parcelní číslo>` |
-| `notes` | volný text |
+| `case_id` | `<katastrální území>_<parcelní číslo>` malými písmeny bez diakritiky, podtržítka mezi slovy, pomlčka místo lomítka (`zalesni_lhota_1292-2`) |
+| `checked_at` | `YYYY-MM-DD`, datum ověření KN; `run.py` ho posílá modelu jako "Dnešní datum", takže 6měsíční lhůta u dědictví je reprodukovatelná |
+| `notes` | volný text, v test cases `null` |
 
 ## land_register
 
@@ -78,7 +79,7 @@ Zdroj: Mapy.com (vrstva "Katastrální data" + letecká mapa) nebo mapa v Nahlí
 
 ## lpis
 
-Zdroj: Veřejný registr půdy LPIS (eagri.cz), záložka "Parcela", hledání podle k. ú. a parcelního čísla.
+Zdroj: Veřejný registr půdy LPIS (mze.gov.cz/public/app/lpisext/lpis/verejny2/plpis/), záložka "Parcela", hledání podle k. ú. a parcelního čísla.
 
 | Pole | Kde ve zdroji | Hodnoty |
 |---|---|---|
@@ -88,7 +89,7 @@ Zdroj: Veřejný registr půdy LPIS (eagri.cz), záložka "Parcela", hledání p
 
 ## nature_protection
 
-Zdroj: mapový portál AOPK (webgis.nature.cz / drusop.nature.cz), vrstvy chráněných území u parcely.
+Zdroj: mapový server AOPK (mapy.nature.cz), vrstvy chráněných území u parcely; nápovědu dává i KN, sekce "Způsob ochrany nemovitosti".
 
 | Pole | Kde ve zdroji | Hodnoty |
 |---|---|---|
@@ -109,10 +110,8 @@ Zdroj: územní plán obce (Národní geoportál územního plánování nebo we
 
 ## seller_facts
 
-Zdroj: prodávající. Veřejné zdroje tyto údaje nemají, vyplňují se jen tam, kde je případ na nich postavený.
+Zdroj: prodávající. Veřejné zdroje tyto údaje nemají, vyplňují se jen tam, kde je případ na nich postavený. Údaje od prodávajícího nikdy neblokují, nanejvýš zakládají povinnou nabídku (strop CONDITIONAL).
 
 | Pole | Hodnoty |
 |---|---|
 | `inheritance_date` | `YYYY-MM-DD`, když podíl prodávajícího pochází z dědictví, jinak `null` |
-| `deceased_owner_in_sjm` | `true`, když zemřel spoluvlastník v SJM; `false` / `null` |
-| `inheritance_proceedings_open` | `true`, když toto dědictví ještě není vypořádané; `false` / `null` |

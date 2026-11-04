@@ -1,0 +1,29 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = orná půda"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "lpis",
+      "impact": "could_exclude_resale"
+    },
+    {
+      "field": "land_register.building.relation",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "land_register.building.on_different_lv",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Kroky 0 a 1 prošly: základní data jsou úplná a žádný bloker se nenašel. Jediná možnost dalšího prodeje je zemědělec na orné půdě, ale LPIS nebyl zkontrolován, takže uživatel (kupec) není znám a nelze vyloučit absenci uživatele v LPIS. Nezjištěný vztah stavby k parcele by navíc mohl založit povinnou nabídku vlastníku stavby, proto výsledek je CONDITIONAL (krok 5)."
+}

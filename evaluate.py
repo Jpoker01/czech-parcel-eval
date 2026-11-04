@@ -63,11 +63,16 @@ def build_report(prompt_version: str) -> str:
     totals = Counter()
     total_runs = 0
 
+    unanimous_cases = 0
+    modal_count_sum = 0
     for case_id, outputs in outputs_by_case.items():
         parcel_input = load_input(case_id)
         expected = load_expected(case_id)
         decisions = Counter(output.get("decision") for _, output in outputs)
         modal_decision, modal_count = decisions.most_common(1)[0]
+        if modal_count == len(outputs):
+            unanimous_cases += 1
+        modal_count_sum += modal_count
 
         case_scores = Counter()
         case_error_count = 0
@@ -87,8 +92,11 @@ def build_report(prompt_version: str) -> str:
             f"| {modal_count}/{len(outputs)} | {case_error_count} |"
         )
 
+    # Across the whole run: how many cases agreed on every repeat (strict) and the average modal rate (lenient)
     total_scores = " | ".join(f"{totals[part]}/{total_runs}" for part in SCORED_PARTS)
-    rows.append(f"| **total** | | | {total_scores} | | {len(error_lines)} |")
+    case_count = len(outputs_by_case)
+    total_consistency = f"{unanimous_cases}/{case_count} unanimous, avg {modal_count_sum / total_runs:.0%}" if case_count else "-"
+    rows.append(f"| **total** | | | {total_scores} | {total_consistency} | {len(error_lines)} |")
 
     matrix = build_confusion_matrix(decision_pairs)
     report = [

@@ -1,0 +1,13 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [
+    {
+      "field": "land_register",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "high",
+  "reasoning": "Rozhodl krok 0: katastr nemovitostí (land_register) nebyl zkontrolován (status = not_checked) a chybí výměra, druh pozemku i vlastníci. Bez těchto údajů nelze vyhodnotit blokery ani možnosti dalšího prodeje, proto hodnocení končí výsledkem INSUFFICIENT_DATA."
+}

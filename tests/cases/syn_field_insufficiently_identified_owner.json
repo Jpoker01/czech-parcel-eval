@@ -1,0 +1,21 @@
+{
+  "description": "Step 1: a co-owner marked as insufficiently identified blocks the whole parcel.",
+  "base": "kobyli_na_morave_8037",
+  "changes": {
+    "land_register.owners[0].insufficiently_identified": true
+  },
+  "expected": {
+    "decision": "BLOCKED",
+    "legal_flags": [
+      {
+        "type": "block",
+        "code": "insufficiently_identified_owner",
+        "evidence": "land_register.owners[0].insufficiently_identified = true"
+      }
+    ],
+    "resale_options": [],
+    "missing_data": [],
+    "confidence": "high",
+    "reasoning": "Očekávaný výstup syntetického případu."
+  }
+}

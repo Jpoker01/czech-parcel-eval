@@ -1,9 +1,11 @@
+"""Schema, consistency and evidence checks shared by the eval and the test-data check."""
+
 import json
 import re
 
 import jsonschema
 
-RISKY_IMPACTS = {"could_block", "could_require_offer", "could_exclude_resale"}
+RISKY_IMPACTS = {"could_require_offer", "could_exclude_resale"}
 PATH_PART_PATTERN = re.compile(r"[^.\[\]]+")
 
 
@@ -80,7 +82,8 @@ def has_basic_land_register_data(parcel_input: dict) -> bool:
     if land_register.get("status") != "checked":
         return False
     land = land_register.get("land", {})
-    if land.get("area_m2") is None or land.get("land_type") is None:
+    area_m2 = land.get("area_m2")
+    if area_m2 is None or area_m2 <= 0 or land.get("land_type") is None:
         return False
     # Owners are visible in the land register, but none were filled in
     if land_register.get("owners_visible") and not land_register.get("owners"):
@@ -103,7 +106,7 @@ def check_consistency(output: dict, parcel_input: dict) -> list[str]:
     resale_options = output.get("resale_options", [])
     # Types of the legal flags the model raised, e.g. {"block", "offer"}
     flag_types = {flag["type"] for flag in output.get("legal_flags", [])}
-    # Impacts of the data the model says is missing, e.g. {"could_block", "could_reduce_value"}
+    # Impacts of the data the model says is missing, e.g. {"could_require_offer", "could_reduce_value"}
     impacts = {item["impact"] for item in output.get("missing_data", [])}
 
     # Rule 1: a block flag and BLOCKED always go together
@@ -125,7 +128,7 @@ def check_consistency(output: dict, parcel_input: dict) -> list[str]:
             if not resale_option["excluded"] and resale_option["buyer"]:
                 has_open_option_with_buyer = True
 
-        # Is any of the missing data risky, e.g. could_block?
+        # Is any of the missing data risky, e.g. could_require_offer?
         has_risky_missing_data = False
         for impact in impacts:
             if impact in RISKY_IMPACTS:
@@ -183,11 +186,11 @@ def check_output(output: dict, parcel_input: dict, schema: dict) -> list[str]:
     Returns:
         Error messages, empty when the output passes every check.
     """
-    return (
-        validate_schema(output, schema)
-        + check_consistency(output, parcel_input)
-        + check_evidence(output, parcel_input)
-    )
+    schema_errors = validate_schema(output, schema)
+    # The other checks index the output by its required fields, so they only make sense on a valid shape
+    if schema_errors:
+        return schema_errors
+    return check_consistency(output, parcel_input) + check_evidence(output, parcel_input)
 
 
 def compare_with_expected(output: dict, expected: dict) -> dict[str, bool]:
@@ -219,7 +222,7 @@ def compare_with_expected(output: dict, expected: dict) -> dict[str, bool]:
         return resale_options
 
     def risky_set(data: dict) -> set[str]:
-        """Collect the impacts of missing data that are risky, e.g. {"could_block"}."""
+        """Collect the impacts of missing data that are risky, e.g. {"could_require_offer"}."""
         risky_impacts = set()
         for item in data.get("missing_data", []):
             if item["impact"] in RISKY_IMPACTS:

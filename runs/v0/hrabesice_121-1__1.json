@@ -1,0 +1,33 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_grassland",
+      "buyer": "Osoba C",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = trvalý travní porost"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "land_register.building.relation",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "land_register.building.on_different_lv",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "zoning.preemption_right_101_holder",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 1 nenašel bloker: zástavní práva a závazky týkající se zástavy nejsou exekuce, insolvence ani zákaz zcizení. Jako způsob dalšího prodeje zbývá travní porost pro uživatele z LPIS (Osoba C). Nezjištěné údaje o stavbě na parcele, předkupním právu podle § 101 a datu dědictví by mohly vyvolat povinnou nabídku, proto je výsledek podle kroku 5 CONDITIONAL."
+}

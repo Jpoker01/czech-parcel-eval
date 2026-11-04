@@ -1,0 +1,25 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = standardní orná půda"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "land_register.building.relation",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "land_register.building.on_different_lv",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Kroky 0 a 1 prošly: základní data jsou úplná a žádný bloker se nenašel. Jako možnost dalšího prodeje vychází orná půda pro uživatele z LPIS (Osoba B), který není vyloučen. Údaje o stavbě na parcele (building.relation a on_different_lv) nebyly zjištěny a mohly by založit předkupní právo vlastníka stavby, proto podle kroku 5 vychází CONDITIONAL."
+}

@@ -1,0 +1,33 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": true,
+      "exclusion_reason": "no_access",
+      "evidence": "map.access_type = bez viditelného přístupu"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "land_register.building.relation",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "land_register.building.on_different_lv",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "nature_protection",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "zoning",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 a krok 1 prošly bez blokerů (žádná plomba, exekuce ani omezení). Jediná možnost dalšího prodeje je lesní pozemek se sousedem jako kupcem, ale mapa uvádí „bez viditelného přístupu“, takže ji krok 4 vylučuje. Všechny možnosti jsou vyloučené, proto NOT_WORTH_IT. Jistotu snižují nezjištěné údaje o stavbě, ochraně přírody a územním plánu."
+}

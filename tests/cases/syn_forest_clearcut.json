@@ -1,0 +1,23 @@
+{
+  "description": "Step 4: a clear-cut forest drops the neighbour as buyer, so the result is NOT_WORTH_IT.",
+  "base": "knezska_492",
+  "changes": {
+    "map.orthophoto_land_cover": "holina"
+  },
+  "expected": {
+    "decision": "NOT_WORTH_IT",
+    "legal_flags": [],
+    "resale_options": [
+      {
+        "resale_type": "forest",
+        "buyer": "Osoba B",
+        "excluded": true,
+        "exclusion_reason": "clearcut",
+        "evidence": "map.orthophoto_land_cover = holina"
+      }
+    ],
+    "missing_data": [],
+    "confidence": "high",
+    "reasoning": "Očekávaný výstup syntetického případu."
+  }
+}

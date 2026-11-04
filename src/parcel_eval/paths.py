@@ -9,3 +9,5 @@ CASES_DIR = PROJECT_ROOT / "tests" / "cases"
 RUNS_DIR = PROJECT_ROOT / "runs"
 SCHEMA_PATH = PROJECT_ROOT / "output" / "schema.json"
 RUN_METADATA_FILE_NAME = "meta.json"
+# Real parcels collected only after the prompt was tuned; run once at the end, never iterated on
+HOLDOUT_PREFIX = "holdout_"

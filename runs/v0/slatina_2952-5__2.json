@@ -1,0 +1,31 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "building_owner_3056",
+      "evidence": "land_register.building.relation = Stavba na parcele"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "building_owner",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.building.relation = Stavba na parcele"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "nature_protection",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "zoning",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 1 nenašel žádný bloker. Na parcele stojí stavba na jiném LV, takže vzniká povinnost nabídky vlastníkovi stavby (krok 2). Jediná možnost dalšího prodeje je vlastník stavby, ale ve vstupu není jmenovaný. Neprověřená ochrana přírody a územní plán by navíc mohly založit další povinnou nabídku, proto je výsledek nejvýš CONDITIONAL."
+}

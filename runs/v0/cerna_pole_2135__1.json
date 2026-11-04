@@ -1,0 +1,14 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "units_ownership",
+      "evidence": "land_register.owners[0].relation_type = Vlastnictví jednotek"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 rozhodl: všichni vlastníci parcely mají typ vztahu „Vlastnictví jednotek“, což je bloker units_ownership. Hodnocení se tím ukončuje a další kroky se neposuzují, takže chybějící zdroje výsledek nemohou změnit."
+}

@@ -1,0 +1,25 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": null,
+      "excluded": true,
+      "exclusion_reason": "no_lpis_user",
+      "evidence": "lpis.parcel_in_lpis = false"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "land_register.building.relation",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "land_register.building.on_different_lv",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 1 nenašel žádný bloker, záznam o dobývacím prostoru mezi blokery nepatří. Jediná možnost dalšího prodeje, prodej zemědělci jako orná půda, je v kroku 4 vyloučena, protože parcela není v LPIS a nemá uživatele. Parcela má jediného vlastníka, takže spoluvlastníci jako kupci odpadají, a verdikt je NOT_WORTH_IT. Nezjištěný vztah stavby k parcele by mohl přidat vlastníka stavby jako kupce, proto je jistota střední."
+}

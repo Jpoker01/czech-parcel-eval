@@ -88,9 +88,7 @@ Otevřít [veřejný LPIS](https://mze.gov.cz/public/app/lpisext/lpis/verejny2/p
 
 Jediný neinternetový zdroj. Vyplňuje se jen u case, kde to case popis vyžaduje (typicky dědictví):
 
-- `inheritance_date` - datum nabytí podílu děděním.
-- `deceased_owner_in_sjm = true` - jeden z manželů v SJM zemřel.
-- `inheritance_proceedings_open = true` - dědické řízení běží.
+- `inheritance_date` - datum nabytí podílu děděním (§ 1124, nabídka spoluvlastníkům do 6 měsíců).
 
 Jinak nechat `"not_checked"`.
 

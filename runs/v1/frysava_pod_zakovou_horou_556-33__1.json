@@ -1,0 +1,28 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": "ostatní spoluvlastníci",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[0].name = AGRO - Měřín, a.s."
+    },
+    {
+      "resale_type": "field_arable",
+      "buyer": "AGRO - Měřín, a.s.",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = standardní orná půda"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Kroky 0 a 1 nenašly žádný bloker a CHKO nezakládá žádné předkupní právo státu. V kroku 3 je možný prodej zemědělci AGRO - Měřín, a.s., který je v LPIS uživatelem, a prodej spoluvlastníkům. Parcela má více vlastníků a zdroj seller_facts nebyl zkontrolován, takže nelze vyloučit povinnou nabídku spoluvlastníkům podle § 1124 (datum dědictví). Proto je výsledek podle kroku 5 CONDITIONAL."
+}

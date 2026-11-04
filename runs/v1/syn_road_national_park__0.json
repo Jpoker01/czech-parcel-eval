@@ -1,0 +1,22 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "state_nature_protection_61",
+      "evidence": "nature_protection.large_protected_area.type = NP"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": "Liberecký kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Blokery krok 1 nenašel. Parcela leží v národním parku a v nezastavěném území, takže v kroku 2 vzniká povinná nabídka státu podle § 61. Možnost dalšího prodeje kraji jako silnice III. třídy zůstává, vlastník není kupcem, ale kvůli nabídce je výsledek nejvýš CONDITIONAL."
+}

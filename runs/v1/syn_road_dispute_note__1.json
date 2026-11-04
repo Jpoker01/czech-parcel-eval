@@ -1,0 +1,22 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "dispute_note",
+      "evidence": "land_register.other_records[0].type = Poznámka spornosti zápisu"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Rozhodl krok 1: v Jiných zápisech je Poznámka spornosti zápisu, což je bloker dispute_note. Parcela je silnice sousedící se silnicí III. třídy, takže by šla prodat kraji, ale bloker hodnocení ukončuje."
+}

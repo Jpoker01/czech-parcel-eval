@@ -1,0 +1,8 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 a krok 1 prošly, protože základní data jsou úplná a žádný bloker se nenašel. Záznam o dobývacím prostoru není bloker. V kroku 3 nevznikla žádná možnost dalšího prodeje: parcela má jednoho vlastníka, není silnice ani lesní pozemek, nemá stavbu a v LPIS není žádná kultura ani uživatel. Výsledek je proto NOT_WORTH_IT a nezkontrolované zdroje ho nemohou změnit."
+}

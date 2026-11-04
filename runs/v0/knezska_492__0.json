@@ -1,0 +1,16 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.neighbouring_parcels[1].owner = Lesy ČR"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Základní data jsou úplná a v katastru nejsou žádné blokery (plomba, exekuce, insolvence ani zákaz zcizení). Nevznikla žádná povinnost nabídky ani souhlasu: parcela není v NP/NPR/NPP, nemá stavbu ani předkupní právo. Jde o lesní pozemek s přístupem po polní cestě a ortofotem „les“, takže ho lze prodat sousedovi (Lesy ČR). Žádná možnost dalšího prodeje není vyloučená, proto BUY_CANDIDATE."
+}

@@ -1,0 +1,16 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = lesní pozemek"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Základní data jsou úplná a v krocích 1 a 2 se nenašel žádný bloker, nabídka ani souhlas (katastr, ochrana přírody i územní plán jsou zkontrolované). Jde o lesní pozemek s možným kupcem mezi sousedy. Krok 4 nic nevylučuje, protože ortofoto ukazuje les, ne holinu, a přístup je po polní cestě. Chybějící LPIS a údaje o prodávajícím výsledek nemění, takže platí krok 7: BUY_CANDIDATE."
+}

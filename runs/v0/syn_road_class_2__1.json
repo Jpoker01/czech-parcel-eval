@@ -1,0 +1,25 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road_class_2",
+      "buyer": "Liberecký kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = II. třída"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "land_register.building.relation",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "land_register.building.on_different_lv",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 žádnou povinnou nabídku ani souhlas. Parcela je silnice II. třídy (II/293), takže ji lze dál prodat kraji a vlastník (Osoba A) kraj není. Údaje o stavbě na parcele ale nejsou zjištěny (null), takže by mohlo vzniknout předkupní právo vlastníka stavby. Výsledek je proto podle kroku 5 CONDITIONAL."
+}

@@ -1,0 +1,16 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_orchard",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = ovocný sad"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Základní data jsou úplná a v kroku 1 ani 2 se neobjevil žádný bloker, nabídka ani souhlas. Parcela má jednoho vlastníka, takže spoluvlastnické předkupní právo ani možnost prodeje spoluvlastníkům nepřipadá v úvahu. V LPIS je uživatel Osoba B s kulturou ovocný sad, takže existuje nevyloučený kupec s uvedeným jménem. Mapa ani údaje od prodávajícího výsledek nemohou změnit, proto BUY_CANDIDATE."
+}

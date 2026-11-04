@@ -1,0 +1,25 @@
+{
+  "description": "Step 1: a 'Zákaz zcizení' entry in the restrictions blocks the parcel.",
+  "base": "syn_road_private_owner",
+  "changes": {
+    "land_register.restrictions": [
+      {
+        "type": "Zákaz zcizení a zatížení"
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BLOCKED",
+    "legal_flags": [
+      {
+        "type": "block",
+        "code": "alienation_ban",
+        "evidence": "land_register.restrictions[0].type = Zákaz zcizení a zatížení"
+      }
+    ],
+    "resale_options": [],
+    "missing_data": [],
+    "confidence": "high",
+    "reasoning": "Očekávaný výstup syntetického případu."
+  }
+}

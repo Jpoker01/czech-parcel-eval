@@ -35,7 +35,9 @@ def build_confusion_matrix(pairs: list[tuple[str, str]]) -> dict[str, dict[str, 
     """
     matrix = {expected: dict.fromkeys(DECISIONS, 0) for expected in DECISIONS}
     for expected, got in pairs:
-        matrix[expected][got] += 1
+        # An output that failed the schema has no valid decision; it is already counted as an error
+        if got in matrix[expected]:
+            matrix[expected][got] += 1
     return matrix
 
 

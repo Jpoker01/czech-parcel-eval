@@ -1,0 +1,16 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": true,
+      "exclusion_reason": "clearcut",
+      "evidence": "map.orthophoto_land_cover = holina"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 ani krok 2 nenašel žádný bloker, nabídku ani souhlas. V kroku 3 vychází jediná možnost dalšího prodeje, a to les sousedovi. V kroku 4 ji vylučuje holina na ortofotu, takže všechny možnosti jsou vyloučené a výsledek je NOT_WORTH_IT."
+}

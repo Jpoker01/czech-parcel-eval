@@ -1,0 +1,33 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": true,
+      "exclusion_reason": "no_access",
+      "evidence": "map.access_type = bez viditelného přístupu"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "land_register.building.relation",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "land_register.building.on_different_lv",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "nature_protection",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "zoning",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 a 1 prošly, protože základní data jsou úplná a žádný bloker nebyl nalezen. Jediná možnost dalšího prodeje je les sousedovi (Lesy ČR), ale parcela je bez viditelného přístupu, takže ji krok 4 vylučuje. Spoluvlastníci tu nejsou, protože SJM manželů je jeden vlastník, a ostatní možnosti prodeje nevznikají, proto je výsledek NOT_WORTH_IT. Chybějící údaje o stavbě, ochraně přírody a územním plánu by mohly přidat nabídku nebo kupce, a snižují proto jistotu."
+}

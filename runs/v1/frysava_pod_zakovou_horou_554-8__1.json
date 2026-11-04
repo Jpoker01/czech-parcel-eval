@@ -1,0 +1,16 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": true,
+      "exclusion_reason": "no_access",
+      "evidence": "map.access_type = bez viditelného přístupu"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 nenašel žádný bloker a krok 0 je splněn. Parcela je lesní pozemek a jediná možnost dalšího prodeje je `forest` (soused). Ta je v kroku 4 vyloučena pro absenci viditelného přístupu. Vlastník je jeden (SJM), takže `co_owners` neplatí, a pro `field_*` není signál. Žádná nevyloučená možnost nezbývá, proto NOT_WORTH_IT."
+}

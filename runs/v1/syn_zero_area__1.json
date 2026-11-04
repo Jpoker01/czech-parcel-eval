@@ -1,0 +1,8 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0: v katastru je u parcely uvedena výměra 0 m², což je neplatný údaj (musí být větší než 0). Základní data jsou proto nedostatečná a hodnocení končí bez dalších kroků."
+}

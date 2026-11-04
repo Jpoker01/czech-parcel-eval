@@ -1,0 +1,33 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": null,
+      "excluded": true,
+      "exclusion_reason": "no_lpis_user",
+      "evidence": "lpis.parcel_in_lpis = false"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "land_register.building.relation",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "land_register.building.on_different_lv",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "nature_protection",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "zoning",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Základní data jsou úplná a žádný bloker v kroku 1 nenalezen, záznam o dobývacím prostoru mezi blokery nepatří. Parcela má jediného vlastníka (MND a.s.), takže odpadá varianta spoluvlastníků, a není v LPIS, takže zemědělský odbyt nemá uživatele. Žádný jiný kupec ze vstupu neplyne, proto krok 3 a 4 končí výsledkem NOT_WORTH_IT. Nezjištěná data o stavbě, ochraně přírody a územním plánu by to mohla změnit jen tím, že by přibyla povinná nabídka nebo kupec – vlastník stavby."
+}

@@ -1,0 +1,16 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_grassland",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = trvalý travní porost"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Základní data jsou úplná a v krocích 1 a 2 se neobjevil žádný bloker, nabídka ani souhlas (zápis „Změna číslování parcel“ nic neblokuje). Parcela je v LPIS s kulturou trvalý travní porost, takže ji lze dále prodat uživateli Osoba B jako `field_grassland`. Tato možnost není vyloučena a chybějící data (mapa, údaje od prodávajícího) výsledek nemění, proto jde o BUY_CANDIDATE."
+}

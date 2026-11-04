@@ -1,0 +1,34 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "consent",
+      "code": "land_consolidation",
+      "evidence": "land_register.other_records[0].type = Zahájeny pozemkové úpravy"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": "ostatní spoluvlastníci",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[0].name = Osoba A"
+    },
+    {
+      "resale_type": "field_arable",
+      "buyer": "Osoba H",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = standardní orná půda"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Žádný bloker v kroku 1 nenalezen. V Jiných zápisech jsou zahájené pozemkové úpravy, což je flag consent a strop CONDITIONAL. Zemědělec Osoba H z LPIS je použitelný kupec, ale zdroj seller_facts nebyl zkontrolován, takže nelze vyloučit povinnou nabídku spoluvlastníkům podle § 1124 u parcely s více vlastníky."
+}

@@ -1,0 +1,21 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road",
+      "buyer": "Liberecký kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_use = silnice"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "map.adjacent_roads",
+      "impact": "could_reduce_value"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 i krok 1 prošly bez problémů: nejsou plomby, exekuce, insolvence ani jiné blokery a vlastník je jeden a řádně identifikovaný. V kroku 2 nevznikla žádná povinná nabídka ani souhlas, protože ochrana přírody a územní plán jsou zkontrolované a bez nálezu a na parcele není stavba. Parcela je silnice a mapa není zkontrolovaná, takže jde o obecný prodej kraji (road) bez určení třídy. Vlastník není kraj, obec ani stát, takže kupce nic nevylučuje a výsledek je BUY_CANDIDATE."
+}

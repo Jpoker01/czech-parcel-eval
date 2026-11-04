@@ -1,0 +1,46 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "consent",
+      "code": "land_consolidation",
+      "evidence": "land_register.other_records[0].type = Zahájeny pozemkové úpravy"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": "ostatní spoluvlastníci",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[6].name = Osoba G"
+    },
+    {
+      "resale_type": "field_arable",
+      "buyer": "Osoba H",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = standardní orná půda"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "land_register.building.relation",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "land_register.building.on_different_lv",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "zoning.preemption_right_101_holder",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Žádný bloker v kroku 1 nenalezen, ale zápis o zahájených pozemkových úpravách vyžaduje souhlas, takže výsledek nemůže být BUY_CANDIDATE. Další prodej je možný zemědělci Osobě H (LPIS) i spoluvlastníkům. Nezjištěné údaje o stavbě na parcele, předkupním právu obce či kraje a datu dědictví (více vlastníků) by mohly vyvolat povinnou nabídku, proto CONDITIONAL."
+}

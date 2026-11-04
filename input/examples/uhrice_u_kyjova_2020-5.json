@@ -77,8 +77,6 @@
   "seller_facts": {
     "status": "not_checked",
     "notes": null,
-    "inheritance_date": null,
-    "deceased_owner_in_sjm": null,
-    "inheritance_proceedings_open": null
+    "inheritance_date": null
   }
 }

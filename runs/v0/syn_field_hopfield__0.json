@@ -1,0 +1,29 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_hopfield",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = chmelnice"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "land_register.building.relation",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "land_register.building.on_different_lv",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "zoning.preemption_right_101_holder",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 1 nenašel žádné blokery a krok 0 prošel. Parcela je chmelnice s uživatelem v LPIS (Osoba B), takže existuje nevyloučený kupec typu field_hopfield. Není ale zjištěno, zda na parcele stojí cizí stavba, ani zda existuje předkupní právo obce či kraje podle §101, a podle kroku 5 je proto výsledek nejvýš CONDITIONAL."
+}

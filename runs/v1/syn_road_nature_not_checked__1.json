@@ -1,0 +1,21 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": "Liberecký kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "nature_protection",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 a 1 nenašly žádný bloker a vlastník Osoba A není kraj, obec ani stát. Parcela je silnice III. třídy, takže je tu možnost dalšího prodeje kraji (krok 3) a nic ji nevylučuje. Parcela leží v nezastavěném území a zdroj nature_protection nebyl zkontrolován, takže nelze vyloučit státní předkupní právo podle § 61, proto výsledek podle kroku 5 je CONDITIONAL."
+}

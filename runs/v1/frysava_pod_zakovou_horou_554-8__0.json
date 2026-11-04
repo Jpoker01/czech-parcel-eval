@@ -1,0 +1,16 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": true,
+      "exclusion_reason": "no_access",
+      "evidence": "map.access_type = bez viditelného přístupu"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 a 1 prošly, žádný bloker v katastru není. Jediná možnost dalšího prodeje je lesní pozemek se sousedem Lesy ČR (krok 3). Tu v kroku 4 vylučuje chybějící přístup. Nezbyla žádná nevyloučená možnost, proto NOT_WORTH_IT a neotevřené zdroje výsledek nezmění."
+}

@@ -29,6 +29,6 @@
       "impact": "could_exclude_resale"
     }
   ],
-  "confidence": "high",
+  "confidence": "medium",
   "reasoning": "Parcela 310/1 leží uvnitř Krkonošského národního parku (nature_protection.large_protected_area.type = NP), v nezastavěném území. Podle § 61 zákona 114/1992 Sb. má stát předkupní právo, prodej se musí nejdřív nabídnout jemu, což stropuje výsledek na CONDITIONAL. Les jiný než hospodářský má exitem prodej navazujícímu lesnímu vlastníkovi, případně prodej podílu druhému spoluvlastníkovi, ale mapu (přístup a sousedy) není ověřená."
 }

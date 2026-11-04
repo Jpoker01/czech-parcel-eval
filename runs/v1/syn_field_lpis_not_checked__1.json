@@ -1,0 +1,21 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = orná půda"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "lpis",
+      "impact": "could_exclude_resale"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Kroky 0 až 2 neodhalily žádný bloker ani povinnou nabídku: katastr, ochrana přírody a územní plán jsou zkontrolované a bez nálezu. Jediná možnost dalšího prodeje je pole (orná půda), ale LPIS nebyl otevřen, takže neznáme uživatele a nelze vyloučit, že parcela v LPIS není. Podle kroku 5 proto vychází CONDITIONAL."
+}

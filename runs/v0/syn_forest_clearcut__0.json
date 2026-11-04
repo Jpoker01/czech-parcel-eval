@@ -1,0 +1,16 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": true,
+      "exclusion_reason": "clearcut",
+      "evidence": "map.orthophoto_land_cover = holina"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Základní data jsou úplná a v krocích 1 a 2 se neobjevil žádný bloker ani povinná nabídka. Jediná možnost dalšího prodeje je lesní pozemek sousedovi, ale ortofoto ukazuje holinu, takže ji krok 4 vylučuje. Vlastník je jeden, pozemek není zemědělský, takže `co_owners` ani `field_*` nepřicházejí v úvahu. Zbývající výsledek je NOT_WORTH_IT."
+}

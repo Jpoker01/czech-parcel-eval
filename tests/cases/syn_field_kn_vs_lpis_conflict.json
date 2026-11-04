@@ -1,0 +1,23 @@
+{
+  "description": "Step 3: when KN land_type and LPIS culture disagree, LPIS culture decides the field_* resale type.",
+  "base": "hustopece_u_brna_4813-68",
+  "changes": {
+    "lpis.dpb_items[0].culture": "trvalý travní porost"
+  },
+  "expected": {
+    "decision": "BUY_CANDIDATE",
+    "legal_flags": [],
+    "resale_options": [
+      {
+        "resale_type": "field_grassland",
+        "buyer": "Osoba B",
+        "excluded": false,
+        "exclusion_reason": null,
+        "evidence": "lpis.dpb_items[0].culture = trvalý travní porost"
+      }
+    ],
+    "missing_data": [],
+    "confidence": "high",
+    "reasoning": "Očekávaný výstup syntetického případu."
+  }
+}

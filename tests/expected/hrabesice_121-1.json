@@ -12,5 +12,5 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "LV má dvě zástavní práva (finanční úřad a zdravotní pojišťovna), ta ale podle rozhodovací tabulky převod neblokují, jen snižují hodnotu. Parcela nemá plombu ani exekuci a je ve vlastnictví jediných manželů v SJM. Druh pozemku trvalý travní porost a v LPIS ji obdělává Osoba C, přirozeným kupcem je tento zemědělec. Proto BUY_CANDIDATE."
+  "reasoning": "LV má dvě zástavní práva, ta ale prodej neblokují, jen snižují hodnotu. Parcela je trvalý travní porost s uživatelem v LPIS, který je přirozeným kupcem. AOPK ani územní plán povinnou nabídku neukazují. Proto BUY_CANDIDATE."
 }

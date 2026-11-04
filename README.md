@@ -17,11 +17,14 @@ The model does the first pass over each parcel, so a person only reviews the can
 
 ## Results
 
-To be filled after the v0 baseline run. Each case runs 3 times and the scores are counted per run.
+Each case runs 3 times and the scores are counted per run. Holdout still pending.
 
 | Prompt | Model | Decision | Legal flags | Resale options | Risky missing data | Consistency | Rule violations | BUY_CANDIDATE precision | BUY_CANDIDATE recall |
 |---|---|---|---|---|---|---|---|---|---|
-| v0 | claude-sonnet-5-5 | - | - | - | - | - | - | - | - |
+| v0 | claude-sonnet-5-5 | 81 % | 100 % | 97 % | 70 % | 35/40 unanimous | 0 | 100 % | 23 % |
+| v1 | claude-sonnet-5-5 | 99 % | 100 % | 98 % | 92 % | 39/40 unanimous | 0 | 100 % | 97 % |
+
+v0 → v1: one prompt line rewritten so that `null` in a `checked` source means "verified, empty" rather than "not found". Full rationale in `prompts/iterations.md`.
 
 ## Tech Stack
 
@@ -109,7 +112,7 @@ uv run --env-file .env python run.py --prompt PROMPT --repeats 3
 uv run python evaluate.py --prompt PROMPT
 ```
 
-The report in `runs/PROMPT/report.md` shows per-case match rates (decision, legal flags, resale options, risky missing data), run-to-run consistency, a decision confusion matrix with precision and recall, and every rule violation. Once a prompt version is evaluated, its run folder is committed, so the results cited in `prompts/iterations.md` can be checked. `run.py` refuses to write into a folder that already has results, so use a new prompt version or pass `--force`. The model can be changed with `--model` or `PARCEL_EVAL_MODEL` in `.env`. By default every real and synthetic case runs, `--cases` picks a subset by case ID.
+The report in `runs/PROMPT/report.md` shows per-case match rates (decision, legal flags, resale options, risky missing data), run-to-run consistency, a decision confusion matrix with precision and recall, and every rule violation. Once a prompt version is evaluated, its run folder is committed, so the results cited in `prompts/iterations.md` can be checked. `run.py` refuses to write into a folder that already has results, so use a new prompt version or pass `--force`. The model can be changed with `--model` or `PARCEL_EVAL_MODEL` in `.env`. By default every real and synthetic case runs except the `holdout_*` parcels, which are reserved for one final run with `--include-holdout`; `--cases` picks a subset by case ID. The date sent to the model as "today" is `meta.checked_at` of the case, so the 6-month inheritance rule gives the same answer whenever the run is repeated.
 
 ### CI
 
@@ -138,7 +141,6 @@ uv run python tests/check_expected.py
 * **/input**
   * **schema.json** - Empty input form, one section per source
   * **/examples** - Filled inputs of the real parcels
-  * **/drafts** - Fill-in copies of the input form and the expected output for real parcels not collected yet; not read by `run.py`
 * **/output**
   * **schema.json** - Output JSON schema, passed to the API as the structured output format
 * **/tests**
@@ -155,6 +157,8 @@ uv run python tests/check_expected.py
   * **decision_table.md** - Order of steps, and the source, field and code of every signal the prompt is built from
   * **input_schema.md** - Where each input value is found in the source and which values are allowed
   * **output_schema.md** - Output fields and consistency rules
+  * **adding_test_cases.md** - How a real parcel is collected and turned into a test case
+  * **/images** - Decision flow and evaluation pipeline diagrams
 * **/runs** - Raw model outputs, `meta.json`, and `report.md` for each prompt version
 * **/.github/workflows**
   * **ci.yml** - Lint, format and test-data checks on push and pull request

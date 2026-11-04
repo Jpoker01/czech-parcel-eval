@@ -35,7 +35,7 @@
         "impact": "could_require_offer"
       }
     ],
-    "confidence": "high",
+    "confidence": "medium",
     "reasoning": "Očekávaný výstup syntetického případu."
   }
 }

@@ -1,0 +1,28 @@
+{
+  "description": "Step 3: a class II road gives road_class_2, bought by the region at a higher price than class III.",
+  "base": "syn_road_private_owner",
+  "changes": {
+    "map.adjacent_roads": [
+      {
+        "road_number": "II/293",
+        "road_class": "II. třída"
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BUY_CANDIDATE",
+    "legal_flags": [],
+    "resale_options": [
+      {
+        "resale_type": "road_class_2",
+        "buyer": "Liberecký kraj",
+        "excluded": false,
+        "exclusion_reason": null,
+        "evidence": "map.adjacent_roads[0].road_class = II. třída"
+      }
+    ],
+    "missing_data": [],
+    "confidence": "high",
+    "reasoning": "Očekávaný výstup syntetického případu."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_orchard",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = ovocný sad"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "land_register.building.relation",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "land_register.building.on_different_lv",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 a 1 prošly bez blokerů a krok 2 nenašel žádný flag. Možnost dalšího prodeje je field_orchard pro uživatele z LPIS (Osoba B), parcela je v LPIS, takže se nevylučuje. Vztah ke stavbě v katastru ale nebyl zjištěn (null) a stavba jiného vlastníka by zakládala povinnou nabídku, proto je výsledek nejvýš CONDITIONAL."
+}

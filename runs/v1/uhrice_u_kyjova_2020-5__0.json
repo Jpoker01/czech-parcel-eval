@@ -1,0 +1,16 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": null,
+      "excluded": true,
+      "exclusion_reason": "no_lpis_user",
+      "evidence": "lpis.parcel_in_lpis = false"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Základní data jsou úplná a v katastru není žádný bloker; záznam o dobývacím prostoru není blokerem. Parcela má jediného vlastníka (MND a.s.), takže odpadají spoluvlastníci, a nejde o silnici, stavbu ani les. Jediná možnost dalšího prodeje, zemědělec, je vyloučena, protože parcela není v LPIS a nemá žádného uživatele. Nezkontrolované zdroje (ochrana přírody, územní plán, údaje od prodávajícího) by mohly přidat jen povinnou nabídku, kupce by nevytvořily, proto výsledek NOT_WORTH_IT."
+}

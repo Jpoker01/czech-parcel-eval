@@ -50,7 +50,6 @@
               "alienation_ban",
               "dispute_note",
               "insufficiently_identified_owner",
-              "deceased_spouse_sjm",
               "units_ownership",
               "state_nature_protection_61",
               "building_owner_3056",
@@ -84,6 +83,7 @@
           "resale_type": {
             "type": "string",
             "enum": [
+              "road",
               "road_class_2",
               "road_class_3",
               "local_road",
@@ -149,7 +149,6 @@
           "impact": {
             "type": "string",
             "enum": [
-              "could_block",
               "could_require_offer",
               "could_exclude_resale",
               "could_reduce_value"

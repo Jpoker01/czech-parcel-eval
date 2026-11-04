@@ -1,0 +1,29 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_grassland",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = trvalý travní porost"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "land_register.building.relation",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "land_register.building.on_different_lv",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "zoning.preemption_right_101_holder",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Základní data jsou v pořádku a žádný bloker (plomba, exekuce, insolvence aj.) se nenašel. Podle LPIS je kultura trvalý travní porost, takže kupcem je uživatel Osoba B (field_grassland) a ten není vyloučen. Pole o stavbě na parcele a o předkupním právu obce či kraje nebyla zjištěna a mohla by založit povinnou nabídku, proto je výsledek nejvýš CONDITIONAL (krok 5)."
+}
