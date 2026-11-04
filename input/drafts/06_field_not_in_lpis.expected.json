@@ -1,8 +1,16 @@
 {
-  "decision": null,
+  "decision": "NOT_WORTH_IT",
   "legal_flags": [],
-  "resale_options": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": null,
+      "excluded": true,
+      "exclusion_reason": "no_lpis_user",
+      "evidence": "lpis.parcel_in_lpis = false"
+    }
+  ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": ""
+  "reasoning": "LV je čistý, bez plomby a omezení; zápis dobývacího prostoru je jen informativní. Parcela je orná půda, ale LPIS ji nenajde a žádný zemědělec na ní tedy nehospodaří. Jediná možnost dalšího prodeje field_arable je vyloučená kvůli no_lpis_user. Proto NOT_WORTH_IT."
 }

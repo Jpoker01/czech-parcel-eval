@@ -1,39 +1,72 @@
 {
   "meta": {
-    "case_id": null,
+    "case_id": "knezska_492",
     "notes": null
   },
   "land_register": {
     "status": "checked",
-    "owners_visible": null,
+    "owners_visible": true,
     "notes": null,
     "identification": {
-      "municipality": null,
-      "cadastral_area": null,
-      "parcel_number": null,
-      "lv_number": null
+      "municipality": "Šlapanov",
+      "cadastral_area": "Kněžská",
+      "parcel_number": "492",
+      "lv_number": 317
     },
     "land": {
-      "area_m2": null,
-      "land_type": null,
+      "area_m2": 4325,
+      "land_type": "lesní pozemek",
       "land_use": null
     },
     "building": {
       "relation": null,
       "on_different_lv": null
     },
-    "owners": [],
+    "owners": [
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba A",
+        "share": "1/1",
+        "sjm": false,
+        "insufficiently_identified": false
+      }
+    ],
     "restrictions": [],
     "other_records": [],
-    "seal_present": null
+    "seal_present": false
   },
   "map": {
     "status": "checked",
     "notes": null,
     "adjacent_roads": [],
-    "access_type": null,
-    "orthophoto_land_cover": null,
-    "neighbouring_parcels": []
+    "access_type": "polní cesta",
+    "orthophoto_land_cover": "les",
+    "neighbouring_parcels": [
+      {
+        "number": "302/2",
+        "owner": "Osoba A"
+      },
+      {
+        "number": "401/3",
+        "owner": "Lesy ČR"
+      },
+      {
+        "number": "402",
+        "owner": "Obec Šlapanov"
+      },
+      {
+        "number": "487",
+        "owner": "Osoba B"
+      },
+      {
+        "number": "488",
+        "owner": "Osoba B"
+      },
+      {
+        "number": "531",
+        "owner": "Obec Šlapanov"
+      }
+    ]
   },
   "lpis": {
     "status": "not_checked",
@@ -52,8 +85,8 @@
       "type": null,
       "name": null
     },
-    "parcel_only_partially_inside": null,
-    "cave_related": null
+    "parcel_only_partially_inside": false,
+    "cave_related": false
   },
   "zoning": {
     "status": "checked",

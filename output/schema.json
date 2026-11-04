@@ -90,6 +90,9 @@
               "co_owners",
               "field_arable",
               "field_grassland",
+              "field_vineyard",
+              "field_orchard",
+              "field_hopfield",
               "building_owner",
               "forest"
             ],

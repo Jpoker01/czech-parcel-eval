@@ -1,8 +1,22 @@
 {
-  "decision": null,
-  "legal_flags": [],
-  "resale_options": [],
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "building_owner_3056",
+      "evidence": "land_register.building.relation = Stavba na parcele"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "building_owner",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.building.on_different_lv = true"
+    }
+  ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": ""
+  "reasoning": "LV je čistý, pozemek vlastní statutární město Brno a stojí na něm budova č. p. 1092 s jiným LV. Podle § 3056 NOZ vzniká vzájemné předkupní právo mezi vlastníkem pozemku a vlastníkem stavby, prodej se musí nejdřív nabídnout vlastníkovi stavby. Proto CONDITIONAL."
 }

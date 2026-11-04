@@ -1,8 +1,16 @@
 {
-  "decision": null,
+  "decision": "BUY_CANDIDATE",
   "legal_flags": [],
-  "resale_options": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.neighbouring_parcels[3].owner = Osoba B"
+    }
+  ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": ""
+  "reasoning": "LV je čistý, bez plomby, omezení a jiných zápisů, parcela má jediného vlastníka. Druh pozemku lesní pozemek s porostem a parcela se dotýká polní cesty. Přirozeným kupcem je soused Osoba B, který vlastní dvě sousední parcely. AOPK ani územní plán povinnou nabídku neukazují, proto BUY_CANDIDATE."
 }

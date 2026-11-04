@@ -54,7 +54,11 @@ Pokud je zdroj potřebný pro některé z těchto pravidel `not_checked` (AOPK, 
 | `road_class_2` / `road_class_3` | KN + MAP | `land_register.land.land_use = silnice`; třída z `map.adjacent_roads[].road_class` | kraj dle sídla KÚ |
 | `local_road` | KN | `land_register.land.land_use = ostatní komunikace` | obec z `identification.municipality` |
 | `co_owners` | KN | víc než jeden vlastník v `land_register.owners[]` mimo SJM | ostatní spoluvlastníci |
-| `field_arable` / `field_grassland` | KN + LPIS | `land_register.land.land_type` zemědělský; ornou půdu a TTP rozliší `lpis.dpb_items[].culture` | `lpis.dpb_items[].user_name` |
+| `field_arable` | KN + LPIS | `land_register.land.land_type` zemědělský a `lpis.dpb_items[].culture = standardní orná půda` (nebo sem spadá zbytek: zahrada, úhor, ...) | `lpis.dpb_items[].user_name` |
+| `field_grassland` | KN + LPIS | `lpis.dpb_items[].culture` je trvalý travní porost nebo travní porost | `lpis.dpb_items[].user_name` |
+| `field_vineyard` | KN + LPIS | `lpis.dpb_items[].culture = vinice` | `lpis.dpb_items[].user_name` (vinař) |
+| `field_orchard` | KN + LPIS | `lpis.dpb_items[].culture = ovocný sad` | `lpis.dpb_items[].user_name` (sadař) |
+| `field_hopfield` | KN + LPIS | `lpis.dpb_items[].culture = chmelnice` | `lpis.dpb_items[].user_name` (chmelař) |
 | `building_owner` | KN | stavba jiného vlastníka (`land_register.building.*`) | vlastník stavby |
 | `forest` | KN + MAP | `land_register.land.land_type = lesní pozemek` | soused z `map.neighbouring_parcels[]` nebo `null` |
 

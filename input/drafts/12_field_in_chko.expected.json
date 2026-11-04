@@ -1,8 +1,28 @@
 {
-  "decision": null,
+  "decision": "CONDITIONAL",
   "legal_flags": [],
-  "resale_options": [],
-  "missing_data": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "AGRO - Měřín, a.s.",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = AGRO - Měřín, a.s."
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[0].share = 3/17"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts",
+      "impact": "could_require_offer"
+    }
+  ],
   "confidence": "high",
-  "reasoning": ""
+  "reasoning": "LV je čistý, parcelu drží jedenáct spoluvlastníků. Druh pozemku orná půda a v LPIS ji obdělává AGRO - Měřín, a.s. CHKO Žďárské vrchy není národní park ani NPR/NPP, takže § 61 se neuplatní. Bez údajů od prodávajícího nelze vyloučit povinnou nabídku spoluvlastníkovi, proto CONDITIONAL."
 }

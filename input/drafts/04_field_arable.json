@@ -1,31 +1,39 @@
 {
   "meta": {
-    "case_id": null,
+    "case_id": "hustopece_u_brna_4813-68",
     "notes": null
   },
   "land_register": {
     "status": "checked",
-    "owners_visible": null,
+    "owners_visible": true,
     "notes": null,
     "identification": {
-      "municipality": null,
-      "cadastral_area": null,
-      "parcel_number": null,
-      "lv_number": null
+      "municipality": "Hustopeče",
+      "cadastral_area": "Hustopeče u Brna",
+      "parcel_number": "4813/68",
+      "lv_number": 1430
     },
     "land": {
-      "area_m2": null,
-      "land_type": null,
+      "area_m2": 20200,
+      "land_type": "orná půda",
       "land_use": null
     },
     "building": {
       "relation": null,
       "on_different_lv": null
     },
-    "owners": [],
+    "owners": [
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba A",
+        "share": "1/1",
+        "sjm": false,
+        "insufficiently_identified": false
+      }
+    ],
     "restrictions": [],
     "other_records": [],
-    "seal_present": null
+    "seal_present": false
   },
   "map": {
     "status": "not_checked",
@@ -38,8 +46,13 @@
   "lpis": {
     "status": "checked",
     "notes": null,
-    "parcel_in_lpis": null,
-    "dpb_items": []
+    "parcel_in_lpis": true,
+    "dpb_items": [
+      {
+        "user_name": "Osoba B",
+        "culture": "standardní orná půda"
+      }
+    ]
   },
   "nature_protection": {
     "status": "checked",
@@ -52,12 +65,12 @@
       "type": null,
       "name": null
     },
-    "parcel_only_partially_inside": null,
-    "cave_related": null
+    "parcel_only_partially_inside": false,
+    "cave_related": false
   },
   "zoning": {
     "status": "checked",
-    "notes": null,
+    "notes": "Textová část ÚP Hustopeče (úplné znění po změně č. 7): předkupní právo se nevymezuje.",
     "built_up_status": null,
     "preemption_right_101_holder": null
   },

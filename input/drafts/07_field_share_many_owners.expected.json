@@ -1,8 +1,28 @@
 {
-  "decision": null,
+  "decision": "CONDITIONAL",
   "legal_flags": [],
-  "resale_options": [],
-  "missing_data": [],
+  "resale_options": [
+    {
+      "resale_type": "field_vineyard",
+      "buyer": "Osoba F",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = vinice"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[4].share = 1/2"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts",
+      "impact": "could_require_offer"
+    }
+  ],
   "confidence": "high",
-  "reasoning": ""
+  "reasoning": "LV je čistý, bez plomby a omezení, parcelu drží pět spoluvlastníků. LPIS vede parcelu jako vinici, přirozeným kupcem je vinař z DPB. Zároveň se podíl dá prodat ostatním spoluvlastníkům, bez údajů od prodávajícího ale nelze vyloučit § 1124 NOZ. Proto CONDITIONAL."
 }

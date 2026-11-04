@@ -1,8 +1,16 @@
 {
-  "decision": null,
+  "decision": "BUY_CANDIDATE",
   "legal_flags": [],
-  "resale_options": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = standardní orná půda"
+    }
+  ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": ""
+  "reasoning": "LV je čistý, bez plomby, omezení a jiných zápisů, parcela má jediného vlastníka. Parcela je orná půda a v LPIS ji obdělává uživatel Osoba B s kulturou standardní orná půda, který je přirozeným kupcem. AOPK ani územní plán neukazují povinnou nabídku. Proto BUY_CANDIDATE."
 }

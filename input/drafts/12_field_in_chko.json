@@ -1,31 +1,102 @@
 {
   "meta": {
-    "case_id": null,
+    "case_id": "frysava_556-33",
     "notes": null
   },
   "land_register": {
     "status": "checked",
-    "owners_visible": null,
+    "owners_visible": true,
     "notes": null,
     "identification": {
-      "municipality": null,
-      "cadastral_area": null,
-      "parcel_number": null,
-      "lv_number": null
+      "municipality": "Fryšava pod Žákovou horou",
+      "cadastral_area": "Fryšava pod Žákovou horou",
+      "parcel_number": "556/33",
+      "lv_number": 107
     },
     "land": {
-      "area_m2": null,
-      "land_type": null,
+      "area_m2": 962,
+      "land_type": "orná půda",
       "land_use": null
     },
     "building": {
       "relation": null,
       "on_different_lv": null
     },
-    "owners": [],
+    "owners": [
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "AGRO - Měřín, a.s.",
+        "share": "3/17",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Česká republika",
+        "share": "1/17",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba A; Osoba B",
+        "share": "2/17",
+        "sjm": true,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba C",
+        "share": "1/17",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba D",
+        "share": "1/17",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba E",
+        "share": "2/17",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba F",
+        "share": "2/17",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "NOVOHUMAN Capital Management | Osoba rizikového kapitálu s.r.o.",
+        "share": "1/17",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba G",
+        "share": "2/17",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba H",
+        "share": "2/17",
+        "sjm": false,
+        "insufficiently_identified": false
+      }
+    ],
     "restrictions": [],
     "other_records": [],
-    "seal_present": null
+    "seal_present": false
   },
   "map": {
     "status": "not_checked",
@@ -38,22 +109,27 @@
   "lpis": {
     "status": "checked",
     "notes": null,
-    "parcel_in_lpis": null,
-    "dpb_items": []
+    "parcel_in_lpis": true,
+    "dpb_items": [
+      {
+        "user_name": "AGRO - Měřín, a.s.",
+        "culture": "standardní orná půda"
+      }
+    ]
   },
   "nature_protection": {
     "status": "checked",
     "notes": null,
     "large_protected_area": {
-      "type": null,
-      "name": null
+      "type": "CHKO",
+      "name": "Žďárské vrchy"
     },
     "small_protected_area": {
       "type": null,
       "name": null
     },
-    "parcel_only_partially_inside": null,
-    "cave_related": null
+    "parcel_only_partially_inside": false,
+    "cave_related": false
   },
   "zoning": {
     "status": "checked",

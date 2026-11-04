@@ -1,8 +1,16 @@
 {
-  "decision": null,
+  "decision": "NOT_WORTH_IT",
   "legal_flags": [],
-  "resale_options": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": null,
+      "excluded": true,
+      "exclusion_reason": "no_access",
+      "evidence": "map.access_type = bez viditelného přístupu"
+    }
+  ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": ""
+  "reasoning": "LV je čistý, bez plomby a omezení, jediný manželský pár jako SJM. Parcela je lesní pozemek, ale ze všech čtyř stran ji obklopují jen jiné lesní parcely bez cesty - nemá viditelný přístup. Jediná možnost dalšího prodeje forest je kvůli no_access vyloučená. Proto NOT_WORTH_IT."
 }

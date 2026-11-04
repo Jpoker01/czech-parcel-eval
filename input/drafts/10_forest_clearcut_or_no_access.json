@@ -1,39 +1,64 @@
 {
   "meta": {
-    "case_id": null,
+    "case_id": "frysava_554-8",
     "notes": null
   },
   "land_register": {
     "status": "checked",
-    "owners_visible": null,
+    "owners_visible": true,
     "notes": null,
     "identification": {
-      "municipality": null,
-      "cadastral_area": null,
-      "parcel_number": null,
-      "lv_number": null
+      "municipality": "Fryšava pod Žákovou horou",
+      "cadastral_area": "Fryšava pod Žákovou horou",
+      "parcel_number": "554/8",
+      "lv_number": 132
     },
     "land": {
-      "area_m2": null,
-      "land_type": null,
+      "area_m2": 4554,
+      "land_type": "lesní pozemek",
       "land_use": null
     },
     "building": {
       "relation": null,
       "on_different_lv": null
     },
-    "owners": [],
+    "owners": [
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba A; Osoba B",
+        "share": "1/1",
+        "sjm": true,
+        "insufficiently_identified": false
+      }
+    ],
     "restrictions": [],
     "other_records": [],
-    "seal_present": null
+    "seal_present": false
   },
   "map": {
     "status": "checked",
     "notes": null,
     "adjacent_roads": [],
-    "access_type": null,
-    "orthophoto_land_cover": null,
-    "neighbouring_parcels": []
+    "access_type": "bez viditelného přístupu",
+    "orthophoto_land_cover": "les",
+    "neighbouring_parcels": [
+      {
+        "number": "554/19",
+        "owner": "Lesy ČR"
+      },
+      {
+        "number": "556/31",
+        "owner": "Osoba C"
+      },
+      {
+        "number": "556/33",
+        "owner": "AGRO - Měřín, a.s."
+      },
+      {
+        "number": "2109",
+        "owner": "Lesy ČR"
+      }
+    ]
   },
   "lpis": {
     "status": "not_checked",

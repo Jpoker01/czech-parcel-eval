@@ -1,31 +1,43 @@
 {
   "meta": {
-    "case_id": null,
+    "case_id": "slatina_2952-5",
     "notes": null
   },
   "land_register": {
     "status": "checked",
-    "owners_visible": null,
+    "owners_visible": true,
     "notes": null,
     "identification": {
-      "municipality": null,
-      "cadastral_area": null,
-      "parcel_number": null,
-      "lv_number": null
+      "municipality": "Brno",
+      "cadastral_area": "Slatina",
+      "parcel_number": "2952/5",
+      "lv_number": 10001
     },
     "land": {
-      "area_m2": null,
-      "land_type": null,
+      "area_m2": 1202,
+      "land_type": "zastavěná plocha a nádvoří",
       "land_use": null
     },
     "building": {
-      "relation": null,
-      "on_different_lv": null
+      "relation": "Stavba na parcele",
+      "on_different_lv": true
     },
-    "owners": [],
+    "owners": [
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Statutární město Brno",
+        "share": "1/1",
+        "sjm": false,
+        "insufficiently_identified": false
+      }
+    ],
     "restrictions": [],
-    "other_records": [],
-    "seal_present": null
+    "other_records": [
+      {
+        "type": "Změna výměr obnovou operátu"
+      }
+    ],
+    "seal_present": false
   },
   "map": {
     "status": "checked",

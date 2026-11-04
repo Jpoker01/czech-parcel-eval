@@ -1,31 +1,43 @@
 {
   "meta": {
-    "case_id": null,
+    "case_id": "uhrice_u_kyjova_2020-5",
     "notes": null
   },
   "land_register": {
     "status": "checked",
-    "owners_visible": null,
+    "owners_visible": true,
     "notes": null,
     "identification": {
-      "municipality": null,
-      "cadastral_area": null,
-      "parcel_number": null,
-      "lv_number": null
+      "municipality": "Uhřice",
+      "cadastral_area": "Uhřice u Kyjova",
+      "parcel_number": "2020/5",
+      "lv_number": 1182
     },
     "land": {
-      "area_m2": null,
-      "land_type": null,
+      "area_m2": 1055,
+      "land_type": "orná půda",
       "land_use": null
     },
     "building": {
       "relation": null,
       "on_different_lv": null
     },
-    "owners": [],
+    "owners": [
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "MND a.s.",
+        "share": "1/1",
+        "sjm": false,
+        "insufficiently_identified": false
+      }
+    ],
     "restrictions": [],
-    "other_records": [],
-    "seal_present": null
+    "other_records": [
+      {
+        "type": "Pozemek se nachází v dobývacím prostoru"
+      }
+    ],
+    "seal_present": false
   },
   "map": {
     "status": "checked",
@@ -38,7 +50,7 @@
   "lpis": {
     "status": "checked",
     "notes": null,
-    "parcel_in_lpis": null,
+    "parcel_in_lpis": false,
     "dpb_items": []
   },
   "nature_protection": {
@@ -52,8 +64,8 @@
       "type": null,
       "name": null
     },
-    "parcel_only_partially_inside": null,
-    "cave_related": null
+    "parcel_only_partially_inside": false,
+    "cave_related": false
   },
   "zoning": {
     "status": "not_checked",
