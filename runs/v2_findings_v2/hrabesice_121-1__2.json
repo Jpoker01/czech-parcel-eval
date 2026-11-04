@@ -1,0 +1,30 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_grassland",
+      "buyer": "Osoba C",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = trvalý travní porost"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "V krocích 0 a 1 nebyl nalezen žádný bloker: zástavní práva ze správního rozhodnutí a od zdravotní pojišťovny nejsou exekuce ani insolvence. Krok 2 nenašel žádnou povinnou nabídku ani souhlas a SJM je jedna položka, takže § 1124 se neřeší. Parcela je v LPIS s uživatelem Osoba C, takže existuje nevyloučený kupec pro travní porost, a výsledkem je BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Na parcele vázne zástavní právo z rozhodnutí správního orgánu a zástavní právo z rozhodnutí zdravotní pojišťovny (land_register.restrictions), které ukazují na dluhy vlastníků a mohou vést k pozdější exekuci či dražbě."
+    },
+    {
+      "type": "risk",
+      "description": "V Jiných zápisech jsou závazky neumožnit zápis nového zástavního práva namísto starého a nezajistit nový dluh ve výhodnějším pořadí (land_register.other_records), což může omezit nakládání s parcelou a je třeba ověřit jejich dopad na převod."
+    },
+    {
+      "type": "opportunity",
+      "description": "Parcela má velkou výměru 13687 m² (land_register.land.area_m2) a je veden uživatel v LPIS (lpis.dpb_items[0].user_name), což usnadňuje prodej zemědělci."
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_hopfield",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = chmelnice"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Základní data jsou úplná a v krocích 1 a 2 se neobjevil žádný bloker ani povinná nabídka. Jediný vlastník, žádná stavba, žádné omezení a žádná ochrana přírody. Parcela je v LPIS jako chmelnice a uživatel Osoba B je potvrzený kupec (field_hopfield), takže krok 7 dává BUY_CANDIDATE.",
+  "other_findings": []
+}

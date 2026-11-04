@@ -2,7 +2,7 @@
 
 Usage:
     uv run python evaluate.py --prompt v0
-    uv run python evaluate.py --prompt v1-findings   # run made with run.py --other-findings
+    uv run python evaluate.py --prompt v1_findings_v2   # run made with run.py --other-findings v2
 """
 
 import argparse
@@ -39,7 +39,8 @@ def format_metadata(metadata: dict | None) -> list[str]:
         return ["- Metadata: not recorded (the run has no meta.json)"]
 
     # Runs made before the flag existed have no key and ran without other_findings
-    other_findings = "on" if metadata.get("other_findings") else "off"
+    addon_version = metadata.get("other_findings")
+    other_findings = f"add-on {addon_version}" if addon_version else "off"
     return [
         f"- Model: {metadata['model']}",
         f"- Prompt: {metadata['prompt_version']} (sha256 {metadata['prompt_sha256']})",

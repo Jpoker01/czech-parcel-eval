@@ -1,0 +1,14 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 a krok 1 prošly bez blokerů, parcela má jediného vlastníka (MND a.s.) a nejsou zapsána žádná omezení. V kroku 3 nevznikla žádná možnost dalšího prodeje: nejde o silnici ani komunikaci, není tu žádná stavba, spoluvlastníci neexistují a parcela není v LPIS, takže chybí zemědělský uživatel jako kupec. Neotevřená data o ochraně přírody, územním plánu a prodávajícím tento výsledek nemohou změnit.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Pozemek se nachází v dobývacím prostoru (land_register.other_records[0].type), což může omezovat jeho využití a budoucí zájem kupců."
+    }
+  ]
+}

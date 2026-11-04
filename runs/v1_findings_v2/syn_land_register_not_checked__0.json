@@ -1,0 +1,9 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0: katastr nemovitostí (land_register.status) není zkontrolován, chybí typ pozemku i výměra a seznam vlastníků je prázdný. Bez těchto základních údajů nelze parcelu hodnotit, proto hodnocení končí výsledkem INSUFFICIENT_DATA.",
+  "other_findings": []
+}

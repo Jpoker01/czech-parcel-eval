@@ -1,0 +1,20 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "alienation_ban",
+      "evidence": "land_register.restrictions[0].type = Zákaz zcizení a zatížení"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 rozhodl: v Omezeních je zapsán „Zákaz zcizení a zatížení“, který je blokerem a hodnocení tím končí. Možnosti dalšího prodeje se u blokované parcely nevypisují.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Seller_facts nebyl zkontrolován (seller_facts.status = not_checked), takže není známo, zda vlastník či okolnosti zákazu zcizení neumožňují jeho zrušení, o verdiktu by ale musel rozhodnout člověk."
+    }
+  ]
+}

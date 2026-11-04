@@ -1,0 +1,30 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "insufficiently_identified_owner",
+      "evidence": "land_register.owners[0].insufficiently_identified = true"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "field_vineyard",
+      "buyer": "Osoba F",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = vinice"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": "ostatní spoluvlastníci",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[4].share = 1/2"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 rozhodl: jeden ze spoluvlastníků (owners[0]) je v katastru nedostatečně určený, což je bloker bez ohledu na ostatní kroky. Hodnocení tedy končí výsledkem BLOCKED, i když by existovaly možnosti dalšího prodeje (vinař z LPIS a spoluvlastníci).",
+  "other_findings": []
+}

@@ -1,0 +1,24 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "execution",
+      "evidence": "land_register.other_records[1].type = Exekuční příkaz k prodeji nemovitosti"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 prošel, základní data jsou kompletní. V kroku 1 je v Jiných zápisech exekuční příkaz k prodeji nemovitosti a zahájení exekuce u jediného vlastníka, což je bloker, takže hodnocení končí výsledkem BLOCKED.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "V Jiných zápisech je také Dražební vyhláška (land_register.other_records[0].type), která potvrzuje probíhající nucený prodej."
+    },
+    {
+      "type": "risk",
+      "description": "Na parcele vázne zástavní právo z rozhodnutí správního orgánu (land_register.restrictions[0].type), které by přešlo na nabyvatele."
+    }
+  ]
+}

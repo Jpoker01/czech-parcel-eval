@@ -1,0 +1,20 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "alienation_ban",
+      "evidence": "land_register.restrictions[0].type = Zákaz zcizení a zatížení"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 rozhodl: v Omezeních je zapsán „Zákaz zcizení a zatížení“, což je bloker alienation_ban. Hodnocení tím končí a možnosti dalšího prodeje se nevypisují.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela je silnice III. třídy (map.adjacent_roads[0].road_number = III/29317), ale seller_facts je nezkontrolován (seller_facts.status = not_checked), takže není znám původ zákazu zcizení ani možnost jeho zrušení."
+    }
+  ]
+}

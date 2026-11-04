@@ -1,0 +1,22 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": null,
+      "excluded": true,
+      "exclusion_reason": "no_lpis_user",
+      "evidence": "lpis.parcel_in_lpis = false"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Základní data jsou úplná a žádný bloker z kroku 1 se nevyskytuje. Parcela má jediného vlastníka, takže odpadá prodej spoluvlastníkům, a nemá silniční ani lesní využití ani stavbu. Jediná možnost, prodej zemědělci jako orná půda, je vyloučena, protože parcela není v LPIS a nemá žádného uživatele, takže žádný kupec nezbývá.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Pozemek leží v dobývacím prostoru (land_register.other_records[0].type), což může omezovat využití a ještě zúžit okruh možných kupců."
+    }
+  ]
+}

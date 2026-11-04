@@ -1,0 +1,52 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "state_nature_protection_61",
+      "evidence": "nature_protection.large_protected_area.type = NP"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].share = 1/6"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = lesní pozemek"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "map.orthophoto_land_cover",
+      "impact": "could_exclude_resale"
+    },
+    {
+      "field": "map.access_type",
+      "impact": "could_exclude_resale"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Žádný bloker v kroku 1 nenalezen. Parcela leží v národním parku mimo zastavěné území, takže vzniká povinná nabídka státu (§ 61), a proto nelze vydat BUY_CANDIDATE. Možnosti dalšího prodeje jsou spoluvlastníci a les (soused neznámý, mapa neotevřena), přičemž kontrola holiny a přístupu i data od prodávajícího chybí.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Způsob využití je „les jiný než hospodářský“ (land_register.land.land_use), což může znamenat omezené hospodaření a nižší zájem kupců."
+    },
+    {
+      "type": "risk",
+      "description": "Podíly jsou 5/6 a 1/6 (land_register.owners[].share), při koupi menšinového podílu hrozí omezené možnosti rozhodování o parcele."
+    }
+  ]
+}

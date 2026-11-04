@@ -1,0 +1,45 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "building_owner_3056",
+      "evidence": "land_register.building.relation = Stavba na parcele"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "building_owner",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.building.on_different_lv = true"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "nature_protection.large_protected_area.type",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "zoning.built_up_status",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "zoning.preemption_right_101_holder",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Základní data jsou úplná a žádný bloker v kroku 1 nebyl nalezen. Na parcele je stavba jiného vlastníka na jiném LV, takže vzniká povinná nabídka podle § 3056 a jediným kupcem je vlastník stavby, který není ve vstupu jmenován. Zdroje nature_protection a zoning nebyly otevřeny a mohly by založit další povinnou nabídku (§ 61, § 101), proto je výsledek nejvýše CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela je ve vlastnictví Statutárního města Brna (land_register.owners[0].name), takže je třeba ověřit, zda a za jakých podmínek může obec nemovitost zcizit."
+    },
+    {
+      "type": "risk",
+      "description": "V jiných zápisech je poznamenána změna výměr obnovou operátu (land_register.other_records[0].type), takže se výměra parcely může lišit od uvedené."
+    }
+  ]
+}

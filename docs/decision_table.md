@@ -41,7 +41,7 @@ Bloker platí pro kteréhokoli vlastníka parcely, ne jen pro prodávajícího. 
 | `building_owner_3056` | offer | KN | `land_register.building.relation = Stavba na parcele` nebo `on_different_lv = true` (§ 3056 NOZ) | vlastník stavby |
 | `registered_preemption` | offer | KN | `land_register.restrictions[].type` obsahuje "Předkupní právo" | oprávněný z LV |
 | `municipality_or_region_101` | offer | ZONING | `zoning.preemption_right_101_holder != null` (starý § 101 stavebního zákona) | obec / kraj |
-| `co_owners_inheritance_1124` | offer | SELLER | `seller_facts.inheritance_date` mladší než 6 měsíců k datu `meta.checked_at` a víc než jeden vlastník (§ 1124 NOZ) | ostatní spoluvlastníci |
+| `co_owners_inheritance_1124` | offer | SELLER | `seller_facts.inheritance_date` mladší než 6 měsíců k datu `meta.checked_at` a víc než jedna položka v `land_register.owners[]`, SJM je jedna položka (§ 1124 NOZ) | ostatní spoluvlastníci |
 | `land_consolidation` | consent | KN | `land_register.other_records[].type` obsahuje "pozemkové úpravy" | pozemkový úřad |
 
 Pokud je zdroj potřebný pro některé z těchto pravidel `not_checked` (AOPK, územní plán, seller_facts), jde do `missing_data` s `could_require_offer`.

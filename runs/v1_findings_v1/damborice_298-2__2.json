@@ -1,0 +1,22 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_grassland",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = trvalý travní porost"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 prošel, krok 1 nenašel žádný bloker (plomba, exekuce ani insolvence, jediný vlastník je dostatečně identifikován). Krok 2 nenašel žádnou povinnou nabídku ani souhlas. Parcela je v LPIS a uživatel Osoba B ji obhospodařuje jako trvalý travní porost, takže je reálný kupec pro field_grassland a nic ho nevylučuje.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "V Jiných zápisech je uvedena „Změna číslování parcel“ (land_register.other_records[0].type), což může ztížit dohledání historických listin k parcele."
+    }
+  ]
+}

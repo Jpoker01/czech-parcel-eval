@@ -1,0 +1,14 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 a krok 1 prošly bez blokeru, krok 2 žádný flag nenašel. V kroku 3 se nenašla žádná možnost dalšího prodeje: parcela má jediného vlastníka, není to silnice ani les, nestojí na ní cizí stavba a v LPIS není (parcel_in_lpis = false, žádný uživatel). Parcelu proto nemá komu přeprodat, takže výsledek je NOT_WORTH_IT. Nezkontrolované zdroje nic nemění, protože by neotevřely žádného kupce.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Pozemek se nachází v dobývacím prostoru (land_register.other_records[0].type), což může omezovat jeho využití a budoucí prodejnost."
+    }
+  ]
+}

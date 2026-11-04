@@ -1,0 +1,45 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "building_owner_3056",
+      "evidence": "land_register.building.relation = Stavba na parcele"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "building_owner",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.building.on_different_lv = true"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "nature_protection",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "zoning.built_up_status",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "zoning.preemption_right_101_holder",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 a 1 prošly bez blokerů. Stavba na parcele jiného vlastníka (jiné LV) zakládá povinnou nabídku podle § 3056, takže výsledek nemůže být BUY_CANDIDATE. Jediná možnost dalšího prodeje je vlastník stavby, který ve vstupu není jmenován. Zdroje nature_protection a zoning nebyly zkontrolovány a mohly by přidat další povinnou nabídku.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Vlastníkem parcely je Statutární město Brno (land_register.owners[0].name), takže je nejisté, zda a za jakých podmínek by k převodu vůbec přistoupilo."
+    },
+    {
+      "type": "risk",
+      "description": "V katastru je zapsána Změna výměr obnovou operátu (land_register.other_records[0].type), takže výměra parcely se může lišit od uvedených 1202 m2."
+    }
+  ]
+}

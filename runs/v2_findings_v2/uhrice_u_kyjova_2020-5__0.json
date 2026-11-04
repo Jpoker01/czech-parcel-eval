@@ -1,0 +1,22 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": null,
+      "excluded": true,
+      "exclusion_reason": "no_lpis_user",
+      "evidence": "lpis.parcel_in_lpis = false"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 a 1 prošly bez blokerů a jediný vlastník není kraj, obec ani stát. Parcela je orná půda, ale v LPIS není evidována (žádný uživatel), takže jediná možnost dalšího prodeje (zemědělec) je vyloučená v kroku 4. Nezbývá žádný nevyloučený kupec, proto NOT_WORTH_IT.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Pozemek se nachází v dobývacím prostoru (land_register.other_records[0].type) a vlastníkem je těžební společnost MND a.s. (land_register.owners[0].name), což může omezit využití i prodejnost parcely."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "insufficiently_identified_owner",
+      "evidence": "land_register.owners[0].insufficiently_identified = true"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 prošel, základní data jsou úplná. Krok 1 rozhodl: vlastník Osoba A je v katastru nedostatečně určen (insufficiently_identified = true), což je bloker, a hodnocení tím končí.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela má pět spoluvlastníků s drobnými podíly (land_register.owners), takže případný prodej podílu by byl složitý i po vyřešení blokeru."
+    },
+    {
+      "type": "opportunity",
+      "description": "Vinici užívá Osoba F v LPIS (lpis.dpb_items[0].user_name), což by po odpadnutí blokeru mohlo být potenciální kupecký kontakt."
+    }
+  ]
+}

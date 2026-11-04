@@ -1,0 +1,15 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "insolvency",
+      "evidence": "land_register.restrictions[0].type = Zahájení insolvenčního řízení"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1: v Omezeních je zapsáno zahájení insolvenčního řízení, což je bloker a hodnocení tím končí. Další kroky se neprovádějí a možnosti dalšího prodeje se nevypisují.",
+  "other_findings": []
+}

@@ -1,0 +1,38 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": "ostatní spoluvlastníci",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[0].name = Osoba A"
+    },
+    {
+      "resale_type": "field_vineyard",
+      "buyer": "Osoba F",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = Osoba F"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 a 1 neodhalily žádný bloker ani chybějící základní data a krok 2 nenašel žádnou povinnou nabídku ani souhlas. Možnosti dalšího prodeje jsou spoluvlastníci a vinař z LPIS (Osoba F), žádná není vyloučena. Parcela má pět vlastníků a seller_facts nebyl zkontrolován, takže nelze vyloučit povinnou nabídku spoluvlastníkům podle § 1124, a proto podle kroku 5 je výsledek CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela je silně rozdrobená mezi pět spoluvlastníků (land_register.owners), takže koupě podílu může vést k soudnímu zrušení spoluvlastnictví nebo složitému vypořádání."
+    },
+    {
+      "type": "opportunity",
+      "description": "Vinici užívá evidovaný vinař Osoba F, který není uveden mezi vlastníky (lpis.dpb_items[0].user_name), a může tak mít zájem o odkup podílu."
+    }
+  ]
+}

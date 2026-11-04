@@ -1,0 +1,26 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_grassland",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = trvalý travní porost"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 až 1: základní data jsou úplná a žádný bloker se nevyskytuje, protože zápis „Změna číslování parcel“ není bloker. Krok 2 nenašel žádnou povinnou nabídku ani souhlas, protože je jediný vlastník, stavba ani omezení nejsou a ochrana přírody i územní plán jsou zkontrolované. Krok 3 až 4: parcela je v LPIS, takže má nevyloučenou možnost dalšího prodeje jako travní porost se jmenovaným uživatelem, a výsledek je BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Uživatel v LPIS (lpis.dpb_items[0].user_name = Osoba B) je jiný než vlastník (land_register.owners[0].name = AGRO D.U., s.r.o.), což může znamenat pachtovní vztah, jehož podmínky nejsou známé."
+    },
+    {
+      "type": "opportunity",
+      "description": "Uživatel v LPIS už parcelu hospodářsky využívá jako trvalý travní porost (lpis.dpb_items[0].culture), takže je pravděpodobným zájemcem o odkup."
+    }
+  ]
+}

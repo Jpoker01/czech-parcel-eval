@@ -1,0 +1,9 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0: zdroj land_register má status not_checked, chybí land_type i area_m2 a seznam vlastníků je prázdný, proto nelze parcelu hodnotit. Hodnocení končí a ostatní zdroje se nevyhodnocují.",
+  "other_findings": []
+}

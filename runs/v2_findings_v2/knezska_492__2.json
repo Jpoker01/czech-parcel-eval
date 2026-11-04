@@ -1,0 +1,17 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = lesní pozemek"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 až 2 neodhalily žádný bloker ani povinnou nabídku či souhlas, parcela má jediného vlastníka a ochrana přírody i územní plán jsou zkontrolované. Jde o lesní pozemek s možným prodejem sousedovi, který není vyloučen (les, přístup po polní cestě). Žádná chybějící data výsledek nemění, proto BUY_CANDIDATE.",
+  "other_findings": []
+}

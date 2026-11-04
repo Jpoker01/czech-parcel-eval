@@ -1,0 +1,22 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": "Liberecký kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "V krocích 0 až 2 nebyl nalezen žádný bloker, povinná nabídka ani souhlas a základní data jsou úplná. Parcela je silnice (land_use) sousedící se silnicí III. třídy, takže ji lze dále prodat kraji. Vlastníkem je soukromá osoba, proto se možnost neruší, a chybějící LPIS ani seller_facts výsledek nemění, protože jde o jediného vlastníka a silnici.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Ortofoto potvrzuje, že parcela je skutečně silnice (map.orthophoto_land_cover = silnice) a má přímý přístup (map.access_type = silnice), což podporuje prodej kraji."
+    }
+  ]
+}

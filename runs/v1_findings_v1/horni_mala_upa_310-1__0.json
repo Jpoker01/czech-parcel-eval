@@ -1,0 +1,52 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "state_nature_protection_61",
+      "evidence": "nature_protection.large_protected_area.type = NP"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Osoba B"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = lesní pozemek"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "map.orthophoto_land_cover",
+      "impact": "could_exclude_resale"
+    },
+    {
+      "field": "map.access_type",
+      "impact": "could_exclude_resale"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Žádný bloker nenalezen (krok 1). Parcela leží v NP a v nezastavěném území, vzniká tedy nabídka státu podle § 61, takže výsledek nemůže být BUY_CANDIDATE. Navíc chybí data o dědictví (seller_facts) a mapa (holina, přístup), která by mohla vyžadovat nabídku spoluvlastníkům nebo vyloučit prodej lesa, a žádný kupec není jmenovitě znám.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela je lesní pozemek s využitím „les jiný než hospodářský“ (land_register.land.land_use), což může znamenat zvláštní režim lesa omezující využití."
+    },
+    {
+      "type": "risk",
+      "description": "Parcela má dva spoluvlastníky s podíly 5/6 a 1/6 (land_register.owners[].share), takže koupě menšinového podílu 1/6 by dávala omezenou rozhodovací pravomoc."
+    }
+  ]
+}

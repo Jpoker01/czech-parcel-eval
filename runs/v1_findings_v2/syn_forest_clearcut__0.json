@@ -1,0 +1,26 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Osoba B",
+      "excluded": true,
+      "exclusion_reason": "clearcut",
+      "evidence": "map.orthophoto_land_cover = holina"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 a 1 prošly bez blokerů a krok 2 nenašel žádnou povinnou nabídku ani souhlas. V kroku 3 je jedinou možností dalšího prodeje lesní pozemek sousedovi. V kroku 4 ji vylučuje holina na ortofotu, takže všechny možnosti jsou vyloučené a výsledek je NOT_WORTH_IT.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela je podle ortofota holina (map.orthophoto_land_cover), takže na vlastníkovi může ležet povinnost obnovy lesa a související náklady."
+    },
+    {
+      "type": "opportunity",
+      "description": "Vlastník prodávané parcely (Osoba A) vlastní i sousední parcelu 302/2 (map.neighbouring_parcels[0].owner), takže spojení pozemků je možné jen v rámci jeho vlastnictví."
+    }
+  ]
+}

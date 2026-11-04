@@ -37,7 +37,7 @@ Python po každém běhu ověří, že si výstup sám neodporuje. Výstup přit
 
 ## Volitelné pole `other_findings`
 
-Enumy pokrývají jen to, co umím předem definovat, a seznam rizik a příležitostí není úplný. `run.py --other-findings` proto ke schématu přidá povinné pole `other_findings[]` (`type` risk / opportunity, `description` jedna věta česky s polem vstupu) a k promptu doplněk `prompts/addons/other_findings.md`. Základní `output/schema.json`, verze promptů ani očekávané výstupy se nemění, běh se uloží do `runs/<verze>-findings/`.
+Enumy pokrývají jen to, co umím předem definovat, a seznam rizik a příležitostí není úplný. `run.py --other-findings v2` proto ke schématu přidá povinné pole `other_findings[]` (`type` risk / opportunity, `description` jedna věta česky s polem vstupu) a k promptu doplněk `prompts/addons/other_findings_v2.md`. Doplněk se verzuje stejně jako prompt. Základní `output/schema.json`, verze promptů ani očekávané výstupy se nemění, běh se uloží do `runs/<prompt>_findings_<doplněk>/`, např. `runs/v1_findings_v2/`.
 
 - **Nemění verdikt.** `decision`, `legal_flags`, `resale_options`, `missing_data` a `confidence` se dál řídí jen kroky 0 až 7. Metriky tak zůstávají deterministické a nález bez kategorie nesníží skóre.
 - **Nehodnotí se.** Eval ho nesrovnává s očekávaným výstupem a pravidla konzistence ho nečtou. Kontroluje se jen tvar podle schématu.

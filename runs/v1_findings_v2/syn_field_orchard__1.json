@@ -1,0 +1,17 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_orchard",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = ovocný sad"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 až 2 neodhalily žádný bloker, nabídku ani souhlas: parcela má jediného vlastníka, bez omezení a plomby, a ochrana přírody i územní plán jsou zkontrolované bez nálezu. Krok 3 našel kupce pro ovocný sad (Osoba B jako uživatel v LPIS), kterého krok 4 nevyloučil, protože parcela v LPIS je. Nekontrolovaná mapa a údaje od prodávajícího výsledek nemění, proto krok 7 vrací BUY_CANDIDATE.",
+  "other_findings": []
+}

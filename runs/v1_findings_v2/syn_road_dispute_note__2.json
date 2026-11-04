@@ -1,0 +1,15 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "dispute_note",
+      "evidence": "land_register.other_records[0].type = Poznámka spornosti zápisu"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 rozhodl: v Jiných zápisech je vyznačena Poznámka spornosti zápisu, která odpovídá blokeru dispute_note. Hodnocení tím končí výsledkem BLOCKED a možnosti dalšího prodeje se nevypisují.",
+  "other_findings": []
+}

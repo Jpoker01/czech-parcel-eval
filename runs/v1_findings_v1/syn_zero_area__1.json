@@ -1,0 +1,9 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Hodnocení skončilo už v kroku 0, protože výměra parcely je nulová (land_register.land.area_m2 = 0), což je neplatný základní údaj. Další kroky se proto neprováděly. Je nutné ověřit skutečnou výměru v katastru.",
+  "other_findings": []
+}

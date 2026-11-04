@@ -1,0 +1,32 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "registered_preemption",
+      "evidence": "land_register.restrictions[0].type = Předkupní právo"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": "Liberecký kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 a 1 prošly bez blokerů, na parcele je ale zapsané předkupní právo (krok 2), které zakládá povinnou nabídku. Parcela je silnice sousedící se silnicí III. třídy, takže ji lze dále prodat kraji, a vlastník není kraj ani stát, takže možnost nevylučuje krok 4. Kvůli nabídce předkupnímu oprávněnému je výsledek nejvýš CONDITIONAL (krok 6).",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Ve vstupu není uveden oprávněný z předkupního práva ani jeho rozsah (land_register.restrictions[0].type), proto není jasné, komu je nutné parcelu nabídnout."
+    },
+    {
+      "type": "opportunity",
+      "description": "Parcela je zcela využita jako silnice (map.orthophoto_land_cover = silnice) a přímo navazuje na silnici III/29317, což podporuje zájem kraje o výkup."
+    }
+  ]
+}

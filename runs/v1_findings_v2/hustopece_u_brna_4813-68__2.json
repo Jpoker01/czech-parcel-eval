@@ -1,0 +1,26 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = Osoba B"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Základní data jsou úplná (krok 0) a v katastru není žádný bloker (krok 1). Krok 2 nenašel žádnou povinnou nabídku ani souhlas: ochrana přírody, územní plán, stavba i omezení jsou zkontrolované a prázdné, vlastník je jediný, takže § 1124 neplatí. Jediný kupec, uživatel LPIS Osoba B (orná půda), není vyloučen a je jmenovitě uveden. Nezkontrolovaná mapa ani údaje od prodávajícího výsledek nemění, proto BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Uživatel v LPIS (lpis.dpb_items[0].user_name = Osoba B) je jiná osoba než vlastník (land_register.owners[0].name = Osoba A), parcela tak může být pronajatá a nájemní vztah není ve vstupu doložen."
+    },
+    {
+      "type": "opportunity",
+      "description": "Parcela má velkou výměru (land_register.land.area_m2 = 20200) a je veden jediný zemědělský uživatel, což může usnadnit prodej celku."
+    }
+  ]
+}

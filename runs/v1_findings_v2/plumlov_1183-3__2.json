@@ -1,0 +1,38 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "local_road",
+      "buyer": "Plumlov",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_use = ostatní komunikace"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Osoba B"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 a 1 prošly, bez blokerů a bez nabídkových flagů z katastru, ochrany přírody či územního plánu. Možným kupcem je obec Plumlov (místní komunikace), které vlastníci Osoba A a Osoba B nejsou vyloučeni. Zdroj seller_facts není zkontrolován a při dvou vlastnících by čerstvé dědictví mohlo založit povinnou nabídku spoluvlastníkům, proto je výsledek CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela je vedena jako ostatní komunikace, ale ortofoto ukazuje louku (map.orthophoto_land_cover) a přístup je jen po polní cestě (map.access_type), skutečný stav komunikace tedy může obec jako kupce činit méně zájemnou."
+    },
+    {
+      "type": "opportunity",
+      "description": "Ortofoto ukazuje louku (map.orthophoto_land_cover), takže po otevření LPIS by se mohl objevit zemědělský uživatel, i když druh pozemku (land_register.land.land_type) je ostatní plocha."
+    }
+  ]
+}

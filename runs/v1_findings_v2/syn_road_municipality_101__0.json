@@ -1,0 +1,23 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "municipality_or_region_101",
+      "evidence": "zoning.preemption_right_101_holder = obec"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": "Liberecký kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 a 1 prošly bez blokerů, parcela má jediného vlastníka (Osoba A) a žádné plomby ani omezení. Krok 2 našel předkupní právo obce podle § 101 (zoning.preemption_right_101_holder), proto je maximem CONDITIONAL. Parcela je silnice III. třídy a kraj je nevyloučený kupec, vlastníkem není veřejný subjekt, takže další prodej je možný až po nabídce obci.",
+  "other_findings": []
+}

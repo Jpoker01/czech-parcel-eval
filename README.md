@@ -63,7 +63,7 @@ v0 → v1: one prompt line rewritten so that `null` in a `checked` source means 
 - **No prices in the model** - the model only names the resale option (`road_class_3`, `field_vineyard`, `building_owner` etc.) and never estimates a price, since a price from the model's memory would be invented. Specialty cultures (vineyard, orchard, hopfield) have their own resale types, because the buyer, the price per m² and the market are different from arable land.
 - **Value-lowering factors are left out** - mortgages, leases or a flood zone do not change the verdict, and the person checking a candidate sees them on the LV anyway.
 - **Manual input** - Nahlížení do KN shows owners only after login and does not allow automated scraping. Bulk use would need the paid land register web services (WSDP) and WMS/WFS layers for LPIS and AOPK.
-- **The taxonomy is not complete, and the project has a way to extend it** - with `run.py --other-findings` the model also lists every risk or opportunity that no enum covers (`other_findings`, e.g. an easement of unknown scope). These findings never change the verdict and are never scored, so the metrics stay deterministic and a correct observation outside the categories is not counted as a failure. The report lists them by case and marks the cases where the decision missed, because a finding there may point to a missing code rather than a model error. Findings that repeat become new codes in the decision table, the prompt and the expected outputs.
+- **The taxonomy is not complete, and the project has a way to extend it** - with `run.py --other-findings v2` the model also lists every risk or opportunity that no enum covers (`other_findings`, e.g. an easement of unknown scope). These findings never change the verdict and are never scored, so the metrics stay deterministic and a correct observation outside the categories is not counted as a failure. The report lists them by case and marks the cases where the decision missed, because a finding there may point to a missing code rather than a model error. Findings that repeat become new codes in the decision table, the prompt and the expected outputs.
 - **Known blind spots** - statutory pre-emption rights are not always visible in the land register, and consent with public use of a road (Constitutional Court I. ÚS 2541/25) cannot be detected from any source. Facts only the seller knows go to `seller_facts`.
 
 ## Quickstart guide
@@ -112,9 +112,9 @@ The `syn_*` cases in `tests/cases/` take a real parcel or another synthetic case
 uv run --env-file .env python run.py --prompt PROMPT --repeats 3
 uv run python evaluate.py --prompt PROMPT
 
-# optional: also collect other_findings, saved to runs/PROMPT-findings/
-uv run --env-file .env python run.py --prompt PROMPT --repeats 3 --other-findings
-uv run python evaluate.py --prompt PROMPT-findings
+# optional: also collect other_findings with add-on version ADDON, saved to runs/PROMPT_findings_ADDON/
+uv run --env-file .env python run.py --prompt PROMPT --repeats 3 --other-findings ADDON
+uv run python evaluate.py --prompt PROMPT_findings_ADDON
 ```
 
 The report in `runs/PROMPT/report.md` shows per-case match rates (decision, legal flags, resale options, risky missing data), run-to-run consistency, a decision confusion matrix with precision and recall, and every rule violation. Once a prompt version is evaluated, its run folder is committed, so the results cited in `prompts/iterations.md` can be checked. `run.py` refuses to write into a folder that already has results, so use a new prompt version or pass `--force`. The model can be changed with `--model` or `PARCEL_EVAL_MODEL` in `.env`. By default every real and synthetic case runs except the `holdout_*` parcels, which are reserved for one final run with `--include-holdout`; `--cases` picks a subset by case ID. The date sent to the model as "today" is `meta.checked_at` of the case, so the 6-month inheritance rule gives the same answer whenever the run is repeated.
@@ -143,7 +143,8 @@ uv run python tests/check_expected.py
 * **/prompts** - Versioned prompts
   * **v0.md** - First version, derived from the decision table
   * **v1.md** - Second version, `null` in a checked source means verified empty
-  * **/addons/other_findings.md** - Instructions appended with `--other-findings`
+  * **v2.md** - Third version, § 1124 needs more than one owner entry (SJM counts as one)
+  * **/addons/other_findings_vN.md** - Versioned instructions appended with `--other-findings vN`
   * **iterations.md** - What changed between versions and why
 * **/input**
   * **schema.json** - Empty input form, one section per source
@@ -158,7 +159,7 @@ uv run python tests/check_expected.py
   * **llm.py** - API call with the output schema as a structured output format
   * **checks.py** - Schema, consistency and evidence checks
   * **metrics.py** - Decision confusion matrix, precision and recall
-  * **findings.py** - Optional `other_findings` field: schema and prompt add-on, run folder name
+  * **findings.py** - Optional `other_findings` field: schema, versioned prompt add-on, run folder name
   * **cases.py** - Loading real and synthetic test cases
   * **paths.py** - Project paths
 * **/docs**

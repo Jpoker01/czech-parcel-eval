@@ -1,0 +1,35 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "consent",
+      "code": "land_consolidation",
+      "evidence": "land_register.other_records[0].type = Zahájeny pozemkové úpravy"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": "ostatní spoluvlastníci",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[6].name = Osoba G"
+    },
+    {
+      "resale_type": "field_arable",
+      "buyer": "Osoba H",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = standardní orná půda"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Žádný bloker v kroku 1 nenalezen. Krok 2 našel flag consent kvůli zahájeným pozemkovým úpravám a zdroj seller_facts není zkontrolován, takže nelze vyloučit povinnou nabídku spoluvlastníkům podle § 1124. Možnost prodeje zemědělci (Osoba H) existuje a není vyloučena, výsledek je ale nejvýš CONDITIONAL.",
+  "other_findings": []
+}

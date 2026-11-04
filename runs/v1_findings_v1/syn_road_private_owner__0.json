@@ -1,0 +1,22 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": "Liberecký kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Kroky 0 až 2 nenašly žádný bloker, nabídku ani souhlas, vlastníkem je soukromá osoba. Parcela je silnice navazující na silnici III. třídy, takže ji lze dále prodat kraji a nic tuto možnost nevylučuje. Nechybí žádný zdroj, který by mohl změnit výsledek, proto krok 7 vrací BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Parcela o výměře 1416 m² s využitím silnice leží u silnice III/29317 a vlastní ji soukromá osoba (land_register.owners[0].name = Osoba A), kraj tak může mít zájem o majetkoprávní vypořádání."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [
+    {
+      "field": "land_register.land.area_m2",
+      "impact": "could_reduce_value"
+    }
+  ],
+  "confidence": "high",
+  "reasoning": "Krok 0 rozhodl: výměra parcely v katastru je 0 m², tedy není větší než nula, a základní data jsou proto nedostatečná. Hodnocení se ukončilo bez posouzení blokerů a možností dalšího prodeje. Výměru je nutné ověřit v katastru.",
+  "other_findings": []
+}

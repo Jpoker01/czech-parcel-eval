@@ -1,0 +1,26 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_hopfield",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = chmelnice"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 až 2 nenašly žádný bloker ani povinnou nabídku či souhlas; parcela má jediného vlastníka, takže § 1124 se neuplatní. Krok 3 určil jako kupce chmelaře Osobu B z LPIS a krok 4 ho nevyloučil, protože parcela v LPIS je. Žádná rizikově důležitá data nechybí, výsledek je BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Uživatelem chmelnice v LPIS je Osoba B, která není vlastníkem (lpis.dpb_items[0].user_name), a případný nájemní vztah či jeho podmínky ve vstupu nejsou."
+    },
+    {
+      "type": "opportunity",
+      "description": "Parcela je velká souvislá chmelnice o výměře 20200 m2 (land_register.land.area_m2) s aktivním uživatelem v LPIS, což zvyšuje zájem potenciálního kupce."
+    }
+  ]
+}

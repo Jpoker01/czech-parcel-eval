@@ -1,0 +1,39 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "co_owners_inheritance_1124",
+      "evidence": "seller_facts.inheritance_date = 2026-09-01"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": "ostatní spoluvlastníci",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Osoba B"
+    },
+    {
+      "resale_type": "field_vineyard",
+      "buyer": "Osoba F",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = vinice"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 nenašel žádný bloker. Krok 2 zjistil, že dědictví z 2026-09-01 je mladší než 6 měsíců a parcela má více spoluvlastníků, takže vzniká povinná nabídka podle § 1124. Možnost prodeje vinaři Osobě F zůstává nevyloučená, ale kvůli povinné nabídce je výsledek nejvýše CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Uživatelem vinice v LPIS je Osoba F, která není uvedena mezi vlastníky (lpis.dpb_items[0].user_name), takže jde o potenciálního kupce zvenčí."
+    },
+    {
+      "type": "risk",
+      "description": "Vlastnictví je roztříštěné mezi pět osob s podíly 1/12 až 1/2 (land_register.owners[].share), takže prodej podílu může být obtížně zpeněžitelný."
+    }
+  ]
+}

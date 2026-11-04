@@ -1,0 +1,24 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "execution",
+      "evidence": "land_register.other_records[0].type = Exekuční příkaz k prodeji podílu - Osoba A"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1: v Jiných zápisech je exekuční příkaz k prodeji podílu spoluvlastníka (Osoba A). Bloker platí pro kteréhokoli vlastníka parcely, takže hodnocení končí výsledkem BLOCKED.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela má pět spoluvlastníků s podíly 1/12, 1/12, 1/12, 1/4 a 1/2 (land_register.owners), takže případný prodej podílu by byl složitý i po odpadnutí exekuce."
+    },
+    {
+      "type": "opportunity",
+      "description": "Parcela je vedená v LPIS jako vinice s uživatelem Osoba F (lpis.dpb_items[0]), což by po odstranění blokeru mohl být potenciální kupce, nyní ale rozhodnutí neovlivňuje."
+    }
+  ]
+}

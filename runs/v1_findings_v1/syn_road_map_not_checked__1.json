@@ -1,0 +1,22 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road",
+      "buyer": "Liberecký kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_use = silnice"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "map.adjacent_roads",
+      "impact": "could_reduce_value"
+    }
+  ],
+  "confidence": "high",
+  "reasoning": "Základní data jsou úplná (krok 0) a žádný bloker v kroku 1 se nenašel. V kroku 2 nevzniká žádná povinná nabídka ani souhlas: kontrolované zdroje jsou bez nálezu a parcela má jediného vlastníka, takže se § 1124 neuplatní. Jde o silnici s neotevřenou mapou, proto je možnost dalšího prodeje obecný `road` s kupcem kraj, a vlastníkem je soukromá osoba, takže se nevylučuje. Výsledek je BUY_CANDIDATE.",
+  "other_findings": []
+}

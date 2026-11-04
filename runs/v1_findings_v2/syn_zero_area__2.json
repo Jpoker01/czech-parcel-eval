@@ -1,0 +1,23 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [
+    {
+      "field": "land_register.land.area_m2",
+      "impact": "could_reduce_value"
+    }
+  ],
+  "confidence": "high",
+  "reasoning": "Krok 0 hodnocení ukončil: výměra parcely v katastru je 0 m², tedy není větší než nula. Bez platné výměry nelze pokračovat blokery, povinnými nabídkami ani možnostmi dalšího prodeje.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Parcela je vedena jako silnice a sousedí se silnicí III. třídy (map.adjacent_roads[0].road_number = III/29317), takže po ověření výměry může být předmětem prodeje kraji; člověk by měl posoudit, zda je nulová výměra jen chyba opisu."
+    },
+    {
+      "type": "risk",
+      "description": "Zdroj seller_facts není zkontrolován (seller_facts.status = not_checked), po doplnění výměry bude nutné ověřit i údaje o dědictví."
+    }
+  ]
+}

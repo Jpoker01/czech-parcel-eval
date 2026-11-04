@@ -1,0 +1,39 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_grassland",
+      "buyer": "Osoba C",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = trvalý travní porost"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "V kroku 1 nebyl nalezen žádný bloker, zástavní práva ze správního rozhodnutí a od zdravotní pojišťovny nejsou exekuce ani insolvence. Krok 3 našel jediného kupce, uživatele LPIS Osobu C (trvalý travní porost), a krok 4 ho nevylučuje. Zdroj seller_facts nebyl zkontrolován, takže nelze vyloučit nabídku spoluvlastníkům podle § 1124, a proto výsledek je CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Na parcele vázne zástavní právo z rozhodnutí správního orgánu a zástavní právo z rozhodnutí zdravotní pojišťovny (land_register.restrictions), což ukazuje na dluhy vlastníků a při koupi je nutné řešit jejich vypořádání."
+    },
+    {
+      "type": "risk",
+      "description": "V Jiných zápisech jsou závazky neumožnit zápis nového zástavního práva namísto starého a nezajistit v lepším pořadí nový dluh (land_register.other_records), což může komplikovat financování nebo případné vymazání zástav."
+    },
+    {
+      "type": "risk",
+      "description": "Vlastníky jsou dvě osoby v SJM (land_register.owners[0].sjm = true), takže prodej vyžaduje souhlas obou manželů."
+    },
+    {
+      "type": "opportunity",
+      "description": "Parcela má rozlohu 13687 m2 (land_register.land.area_m2) a je vedena v LPIS s aktivním uživatelem, což může zvyšovat zájem zemědělce o odkup."
+    }
+  ]
+}

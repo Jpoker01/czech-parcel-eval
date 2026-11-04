@@ -1,0 +1,15 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "execution",
+      "evidence": "land_register.restrictions[0].type = Exekuční příkaz k prodeji nemovitosti"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 rozhodl: v katastru je u parcely zapsán exekuční příkaz k prodeji nemovitosti, což je bloker bez ohledu na ostatní údaje. Hodnocení tím končí a možnosti dalšího prodeje se nevypisují.",
+  "other_findings": []
+}

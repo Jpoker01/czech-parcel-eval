@@ -1,0 +1,17 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = standardní orná půda"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Základní data jsou úplná a v katastru nejsou žádné blokery (plomba, exekuce, insolvence ani zákazy). Krok 2 nenašel žádnou povinnou nabídku ani souhlas, protože ochrana přírody, stavba, § 101 a předkupní práva se u parcely neuplatňují a vlastník je jen jeden. Parcelu lze dále prodat uživateli LPIS Osobě B jako ornou půdu a tato možnost není vyloučena, takže výsledek je BUY_CANDIDATE.",
+  "other_findings": []
+}

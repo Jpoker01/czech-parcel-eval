@@ -1,0 +1,34 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "local_road",
+      "buyer": "Plumlov",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_use = ostatní komunikace"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Osoba B"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 žádný flag nabídky ani souhlasu. Možnost dalšího prodeje obci Plumlov (local_road) není vyloučená, protože vlastníky jsou fyzické osoby. Parcela má dva vlastníky a zdroj seller_facts nebyl zkontrolován, takže nelze vyloučit nabídku spoluvlastníkům podle § 1124. Podle kroku 5 proto vychází CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Ortofoto ukazuje louku (map.orthophoto_land_cover = louka) a přístup je polní cestou (map.access_type = polní cesta), což nemusí odpovídat způsobu využití ostatní komunikace, takže zájem obce o odkup je nejistý."
+    }
+  ]
+}

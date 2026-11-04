@@ -1,0 +1,22 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": true,
+      "exclusion_reason": "no_access",
+      "evidence": "map.access_type = bez viditelného přístupu"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 a 1 prošly bez blokerů a krok 2 nenašel žádný flag. V kroku 3 je jediná možnost dalšího prodeje lesní pozemek sousedovi. Ten byl v kroku 4 vyloučen, protože parcela nemá viditelný přístup, takže je výsledek NOT_WORTH_IT. Chybějící zdroje (ochrana přírody, územní plán, údaje od prodávajícího) už verdikt změnit nemohou.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Parcela sousedí se dvěma parcelami Lesů ČR (map.neighbouring_parcels[0].owner a map.neighbouring_parcels[3].owner), takže by případně mohl zájem projevit soused, ale bez přístupu to musí posoudit člověk."
+    }
+  ]
+}

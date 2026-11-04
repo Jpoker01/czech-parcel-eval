@@ -1,0 +1,14 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Hodnocení skončilo už v kroku 0, protože výměra parcely je uvedena jako 0 m² (land_register.land.area_m2), což je neplatná hodnota. Další kroky se proto neprovádějí a nelze posoudit blokery, povinné nabídky ani možnosti dalšího prodeje.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Nulová výměra parcely (land_register.land.area_m2 = 0) u pozemku s využitím silnice naznačuje chybu v zápisu nebo opisu dat, před dalším posouzením je nutné ji ověřit v katastru."
+    }
+  ]
+}

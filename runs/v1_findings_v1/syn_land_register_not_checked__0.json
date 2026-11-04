@@ -1,0 +1,14 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [
+    {
+      "field": "land_register",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "high",
+  "reasoning": "Krok 0 rozhodl: katastr nemovitostí (land_register.status) nebyl otevřen, takže chybí typ pozemku, výměra i vlastníci. Bez těchto údajů nelze posoudit blokery ani možnosti dalšího prodeje, hodnocení proto končí výsledkem INSUFFICIENT_DATA.",
+  "other_findings": []
+}

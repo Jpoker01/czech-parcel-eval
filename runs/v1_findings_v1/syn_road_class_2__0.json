@@ -1,0 +1,17 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road_class_2",
+      "buyer": "Liberecký kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = II. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 až 2 neodhalily žádný bloker, nabídku ani souhlas; parcela má jediného vlastníka, takže § 1124 se neuplatní. Parcela je silnice (land_use = silnice) sousedící se silnicí II. třídy, takže kupcem je kraj, který není vlastníkem. Vlastníkem je soukromá osoba, možnost dalšího prodeje tak není vyloučena a krok 7 vrací BUY_CANDIDATE.",
+  "other_findings": []
+}

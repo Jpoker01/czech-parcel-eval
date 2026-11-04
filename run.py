@@ -5,7 +5,7 @@ Usage:
     uv run python run.py --prompt v0 --cases zalesni_lhota_1292-2 --repeats 3
     uv run python run.py --prompt v0 --force   # replace an existing run of the same version
     uv run python run.py --prompt v0 --include-holdout   # final run, holdout parcels included
-    uv run python run.py --prompt v1 --other-findings    # adds other_findings, saved to runs/v1-findings/
+    uv run python run.py --prompt v1 --other-findings v2   # add-on v2, saved to runs/v1_findings_v2/
 """
 
 import argparse
@@ -53,8 +53,8 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--other-findings",
-        action="store_true",
-        help="Ask the model for other_findings (risks and opportunities outside the enums, never scored)",
+        metavar="VERSION",
+        help="Add-on version, e.g. v2: ask for other_findings (outside the enums, never scored)",
     )
     return parser.parse_args()
 
@@ -106,7 +106,7 @@ def build_run_metadata(args: argparse.Namespace, case_ids: list[str], system_pro
         "prompt_sha256": hashlib.sha256(system_prompt.encode("utf-8")).hexdigest()[:12],
         "model": args.model,
         "repeats": args.repeats,
-        # evaluate.py reads this to validate against the same schema the model got
+        # Add-on version or null; evaluate.py reads it to validate against the schema the model got
         "other_findings": args.other_findings,
         "cases": case_ids,
         "run_at": datetime.now().astimezone().isoformat(timespec="seconds"),
@@ -117,7 +117,7 @@ def prepare_run_dir(run_dir: Path, force: bool) -> None:
     """Create the run folder without mixing results of two different runs.
 
     Args:
-        run_dir: Folder runs/<prompt>/ or runs/<prompt>-findings/.
+        run_dir: Folder runs/<prompt>/ or runs/<prompt>_findings_<add-on>/.
         force: Delete the previous results of this prompt version instead of refusing.
 
     Raises:
@@ -146,7 +146,7 @@ def main() -> None:
     system_prompt = (PROMPTS_DIR / f"{args.prompt}.md").read_text(encoding="utf-8")
     output_schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
     if args.other_findings:
-        system_prompt = add_other_findings_prompt(system_prompt)
+        system_prompt = add_other_findings_prompt(system_prompt, args.other_findings)
         output_schema = add_other_findings(output_schema)
     case_ids = select_case_ids(args)
 

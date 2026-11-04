@@ -1,0 +1,22 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": true,
+      "exclusion_reason": "clearcut",
+      "evidence": "map.orthophoto_land_cover = holina"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 a 1 prošly bez blokerů a krok 2 nenašel žádnou povinnou nabídku ani souhlas. Jediná možnost dalšího prodeje je les (soused), ale ortofoto ukazuje holinu, proto je v kroku 4 vyloučena. Nezbývá žádná použitelná možnost dalšího prodeje, výsledek je NOT_WORTH_IT.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Sousední parcely 402 a 531 vlastní Obec Šlapanov (map.neighbouring_parcels), takže by obec mohla být zájemcem o odkup, což by případně měl posoudit člověk."
+    }
+  ]
+}

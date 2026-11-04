@@ -1,18 +1,18 @@
 """Optional other_findings field: risks and opportunities that no enum covers.
 
-The field is switched on per run (run.py --other-findings). It is appended to the
-output schema and the prompt only for that run, so the base prompt versions and
-the expected outputs stay unchanged. Findings are never scored: they are listed in
-the report for a person to read, and the ones that repeat become new codes.
+The field is switched on per run (run.py --other-findings VERSION). It is appended to the
+output schema and the prompt only for that run, so the base prompt versions and the
+expected outputs stay unchanged. The add-on text is versioned like the prompts
+(prompts/addons/other_findings_<version>.md), so every run can be reproduced.
+Findings are never scored: they are listed in the report for a person to read, and
+the ones that repeat become new codes.
 """
 
 import copy
 
-from parcel_eval.paths import OTHER_FINDINGS_PROMPT_PATH
+from parcel_eval.paths import ADDONS_DIR
 
 OTHER_FINDINGS_FIELD = "other_findings"
-# Suffix of the run folder, so runs/v1 and runs/v1-findings never overwrite each other
-FINDINGS_RUN_SUFFIX = "-findings"
 
 OTHER_FINDINGS_PROPERTY = {
     "type": "array",
@@ -50,19 +50,25 @@ def add_other_findings(output_schema: dict) -> dict:
     return schema
 
 
-def add_other_findings_prompt(system_prompt: str) -> str:
-    """Append the other_findings instructions to a prompt version.
+def add_other_findings_prompt(system_prompt: str, addon_version: str) -> str:
+    """Append one version of the other_findings instructions to a prompt version.
 
     Args:
         system_prompt: Text of prompts/<version>.md.
+        addon_version: Add-on version, e.g. v2 for prompts/addons/other_findings_v2.md.
 
     Returns:
-        The prompt followed by prompts/addons/other_findings.md.
+        The prompt followed by the add-on text.
+
+    Raises:
+        FileNotFoundError: If the add-on version does not exist.
     """
-    addon = OTHER_FINDINGS_PROMPT_PATH.read_text(encoding="utf-8")
+    addon = (ADDONS_DIR / f"other_findings_{addon_version}.md").read_text(encoding="utf-8")
     return system_prompt.rstrip() + "\n" + addon
 
 
-def run_dir_name(prompt_version: str, other_findings: bool) -> str:
-    """Return the folder name under runs/ for a prompt version, e.g. v1 or v1-findings."""
-    return prompt_version + FINDINGS_RUN_SUFFIX if other_findings else prompt_version
+def run_dir_name(prompt_version: str, addon_version: str | None) -> str:
+    """Return the folder name under runs/, e.g. v1, or v1_findings_v2 with the add-on."""
+    if addon_version is None:
+        return prompt_version
+    return f"{prompt_version}_findings_{addon_version}"

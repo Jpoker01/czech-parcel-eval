@@ -1,0 +1,42 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": "ostatní spoluvlastníci",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Česká republika"
+    },
+    {
+      "resale_type": "field_arable",
+      "buyer": "AGRO - Měřín, a.s.",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = standardní orná půda"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 žádný flag (CHKO nezakládá právo státu podle § 61, stavba ani § 101 nejsou). Možnosti dalšího prodeje jsou spoluvlastníci a zemědělec AGRO - Měřín, a.s. s platným záznamem v LPIS. Zdroj seller_facts není zkontrolován a parcela má více vlastníků, takže nelze vyloučit nabídkovou povinnost podle § 1124 (datum dědictví). Proto podle kroku 5 vychází CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "AGRO - Měřín, a.s. je zároveň spoluvlastník (land_register.owners[0].name) i uživatel v LPIS (lpis.dpb_items[0].user_name), takže je přirozeným kupcem podílu."
+    },
+    {
+      "type": "risk",
+      "description": "Parcela je silně rozdělena mezi 10 vlastníků včetně státu (land_register.owners[1].name = Česká republika), což může ztížit společný prodej nebo vypořádání."
+    },
+    {
+      "type": "risk",
+      "description": "Parcela leží v CHKO Žďárské vrchy (nature_protection.large_protected_area.name), což může omezovat využití pozemku."
+    }
+  ]
+}

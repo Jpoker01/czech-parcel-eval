@@ -1,0 +1,17 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": "Liberecký kraj",
+      "excluded": true,
+      "exclusion_reason": "owner_is_buyer",
+      "evidence": "land_register.owners[0].name = Liberecký kraj"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 ani krok 2 nenašel žádný bloker, nabídku ani souhlas. V kroku 3 vychází jediná možnost dalšího prodeje, a to silnice III. třídy s kupcem krajem. V kroku 4 je vyloučená, protože parcelu už vlastní kraj, takže zbývá verdikt NOT_WORTH_IT.",
+  "other_findings": []
+}

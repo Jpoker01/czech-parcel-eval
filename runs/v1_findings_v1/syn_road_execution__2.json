@@ -1,0 +1,23 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "execution",
+      "evidence": "land_register.restrictions[0].type = Exekuční příkaz k prodeji nemovitosti"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 rozhodl: v omezeních na LV je zapsán exekuční příkaz k prodeji nemovitosti, což je bloker `execution`. Hodnocení tím končí výsledkem BLOCKED. Případný další prodej kraji jako silnice III. třídy na tom nic nemění.",
+  "other_findings": []
+}

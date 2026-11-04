@@ -1,0 +1,26 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = standardní orná půda"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Základní data jsou úplná a v krocích 1 a 2 nebyl nalezen žádný bloker, nabídka ani souhlas. Parcela je orná půda v LPIS s uživatelem Osoba B, takže existuje nevyloučená možnost prodeje zemědělci s uvedeným kupcem. Parcela má jediného vlastníka a chybějící mapa ani seller_facts výsledek nemění, proto krok 7 dává BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Uživatelem v LPIS je Osoba B, která není vlastníkem (lpis.dpb_items[0].user_name), takže na parcele může být pachtovní smlouva, jejíž podmínky nejsou známy."
+    },
+    {
+      "type": "opportunity",
+      "description": "Parcela má výměru 20200 m2 a jediného vlastníka s podílem 1/1 (land_register.land.area_m2, land_register.owners[0].share), takže jde o ucelený celek bez spoluvlastníků."
+    }
+  ]
+}

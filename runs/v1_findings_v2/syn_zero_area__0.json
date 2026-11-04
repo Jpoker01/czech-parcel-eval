@@ -1,0 +1,18 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 rozhodl: výměra parcely v katastru je 0 m² (land_register.land.area_m2), což je neplatná hodnota, takže hodnocení nelze dál provést. Další kroky se proto neprovádějí a je třeba výměru ověřit v katastru.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Parcela je silnice sousedící s komunikací III/29317 III. třídy (map.adjacent_roads[0].road_class) a vlastní ji soukromá osoba (land_register.owners[0].name), takže by po doplnění výměry mohla být zajímavá pro prodej kraji."
+    },
+    {
+      "type": "risk",
+      "description": "Nulová výměra (land_register.land.area_m2) může znamenat chybu v opisu nebo zvláštní stav v katastru, např. zrušenou či sloučenou parcelu."
+    }
+  ]
+}

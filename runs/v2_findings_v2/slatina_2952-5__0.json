@@ -1,0 +1,41 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "building_owner_3056",
+      "evidence": "land_register.building.relation = Stavba na parcele"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "building_owner",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.building.relation = Stavba na parcele"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "nature_protection",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "zoning",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 a 1 prošly, bez blokerů. Krok 2 našel povinnou nabídku vlastníku stavby (§ 3056), protože na parcele stojí stavba jiného vlastníka. Jediný kupec je vlastník stavby, který ve vstupu není jmenovaný. Nezkontrolovaná ochrana přírody a územní plán mohou přidat další povinné nabídky (§ 61, § 101), takže výsledek je CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Vlastníkem parcely je Statutární město Brno (land_register.owners[0].name), takže nákup závisí na ochotě města prodat a na schvalování prodeje orgány města."
+    },
+    {
+      "type": "risk",
+      "description": "V jiných zápisech je uvedena změna výměr obnovou operátu (land_register.other_records[0].type), je proto vhodné ověřit, že výměra 1202 m2 odpovídá aktuálnímu stavu."
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "state_nature_protection_61",
+      "evidence": "nature_protection.large_protected_area.type = NP"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = lesní pozemek"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].share = 1/6"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "map.orthophoto_land_cover",
+      "impact": "could_exclude_resale"
+    },
+    {
+      "field": "map.access_type",
+      "impact": "could_exclude_resale"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Žádný bloker v kroku 1 nenalezen. Parcela leží v národním parku v nezastavěném území, takže vzniká povinná nabídka státu podle § 61 a výsledek nemůže být BUY_CANDIDATE. Chybí mapa (holina, přístup) a údaje o dědění pro § 1124 u dvou spoluvlastníků, proto CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Les leží v Krkonošském národním parku (nature_protection.large_protected_area.name), což může omezovat hospodaření a hodnotu při dalším prodeji."
+    },
+    {
+      "type": "risk",
+      "description": "Využití je les jiný než hospodářský (land_register.land.land_use), což může zúžit okruh zájemců o koupi."
+    }
+  ]
+}

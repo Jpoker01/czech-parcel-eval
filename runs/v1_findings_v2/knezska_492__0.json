@@ -1,0 +1,26 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.neighbouring_parcels[1].owner = Lesy ČR"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 žádnou povinnou nabídku ani souhlas; parcela má jediného vlastníka, takže § 1124 se neuplatní. Lesní pozemek lze dále prodat sousedovi (Lesy ČR), ortofoto ukazuje les (ne holinu) a přístup je po polní cestě, proto možnost není vyloučena. Chybějící LPIS ani seller_facts výsledek nemění, takže krok 7 vrací BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Sousední parcela 302/2 patří stejnému vlastníku (Osoba A), proto lze zvážit koupi společně s ní (map.neighbouring_parcels[0].owner)."
+    },
+    {
+      "type": "opportunity",
+      "description": "Parcela sousedí také s pozemky Obce Šlapanov a Osoby B, kteří jsou dalšími možnými kupci (map.neighbouring_parcels[2].owner, map.neighbouring_parcels[3].owner)."
+    }
+  ]
+}

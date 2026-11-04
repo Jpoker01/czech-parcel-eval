@@ -1,0 +1,23 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "alienation_ban",
+      "evidence": "land_register.restrictions[0].type = Zákaz zcizení a zatížení"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": "Liberecký kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 rozhodl: v omezeních je zapsán „Zákaz zcizení a zatížení“, což je bloker alienation_ban, a hodnocení tím končí. Parcela je silnice III. třídy, takže by šla prodat kraji, ale zákaz zcizení prodej brání.",
+  "other_findings": []
+}

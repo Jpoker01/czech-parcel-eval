@@ -1,0 +1,28 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "state_nature_protection_61",
+      "evidence": "nature_protection.large_protected_area.type = NP"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": "Liberecký kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Žádný bloker v kroku 1 nenalezen. Parcela leží v Krkonošském národním parku v nezastavěném území, vzniká povinná nabídka státu podle § 61 (krok 2), proto je nejlepší možný výsledek CONDITIONAL. Jediná možnost dalšího prodeje je silnice III. třídy s kupcem krajem, která není vyloučená.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Třída silnice je určena z přilehlé komunikace III/29317 (map.adjacent_roads[0].road_number), takže je vhodné ověřit, že parcela skutečně tvoří těleso této silnice."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = standardní orná půda"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "V katastru nebyl nalezen žádný bloker (plomba, exekuce, insolvence ani zákaz zcizení) a krok 2 nenašel povinnou nabídku ani souhlas. Parcela je orná půda vedená v LPIS s uživatelem Osobou B, takže existuje nevyloučená možnost dalšího prodeje s uvedeným kupcem. Parcela má jediného vlastníka a zdroje relevantní pro pravidla jsou zkontrolované, proto výsledek je BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcelu užívá Osoba B jako uživatel v LPIS (lpis.dpb_items[0].user_name), ale vztah k vlastníkovi (např. nájemní smlouva) ze vstupu neplyne."
+    }
+  ]
+}

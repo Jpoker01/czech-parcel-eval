@@ -1,0 +1,30 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = lesní pozemek"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 nenašel žádný bloker (bez plomby, exekuce, insolvence či omezení) a krok 2 žádnou povinnou nabídku ani souhlas. Parcela je lesní pozemek se sousedem uvedeným ve vstupu (Lesy ČR), ortofoto ukazuje les a přístup je po polní cestě, takže žádná vyloučující podmínka z kroku 4 neplatí. Při jediném vlastníkovi se § 1124 neuplatní, takže chybějící seller_facts verdikt nemění.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Soused Osoba B vlastní dvě sousední parcely (map.neighbouring_parcels[3] a [4]), což z něj dělá další možného kupce lesa."
+    },
+    {
+      "type": "opportunity",
+      "description": "Obec Šlapanov vlastní dvě sousední parcely (map.neighbouring_parcels[2] a [5]) a může mít o parcelu zájem, ve vstupu to ale není potvrzeno."
+    },
+    {
+      "type": "risk",
+      "description": "Parcela je přístupná jen po polní cestě (map.access_type), právní zajištění přístupu k lesu není ve vstupu doloženo."
+    }
+  ]
+}

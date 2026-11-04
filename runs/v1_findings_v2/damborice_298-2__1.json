@@ -1,0 +1,26 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_grassland",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = trvalý travní porost"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 až 2 nenašly žádný bloker ani povinnou nabídku či souhlas; zápis „Změna číslování parcel“ není žádný z rozhodných zápisů. Parcela je trvalý travní porost v LPIS s uživatelem „Osoba B“, takže existuje nevyloučený kupec s uvedeným jménem (krok 3 a 4). Nechybí žádná riziková data a jediný vlastník vylučuje i `co_owners`, takže výsledek je BUY_CANDIDATE (krok 7).",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "V Jiných zápisech je „Změna číslování parcel“ (land_register.other_records[0].type), vhodné ověřit, že nové číslo 298/2 odpovídá aktuálnímu stavu v katastru a v LPIS."
+    },
+    {
+      "type": "opportunity",
+      "description": "Parcela má jediného vlastníka s podílem 1/1 (land_register.owners[0].share), takže je možný čistý převod bez souhlasu spoluvlastníků."
+    }
+  ]
+}

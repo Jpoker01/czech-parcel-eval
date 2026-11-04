@@ -1,0 +1,38 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": "ostatní spoluvlastníci",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[0].name = AGRO - Měřín, a.s."
+    },
+    {
+      "resale_type": "field_arable",
+      "buyer": "AGRO - Měřín, a.s.",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = standardní orná půda"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 žádnou povinnou nabídku ani souhlas (CHKO § 61 nezakládá). Jako možnosti dalšího prodeje vychází zemědělec AGRO - Měřín (LPIS uživatel) a spoluvlastníci, žádná není vyloučena. Zdroj seller_facts není zkontrolován, takže nelze vyloučit nabídku spoluvlastníkům podle § 1124 při čerstvém dědictví (parcela má víc vlastníků), proto výsledek je CONDITIONAL (krok 5).",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Uživatel LPIS AGRO - Měřín, a.s. (lpis.dpb_items[0].user_name) je zároveň spoluvlastníkem parcely, takže může mít zájem o sjednocení vlastnictví."
+    },
+    {
+      "type": "risk",
+      "description": "Parcela je silně roztříštěná mezi deset vlastníků včetně státu (land_register.owners[1].name = Česká republika), což může komplikovat jednání a případné zrušení spoluvlastnictví."
+    }
+  ]
+}

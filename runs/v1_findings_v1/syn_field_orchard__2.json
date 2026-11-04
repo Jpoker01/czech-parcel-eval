@@ -1,0 +1,17 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_orchard",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = ovocný sad"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Základní data jsou úplná (krok 0) a v katastru nejsou žádné blokery ani omezení (krok 1). Kroky 2 a 4 nenašly žádnou povinnou nabídku ani souhlas, parcela je v LPIS a uživatel Osoba B je potvrzený kupec jako sadař. Parcela má jediného vlastníka, takže dědické předkupní právo spoluvlastníků nehrozí a neotevřená mapa ani údaje prodávajícího výsledek nemění.",
+  "other_findings": []
+}

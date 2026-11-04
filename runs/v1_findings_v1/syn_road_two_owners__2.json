@@ -1,0 +1,34 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": "Liberecký kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Osoba B"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Kroky 0 a 1 nenašly žádný bloker a v kroku 2 nevznikl žádný flag z ověřených zdrojů. Parcela je silnice III. třídy, takže existuje možnost dalšího prodeje kraji, která není vyloučená (vlastníci jsou fyzické osoby). Zdroj seller_facts není zkontrolován a parcela má dva vlastníky, takže nelze vyloučit povinnou nabídku spoluvlastníkům podle § 1124 (krok 5), výsledek je tedy CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela je ve spoluvlastnictví dvou osob po 1/2 (land_register.owners[].share), takže při koupi pouhého podílu může být prodej kraji složitější."
+    }
+  ]
+}

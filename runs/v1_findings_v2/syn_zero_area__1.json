@@ -1,0 +1,9 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Rozhodl krok 0: výměra parcely je uvedena jako 0 m² (land_register.land.area_m2), což je neplatná hodnota. Bez platné výměry nelze parcelu dál hodnotit, proto hodnocení končí výsledkem INSUFFICIENT_DATA.",
+  "other_findings": []
+}

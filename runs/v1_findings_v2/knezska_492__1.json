@@ -1,0 +1,26 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = lesní pozemek"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 až 2 nenašly žádný bloker, nabídku ani souhlas: katastr, ochrana přírody i územní plán jsou zkontrolované a bez omezení. Parcela je lesní pozemek, takže přichází v úvahu prodej sousedovi (krok 3). Mapa vylučující signály nepotvrdila (les, přístup po polní cestě), takže možnost zůstává a krok 7 vrací BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Sousední parcely vlastní také Lesy ČR a Obec Šlapanov (map.neighbouring_parcels[1].owner, map.neighbouring_parcels[2].owner), což jsou další možní kupci lesa."
+    },
+    {
+      "type": "opportunity",
+      "description": "Stejný vlastník (Osoba A) vlastní i sousední parcelu 302/2 (map.neighbouring_parcels[0].owner), takže jde možná o souvislý celek vhodný k odkupu dohromady."
+    }
+  ]
+}

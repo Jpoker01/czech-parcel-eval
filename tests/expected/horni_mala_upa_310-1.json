@@ -27,6 +27,10 @@
     {
       "field": "map",
       "impact": "could_exclude_resale"
+    },
+    {
+      "field": "seller_facts",
+      "impact": "could_require_offer"
     }
   ],
   "confidence": "medium",

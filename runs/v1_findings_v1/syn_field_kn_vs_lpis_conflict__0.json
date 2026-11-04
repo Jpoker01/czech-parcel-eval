@@ -1,0 +1,26 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_grassland",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = trvalý travní porost"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Kroky 0 až 2 neodhalily žádný bloker, nabídku ani souhlas: parcela má jednoho vlastníka a nemá žádná omezení ani stavbu a ochrana přírody ani územní plán nic nezakládají. V kroku 3 vzniká jediná možnost dalšího prodeje, field_grassland s uživatelem z LPIS Osoba B, a krok 4 ji nevylučuje, protože parcela v LPIS je. Chybějící data nic nemění, proto krok 7 vrací BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Druh pozemku v katastru je orná půda (land_register.land.land_type), ale LPIS vede kulturu trvalý travní porost (lpis.dpb_items[0].culture), takže rozpor je třeba ověřit, protože může ovlivnit vhodného kupce i hodnotu."
+    },
+    {
+      "type": "risk",
+      "description": "Uživatelem v LPIS je Osoba B, která není vlastníkem (land_register.owners[0].name = Osoba A), takže užívací vztah (nájem) není znám a může ovlivnit prodej."
+    }
+  ]
+}

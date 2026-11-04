@@ -1,0 +1,17 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road_class_2",
+      "buyer": "Liberecký kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = II. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 ani krok 2 nenašly žádný bloker, nabídku ani souhlas; parcela má jediného soukromého vlastníka. Parcela je silnice a podle mapy sousedí se silnicí II. třídy, takže ji lze dále prodat kraji. Vlastník není kupec, žádná možnost není vyloučena a chybí jen data, která výsledek neovlivní (LPIS u silnice, dědictví u jediného vlastníka).",
+  "other_findings": []
+}

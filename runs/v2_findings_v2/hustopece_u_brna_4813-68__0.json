@@ -1,0 +1,17 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = standardní orná půda"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 až 2 neodhalil žádný bloker, nabídku ani souhlas: katastr, ochrana přírody i územní plán jsou zkontrolované a bez nálezu, jediný vlastník nepotřebuje seller_facts. V kroku 3 je jako kupec orné půdy uživatel LPIS Osoba B a krok 4 ho nevylučuje, protože parcela v LPIS je. Zbývá tedy krok 7, BUY_CANDIDATE.",
+  "other_findings": []
+}

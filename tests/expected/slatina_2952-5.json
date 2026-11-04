@@ -16,7 +16,16 @@
       "evidence": "land_register.building.on_different_lv = true"
     }
   ],
-  "missing_data": [],
+  "missing_data": [
+    {
+      "field": "nature_protection",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "zoning",
+      "impact": "could_require_offer"
+    }
+  ],
   "confidence": "high",
-  "reasoning": "LV je čistý, pozemek vlastní statutární město Brno a stojí na něm budova č. p. 1092 s jiným LV. Podle § 3056 NOZ vzniká vzájemné předkupní právo mezi vlastníkem pozemku a vlastníkem stavby, prodej se musí nejdřív nabídnout vlastníkovi stavby. Proto CONDITIONAL."
+  "reasoning": "LV je čistý, pozemek vlastní statutární město Brno a stojí na něm budova č. p. 1092 s jiným LV. Podle § 3056 NOZ vzniká vzájemné předkupní právo mezi vlastníkem pozemku a vlastníkem stavby, prodej se musí nejdřív nabídnout vlastníkovi stavby. AOPK ani územní plán nebyly ověřeny a mohou přidat další povinnou nabídku. Proto CONDITIONAL."
 }

@@ -1,0 +1,22 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": null,
+      "excluded": true,
+      "exclusion_reason": "no_lpis_user",
+      "evidence": "lpis.parcel_in_lpis = false"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 a 1 prošly, žádný bloker ani povinná nabídka nebyla zjištěna. Parcela je orná půda, ale LPIS (zkontrolovaný) ji neeviduje a nemá žádného uživatele, takže jediná možnost dalšího prodeje je vyloučena. Ostatní typy kupců (silnice, spoluvlastníci, vlastník stavby, les) se neuplatňují, proto výsledek NOT_WORTH_IT.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Pozemek se nachází v dobývacím prostoru (land_register.other_records[0].type), což může omezovat jeho využití a zájem kupců."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = orná půda"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "lpis",
+      "impact": "could_exclude_resale"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Kroky 0 až 2 neodhalily žádný bloker ani povinnou nabídku, parcela má jednoho vlastníka a není v chráněném území. Jediná možnost dalšího prodeje je zemědělec (orná půda), ale LPIS nebyl zkontrolován, takže neznáme uživatele a nelze potvrdit ani vyloučit prodej. Podle kroku 5 je výsledek CONDITIONAL.",
+  "other_findings": []
+}

@@ -1,0 +1,26 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = standardní orná půda"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 prošel, krok 1 nenašel žádný bloker a krok 2 žádnou povinnou nabídku ani souhlas (parcela má jediného vlastníka, takže § 1124 se neuplatní). Existuje jediná možnost dalšího prodeje, a to zemědělci Osobě B jako uživateli v LPIS, a nic ji nevylučuje. Zdroje, které nejsou zkontrolované (map, seller_facts), výsledek nemohou změnit, proto BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Uživatelem v LPIS je Osoba B, nikoli vlastník Osoba A (lpis.dpb_items[0].user_name), takže může jít o nájemní nebo jiný užívací vztah, který vstup nepopisuje."
+    },
+    {
+      "type": "opportunity",
+      "description": "Jde o souvislou parcelu orné půdy o rozloze 20200 m2 (land_register.land.area_m2) s jediným vlastníkem, což zjednodušuje převod."
+    }
+  ]
+}

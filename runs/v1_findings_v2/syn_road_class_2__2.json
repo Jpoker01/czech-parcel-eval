@@ -1,0 +1,17 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road_class_2",
+      "buyer": "Liberecký kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = II. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Parcela nemá žádný bloker (krok 1) ani povinnou nabídku či souhlas (krok 2). Jde o silnici sousedící s II. třídou (II/293) a vlastníkem je soukromá osoba, takže kraj jako kupec není vyloučen. Žádný zdroj, který by mohl výsledek změnit, nechybí, a proto vychází BUY_CANDIDATE.",
+  "other_findings": []
+}

@@ -1,0 +1,27 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = orná půda"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "lpis",
+      "impact": "could_exclude_resale"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 až 2 neodhalily žádný bloker ani povinnou nabídku, jediný jediný vlastník a zkontrolovaná ochrana přírody i územní plán nic nezakládají. Jako možný prodej zůstává orná půda pro zemědělce, ale LPIS nebyl otevřen, takže nelze potvrdit uživatele ani případné vyloučení. Podle kroku 5 je výsledek CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Parcela je poměrně rozlehlá orná půda (land_register.land.area_m2 = 20200), což může být zajímavé pro zemědělského kupce."
+    }
+  ]
+}

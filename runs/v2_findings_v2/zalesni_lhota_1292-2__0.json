@@ -1,0 +1,17 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road",
+      "buyer": "Liberecký kraj",
+      "excluded": true,
+      "exclusion_reason": "owner_is_buyer",
+      "evidence": "land_register.owners[0].name = Liberecký kraj"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 nenašel žádný bloker a základní data jsou v pořádku. V kroku 3 je jediná možnost dalšího prodeje silnice (land_use = silnice, mapa neotevřena), kupcem by byl kraj. Podle kroku 4 je ale vyloučena, protože parcelu už vlastní Liberecký kraj. Všechny možnosti jsou vyloučené, takže výsledek je NOT_WORTH_IT.",
+  "other_findings": []
+}

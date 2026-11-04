@@ -1,0 +1,31 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_grassland",
+      "buyer": "Osoba C",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = trvalý travní porost"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Žádný bloker z kroku 1 ani flag z kroku 2 nebyl nalezen a jediná možnost dalšího prodeje je pole (travní porost) uživateli Osoba C z LPIS, který není vyloučen. Zdroj seller_facts není zkontrolován, takže nelze ověřit povinnou nabídku spoluvlastníkům podle § 1124 u čerstvě zděděné parcely. Podle kroku 5 je proto výsledek CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Na parcele vázne zástavní právo z rozhodnutí správního orgánu a zástavní právo z rozhodnutí zdravotní pojišťovny (land_register.restrictions), které zůstanou po koupi zatížením a ukazují na dluhy vlastníků."
+    },
+    {
+      "type": "risk",
+      "description": "V jiných zápisech jsou závazky neumožnit zápis nového zástavního práva namísto starého a nezajistit v lepším pořadí nový dluh (land_register.other_records), což může omezit nakládání s parcelou."
+    }
+  ]
+}

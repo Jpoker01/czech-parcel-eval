@@ -1,0 +1,35 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "state_nature_protection_61",
+      "evidence": "nature_protection.large_protected_area.type = NP"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].share = 1/6"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = lesní pozemek"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "medium",
+  "reasoning": "Žádný bloker v kroku 1 nenalezen. Parcela leží v Krkonošském národním parku mimo zastavěné území, proto vzniká povinnost nabídky státu podle § 61 (krok 2). Neotevřená mapa a údaje od prodávajícího (možné vyloučení lesního prodeje, dědictví u více vlastníků) vedou na CONDITIONAL, navíc žádný nevyloučený kupec není konkrétně pojmenován.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Způsob využití „les jiný než hospodářský“ (land_register.land.land_use) může znamenat lesní pozemek zvláštního určení s omezeným hospodařením, což může snížit zájem kupců."
+    }
+  ]
+}

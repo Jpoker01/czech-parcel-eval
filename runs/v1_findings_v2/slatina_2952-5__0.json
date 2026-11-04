@@ -1,0 +1,41 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "building_owner_3056",
+      "evidence": "land_register.building.relation = Stavba na parcele"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "building_owner",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.building.on_different_lv = true"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "nature_protection",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "zoning",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Žádný bloker z kroku 1 se nenašel, ale stavba na parcele vedená na jiném LV zakládá povinnou nabídku vlastníku stavby (krok 2). Jediná možnost dalšího prodeje je vlastník stavby, jehož jméno ve vstupu není. Nezkontrolovaná ochrana přírody a územní plán by mohly přidat další povinnou nabídku (§ 61, § 101), výsledek je proto nejvýš CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "V jiných zápisech je poznamenána změna výměr obnovou operátu (land_register.other_records[0].type), takže se výměra parcely může lišit od podkladů."
+    },
+    {
+      "type": "risk",
+      "description": "Jediným vlastníkem je Statutární město Brno (land_register.owners[0].name), takže jeho ochota prodat a postup při prodeji obecního pozemku jsou nejisté."
+    }
+  ]
+}

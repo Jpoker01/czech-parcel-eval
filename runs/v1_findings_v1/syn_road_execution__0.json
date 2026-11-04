@@ -1,0 +1,23 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "execution",
+      "evidence": "land_register.restrictions[0].type = Exekuční příkaz k prodeji nemovitosti"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": "Liberecký kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 rozhodl: v omezeních je zapsán exekuční příkaz k prodeji nemovitosti, což je bloker. Parcela je silnice III. třídy, takže by existoval kupec (kraj), ale hodnocení se kvůli exekuci ukončuje výsledkem BLOCKED.",
+  "other_findings": []
+}

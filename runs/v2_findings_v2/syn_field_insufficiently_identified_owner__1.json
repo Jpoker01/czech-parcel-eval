@@ -1,0 +1,15 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "insufficiently_identified_owner",
+      "evidence": "land_register.owners[0].insufficiently_identified = true"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 prošel, základní data jsou úplná. V kroku 1 je první vlastník (Osoba A) nedostatečně identifikovaný, což je bloker pro kteréhokoli vlastníka. Hodnocení tím končí výsledkem BLOCKED.",
+  "other_findings": []
+}

@@ -1,0 +1,52 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "state_nature_protection_61",
+      "evidence": "nature_protection.large_protected_area.type = NP"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Osoba B"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = lesní pozemek"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "map.orthophoto_land_cover",
+      "impact": "could_exclude_resale"
+    },
+    {
+      "field": "map.access_type",
+      "impact": "could_exclude_resale"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Žádný bloker v kroku 1 nenalezen. Parcela leží v Krkonošském národním parku v nezastavěném území, což zakládá povinnou nabídku státu podle § 61, takže nejlepší možný výsledek je CONDITIONAL. Mapa a údaje od prodávajícího nebyly zkontrolovány, takže nelze vyloučit holinu ani chybějící přístup u lesa a nelze ověřit lhůtu 6 měsíců od dědictví. Soused jako kupec lesa není znám.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Způsob využití „les jiný než hospodářský“ (land_register.land.land_use) naznačuje omezené hospodaření, což může snížit zájem kupců o les."
+    },
+    {
+      "type": "risk",
+      "description": "Parcela má dva vlastníky s podíly 5/6 a 1/6 (land_register.owners[].share), takže koupě jen jednoho podílu nedává plnou kontrolu nad pozemkem."
+    }
+  ]
+}

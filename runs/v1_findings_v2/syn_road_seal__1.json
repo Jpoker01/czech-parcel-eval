@@ -1,0 +1,20 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "seal",
+      "evidence": "land_register.seal_present = true"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 rozhodl: v katastru je vyznačena plomba (seal_present = true), která signalizuje probíhající řízení mohoucí změnit práva k parcele. Hodnocení tím končí výsledkem BLOCKED a další kroky se neposuzují.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela je vedena jako silnice s přilehlou silnicí III/29317 (map.adjacent_roads[0].road_number), jde o jediného vlastníka fyzickou osobu, takže po případném zrušení plomby by šlo o možný prodej kraji, ale to teď není posuzováno."
+    }
+  ]
+}
