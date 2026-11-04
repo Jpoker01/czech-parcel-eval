@@ -1,0 +1,104 @@
+{
+  "meta": {
+    "case_id": "holdout_velke_karlovice_4568-1",
+    "checked_at": "2026-11-04",
+    "notes": null
+  },
+  "land_register": {
+    "status": "checked",
+    "owners_visible": true,
+    "notes": null,
+    "identification": {
+      "municipality": "Velké Karlovice",
+      "cadastral_area": "Velké Karlovice",
+      "parcel_number": "4568/1",
+      "lv_number": 2238
+    },
+    "land": {
+      "area_m2": 3929,
+      "land_type": "trvalý travní porost",
+      "land_use": null
+    },
+    "building": {
+      "relation": null,
+      "on_different_lv": null
+    },
+    "owners": [
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba A",
+        "share": "1/4",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba B",
+        "share": "1/4",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba C",
+        "share": "1/4",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba D",
+        "share": "1/4",
+        "sjm": false,
+        "insufficiently_identified": false
+      }
+    ],
+    "restrictions": [],
+    "other_records": [],
+    "seal_present": false
+  },
+  "map": {
+    "status": "checked",
+    "notes": null,
+    "adjacent_roads": [],
+    "access_type": "silnice",
+    "orthophoto_land_cover": "louka",
+    "neighbouring_parcels": [
+      {
+        "number": "8387/1",
+        "owner": "Správa železnic"
+      }
+    ]
+  },
+  "lpis": {
+    "status": "checked",
+    "notes": null,
+    "parcel_in_lpis": false,
+    "dpb_items": []
+  },
+  "nature_protection": {
+    "status": "checked",
+    "notes": null,
+    "large_protected_area": {
+      "type": "CHKO",
+      "name": "Beskydy"
+    },
+    "small_protected_area": {
+      "type": null,
+      "name": null
+    },
+    "parcel_only_partially_inside": false,
+    "cave_related": false
+  },
+  "zoning": {
+    "status": "checked",
+    "notes": null,
+    "built_up_status": null,
+    "preemption_right_101_holder": null
+  },
+  "seller_facts": {
+    "status": "not_checked",
+    "notes": null,
+    "inheritance_date": null
+  }
+}

@@ -34,3 +34,11 @@ Python po každém běhu ověří, že si výstup sám neodporuje. Výstup přit
 7. **Vyloučená možnost prodeje má důvod, nevyloučená ne.** `excluded = true` musí mít vyplněný `exclusion_reason`. `excluded = false` musí mít `exclusion_reason = null`.
 
 `CONDITIONAL` nemá vlastní pravidlo. Platí pro něj jen obecná pravidla 1, 5, 6 a 7.
+
+## Volitelné pole `other_findings`
+
+Enumy pokrývají jen to, co umím předem definovat, a seznam rizik a příležitostí není úplný. `run.py --other-findings` proto ke schématu přidá povinné pole `other_findings[]` (`type` risk / opportunity, `description` jedna věta česky s polem vstupu) a k promptu doplněk `prompts/addons/other_findings.md`. Základní `output/schema.json`, verze promptů ani očekávané výstupy se nemění, běh se uloží do `runs/<verze>-findings/`.
+
+- **Nemění verdikt.** `decision`, `legal_flags`, `resale_options`, `missing_data` a `confidence` se dál řídí jen kroky 0 až 7. Metriky tak zůstávají deterministické a nález bez kategorie nesníží skóre.
+- **Nehodnotí se.** Eval ho nesrovnává s očekávaným výstupem a pravidla konzistence ho nečtou. Kontroluje se jen tvar podle schématu.
+- **Čte ho člověk.** Report vypíše všechny nálezy po případech a označí případy, kde se `decision` liší od očekávaného. Tam může nález ukazovat na mezeru v taxonomii místo chyby modelu. Nález, který se opakuje, se stane novým `code` nebo `resale_type` a promítne se do decision table, promptu a očekávaných výstupů.

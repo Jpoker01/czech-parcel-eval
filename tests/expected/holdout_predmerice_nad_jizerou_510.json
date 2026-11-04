@@ -1,0 +1,16 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = Osoba B"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "LV je čistý, parcela je orná půda a v LPIS ji obdělává Osoba B, která je přirozeným kupcem. AOPK ani územní plán neukazují povinnou nabídku. Proto BUY_CANDIDATE."
+}

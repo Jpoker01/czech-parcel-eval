@@ -2,6 +2,7 @@
 
 Usage:
     uv run python evaluate.py --prompt v0
+    uv run python evaluate.py --prompt v1-findings   # run made with run.py --other-findings
 """
 
 import argparse
@@ -10,6 +11,7 @@ from collections import Counter, defaultdict
 
 from parcel_eval.cases import load_expected, load_input, load_json
 from parcel_eval.checks import check_output, compare_with_expected
+from parcel_eval.findings import OTHER_FINDINGS_FIELD, add_other_findings
 from parcel_eval.metrics import build_confusion_matrix, compute_decision_scores, format_decision_metrics
 from parcel_eval.paths import RUN_METADATA_FILE_NAME, RUNS_DIR, SCHEMA_PATH
 
@@ -18,26 +20,69 @@ SCORED_PARTS = ["decision", "legal_flags", "resale_options", "risky_missing_data
 logger = logging.getLogger(__name__)
 
 
-def format_metadata(prompt_version: str) -> list[str]:
-    """Describe how the run was made, from runs/<prompt>/meta.json.
+def load_metadata(prompt_version: str) -> dict | None:
+    """Read runs/<prompt>/meta.json, or None when the run has none."""
+    metadata_path = RUNS_DIR / prompt_version / RUN_METADATA_FILE_NAME
+    return load_json(metadata_path) if metadata_path.exists() else None
+
+
+def format_metadata(metadata: dict | None) -> list[str]:
+    """Describe how the run was made.
 
     Args:
-        prompt_version: Folder name under runs/, e.g. v0.
+        metadata: Content of runs/<prompt>/meta.json, or None.
 
     Returns:
         Markdown bullet lines for the top of the report.
     """
-    metadata_path = RUNS_DIR / prompt_version / RUN_METADATA_FILE_NAME
-    if not metadata_path.exists():
+    if metadata is None:
         return ["- Metadata: not recorded (the run has no meta.json)"]
 
-    metadata = load_json(metadata_path)
+    # Runs made before the flag existed have no key and ran without other_findings
+    other_findings = "on" if metadata.get("other_findings") else "off"
     return [
         f"- Model: {metadata['model']}",
         f"- Prompt: {metadata['prompt_version']} (sha256 {metadata['prompt_sha256']})",
+        f"- Other findings: {other_findings}",
         f"- Run at: {metadata['run_at']}",
         f"- Cases: {len(metadata['cases'])}, repeats per case: {metadata['repeats']}",
     ]
+
+
+def format_other_findings(
+    findings_by_case: dict[str, list[str]],
+    decision_misses: Counter,
+    runs_by_case: Counter,
+) -> list[str]:
+    """List every other_finding by case, marking cases where the decision missed the expected one.
+
+    A finding on a missed case may mean the taxonomy lacks a code, not that the model failed.
+
+    Args:
+        findings_by_case: Formatted finding lines per case.
+        decision_misses: Runs per case where the decision differed from the expected one.
+        runs_by_case: Number of runs per case.
+
+    Returns:
+        Markdown lines of the "Other findings" section.
+    """
+    lines = [
+        "## Other findings",
+        "",
+        "Not scored. A finding that repeats across cases is a candidate for a new code or resale type. "
+        "On a case where the decision missed, check whether the finding explains it before calling it "
+        "a model error.",
+        "",
+    ]
+    if not findings_by_case:
+        return [*lines, "None."]
+
+    for case_id, finding_lines in findings_by_case.items():
+        title = f"### {case_id}"
+        if decision_misses[case_id]:
+            title += f" (decision missed in {decision_misses[case_id]}/{runs_by_case[case_id]} runs)"
+        lines += [title, "", *finding_lines, ""]
+    return lines
 
 
 def build_report(prompt_version: str) -> str:
@@ -49,7 +94,12 @@ def build_report(prompt_version: str) -> str:
     Returns:
         Markdown with a per-case table, totals, a decision confusion matrix and all errors found.
     """
+    metadata = load_metadata(prompt_version)
+    other_findings_enabled = bool(metadata and metadata.get("other_findings"))
     schema = load_json(SCHEMA_PATH)
+    # Validate against the same schema the model got, so the add-on field is not reported as extra
+    if other_findings_enabled:
+        schema = add_other_findings(schema)
     run_dir = RUNS_DIR / prompt_version
     outputs_by_case = defaultdict(list)
     for output_path in sorted(run_dir.glob("*__*.json")):
@@ -65,6 +115,9 @@ def build_report(prompt_version: str) -> str:
 
     unanimous_cases = 0
     modal_count_sum = 0
+    findings_by_case = defaultdict(list)
+    decision_misses = Counter()
+    runs_by_case = Counter()
     for case_id, outputs in outputs_by_case.items():
         parcel_input = load_input(case_id)
         expected = load_expected(case_id)
@@ -78,6 +131,11 @@ def build_report(prompt_version: str) -> str:
         case_error_count = 0
         for repeat, output in outputs:
             decision_pairs.append((expected["decision"], output.get("decision")))
+            runs_by_case[case_id] += 1
+            if output.get("decision") != expected["decision"]:
+                decision_misses[case_id] += 1
+            for finding in output.get(OTHER_FINDINGS_FIELD, []):
+                findings_by_case[case_id].append(f"- #{repeat} {finding['type']}: {finding['description']}")
             errors = check_output(output, parcel_input, schema)
             case_error_count += len(errors)
             error_lines += [f"- `{case_id}` #{repeat}: {error}" for error in errors]
@@ -92,17 +150,20 @@ def build_report(prompt_version: str) -> str:
             f"| {modal_count}/{len(outputs)} | {case_error_count} |"
         )
 
-    # Across the whole run: how many cases agreed on every repeat (strict) and the average modal rate (lenient)
+    # Across the whole run: cases that agreed on every repeat (strict) and the average modal rate (lenient)
     total_scores = " | ".join(f"{totals[part]}/{total_runs}" for part in SCORED_PARTS)
     case_count = len(outputs_by_case)
-    total_consistency = f"{unanimous_cases}/{case_count} unanimous, avg {modal_count_sum / total_runs:.0%}" if case_count else "-"
+    total_consistency = "-"
+    if case_count:
+        modal_rate = modal_count_sum / total_runs
+        total_consistency = f"{unanimous_cases}/{case_count} unanimous, avg {modal_rate:.0%}"
     rows.append(f"| **total** | | | {total_scores} | {total_consistency} | {len(error_lines)} |")
 
     matrix = build_confusion_matrix(decision_pairs)
     report = [
         f"# Report {prompt_version}",
         "",
-        *format_metadata(prompt_version),
+        *format_metadata(metadata),
         "",
         *rows,
         "",
@@ -116,7 +177,9 @@ def build_report(prompt_version: str) -> str:
         "",
         *(error_lines or ["None."]),
     ]
-    return "\n".join(report) + "\n"
+    if other_findings_enabled:
+        report += ["", *format_other_findings(findings_by_case, decision_misses, runs_by_case)]
+    return "\n".join(report).rstrip() + "\n"
 
 
 def main() -> None:

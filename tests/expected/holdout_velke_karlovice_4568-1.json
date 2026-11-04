@@ -1,0 +1,21 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].share = 1/4"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "LV je čistý, parcelu drží čtyři spoluvlastníci po 1/4. Trvalý travní porost není v LPIS, takže jediná možnost dalšího prodeje jsou ostatní spoluvlastníci bez konkrétního kupce. CHKO Beskydy verdikt nemění. Bez údajů od prodávajícího nelze vyloučit povinnou nabídku spoluvlastníkům podle § 1124, proto CONDITIONAL."
+}

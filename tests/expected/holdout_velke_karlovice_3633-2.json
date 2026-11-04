@@ -1,0 +1,16 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Osoba D",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.neighbouring_parcels[7].owner = Osoba D"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "LV je čistý, parcela je lesní pozemek bez omezení. CHKO Beskydy není národní park ani NPR/NPP, takže § 61 se neuplatní. Přirozeným kupcem je soukromý soused Osoba D, který drží tři přilehlé parcely. Proto BUY_CANDIDATE."
+}

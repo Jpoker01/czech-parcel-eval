@@ -1,0 +1,119 @@
+{
+  "meta": {
+    "case_id": "holdout_velke_karlovice_3633-2",
+    "checked_at": "2026-11-04",
+    "notes": null
+  },
+  "land_register": {
+    "status": "checked",
+    "owners_visible": true,
+    "notes": null,
+    "identification": {
+      "municipality": "Velké Karlovice",
+      "cadastral_area": "Velké Karlovice",
+      "parcel_number": "3633/2",
+      "lv_number": 1001
+    },
+    "land": {
+      "area_m2": 18792,
+      "land_type": "lesní pozemek",
+      "land_use": null
+    },
+    "building": {
+      "relation": null,
+      "on_different_lv": null
+    },
+    "owners": [
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba A",
+        "share": "1/1",
+        "sjm": false,
+        "insufficiently_identified": false
+      }
+    ],
+    "restrictions": [],
+    "other_records": [],
+    "seal_present": false
+  },
+  "map": {
+    "status": "checked",
+    "notes": null,
+    "adjacent_roads": [],
+    "access_type": "lesní cesta",
+    "orthophoto_land_cover": "les",
+    "neighbouring_parcels": [
+      {
+        "number": "3153",
+        "owner": "Lesy ČR"
+      },
+      {
+        "number": "3585/1",
+        "owner": "Pátá lesní a.s."
+      },
+      {
+        "number": "3590/2",
+        "owner": "Pátá lesní a.s."
+      },
+      {
+        "number": "3591",
+        "owner": "Pátá lesní a.s."
+      },
+      {
+        "number": "3595/1",
+        "owner": "Osoba B; Osoba C"
+      },
+      {
+        "number": "3595/2",
+        "owner": "Pátá lesní a.s."
+      },
+      {
+        "number": "3629",
+        "owner": "Osoba A"
+      },
+      {
+        "number": "3633/11",
+        "owner": "Osoba D"
+      },
+      {
+        "number": "3633/12",
+        "owner": "Osoba D"
+      },
+      {
+        "number": "3633/13",
+        "owner": "Osoba D"
+      }
+    ]
+  },
+  "lpis": {
+    "status": "checked",
+    "notes": null,
+    "parcel_in_lpis": false,
+    "dpb_items": []
+  },
+  "nature_protection": {
+    "status": "checked",
+    "notes": null,
+    "large_protected_area": {
+      "type": "CHKO",
+      "name": "Beskydy"
+    },
+    "small_protected_area": {
+      "type": null,
+      "name": null
+    },
+    "parcel_only_partially_inside": false,
+    "cave_related": false
+  },
+  "zoning": {
+    "status": "checked",
+    "notes": null,
+    "built_up_status": "nezastavěné území",
+    "preemption_right_101_holder": null
+  },
+  "seller_facts": {
+    "status": "not_checked",
+    "notes": null,
+    "inheritance_date": null
+  }
+}

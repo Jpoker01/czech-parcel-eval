@@ -1,0 +1,16 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "local_road",
+      "buyer": "Předměřice nad Jizerou",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_use = ostatní komunikace"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "LV má jen věcné břemeno a administrativní zápis o změně číslování parcel, oba verdikt nemění. Způsob využití ostatní komunikace dává jedinou možnost dalšího prodeje, a to prodej obci Předměřice nad Jizerou. Vlastník je soukromá osoba, AOPK ani územní plán neukazují povinnou nabídku. Proto BUY_CANDIDATE."
+}
