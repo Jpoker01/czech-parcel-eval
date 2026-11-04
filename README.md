@@ -87,7 +87,7 @@ ANTHROPIC_API_KEY=sk-ant-...
 ### Test data
 
 **The test set contains real parcels and synthetic variants of them.**
-Real parcels are copied by hand from Nahlížení do KN and the other sources, with names of private persons replaced by `Osoba A`, `Osoba B` etc. Each one covers a resale option or a legal flag (field with an LPIS user, land under a third-party garage, forest, national park, execution etc.). So far only `zalesni_lhota_1292-2` (land under a road already owned by Liberecký kraj, copied on 2. 11. 2026) is collected; the others are prepared as fill-in files in `input/drafts/`.
+Real parcels are copied by hand from Nahlížení do KN and the other sources, with names of private persons replaced by `Osoba A`, `Osoba B` etc. Each one covers a resale option or a legal flag (field with an LPIS user, land under a third-party garage, forest, national park, execution etc.). Inputs live in `input/examples/<case_id>.json`, expected outputs in `tests/expected/<case_id>.json` (see `docs/adding_test_cases.md` for the collection procedure).
 
 The `syn_*` cases in `tests/cases/` take a real parcel or another synthetic case and change one thing, so that each one isolates a single rule (seal, execution, national park, prompt injection in `notes`, unchecked sources etc.). `syn_road_private_owner` is the shared starting point, which turns the real parcel into a buyable one. Each case is one self-contained file with a description, the base case, the changed input fields and the expected output:
 

@@ -1,0 +1,14 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "units_ownership",
+      "evidence": "land_register.owners[0].relation_type = Vlastnictví jednotek"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Parcela 2135 v k.ú. Černá Pole je zastavěná plocha pod bytovým domem č.p. 966 a vlastníky jsou držitelé bytových jednotek (relation_type = Vlastnictví jednotek). Pozemek je neoddělitelný od jednotek podle § 1159 NOZ, nelze jej koupit samostatně. BLOCKED přes units_ownership."
+}

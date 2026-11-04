@@ -1,6 +1,7 @@
 {
   "meta": {
-    "case_id": "kobyli_na_morave_8037",
+    "case_id": "synthetic_niv_from_kobyli_8037",
+    "checked_at": "2026-11-04",
     "notes": null
   },
   "land_register": {
@@ -28,7 +29,7 @@
         "name": "Osoba A",
         "share": "1/12",
         "sjm": false,
-        "insufficiently_identified": false
+        "insufficiently_identified": true
       },
       {
         "relation_type": "Vlastnické právo",
@@ -72,18 +73,13 @@
     "neighbouring_parcels": []
   },
   "lpis": {
-    "status": "checked",
+    "status": "not_checked",
     "notes": null,
-    "parcel_in_lpis": true,
-    "dpb_items": [
-      {
-        "user_name": "Osoba F",
-        "culture": "vinice"
-      }
-    ]
+    "parcel_in_lpis": null,
+    "dpb_items": []
   },
   "nature_protection": {
-    "status": "checked",
+    "status": "not_checked",
     "notes": null,
     "large_protected_area": {
       "type": null,
@@ -93,11 +89,11 @@
       "type": null,
       "name": null
     },
-    "parcel_only_partially_inside": false,
-    "cave_related": false
+    "parcel_only_partially_inside": null,
+    "cave_related": null
   },
   "zoning": {
-    "status": "checked",
+    "status": "not_checked",
     "notes": null,
     "built_up_status": null,
     "preemption_right_101_holder": null

@@ -1,0 +1,131 @@
+{
+  "meta": {
+    "case_id": "opatovice_u_rajhradu_1280-6",
+    "checked_at": "2026-11-04",
+    "notes": null
+  },
+  "land_register": {
+    "status": "checked",
+    "owners_visible": true,
+    "notes": null,
+    "identification": {
+      "municipality": "Opatovice",
+      "cadastral_area": "Opatovice u Rajhradu",
+      "parcel_number": "1280/6",
+      "lv_number": 172
+    },
+    "land": {
+      "area_m2": 3546,
+      "land_type": "orná půda",
+      "land_use": null
+    },
+    "building": {
+      "relation": null,
+      "on_different_lv": null
+    },
+    "owners": [
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba A",
+        "share": "1/12",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba B",
+        "share": "1/12",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba C",
+        "share": "1/6",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba D",
+        "share": "1/6",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba E",
+        "share": "1/6",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba F",
+        "share": "1/6",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba G",
+        "share": "1/6",
+        "sjm": false,
+        "insufficiently_identified": false
+      }
+    ],
+    "restrictions": [],
+    "other_records": [
+      {
+        "type": "Zahájeny pozemkové úpravy"
+      }
+    ],
+    "seal_present": false
+  },
+  "map": {
+    "status": "not_checked",
+    "notes": null,
+    "adjacent_roads": [],
+    "access_type": null,
+    "orthophoto_land_cover": null,
+    "neighbouring_parcels": []
+  },
+  "lpis": {
+    "status": "checked",
+    "notes": null,
+    "parcel_in_lpis": true,
+    "dpb_items": [
+      {
+        "user_name": "Osoba H",
+        "culture": "standardní orná půda"
+      }
+    ]
+  },
+  "nature_protection": {
+    "status": "checked",
+    "notes": null,
+    "large_protected_area": {
+      "type": null,
+      "name": null
+    },
+    "small_protected_area": {
+      "type": null,
+      "name": null
+    },
+    "parcel_only_partially_inside": false,
+    "cave_related": false
+  },
+  "zoning": {
+    "status": "checked",
+    "notes": null,
+    "built_up_status": null,
+    "preemption_right_101_holder": null
+  },
+  "seller_facts": {
+    "status": "not_checked",
+    "notes": null,
+    "inheritance_date": null,
+    "deceased_owner_in_sjm": null,
+    "inheritance_proceedings_open": null
+  }
+}

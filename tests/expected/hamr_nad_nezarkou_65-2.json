@@ -1,0 +1,14 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "execution",
+      "evidence": "land_register.other_records[1].type = Exekuční příkaz k prodeji nemovitosti"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Parcela 65/2 v k.ú. Hamr nad Nežárkou má v Jiných zápisech \"Exekuční příkaz k prodeji nemovitosti\" a \"Zahájení exekuce\". Jakýkoli převod vlastníkem je neplatný, dokud exekuce trvá. BLOCKED přes execution. Pozn.: Exekuční příkaz KN eviduje v Jiných zápisech (poznámka podle § 69 EŘ), ne v Omezeních vlastnického práva - oprava decision_table."
+}

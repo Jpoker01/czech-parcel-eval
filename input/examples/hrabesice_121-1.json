@@ -1,6 +1,7 @@
 {
   "meta": {
-    "case_id": "knezska_492",
+    "case_id": "hrabesice_121-1",
+    "checked_at": "2026-11-04",
     "notes": null
   },
   "land_register": {
@@ -8,14 +9,14 @@
     "owners_visible": true,
     "notes": null,
     "identification": {
-      "municipality": "Šlapanov",
-      "cadastral_area": "Kněžská",
-      "parcel_number": "492",
-      "lv_number": 317
+      "municipality": "Hraběšice",
+      "cadastral_area": "Hraběšice",
+      "parcel_number": "121/1",
+      "lv_number": 210
     },
     "land": {
-      "area_m2": 4325,
-      "land_type": "lesní pozemek",
+      "area_m2": 13687,
+      "land_type": "trvalý travní porost",
       "land_use": null
     },
     "building": {
@@ -25,54 +26,48 @@
     "owners": [
       {
         "relation_type": "Vlastnické právo",
-        "name": "Osoba A",
+        "name": "Osoba A; Osoba B",
         "share": "1/1",
-        "sjm": false,
+        "sjm": true,
         "insufficiently_identified": false
       }
     ],
-    "restrictions": [],
-    "other_records": [],
+    "restrictions": [
+      {
+        "type": "Zástavní právo z rozhodnutí správního orgánu"
+      },
+      {
+        "type": "Zástavní právo z rozhodnutí zdravotní pojišťovny"
+      }
+    ],
+    "other_records": [
+      {
+        "type": "Závazek neumožnit zápis nového zást. práva namísto starého"
+      },
+      {
+        "type": "Závazek nezajistit zást. pr. ve výhodnějším pořadí nový dluh"
+      }
+    ],
     "seal_present": false
   },
   "map": {
-    "status": "checked",
-    "notes": null,
-    "adjacent_roads": [],
-    "access_type": "polní cesta",
-    "orthophoto_land_cover": "les",
-    "neighbouring_parcels": [
-      {
-        "number": "302/2",
-        "owner": "Osoba A"
-      },
-      {
-        "number": "401/3",
-        "owner": "Lesy ČR"
-      },
-      {
-        "number": "402",
-        "owner": "Obec Šlapanov"
-      },
-      {
-        "number": "487",
-        "owner": "Osoba B"
-      },
-      {
-        "number": "488",
-        "owner": "Osoba B"
-      },
-      {
-        "number": "531",
-        "owner": "Obec Šlapanov"
-      }
-    ]
-  },
-  "lpis": {
     "status": "not_checked",
     "notes": null,
-    "parcel_in_lpis": null,
-    "dpb_items": []
+    "adjacent_roads": [],
+    "access_type": null,
+    "orthophoto_land_cover": null,
+    "neighbouring_parcels": []
+  },
+  "lpis": {
+    "status": "checked",
+    "notes": null,
+    "parcel_in_lpis": true,
+    "dpb_items": [
+      {
+        "user_name": "Osoba C",
+        "culture": "trvalý travní porost"
+      }
+    ]
   },
   "nature_protection": {
     "status": "checked",

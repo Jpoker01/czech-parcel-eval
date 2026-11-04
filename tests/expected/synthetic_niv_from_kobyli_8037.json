@@ -1,0 +1,14 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "insufficiently_identified_owner",
+      "evidence": "land_register.owners[0].insufficiently_identified = true"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Jeden ze spoluvlastníků parcely 8037 v k.ú. Kobylí na Moravě je v KN označen jako nedostatečně identifikovaný (owners[0].insufficiently_identified = true). Jeho podíl nelze platně převést, dokud nebude vlastník dohledán nebo nepřipadne státu. Bloker platí pro kteréhokoli spoluvlastníka, proto BLOCKED přes insufficiently_identified_owner."
+}

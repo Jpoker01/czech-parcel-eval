@@ -1,6 +1,7 @@
 {
   "meta": {
     "case_id": "hustopece_u_brna_4813-68",
+    "checked_at": "2026-11-03",
     "notes": null
   },
   "land_register": {
@@ -70,7 +71,7 @@
   },
   "zoning": {
     "status": "checked",
-    "notes": "Textová část ÚP Hustopeče (úplné znění po změně č. 7): předkupní právo se nevymezuje.",
+    "notes": null,
     "built_up_status": null,
     "preemption_right_101_holder": null
   },

@@ -24,8 +24,8 @@ Zkratky zdrojů: **KN** = Nahlížení do KN (přihlášený uživatel), **MAP**
 | Kód | Zdroj | Signál ve vstupu |
 |---|---|---|
 | `seal` | KN | `land_register.seal_present = true` (plomba: v katastru je vyznačeno, že u parcely probíhá řízení, které může změnit práva k ní) |
-| `execution` | KN | `land_register.restrictions[].type` obsahuje "exekuc" |
-| `insolvency` | KN | `land_register.restrictions[].type` obsahuje "insolvenc", "konkurs", "úpadk" |
+| `execution` | KN | `land_register.restrictions[].type` nebo `land_register.other_records[].type` obsahuje "exekuc" |
+| `insolvency` | KN | `land_register.restrictions[].type` nebo `land_register.other_records[].type` obsahuje "insolvenc", "konkurs", "úpadk" |
 | `alienation_ban` | KN | `land_register.restrictions[].type` obsahuje "Zákaz zcizení" |
 | `dispute_note` | KN | `land_register.other_records[].type` obsahuje "spornost" nebo "žaloba" |
 | `insufficiently_identified_owner` | KN | `land_register.owners[].insufficiently_identified = true` |

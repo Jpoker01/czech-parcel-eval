@@ -1,6 +1,7 @@
 {
   "meta": {
     "case_id": "plumlov_1183-3",
+    "checked_at": "2026-11-03",
     "notes": null
   },
   "land_register": {
@@ -44,7 +45,7 @@
   },
   "map": {
     "status": "checked",
-    "notes": "Úzký pruh podél okraje pole od polní cesty Roudník (p. č. 2037) k zemědělskému areálu.",
+    "notes": null,
     "adjacent_roads": [],
     "access_type": "polní cesta",
     "orthophoto_land_cover": "louka",
@@ -89,7 +90,7 @@
   },
   "zoning": {
     "status": "checked",
-    "notes": "Textová část ÚP Plumlov (návrh, leden 2020), kap. 9.2: plochy s předkupním právem se nevymezují.",
+    "notes": null,
     "built_up_status": null,
     "preemption_right_101_holder": null
   },

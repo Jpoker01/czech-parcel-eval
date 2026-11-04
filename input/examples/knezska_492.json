@@ -1,6 +1,7 @@
 {
   "meta": {
-    "case_id": "slatina_2952-5",
+    "case_id": "knezska_492",
+    "checked_at": "2026-11-04",
     "notes": null
   },
   "land_register": {
@@ -8,44 +9,65 @@
     "owners_visible": true,
     "notes": null,
     "identification": {
-      "municipality": "Brno",
-      "cadastral_area": "Slatina",
-      "parcel_number": "2952/5",
-      "lv_number": 10001
+      "municipality": "Šlapanov",
+      "cadastral_area": "Kněžská",
+      "parcel_number": "492",
+      "lv_number": 317
     },
     "land": {
-      "area_m2": 1202,
-      "land_type": "zastavěná plocha a nádvoří",
+      "area_m2": 4325,
+      "land_type": "lesní pozemek",
       "land_use": null
     },
     "building": {
-      "relation": "Stavba na parcele",
-      "on_different_lv": true
+      "relation": null,
+      "on_different_lv": null
     },
     "owners": [
       {
         "relation_type": "Vlastnické právo",
-        "name": "Statutární město Brno",
+        "name": "Osoba A",
         "share": "1/1",
         "sjm": false,
         "insufficiently_identified": false
       }
     ],
     "restrictions": [],
-    "other_records": [
-      {
-        "type": "Změna výměr obnovou operátu"
-      }
-    ],
+    "other_records": [],
     "seal_present": false
   },
   "map": {
     "status": "checked",
     "notes": null,
     "adjacent_roads": [],
-    "access_type": null,
-    "orthophoto_land_cover": null,
-    "neighbouring_parcels": []
+    "access_type": "polní cesta",
+    "orthophoto_land_cover": "les",
+    "neighbouring_parcels": [
+      {
+        "number": "302/2",
+        "owner": "Osoba A"
+      },
+      {
+        "number": "401/3",
+        "owner": "Lesy ČR"
+      },
+      {
+        "number": "402",
+        "owner": "Obec Šlapanov"
+      },
+      {
+        "number": "487",
+        "owner": "Osoba B"
+      },
+      {
+        "number": "488",
+        "owner": "Osoba B"
+      },
+      {
+        "number": "531",
+        "owner": "Obec Šlapanov"
+      }
+    ]
   },
   "lpis": {
     "status": "not_checked",
@@ -54,7 +76,7 @@
     "dpb_items": []
   },
   "nature_protection": {
-    "status": "not_checked",
+    "status": "checked",
     "notes": null,
     "large_protected_area": {
       "type": null,
@@ -64,11 +86,11 @@
       "type": null,
       "name": null
     },
-    "parcel_only_partially_inside": null,
-    "cave_related": null
+    "parcel_only_partially_inside": false,
+    "cave_related": false
   },
   "zoning": {
-    "status": "not_checked",
+    "status": "checked",
     "notes": null,
     "built_up_status": null,
     "preemption_right_101_holder": null

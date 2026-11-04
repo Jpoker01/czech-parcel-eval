@@ -1,31 +1,47 @@
 {
   "meta": {
-    "case_id": null,
+    "case_id": "horni_mala_upa_310-1",
+    "checked_at": "2026-11-04",
     "notes": null
   },
   "land_register": {
     "status": "checked",
-    "owners_visible": null,
+    "owners_visible": true,
     "notes": null,
     "identification": {
-      "municipality": null,
-      "cadastral_area": null,
-      "parcel_number": null,
-      "lv_number": null
+      "municipality": "Malá Úpa",
+      "cadastral_area": "Horní Malá Úpa",
+      "parcel_number": "310/1",
+      "lv_number": 162
     },
     "land": {
-      "area_m2": null,
-      "land_type": null,
-      "land_use": null
+      "area_m2": 2424,
+      "land_type": "lesní pozemek",
+      "land_use": "les jiný než hospodářský"
     },
     "building": {
       "relation": null,
       "on_different_lv": null
     },
-    "owners": [],
+    "owners": [
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba A",
+        "share": "5/6",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnické právo",
+        "name": "Osoba B",
+        "share": "1/6",
+        "sjm": false,
+        "insufficiently_identified": false
+      }
+    ],
     "restrictions": [],
     "other_records": [],
-    "seal_present": null
+    "seal_present": false
   },
   "map": {
     "status": "not_checked",
@@ -42,23 +58,23 @@
     "dpb_items": []
   },
   "nature_protection": {
-    "status": "not_checked",
+    "status": "checked",
     "notes": null,
     "large_protected_area": {
-      "type": null,
-      "name": null
+      "type": "NP",
+      "name": "Krkonošský národní park"
     },
     "small_protected_area": {
       "type": null,
       "name": null
     },
-    "parcel_only_partially_inside": null,
-    "cave_related": null
+    "parcel_only_partially_inside": false,
+    "cave_related": false
   },
   "zoning": {
-    "status": "not_checked",
+    "status": "checked",
     "notes": null,
-    "built_up_status": null,
+    "built_up_status": "nezastavěné území",
     "preemption_right_101_holder": null
   },
   "seller_facts": {

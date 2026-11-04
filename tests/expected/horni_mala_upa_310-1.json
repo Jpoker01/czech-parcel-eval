@@ -1,0 +1,34 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "state_nature_protection_61",
+      "evidence": "nature_protection.large_protected_area.type = NP"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = lesní pozemek"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].share = 1/6"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "map",
+      "impact": "could_exclude_resale"
+    }
+  ],
+  "confidence": "high",
+  "reasoning": "Parcela 310/1 leží uvnitř Krkonošského národního parku (nature_protection.large_protected_area.type = NP), v nezastavěném území. Podle § 61 zákona 114/1992 Sb. má stát předkupní právo, prodej se musí nejdřív nabídnout jemu, což stropuje výsledek na CONDITIONAL. Les jiný než hospodářský má exitem prodej navazujícímu lesnímu vlastníkovi, případně prodej podílu druhému spoluvlastníkovi, ale mapu (přístup a sousedy) není ověřená."
+}

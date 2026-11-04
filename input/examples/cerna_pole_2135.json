@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "case_id": "cerna_pole_2135",
+    "checked_at": "2026-11-04",
+    "notes": null
+  },
+  "land_register": {
+    "status": "checked",
+    "owners_visible": true,
+    "notes": null,
+    "identification": {
+      "municipality": "Brno",
+      "cadastral_area": "Černá Pole",
+      "parcel_number": "2135",
+      "lv_number": 7679
+    },
+    "land": {
+      "area_m2": 263,
+      "land_type": "zastavěná plocha a nádvoří",
+      "land_use": null
+    },
+    "building": {
+      "relation": "Součástí je stavba",
+      "on_different_lv": false
+    },
+    "owners": [
+      {
+        "relation_type": "Vlastnictví jednotek",
+        "name": "Osoba A",
+        "share": "2069/7368",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnictví jednotek",
+        "name": "Osoba B",
+        "share": "2069/14736",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnictví jednotek",
+        "name": "Osoba C",
+        "share": "233/1228",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnictví jednotek",
+        "name": "Osoba D",
+        "share": "833/4912",
+        "sjm": false,
+        "insufficiently_identified": false
+      },
+      {
+        "relation_type": "Vlastnictví jednotek",
+        "name": "Osoba E",
+        "share": "539/2456",
+        "sjm": false,
+        "insufficiently_identified": false
+      }
+    ],
+    "restrictions": [
+      {
+        "type": "Věcné břemeno (podle listiny)"
+      }
+    ],
+    "other_records": [
+      {
+        "type": "Společenství vlastníků založeno podle § 1200 obč.zák."
+      },
+      {
+        "type": "Vlastnictví jednotek"
+      },
+      {
+        "type": "Vznik společenství vlastníků prokázán"
+      }
+    ],
+    "seal_present": false
+  },
+  "map": {
+    "status": "not_checked",
+    "notes": null,
+    "adjacent_roads": [],
+    "access_type": null,
+    "orthophoto_land_cover": null,
+    "neighbouring_parcels": []
+  },
+  "lpis": {
+    "status": "not_checked",
+    "notes": null,
+    "parcel_in_lpis": null,
+    "dpb_items": []
+  },
+  "nature_protection": {
+    "status": "not_checked",
+    "notes": null,
+    "large_protected_area": {
+      "type": null,
+      "name": null
+    },
+    "small_protected_area": {
+      "type": null,
+      "name": null
+    },
+    "parcel_only_partially_inside": null,
+    "cave_related": null
+  },
+  "zoning": {
+    "status": "not_checked",
+    "notes": null,
+    "built_up_status": null,
+    "preemption_right_101_holder": null
+  },
+  "seller_facts": {
+    "status": "not_checked",
+    "notes": null,
+    "inheritance_date": null,
+    "deceased_owner_in_sjm": null,
+    "inheritance_proceedings_open": null
+  }
+}

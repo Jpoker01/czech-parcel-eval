@@ -1,6 +1,7 @@
 {
   "meta": {
     "case_id": null,
+    "checked_at": null,
     "notes": null
   },
   "land_register": {
@@ -44,8 +45,14 @@
   "nature_protection": {
     "status": "not_checked",
     "notes": null,
-    "large_protected_area": {"type": null, "name": null},
-    "small_protected_area": {"type": null, "name": null},
+    "large_protected_area": {
+      "type": null,
+      "name": null
+    },
+    "small_protected_area": {
+      "type": null,
+      "name": null
+    },
     "parcel_only_partially_inside": null,
     "cave_related": null
   },
