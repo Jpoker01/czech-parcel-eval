@@ -1,0 +1,22 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = lesní pozemek"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "medium",
+  "reasoning": "Krok 0 i krok 1 prošly bez nálezu, takže parcela není blokována a žádný flag z kroku 2 nevznikl. Jediná možnost dalšího prodeje je lesní pozemek, který nevyloučil holina ani chybějící přístup, ale vstup neurčuje, který soused je kupcem. Bez jmenovitého kupce hodnocení krokem 6 končí na CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Parcela má sousedy Lesy ČR (map.neighbouring_parcels[0].owner = Lesy ČR, parcela 401/3), Obec Šlapanov (parcely 402 a 531) a Osoba B (parcely 487 a 488), kteří mohou být zájemci o koupi, pokud jejich pozemky jsou lesní."
+    }
+  ]
+}

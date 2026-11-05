@@ -1,0 +1,22 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = orná půda"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "lpis",
+      "impact": "could_exclude_resale"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Kroky 0 a 1 prošly: katastr je zkontrolovaný, bez plomby, omezení a zápisů a s jediným vlastníkem bez nedostatečné identifikace. Krok 2 nenašel žádný flag, protože ochrana přírody, územní plán i katastr jsou zkontrolované a bez relevantních údajů. Jediná možnost dalšího prodeje je zemědělec jako uživatel pole, ale LPIS není otevřen, takže nelze vyloučit ani potvrdit kupce, a proto je výsledek CONDITIONAL.",
+  "other_findings": []
+}

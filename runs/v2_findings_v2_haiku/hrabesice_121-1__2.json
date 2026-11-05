@@ -1,0 +1,30 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_grassland",
+      "buyer": "Osoba C",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = trvalý travní porost"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Parcela prošla krokem 0 bez nedostatků a krokem 1 bez blokeru, protože v omezeních jsou pouze zástavní práva, která nejsou blokerem, a plomba ani exekuce nejsou zapsány. Krok 2 nenašel žádný flag nabídky ani souhlasu, protože zdroje nature_protection a zoning jsou zkontrolované a neobsahují relevantní údaje. Jediná možnost dalšího prodeje je field_grassland s uživatelem Osoba C v LPIS, který není vyloučen, takže výsledek je BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Na parcele vázne zástavní právo z rozhodnutí správního orgánu a zástavní právo z rozhodnutí zdravotní pojišťovny (land_register.restrictions[0].type, land_register.restrictions[1].type), jejich výše ani zajištěná pohledávka nejsou ve vstupu uvedeny a je třeba ověřit jejich výmaz před převodem."
+    },
+    {
+      "type": "risk",
+      "description": "V jiných zápisech jsou dva závazky týkající se pořadí zástavních práv (land_register.other_records[0].type, land_register.other_records[1].type), jejichž dopad na převod nelze z dat posoudit."
+    },
+    {
+      "type": "risk",
+      "description": "Vlastnické právo svědčí manželům v režimu SJM (land_register.owners[0].sjm = true), takže k prodeji bude nutný souhlas obou manželů."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = Osoba B"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 prošel, protože katastr je zkontrolovaný, parcela má výměru 20200 m2, druh orná půda a jednoho vlastníka. Krok 1 nenašel žádný bloker, plombu, omezení ani záznam v Jiných zápisech. Krok 2 nenašel žádný flag povinné nabídky ani souhlasu, protože zdroje ochrany přírody a územního plánu jsou zkontrolované a bez relevantního nálezu. Parcela má v LPIS uživatele Osobu B, který je jmenovaným kupcem pro možnost field_arable, a žádná možnost není vyloučena, takže výsledek je BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Vlastník Osoba A není zemědělským uživatelem, protože v LPIS je jako uživatel DPB vedena Osoba B (lpis.dpb_items[0].user_name), což podporuje prodej uživateli půdy."
+    },
+    {
+      "type": "risk",
+      "description": "Druh využití pozemku není v katastru vyplněn (land_register.land.land_use = null), takže případná jiná kategorie využití nebyla ověřena."
+    }
+  ]
+}

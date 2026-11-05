@@ -1,0 +1,28 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "registered_preemption",
+      "evidence": "land_register.restrictions[0].type = Předkupní právo"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "medium",
+  "reasoning": "Krok 0 i krok 1 neodhalily překážku a parcela má jednoho vlastníka bez zápisu plomby, exekuce ani zákazu zcizení. Krok 2 našel zapsané předkupní právo, takže parcela musí být nejdřív nabídnuta jeho držiteli a výsledek nemůže být BUY_CANDIDATE. Možnost dalšího prodeje je kraj jako správce silnice III. třídy, ale kraj není ve vstupu pojmenován, proto zůstává buyer prázdný a krok 6 vede k CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Držitel předkupního práva není ve vstupu uveden, protože land_register.restrictions[0] obsahuje jen typ omezení, takže není jasné, komu musí být parcela nabídnuta."
+    }
+  ]
+}

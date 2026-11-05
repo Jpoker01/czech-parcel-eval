@@ -1,0 +1,29 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_vineyard",
+      "buyer": "Osoba F",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = Osoba F"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": "Osoba A, Osoba B, Osoba C, Osoba D, Osoba E",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Osoba B"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 a krok 1 neodhalily žádnou plombu, exekuci, insolvenci ani jiný bloker a parcela má čisté zápisy. Krok 2 nenašel žádný zákonný flag, ale parcela má pět spoluvlastníků a zdroj seller_facts potřebný pro § 1124 je not_checked, takže povinnou nabídku nelze vyloučit. Krok 3 identifikoval vinaře Osobu F jako kupce a spoluvlastníky jako možnost prodeje, krok 4 žádnou možnost nevyloučil. Krok 5 vrací CONDITIONAL kvůli chybějícímu zdroji seller_facts.",
+  "other_findings": []
+}

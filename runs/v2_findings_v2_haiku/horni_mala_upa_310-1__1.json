@@ -1,0 +1,59 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "state_nature_protection_61",
+      "evidence": "nature_protection.large_protected_area.type = NP"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = lesní pozemek"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": "Osoba A",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[0].name = Osoba A"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Osoba B"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "map.orthophoto_land_cover",
+      "impact": "could_exclude_resale"
+    },
+    {
+      "field": "map.access_type",
+      "impact": "could_exclude_resale"
+    },
+    {
+      "field": "map.neighbouring_parcels",
+      "impact": "could_reduce_value"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 2 nalezl povinnou nabídku podle § 61 (zákon o ochraně přírody), protože parcela leží v Krkonošském národním parku (nature_protection.large_protected_area.type = NP) a zoning.built_up_status je nezastavěné území, takže výsledek nemůže být BUY_CANDIDATE. Krok 3 identifikoval les jako možnost prodeje a spoluvlastníky jako možné kupce, ale u lesa nejsou mapová data pro kontrolu holiny a přístupu, takže nelze vyloučit ani potvrdit kupce. Protože chybějí údaje, které mohou vyloučit prodej nebo vyžádat další nabídku, je výsledek CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Druh pozemku je les jiný než hospodářský (land_register.land.land_use), což může omezit okruh případných kupců lesa."
+    }
+  ]
+}

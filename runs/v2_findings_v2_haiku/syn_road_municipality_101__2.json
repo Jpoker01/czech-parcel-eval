@@ -1,0 +1,23 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "municipality_or_region_101",
+      "evidence": "zoning.preemption_right_101_holder = obec"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_use = silnice; map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 je splněn, parcela má zapsaného jediného vlastníka a žádný blokující záznam (krok 1) nebyl nalezen. Zdroj zoning je zkontrolován a uvádí předkupní právo obce podle § 101, což je povinná nabídka (krok 2), a proto výsledek nemůže být BUY_CANDIDATE. Jediná možnost dalšího prodeje je silnice III. třídy, kterou nic nevylučuje, ale kupec s jménem ve vstupu chybí, takže výsledek zůstává CONDITIONAL.",
+  "other_findings": []
+}

@@ -1,0 +1,20 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "execution",
+      "evidence": "land_register.other_records[0].type = Exekuční příkaz k prodeji podílu - Osoba A"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 rozhodl o výsledku. V Jiných zápisech katastru je exekuční příkaz k prodeji podílu Osoby A (land_register.other_records[0].type), což spadá pod blokující kód execution. Bloker platí pro kteréhokoli vlastníka parcely, takže parcelu nelze koupit, i když exekuce se týká jen jednoho z pěti spoluvlastníků. Hodnocení proto končí bez dalších kroků.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Exekuční příkaz se váže k Osobě A, která podle land_register.owners[0] vlastní podíl 1/12, takže případný prodej v exekuci by se týkal jen jejího podílu."
+    }
+  ]
+}

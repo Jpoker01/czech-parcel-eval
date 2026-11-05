@@ -1,0 +1,40 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "consent",
+      "code": "land_consolidation",
+      "evidence": "land_register.other_records[0].type = Zahájeny pozemkové úpravy"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[0].name = Osoba A"
+    },
+    {
+      "resale_type": "field_arable",
+      "buyer": "Osoba H",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = Osoba H"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 i krok 1 neodhalily žádný bloker, parcela má sedm vlastníků s podíly sčítajícími se na celek. Krok 2 našel souhlasový flag land_consolidation kvůli zahájeným pozemkovým úpravám, takže výsledek nemůže být BUY_CANDIDATE. Údaj seller_facts není ověřen, a proto nelze vyloučit povinnou nabídku podle § 1124, čímž se výsledek drží na CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Zahájené pozemkové úpravy mohou změnit podobu nebo rozsah parcely, termín jejich dokončení ve vstupu chybí (land_register.other_records[0].type)."
+    }
+  ]
+}

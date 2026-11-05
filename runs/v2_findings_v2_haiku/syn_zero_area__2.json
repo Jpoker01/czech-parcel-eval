@@ -1,0 +1,14 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [
+    {
+      "field": "land_register.land.area_m2",
+      "impact": "could_reduce_value"
+    }
+  ],
+  "confidence": "high",
+  "reasoning": "Rozhodl krok 0, protože land_register.land.area_m2 = 0 a výměra musí být kladná. Pro takovou parcelu nelze posoudit blokery, povinné nabídky ani možnosti dalšího prodeje. Údaj o výměře je třeba ověřit v katastru, a teprve potom hodnocení pokračuje.",
+  "other_findings": []
+}

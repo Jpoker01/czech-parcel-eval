@@ -1,0 +1,24 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "units_ownership",
+      "evidence": "land_register.owners[0].relation_type = Vlastnictví jednotek"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Parcela je ve vlastnictví jednotek, což je bloker podle kroku 1 (land_register.owners[0].relation_type = Vlastnictví jednotek). Hodnocení proto končí ještě před kroky 2 až 7. Možnosti dalšího prodeje se nevypisují, protože u blokované parcely nejsou relevantní.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Na parcele vázne věcné břemeno podle listiny, jehož obsah a oprávněný nejsou ve vstupu známy (land_register.restrictions[0].type = Věcné břemeno (podle listiny))."
+    },
+    {
+      "type": "risk",
+      "description": "Na parcele je založeno společenství vlastníků podle § 1200 obč. zák., které může omezovat nakládání s jednotkami a společnými částmi (land_register.other_records[0].type = Společenství vlastníků založeno podle § 1200 obč.zák.)."
+    }
+  ]
+}

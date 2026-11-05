@@ -1,0 +1,32 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "execution",
+      "evidence": "land_register.other_records[2].type = Zahájení exekuce - Osoba A"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 je splněn, protože land_register je checked, výměra a druh pozemku jsou vyplněny a vlastník je uveden. Krok 1 rozhodl: v land_register.other_records je zápis o zahájení exekuce vůči vlastníkovi Osoba A, což je blokující signál. Hodnocení proto končí verdiktem BLOCKED bez výpisu možností dalšího prodeje.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "V Jiných zápisech je dražební vyhláška (land_register.other_records[0].type), což naznačuje probíhající dražbu parcely."
+    },
+    {
+      "type": "risk",
+      "description": "V Jiných zápisech je exekuční příkaz k prodeji nemovitosti (land_register.other_records[1].type), který samostatně potvrzuje exekuci k prodeji."
+    },
+    {
+      "type": "risk",
+      "description": "V Omezeních je zástavní právo z rozhodnutí správního orgánu (land_register.restrictions[0].type), které může mít přednost před kupujícím."
+    },
+    {
+      "type": "risk",
+      "description": "V Jiných zápisech jsou dva závazky k zástavním právům (land_register.other_records[3].type a land_register.other_records[4].type), jejichž obsah ani vztah k dluhům nejsou ve vstupu rozepsány."
+    }
+  ]
+}

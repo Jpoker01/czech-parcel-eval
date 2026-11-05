@@ -1,0 +1,24 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road_class_2",
+      "buyer": "Zlínský kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = II. třída"
+    },
+    {
+      "resale_type": "road_class_2",
+      "buyer": "Studenec",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.identification.municipality = Studenec"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 je splněn, parcela má výměru 1416 m2 a jednoho vlastníka. Krok 1 ani krok 2 nenašel žádný blokér ani povinnou nabídku, protože nature_protection a zoning jsou checked a bez relevantních hodnot. Parcela je silnice sousedící se silnicí II. třídy, kraj jako kupec není vyloučen, proto je výsledkem BUY_CANDIDATE.",
+  "other_findings": []
+}

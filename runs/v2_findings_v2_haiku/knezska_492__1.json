@@ -1,0 +1,40 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = lesní pozemek; map.neighbouring_parcels[1].owner = Lesy ČR"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": "Obec Šlapanov",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = lesní pozemek; map.neighbouring_parcels[2].owner = Obec Šlapanov"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = lesní pozemek; map.neighbouring_parcels[3].owner = Osoba B"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 a krok 1 prošly: katastr je zkontrolován, bez plomby, omezení a zápisů a jediný vlastník není neidentifikovaný. Krok 2 nenašel žádný offer ani consent, protože parcela neleží v chráněném území, nemá stavbu, předkupní právo ani § 101 a má jediného vlastníka. Krok 3 určil lesní sousedy jako kupce (Lesy ČR, Obec Šlapanov, Osoba B) a žádný nebyl vyloučen, protože orthofoto ukazuje les a přístup je polní cestou. Výsledek je BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Vlastník Osoba A vlastní sousední parcelu 302/2 (map.neighbouring_parcels[0].owner = Osoba A), takže je možné nabídnout obě parcely dohromady."
+    },
+    {
+      "type": "risk",
+      "description": "Přístup k parcele je pouze po polní cestě (map.access_type = polní cesta), což může snížit zájem lesních kupců, ale nevylučuje je."
+    }
+  ]
+}

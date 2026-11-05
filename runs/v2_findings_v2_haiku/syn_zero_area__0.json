@@ -1,0 +1,14 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [
+    {
+      "field": "land_register.land.area_m2",
+      "impact": "could_reduce_value"
+    }
+  ],
+  "confidence": "high",
+  "reasoning": "Krok 0 rozhodl, protože land_register.land.area_m2 = 0 je podle pravidla neplatná výměra, takže parcelu nelze posoudit. Kroky 1 až 7 se proto neprovedly a žádný blokér, flag ani možnost prodeje se nehodnotila. Po opravě výměry v katastru je nutné hodnocení zopakovat.",
+  "other_findings": []
+}

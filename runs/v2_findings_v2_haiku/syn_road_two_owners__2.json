@@ -1,0 +1,41 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Osoba B"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": "Osoba A",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[0].name = Osoba A"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 i krok 1 prošly bez nálezu, protože parcela má zapsané vlastníky, žádnou plombu, omezení ani jiné zápisy. Krok 2 nenašel žádný flag offer ani consent, ale seller_facts je not_checked a parcela má dva spoluvlastníky, takže není jisté, zda neplatí § 1124. Možnost prodeje silnice III. třídy kraji nemá v kroku 6 určeného kupce, protože kraj nelze z vstupu jednoznačně určit, a jediná jiná možnost jsou spoluvlastníci, kteří nejsou potvrzení kupci, proto je výsledek CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela je vedena jako silnice (land_register.land.land_use = silnice), ale vlastní ji dvě fyzické osoby po 1/2 (land_register.owners), což neodpovídá obvyklému stavu veřejné komunikace; skutečné využití je třeba ověřit."
+    }
+  ]
+}

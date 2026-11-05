@@ -1,0 +1,43 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": true,
+      "exclusion_reason": "no_access",
+      "evidence": "map.access_type = bez viditelného přístupu"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": "Osoba C",
+      "excluded": true,
+      "exclusion_reason": "no_access",
+      "evidence": "map.access_type = bez viditelného přístupu"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": "AGRO - Měřín, a.s.",
+      "excluded": true,
+      "exclusion_reason": "no_access",
+      "evidence": "map.access_type = bez viditelného přístupu"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": true,
+      "exclusion_reason": "no_access",
+      "evidence": "map.access_type = bez viditelného přístupu"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Kroky 0 a 1 neodhalily žádný bloker ani chybějící základní údaj, takže hodnocení pokračovalo. Krok 2 nenašel žádný flag, neotevřené zdroje nature_protection a zoning se u lesní parcely bez přístupu na výsledek neprojeví. Jediná možnost dalšího prodeje (les sousedům) byla v kroku 4 vyloučena kvůli chybějícímu viditelnému přístupu (map.access_type), proto je verdikt NOT_WORTH_IT.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela nemá viditelný přístup (map.access_type), přitom sousedí s parcelami 554/19 a 2109 ve vlastnictví Lesů ČR (map.neighbouring_parcels), přístup by bylo možné řešit jen přes sousední pozemky, což verdikt nemění."
+    }
+  ]
+}

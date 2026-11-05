@@ -1,0 +1,23 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "state_nature_protection_61",
+      "evidence": "nature_protection.large_protected_area.type = NP"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 i krok 1 neodhalily žádný bloker, parcela nemá plombu, omezení ani záznamy v Jiných zápisech a vlastník je identifikovaný. Krok 2 našel nabídku podle § 61: parcela leží v Krkonošském národním parku (typ NP), přitom zoning je nezastavěné území, takže stát má právo přednosti. Možnost dalšího prodeje je pouze silnice III. třídy s neurčeným krajským kupcem, a proto je výsledkem CONDITIONAL, nikoli BUY_CANDIDATE.",
+  "other_findings": []
+}

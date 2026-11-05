@@ -1,0 +1,26 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_grassland",
+      "buyer": "Osoba C",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = trvalý travní porost; lpis.dpb_items[0].user_name = Osoba C; lpis.parcel_in_lpis = true"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 je splněn, protože katastr je zkontrolovaný, výměra je 13687 m2 a vlastník je uveden. Krok 1 ani krok 2 nenašel žádný bloker ani povinnou nabídku či souhlas, protože zástavní práva nejsou exekuce ani insolvence a zdroje ochrany přírody a územního plánu jsou zkontrolované bez nálezu. Jediný prodejní scénář je trvalý travní porost s uživatelem z LPIS (Osoba C), který není vyloučen, a proto je výsledek BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Na parcele vážne dvě zástavní práva z rozhodnutí správního orgánu a zdravotní pojišťovny (land_register.restrictions[0].type, land_register.restrictions[1].type), jejichž výmaz nebo souhlas věřitele je nutné ověřit před převodem."
+    },
+    {
+      "type": "opportunity",
+      "description": "Stávající uživatel Osoba C je v LPIS zapsán jako uživatel trvalého travního porostu (lpis.dpb_items[0].user_name), takže případný prodej může být spojen s pokračováním stávajícího užívání."
+    }
+  ]
+}

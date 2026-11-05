@@ -1,0 +1,15 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "insolvency",
+      "evidence": "land_register.restrictions[0].type = Zahájení insolvenčního řízení"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 rozhodl o blokaci, protože v Omezeních katastru je zapsáno zahájení insolvenčního řízení (land_register.restrictions[0].type). Blokátor platí pro kteréhokoli vlastníka a jeho zápis nelze obejít žádným dalším údajem. Protože hodnocení skončilo v kroku 1, možnosti dalšího prodeje se nevypisují.",
+  "other_findings": []
+}

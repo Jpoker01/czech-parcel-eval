@@ -1,0 +1,20 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "dispute_note",
+      "evidence": "land_register.other_records[0].type = Poznámka spornosti zápisu"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Rozhodl krok 1, protože v land_register.other_records je zápis Poznámka spornosti zápisu, což spadá pod blokér dispute_note. Parcela je proto BLOCKED a další kroky, včetně možností dalšího prodeje, se nevyhodnocují. Plomba ani exekuce ani insolvence ve vstupu nejsou.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Zápis spornosti u parcely s využitím silnice (land_register.other_records[0].type) může souviset s vedenou silnicí III. třídy (map.adjacent_roads[0].road_number = III/29317), jejíž vlastnictví a hranice by měl člověk ověřit před dalším posuzováním."
+    }
+  ]
+}

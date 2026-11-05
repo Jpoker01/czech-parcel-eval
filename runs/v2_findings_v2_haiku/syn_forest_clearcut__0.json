@@ -1,0 +1,22 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": null,
+      "excluded": true,
+      "exclusion_reason": "clearcut",
+      "evidence": "map.orthophoto_land_cover = holina"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 i krok 1 prošly bez nálezu, protože katastr je zkontrolovaný, bez plomby, omezení a záznamů a vlastník je jeden a identifikovaný. Krok 2 nenašel žádný flag povinné nabídky ani souhlasu, všechny relevantní zdroje jsou zkontrolovány. Jediná možnost dalšího prodeje je les, který je vyloučen holinou na ortofotu, a proto je verdikt NOT_WORTH_IT.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Mezi sousedními parcelami je 401/3 ve vlastnictví Lesy ČR (map.neighbouring_parcels[1].owner), které by mohly mít zájem o les, ale holina tuto možnost vylučuje."
+    }
+  ]
+}

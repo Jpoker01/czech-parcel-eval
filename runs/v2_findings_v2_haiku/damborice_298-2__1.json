@@ -1,0 +1,22 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_grassland",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = Osoba B"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 prošel, protože katastr je zkontrolovaný, parcela má typ pozemku i výměru 1325 m2 a má jediného vlastníka. Krok 1 nenašel žádný bloker, plomba není přítomna a omezení ani jiné zápisy nic relevantního neobsahují. Krok 2 nenašel žádný flag, protože chráněné území, stavba, předkupní právo, § 101 ani pozemkové úpravy nejsou zapsány a parcela nemá víc spoluvlastníků. Parcela je trvalý travní porost v LPIS s uživatelem Osoba B, takže existuje nevyloučený kupec, a proto je výsledkem BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Na parcele je zapsána změna číslování parcel (land_register.other_records[0].type), proto je vhodné ověřit, že číslo 298/2 odpovídá aktuálnímu stavu."
+    }
+  ]
+}

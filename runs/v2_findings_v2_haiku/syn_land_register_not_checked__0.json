@@ -1,0 +1,19 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [
+    {
+      "field": "land_register",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "low",
+  "reasoning": "Krok 0 rozhodl: land_register.status = \"not_checked\", takže katastr nebyl otevřen, chybí výměra a druh pozemku a vlastníci nejsou známi. Bez těchto údajů nelze posoudit blokery ani povinné nabídky, proto hodnocení končí bez dalších kroků. Mapa ukazuje silnici III. třídy, ale to nemůže změnit výsledek bez katastrálního výpisu.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Mapa uvádí přilehlou silnici III. třídy III/29317 (map.adjacent_roads[0].road_number) a využití pozemku je silnice (land_register.land.land_use), což by po ověření katastru mohlo otevřít možnost prodeje kraji."
+    }
+  ]
+}

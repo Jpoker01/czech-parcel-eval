@@ -1,0 +1,36 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Osoba B"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": "Osoba A",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[0].name = Osoba A"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 i krok 1 neodhalily žádný blokér, parcela nemá plombu, omezení ani zápisy a vlastníci jsou dostatečně identifikováni. Krok 2 nenašel žádný flag offer ani consent, ale seller_facts nejsou zkontrolovány a parcela má dva spoluvlastníky, takže § 1124 nelze vyloučit. Krok 3 dává možnost odprodeje kraji jako silnici III. třídy (kupec není ve vstupu pojmenován) a spoluvlastníkům, žádná možnost není vyloučena. Verdikt je CONDITIONAL, protože chybí údaj o dědictví a kupec nejsou potvrzen.",
+  "other_findings": []
+}

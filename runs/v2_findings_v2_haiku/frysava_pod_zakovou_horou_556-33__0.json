@@ -1,0 +1,38 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "AGRO - Měřín, a.s.",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = AGRO - Měřín, a.s."
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[0].name = AGRO - Měřín, a.s."
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 i krok 1 prošly, v katastru není plomba, omezení, zápis ani nejistý vlastník. Krok 2 nenašel žádný flag offer ani consent, protože CHKO nezakládá § 61 a zoning i land_register jsou checked bez stavby a předkupního práva. Parcela má více vlastníků, takže pro § 1124 chybí seller_facts.inheritance_date (zdroj not_checked), a proto je výsledek CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Na parcele je 1/17 podílu ve vlastnictví státu (land_register.owners[1].name = Česká republika), což může prodej podílu komplikovat."
+    },
+    {
+      "type": "opportunity",
+      "description": "AGRO - Měřín, a.s. je zároveň vlastníkem 3/17 a uživatelem půdy v LPIS (land_register.owners[0].name a lpis.dpb_items[0].user_name), takže je přirozeným kupcem."
+    }
+  ]
+}

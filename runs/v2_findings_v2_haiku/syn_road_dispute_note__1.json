@@ -1,0 +1,24 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "dispute_note",
+      "evidence": "land_register.other_records[0].type = Poznámka spornosti zápisu"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 je splněn, protože katastr je zkontrolovaný, výměra je 1416 m2 a vlastník je uveden. Krok 1 rozhodl: v Jiných zápisech je poznámka spornosti zápisu, což je blokující signál dispute_note. Hodnocení proto končí výsledkem BLOCKED a možnosti dalšího prodeje se nevypisují.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela má způsob využití silnice, ale jediným vlastníkem je fyzická osoba Osoba A (land_register.owners[0].name), nikoli kraj nebo stát, což může být u pozemku pod silnicí nesrovnalost k ověření."
+    },
+    {
+      "type": "opportunity",
+      "description": "Sousedí se silnicí III. třídy č. III/29317 (map.adjacent_roads[0]), což by u případného vyřešení sporu mohlo vytvářet zájem kraje o koupi."
+    }
+  ]
+}

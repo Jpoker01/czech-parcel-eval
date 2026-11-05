@@ -1,0 +1,23 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "state_nature_protection_61",
+      "evidence": "nature_protection.large_protected_area.type = NP"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_use = silnice"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 i krok 1 neodhalily žádný bloker, parcela má jediného vlastníka a bez plomby a omezení. Krok 2 našel povinnou nabídku podle § 61, protože parcela leží v národním parku (nature_protection.large_protected_area.type = NP) a zoning.built_up_status je nezastavěné území. Možnost prodeje kraji jako silnice III. třídy není vyloučena, ale kraj není ve vstupu jmenován, takže výsledek je CONDITIONAL.",
+  "other_findings": []
+}

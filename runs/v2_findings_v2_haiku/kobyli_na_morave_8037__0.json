@@ -1,0 +1,34 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Osoba B"
+    },
+    {
+      "resale_type": "field_vineyard",
+      "buyer": "Osoba F",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = Osoba F"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 a krok 1 neodhalily žádnou překážku, parcela má šest vlastnických položek a LPIS ji eviduje jako vinici uživatele Osoba F. Krok 2 nemá žádný offer ani consent flag, ale seller_facts je not_checked, takže nelze vyloučit povinnou nabídku podle § 1124 (více vlastníků, dědění). Krok 5 proto vede k verdiktu CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Vinice je v LPIS vedena s uživatelem Osoba F, který není mezi vlastníky, takže případný nájem nebo jiné užívací právo není ve vstupu ověřeno (lpis.dpb_items[0].user_name = Osoba F)."
+    }
+  ]
+}

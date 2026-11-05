@@ -1,0 +1,19 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [
+    {
+      "field": "land_register",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "high",
+  "reasoning": "Krok 0 rozhodl, protože land_register.status = not_checked, takže katastr nebyl otevřen a chybí údaje o výměře, druhu pozemku a vlastnících. Bez katastru nelze posoudit blokery ani povinné nabídky, a proto nelze parcelu hodnotit dál. Verdikt je INSUFFICIENT_DATA.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Mapa uvádí přilehlou silnici III. třídy III/29317 (map.adjacent_roads[0].road_number), což bude relevantní až po doplnění katastru."
+    }
+  ]
+}

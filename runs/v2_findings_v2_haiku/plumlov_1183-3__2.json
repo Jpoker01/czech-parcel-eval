@@ -1,0 +1,41 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "local_road",
+      "buyer": "Plumlov",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_use = ostatní komunikace"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Osoba B"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": "Osoba A",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[0].name = Osoba A"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Kroky 0 a 1 prošly bez chyby a bez blokujícího zápisu, parcela má dva vlastníky s podíly 1/2. Krok 2 nenašel žádný flag offer ani consent, ale zdroj seller_facts je not_checked a je potřebný pro posouzení § 1124 u dvou spoluvlastníků. Krok 3 našel možnosti prodeje obci Plumlov a oběma spoluvlastníkům, žádná není vyloučena, a proto krok 5 vrací CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela je vedena jako ostatní komunikace (land_register.land.land_use) s přístupem po polní cestě (map.access_type), což může omezit okruh zájemců o odkup."
+    }
+  ]
+}

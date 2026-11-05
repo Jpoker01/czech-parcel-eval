@@ -1,0 +1,17 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road_class_2",
+      "buyer": "Zlínský kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = II. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 je splněn, parcela je zapsána v KN a má plochu 1416 m2. Krok 1 blokery nenašel, krok 2 neobsahuje žádný flag offer ani consent, protože nature_protection, zoning a land_register jsou checked a nic nespouštějí. Krok 3 určil možnost prodeje kraji jako silnici II. třídy, krok 4 ji nevyloučil, a proto je výsledek BUY_CANDIDATE.",
+  "other_findings": []
+}

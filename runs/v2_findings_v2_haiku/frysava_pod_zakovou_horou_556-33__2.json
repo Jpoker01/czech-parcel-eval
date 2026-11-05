@@ -1,0 +1,38 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "AGRO - Měřín, a.s.",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = AGRO - Měřín, a.s."
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[0].name = AGRO - Měřín, a.s."
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 i krok 1 prošly bez nálezu, parcela nemá plombu, omezení, exekuci ani nezapsané vlastníky. Krok 2 nenašel žádný flag, ale vlastníků je deset a seller_facts je not_checked, takže § 1124 nelze vyloučit. Hodnocení je CONDITIONAL, protože chybějící údaj může vyvolat povinnou nabídku. Nejlepší prodejní možností je pole pro uživatele LPIS AGRO - Měřín, a.s.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Subjekt AGRO - Měřín, a.s. je zároveň vlastníkem podílu 3/17 (land_register.owners[0]) a uživatelem parcely v LPIS (lpis.dpb_items[0].user_name), takže je přirozeným kupcem i dalších podílů."
+    },
+    {
+      "type": "risk",
+      "description": "Parcela má deset vlastníků s drobnými podíly (land_register.owners), což výrazně komplikuje odkup všech podílů a zvyšuje případné náklady na jejich sjednocení."
+    }
+  ]
+}

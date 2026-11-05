@@ -1,0 +1,17 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road_class_2",
+      "buyer": "Zlínský kraj",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = II. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 je splněn, parcela má výměru 1416 m2 a vlastníka Osoba A bez blokerů. Krok 1 ani krok 2 nenašel žádný blocker ani povinnou nabídku, protože NP, NPR ani NPP se netýkají a zoning je zkontrolován. Parcela je silnice u silnice II. třídy, kterou lze prodat kraji v jehož obvodu leží, a žádná možnost prodeje není vyloučena, takže výsledkem je BUY_CANDIDATE.",
+  "other_findings": []
+}

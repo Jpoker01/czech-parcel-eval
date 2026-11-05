@@ -1,0 +1,22 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_grassland",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = trvalý travní porost"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "medium",
+  "reasoning": "Krok 0 prošel, protože KN je zkontrolován, výměra je 20200 m2 a vlastník je jeden. Krok 1 ani krok 2 nenašel blokér ani povinnou nabídku nebo souhlas, protože plomba, omezení, ochrana přírody a územní plán jsou zkontrolované bez záznamu. Krok 3 dává jedinou možnost prodeje, trvalý travní porost s uživatelem Osoba B z LPIS, a krok 4 ji nevylučuje, protože parcela je v LPIS. Kupec je jmenovaný a nevyloučená možnost existuje, proto je verdikt BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Druh pozemku v katastru je orná půda (land_register.land.land_type), zatímco LPIS eviduje trvalý travní porost (lpis.dpb_items[0].culture), takže před nákupem je nutné ověřit skutečné využití parcely."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[0].name = Osoba A"
+    },
+    {
+      "resale_type": "field_grassland",
+      "buyer": null,
+      "excluded": true,
+      "exclusion_reason": "no_lpis_user",
+      "evidence": "lpis.parcel_in_lpis = false"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 je splněn a v kroku 1 nebyl nalezen žádný bloker. Krok 2 nenašel žádný flag offer ani consent, protože CHKO nezakládá § 61 a stavba ani předkupní právo nejsou zapsány, ale § 1124 nelze vyloučit, protože seller_facts není otevřen a parcela má čtyři spoluvlastníky. Jediná nevyloučená možnost dalšího prodeje jsou spoluvlastníci, což podle kroku 6 vede k CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela leží v CHKO Beskydy (nature_protection.large_protected_area.name), což nezakládá právo podle § 61, ale může omezit možné využití a tím i hodnotu."
+    },
+    {
+      "type": "opportunity",
+      "description": "Sousední parcela 8387/1 patří Správě železnic (map.neighbouring_parcels[0].owner), což může být potenciální zájemce o odkup, i když není mezi možnostmi dalšího prodeje."
+    }
+  ]
+}

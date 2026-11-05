@@ -1,0 +1,22 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_grassland",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = Osoba B"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 ani krok 1 neodhalil překážku: plomba, omezení ani zápisy o exekuci či insolvenci nejsou přítomny a jediný vlastník je dostatečně identifikovaný. Krok 2 nenašel žádný flag povinné nabídky ani souhlasu, protože zdroje ochrany přírody a územního plánu jsou zkontrolované a bez výsledků. Jediná nevyloučená možnost dalšího prodeje je travní porost s uživatelem z LPIS, takže verdikt je BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "V zápisech je položka Změna číslování parcel (land_register.other_records[0].type), je vhodné ověřit, zda nemění identifikaci parcely 298/2."
+    }
+  ]
+}

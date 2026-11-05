@@ -1,0 +1,22 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = standardní orná půda; lpis.dpb_items[0].user_name = Osoba B; lpis.parcel_in_lpis = true"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Parcela má jediného vlastníka bez zápisů v Omezeních i Jiných zápisech a bez plomby, takže krok 1 neblokuje. Zdroje ochrany přírody, územního plánu a stavby neukazují žádný flag povinné nabídky nebo souhlasu, a LPIS potvrzuje standardní orné půdy s uživatelem Osoba B. Jediná možnost dalšího prodeje je tedy nevyloučený a má známého kupce, což vede k výsledku BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Parcela má jediného vlastníka (land_register.owners[0].name = Osoba A, podíl 1/1) a bez zápisů v Omezeních i Jiných zápisech (land_register.restrictions a land_register.other_records jsou prázdné)."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road",
+      "buyer": "Studenec",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_use = silnice"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "map",
+      "impact": "could_reduce_value"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 prošel, parcela je v katastru zapsána jako silnice a nejsou u ní žádné blokery ani flagy povinné nabídky. Mapa není otevřena, takže třída silnice a sousední komunikace nejsou známy a možnost prodeje je zatím obecná silnice. Chybějící zdroj nelze vyloučit ani potvrdit, proto je výsledek CONDITIONAL.",
+  "other_findings": []
+}

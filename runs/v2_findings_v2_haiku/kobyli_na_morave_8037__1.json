@@ -1,0 +1,34 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": "Osoba A, Osoba B, Osoba C, Osoba D, Osoba E",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Osoba B"
+    },
+    {
+      "resale_type": "field_vineyard",
+      "buyer": "Osoba F",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = Osoba F"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 i krok 1 neodhalily žádnou blokaci, zápisy v katastru jsou čisté a parcela má pět spoluvlastníků. Krok 2 nenašel žádný flag offer ani consent, ale seller_facts nebyl zkontrolován, a proto nelze vyloučit povinnost nabídky podle § 1124 ohledně dědictví. Nevyloučená možnost prodeje je navíc kromě spoluvlastníků i vinař Osoba F, takže výsledek je CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Osoba E drží podíl 1/2 (land_register.owners[4].share = 1/2), takže může být klíčovým partnerem při vyjednávání s ostatními spoluvlastníky."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road",
+      "buyer": "Liberecký kraj",
+      "excluded": true,
+      "exclusion_reason": "owner_is_buyer",
+      "evidence": "land_register.owners[0].name = Liberecký kraj"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "map.adjacent_roads",
+      "impact": "could_reduce_value"
+    },
+    {
+      "field": "map.status",
+      "impact": "could_reduce_value"
+    }
+  ],
+  "confidence": "low",
+  "reasoning": "Krok 0 a krok 1 neodhalily žádný blokující údaj, parcela je zapsaná na Libereckém kraji jako vlastníkovi, který je zároveň jediným potenciálním kupcem silnice. Možnost prodeje krajem je proto vyloučena (krok 4), takže zbývá jen nevyloučený prodej, který nelze potvrdit. Protože nevyloučená možnost dalšího prodeje chybí, vyhodnocení je omezeno na CONDITIONAL, a to i kvůli nedotazované mapě.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela je označena jako silnice (land_register.land.land_use = silnice) a vlastníkem je kraj, takže není zřejmé, zda na ní není veřejně přístupná komunikace, která by bránila jejímu převodu."
+    }
+  ]
+}

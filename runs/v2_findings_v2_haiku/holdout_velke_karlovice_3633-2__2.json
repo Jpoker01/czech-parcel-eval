@@ -1,0 +1,47 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Pátá lesní a.s.",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.neighbouring_parcels[1].owner = Pátá lesní a.s."
+    },
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.neighbouring_parcels[0].owner = Lesy ČR"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": "Osoba D",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.neighbouring_parcels[7].owner = Osoba D"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": "Osoba B; Osoba C",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.neighbouring_parcels[4].owner = Osoba B; Osoba C"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 prošel, land_register je zkontrolován a parcela je lesní pozemek s jediným vlastníkem. Krok 1 nenašel žádný bloker, protože plomba, omezení, jiné zápisy ani nejasný vlastník nejsou zapsány. Krok 2 nenašel žádný flag, protože CHKO Beskydy nezakládá právo státu podle § 61 a stavba ani předkupní právo nejsou zapsány. Parcela má několik sousedů-vlastníků, kterým lze prodat, a žádný z nich není vyloučen (orthophoto není holina a přístup je lesní cestou), proto je hodnocení BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Prodávající Osoba A vlastní i sousední parcelu 3629 (map.neighbouring_parcels[6].owner = Osoba A), takže je možné nabídnout prodej obou parcel najednou."
+    },
+    {
+      "type": "risk",
+      "description": "Parcela leží v CHKO Beskydy (nature_protection.large_protected_area.name = Beskydy), což může omezit způsob hospodaření a ovlivnit cenu, i když nezakládá předkupní právo."
+    }
+  ]
+}

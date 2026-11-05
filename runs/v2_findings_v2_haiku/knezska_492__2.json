@@ -1,0 +1,47 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.neighbouring_parcels[1].owner = Lesy ČR"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": "Obec Šlapanov",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.neighbouring_parcels[2].owner = Obec Šlapanov"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.neighbouring_parcels[3].owner = Osoba B"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": "Osoba A",
+      "excluded": true,
+      "exclusion_reason": "owner_is_buyer",
+      "evidence": "map.neighbouring_parcels[0].owner = Osoba A"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 i krok 1 neodhalily žádnou chybu ani bloker, parcela je lesní pozemek s jediným vlastníkem a bez plomby, exekuce či omezení. Krok 2 nenašel povinnou nabídku ani souhlas, protože parcela neleží ve zvláště chráněném území, nemá stavbu ani předkupní právo a zóna nevymezuje § 101. Kupci pro les (Lesy ČR, Obec Šlapanov, Osoba B) jsou jmenováni v sousedních parcelách, holina ani bez přístupu se nevyskytuje, a tak je zde volný prodej, takže výsledek je BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Sousední parcelu 302/2 vlastní stejná osoba jako prodávající (map.neighbouring_parcels[0].owner = Osoba A, land_register.owners[0].name = Osoba A), což může usnadnit sloučení nebo dohodu o prodeji."
+    },
+    {
+      "type": "opportunity",
+      "description": "Tři sousední parcely patří veřejným subjektům (map.neighbouring_parcels[1].owner = Lesy ČR, map.neighbouring_parcels[2].owner = Obec Šlapanov), což zvyšuje počet věrohodných kupců."
+    }
+  ]
+}

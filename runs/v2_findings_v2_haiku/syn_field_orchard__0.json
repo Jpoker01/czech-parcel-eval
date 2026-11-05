@@ -1,0 +1,17 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_orchard",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = ovocný sad"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Kroky 0 a 1 prošly bez nálezu, parcela nemá plombu, omezení, záznamy ani nejasného vlastníka a vlastník je jeden. Krok 2 nenašel žádný flag povinné nabídky, protože chráněné území, stavba, předkupní právo ani § 101 nejsou u parcely zapsány. Jediná možnost dalšího prodeje je prodej sadaři Osoba B, který není vyloučen, takže výsledek je BUY_CANDIDATE.",
+  "other_findings": []
+}

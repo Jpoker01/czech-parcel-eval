@@ -1,0 +1,46 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "state_nature_protection_61",
+      "evidence": "nature_protection.large_protected_area.type = NP"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = lesní pozemek"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": "Osoba A",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[0].name = Osoba A"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Osoba B"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "map",
+      "impact": "could_exclude_resale"
+    },
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 prošel, protože katastr je zkontrolovaný a obsahuje vlastníky i výměru. Krok 1 blokátor nenašel, protože nejsou plomby, omezení ani jiné záznamy a vlastníci nejsou nedohledatelní. Krok 2 zakládá povinnou nabídku státu podle § 61, protože parcela leží v Krkonošském národním parku a je nezastavěné území. Mapa je nezkontrolovaná, takže nelze vyloučit holinu ani špatný přístup k lesu, a dědický údaj prodávajícího chybí, proto je výsledek CONDITIONAL.",
+  "other_findings": []
+}

@@ -1,0 +1,22 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "nature_protection",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Kroky 0 a 1 neprošly bez blokerů, katastr nemá plombu, omezení ani záznamy a vlastník je způsobilý. Zdroj nature_protection není otevřen, a pokud parcela leží v NP, NPR nebo NPP, vznikne podle § 61 povinná nabídka obci, protože zoning je nezastavěné území. Jediná nevyloučená možnost dalšího prodeje je silnice III. třídy s krajem jako kupcem, ale kraj není ve vstupu jmenován, takže rozhodnutí končí jako CONDITIONAL.",
+  "other_findings": []
+}

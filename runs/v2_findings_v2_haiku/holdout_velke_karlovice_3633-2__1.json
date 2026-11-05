@@ -1,0 +1,54 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.neighbouring_parcels[0].owner = Lesy ČR"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": "Pátá lesní a.s.",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.neighbouring_parcels[1].owner = Pátá lesní a.s."
+    },
+    {
+      "resale_type": "forest",
+      "buyer": "Osoba B; Osoba C",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.neighbouring_parcels[4].owner = Osoba B; Osoba C"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": "Osoba A",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.neighbouring_parcels[6].owner = Osoba A"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": "Osoba D",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.neighbouring_parcels[7].owner = Osoba D"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Parcela má jediného vlastníka a žádný zápis v katastru (zástavy, omezení, plomba, exekuce ani insolvence) nebrání prodeji, takže krok 1 nevyústil v blokaci. Oblast je CHKO, což nezakládá právo státu podle § 61, a územní plán vede parcelu jako nezastavěné území, takže krok 2 nevyvolal nabídku ani souhlas. Lesní parcela má přístup lesní cestou a na ortofotu je les, nikoli holina, takže možnost prodeje lesu je nevyloučena a každý sousední vlastník je pojmenovaný kupec. Výsledek je BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Pátá lesní a.s. vlastní čtyři sousední parcely (map.neighbouring_parcels[1], [2], [3], [5]), takže by pro ni koupě mohla mít zvláštní hodnotu jako rozšíření jejího lesního celku."
+    },
+    {
+      "type": "risk",
+      "description": "Sousední parcelu 3629 vlastní Osoba A (map.neighbouring_parcels[6].owner), tedy stejná osoba jako jediný vlastník prodávané parcely (land_register.owners[0].name), což je třeba ověřit při jednání o prodeji."
+    }
+  ]
+}

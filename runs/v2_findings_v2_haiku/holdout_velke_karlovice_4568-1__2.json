@@ -1,0 +1,31 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[0].name = Osoba A"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 prošel, parcela má zapsané vlastníky a plochu i druh pozemku. Krok 1 nenašel žádný bloker (bez plomby, omezení, záznamů ani nejistých vlastníků). V kroku 2 nebyl nalezen žádný flag, ale seller_facts je not_checked a parcela má čtyři vlastníky, takže není ověřeno, zda se neuplatní § 1124. Jediná možnost dalšího prodeje je spoluvlastníci bez potvrzeného kupce, proto je výsledek CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela leží v CHKO Beskydy (nature_protection.large_protected_area.name = Beskydy), což může omezit způsob využití, ale žádný kód pravidel to neřeší."
+    },
+    {
+      "type": "opportunity",
+      "description": "Parcela má viditelný přístup ze silnice (map.access_type = silnice), což zvyšuje využitelnost pro případného kupce."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": true,
+      "exclusion_reason": "clearcut",
+      "evidence": "map.orthophoto_land_cover = holina"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": "Obec Šlapanov",
+      "excluded": true,
+      "exclusion_reason": "clearcut",
+      "evidence": "map.orthophoto_land_cover = holina"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": "Osoba B",
+      "excluded": true,
+      "exclusion_reason": "clearcut",
+      "evidence": "map.orthophoto_land_cover = holina"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 i krok 1 neodhalily žádnou překážku ani blokér a krok 2 nenašel žádný flag offer ani consent, protože zdroje ochrany přírody a územního plánu jsou zkontrolované a bez záznamu. Jedinou možností dalšího prodeje je les, ale ortofoto ukazuje holinu (map.orthophoto_land_cover = holina), takže ji krok 4 vylučuje. Všechny možnosti dalšího prodeje jsou vyloučené, proto je výsledek NOT_WORTH_IT.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Prodávající Osoba A vlastní sousední parcelu 302/2 (map.neighbouring_parcels[0].owner = Osoba A), což může být případ pro společný výkup nebo sloučení, pokud se to později změní."
+    }
+  ]
+}

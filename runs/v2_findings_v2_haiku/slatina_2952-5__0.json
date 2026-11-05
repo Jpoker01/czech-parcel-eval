@@ -1,0 +1,37 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "building_owner_3056",
+      "evidence": "land_register.building.relation = Stavba na parcele"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "building_owner",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.building.relation = Stavba na parcele"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "nature_protection",
+      "impact": "could_require_offer"
+    },
+    {
+      "field": "zoning",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 ani krok 1 nenašly překážku, na parcele je ale stavba (land_register.building.relation = Stavba na parcele), proto krok 2 přidal flag building_owner_3056 s povinnou nabídkou. Jediná možnost dalšího prodeje je vlastník stavby, jehož jméno ve vstupu chybí, takže kupec není potvrzen. Zdroje nature_protection a zoning nebyly otevřeny, nelze tedy vyloučit § 61 ani § 101, a proto je výsledek CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Na parcele je zapsán záznam o změně výměr obnovou operátu (land_register.other_records[0].type), takže skutečná výměra se může od údaje 1202 m2 (land_register.land.area_m2) lišit."
+    }
+  ]
+}

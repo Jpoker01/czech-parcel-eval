@@ -1,0 +1,17 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_orchard",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = Osoba B"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Kroky 0 a 1 neprošly blokerem: parcela má jednoho vlastníka, bez plomby, omezení a jiných zápisů. Krok 2 nenašel žádný flag offer ani consent, protože ochrana přírody, územní plán a stavby jsou zkontrolované a nic nespadá. Krok 3 určil možnost field_orchard s kupcem Osoba B z LPIS, která není vyloučena, protože parcel_in_lpis = true. Krok 6 výsledek neomezil, takže verdikt je BUY_CANDIDATE.",
+  "other_findings": []
+}

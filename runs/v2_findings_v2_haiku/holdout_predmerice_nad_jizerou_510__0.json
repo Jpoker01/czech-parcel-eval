@@ -1,0 +1,22 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = Osoba B"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 je splněn, protože katastr je zkontrolovaný, parcela má výměru 25054 m2 a jediného vlastníka. Krok 1 nenašel žádný bloker, protože plomba, omezení i jiné zápisy jsou prázdné nebo negativní. Krok 2 nenašel žádný flag offer ani consent, protože nature_protection, zoning i katastr jsou zkontrolované a nevyvolávají povinnou nabídku. Krok 3 určil jako jedinou možnost dalšího prodeje field_arable s LPIS uživatelem Osoba B, který nebyl vyloučen, takže výsledkem je BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Uživatel parcely v LPIS (lpis.dpb_items[0].user_name = Osoba B) není vlastníkem (land_register.owners[0].name = Osoba A), a vztah mezi nimi ve vstupu není popsán, takže případný nájem nebo práva uživatele nejsou ověřena."
+    }
+  ]
+}

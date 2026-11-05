@@ -1,0 +1,20 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "dispute_note",
+      "evidence": "land_register.other_records[0].type = Poznámka spornosti zápisu"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 je splněn, protože katastr je zkontrolovaný, výměra je 1416 m2 a vlastník je uveden. Krok 1 však zachytil blokující poznámku spornosti zápisu v Jiných zápisech, která odpovídá signálu dispute_note. Parcela proto končí jako BLOCKED a možnosti dalšího prodeje se nevypisují.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela je vedena jako ostatní plocha se způsobem využití silnice, ale vlastníkem je fyzická osoba Osoba A (land_register.owners[0].name), nikoli stát nebo kraj."
+    }
+  ]
+}

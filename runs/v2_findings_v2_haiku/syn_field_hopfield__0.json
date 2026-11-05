@@ -1,0 +1,17 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_hopfield",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = chmelnice; lpis.dpb_items[0].user_name = Osoba B"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 prošel, protože katastr je zkontrolován, výměra je 20200 m2 a vlastník je zapsán. Krok 1 nenašel žádný bloker: plomba není, omezení ani jiné zápisy nejsou, vlastník je dostatečně identifikován a nejde o vlastnictví jednotek. Krok 2 nenašel žádný flag, protože parcela není v chráněném území, na parcele není stavba a předkupní práva nejsou zapsána. Jediná možnost prodeje je chmelař Osoba B podle LPIS, která není vyloučena, takže výsledkem je BUY_CANDIDATE.",
+  "other_findings": []
+}

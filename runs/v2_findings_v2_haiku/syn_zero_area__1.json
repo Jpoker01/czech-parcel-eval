@@ -1,0 +1,14 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [
+    {
+      "field": "land_register.land.area_m2",
+      "impact": "could_reduce_value"
+    }
+  ],
+  "confidence": "high",
+  "reasoning": "Krok 0 rozhodl: land_register.status je checked a land_type je vyplněn, ale land_register.land.area_m2 = 0, takže výměra není platná a hodnocení nelze provést. Kroky 1 až 7 se neprováděly, protože krok 0 hodnocení ukončuje. Po opravě výměry v katastru je nutné parcelu vyhodnotit znovu.",
+  "other_findings": []
+}

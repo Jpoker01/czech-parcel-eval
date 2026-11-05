@@ -1,0 +1,20 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "execution",
+      "evidence": "land_register.other_records[0].type = Exekuční příkaz k prodeji podílu - Osoba A"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 rozhodl: v Jiných zápisech katastru je exekuční příkaz k prodeji podílu vlastníka Osoba A, což je blokující exekuce bez ohledu na to, že jde o spoluvlastníka a ne o prodávajícího. Hodnocení proto končí výsledkem BLOCKED a možnosti dalšího prodeje se nevypisují.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela má pět spoluvlastníků s podíly 1/12, 1/12, 1/12, 1/4 a 1/2 (land_register.owners), takže případný odkup jednotlivého podílu by vyžadoval ověření vztahů mezi nimi."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": "Studenec",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 je splněn, land_register je checked s výměrou 1416 m2 a jediným vlastníkem. Krok 1 ani krok 2 nenašly žádný blokér ani povinnou nabídku či souhlas, protože nature_protection a zoning jsou checked a bez relevantních signálů. Parcela je silnice u silnice III. třídy s vlastníkem Osoba A, takže kupec kraj nebyl vyloučen a nevyplývá z dat jako nejistý, a proto je výsledek BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela je označena jako silnice a její vlastník je soukromá osoba (land_register.owners[0].name = Osoba A), přičemž kraj jako kupec je v tomto případě jen předpoklad, ne ověřený údaj."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "AGRO - Měřín, a.s.",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = AGRO - Měřín, a.s."
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Česká republika"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 i krok 1 projdou bez nálezu: parcela má zapsaný druh a výměru, plomba ani omezení nejsou a žádný vlastník není blokován. Krok 2 nenašel žádný flag, ale parcela má deset spoluvlastníků a údaj o dědictví (seller_facts) nebyl ověřen, takže povinnou nabídku dle § 1124 nelze vyloučit. Protože existuje nevyloučená možnost prodeje (orná půda, uživatel v LPIS), ale chybí rozhodující údaj, je výsledkem CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Největší podíl 3/17 drží AGRO - Měřín, a.s. (land_register.owners[0]), která je zároveň uživatelem parcely v LPIS (lpis.dpb_items[0].user_name), což z ní dělá přirozeného kupce."
+    },
+    {
+      "type": "risk",
+      "description": "Pole land_register.land.land_use je prázdné, takže nelze potvrdit, zda parcela není vedena jako komunikace nebo jiný způsob využití."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": null,
+      "excluded": true,
+      "exclusion_reason": "no_lpis_user",
+      "evidence": "lpis.parcel_in_lpis = false"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 prošel, protože katastr je zkontrolovaný, parcela má druh pozemku orná půda, výměru 1055 m2 a jednoho vlastníka. Krok 1 nenašel žádný bloker a krok 2 nenašel žádný flag, takže nechybějící zdroje (ochrana přírody, územní plán, prodávající) nemění výsledek. Jediná možnost dalšího prodeje je pole pro zemědělce, ale parcela není v LPIS a v DPB nejsou žádní uživatelé, takže krok 4 vše vyloučil a verdikt je NOT_WORTH_IT.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela se nachází v dobývacím prostoru (land_register.other_records[0].type = Pozemek se nachází v dobývacím prostoru), což může omezit její využití a nebylo ověřeno, jaké případné dopady to má."
+    }
+  ]
+}

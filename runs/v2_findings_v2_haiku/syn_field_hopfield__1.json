@@ -1,0 +1,22 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_hopfield",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = Osoba B"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 prošel, protože katastr je zkontrolován, parcela má výměru 20200 m2 a vlastník je uveden. Krok 1 nenašel žádný bloker, seal_present je false a omezení ani jiné zápisy jsou prázdné. Krok 2 nenašel žádný offer ani consent, protože ochrana přírody, stavba, předkupní právo i § 101 jsou u parcely negativní nebo zkontrolované. Jediný kupec je chmelař Osoba B z LPIS, který není vyloučen, takže parcela je kandidát na nákup.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Parcela má jediného vlastníka s podílem 1/1 (land_register.owners[0].share = 1/1) a bez spoluvlastníků, takže prodej nevyžaduje koordinaci více osob."
+    }
+  ]
+}

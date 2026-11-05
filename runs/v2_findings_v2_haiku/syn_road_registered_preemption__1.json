@@ -1,0 +1,28 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "registered_preemption",
+      "evidence": "land_register.restrictions[0].type = Předkupní právo"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 a 1 nenašly žádný bloker: plomba není vyznačena, v omezeních ani jiných zápisech není exekuce ani insolvence a vlastník je jednoznačně identifikován. Krok 2 našel zapsané předkupní právo (land_register.restrictions[0].type), které vyžaduje nabídku oprávněnému, takže výsledek nemůže být BUY_CANDIDATE. Jedinou možností dalšího prodeje je silnice III. třídy, kterou krok 4 nevylučuje, ale kupec není ve vstupu pojmenován, proto zůstává verdikt CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Předkupní právo v land_register.restrictions[0] nemá ve vstupu uvedeného oprávněného, takže není jasné, komu by se nabídka musela učinit."
+    }
+  ]
+}

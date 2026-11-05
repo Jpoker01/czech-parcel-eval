@@ -1,0 +1,34 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "local_road",
+      "buyer": "Plumlov",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_use = ostatní komunikace"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Osoba B"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 a krok 1 neodhalily žádnou překážku a krok 2 nenašel flag offer ani consent, ale § 1124 nelze vyloučit, protože seller_facts je not_checked a parcela má dva spoluvlastníky. Krok 3 vyhodnotil dvě možnosti dalšího prodeje: obec Plumlov jako kupce místní komunikace a spoluvlastníka Osobu B. Krok 4 žádnou z nich nevyloučil, takže výsledek je CONDITIONAL kvůli chybějícím datům z prodávajícího.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Ortofoto ukazuje louku (map.orthophoto_land_cover = louka), zatímco katastr uvádí využití ostatní komunikace (land_register.land.land_use), což může znamenat zastaralý zápis nebo jiný skutečný stav."
+    }
+  ]
+}

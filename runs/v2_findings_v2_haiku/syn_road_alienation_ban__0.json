@@ -1,0 +1,20 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "alienation_ban",
+      "evidence": "land_register.restrictions[0].type = Zákaz zcizení a zatížení"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 rozhodl o výsledku: v katastru je na parcele zapsán zákaz zcizení (land_register.restrictions[0].type), což je blokující omezení. Parcela proto nemůže být koupena ani dále prodána a další kroky se neprovádějí. Chybějící zdroje (LPIS, seller_facts) výsledek nemohou změnit.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela je vedena jako silnice (land_register.land.land_use = silnice), ale jediným vlastníkem je fyzická osoba Osoba A (land_register.owners[0].name), což je neobvyklé a může naznačovat nesoulad mezi evidencí využití a vlastnictvím."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "execution",
+      "evidence": "land_register.restrictions[0].type = Exekuční příkaz k prodeji nemovitosti"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 je splněn, protože katastr je zkontrolován a obsahuje výměru, druh pozemku i vlastníka. Krok 1 rozhodl: v Omezeních je zapsán exekuční příkaz k prodeji nemovitosti, což spadá pod blokér exekuce. Vzhledem k blokaci se další kroky neověřují a možnosti dalšího prodeje se nevypisují.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Parcela je evidována jako silnice a sousedí se silnicí III/29317 III. třídy (map.adjacent_roads[0].road_number), což může být po zrušení exekuce relevantní pro budoucí prodej, ale v tomto hodnocení nezohledněno."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "insolvency",
+      "evidence": "land_register.restrictions[0].type = Zahájení insolvenčního řízení"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 rozhodl: v katastru je u parcely zapsáno Zahájení insolvenčního řízení (land_register.restrictions[0].type), což je blokující omezení. Hodnocení proto končí výsledkem BLOCKED bez dalších kroků. Možnosti dalšího prodeje nejsou vypisovány.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Insolvenční řízení je zapsáno u parcely, jejímž jediným vlastníkem je Osoba A (land_register.owners[0].name), takže ovlivní nakládání s celým pozemkem."
+    },
+    {
+      "type": "opportunity",
+      "description": "Pozemek slouží jako silnice a sousedí se silnicí III. třídy (land_register.land.land_use = silnice, map.adjacent_roads[0].road_class = III. třída), takže by po ukončení insolvence mohl být zajímavý pro kraj jako budoucí kupec."
+    }
+  ]
+}

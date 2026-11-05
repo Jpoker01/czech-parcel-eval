@@ -1,0 +1,15 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "insolvency",
+      "evidence": "land_register.restrictions[0].type = Zahájení insolvenčního řízení"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 rozhodl: v Omezeních katastru je zapsáno zahájení insolvenčního řízení (land_register.restrictions[0].type), což je blokující signál insolvence. Vlastník Osoba A je jediný vlastník a zápis se tedy týká přímo prodávajícího. Hodnocení končí bez dalších kroků, protože blokace nelze obejít ani doplněním chybějících zdrojů.",
+  "other_findings": []
+}

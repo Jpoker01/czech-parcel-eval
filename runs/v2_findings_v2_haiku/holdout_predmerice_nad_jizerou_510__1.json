@@ -1,0 +1,17 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = Osoba B"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 prošel, protože katastr je zkontrolovaný, parcela má druh pozemku orná půda, výměru 25054 m2 a jediného vlastníka. Krok 1 nenašel žádný bloker, plomba je false a omezení ani jiné zápisy jsou prázdné. Krok 2 nenašel žádný flag nabídky ani souhlasu, protože ochrana přírody, zástavba, předkupní právo i stavba jsou zkontrolované a nevyskytují se. Parcela je v LPIS a uživatel Osoba B je jmenovaný kupec, takže zbývá možnost field_arable a výsledek je BUY_CANDIDATE.",
+  "other_findings": []
+}

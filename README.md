@@ -25,6 +25,8 @@ Each case runs 3 times and the scores are counted per run. The dev set (40 cases
 | v1 | claude-sonnet-5-5 | 99 % | 100 % | 98 % | 92 % | 39/40 unanimous | 0 | 100 % | 97 % |
 | v2 + findings v2 | claude-sonnet-5-5 | 100 % | 100 % | 99 % | 100 % | 40/40 unanimous | 0 | 100 % | 100 % |
 | **v2 + findings v2, holdout** | claude-sonnet-5-5 | **100 %** | **100 %** | **92 %** | **100 %** | **4/4 unanimous** | **0** | **100 %** | **100 %** |
+| v2 + findings v2 | claude-haiku-5-5 | 94 % | 100 % | 99 % | 95 % | 39/40 unanimous | 10 | 100 % | 87 % |
+| v2 + findings v2, holdout | claude-haiku-5-5 | 92 % | 100 % | 92 % | 100 % | 3/4 unanimous | 0 | 100 % | 89 % |
 
 v0 → v1: one prompt line rewritten so that `null` in a `checked` source means "verified, empty" rather than "not found".
 

@@ -1,0 +1,14 @@
+{
+  "decision": "INSUFFICIENT_DATA",
+  "legal_flags": [],
+  "resale_options": [],
+  "missing_data": [
+    {
+      "field": "land_register",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "low",
+  "reasoning": "Krok 0 rozhodl: zdroj land_register má status not_checked, takže nejsou známy výměra, typ pozemku ani vlastníci. Bez těchto údajů nelze provést žádný další krok ani ověřit blokery a povinné nabídky. Údaje z mapy a ochrany přírody jsou sice zkontrolované, ale nemohou nahradit chybějící údaje z katastru.",
+  "other_findings": []
+}

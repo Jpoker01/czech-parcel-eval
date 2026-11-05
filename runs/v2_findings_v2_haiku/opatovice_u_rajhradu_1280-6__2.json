@@ -1,0 +1,44 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "consent",
+      "code": "land_consolidation",
+      "evidence": "land_register.other_records[0].type = Zahájeny pozemkové úpravy"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "Osoba H",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = Osoba H"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[0].name = Osoba A"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 i krok 1 neodhalily žádný bloker, katastr je zkontrolován a všichni vlastníci jsou identifikováni. Krok 2 našel souhlasový flag land_consolidation, protože v Jiných zápisech je zahájení pozemkových úprav, takže výsledek nemůže být BUY_CANDIDATE. Seller_facts nebyl zkontrolován a u sedmi spoluvlastníků je potřebný pro posouzení § 1124, proto krok 5 vrací CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Zahájené pozemkové úpravy (land_register.other_records[0].type) mohou změnit hranice nebo výměru parcely, což není v podkladech ověřeno."
+    },
+    {
+      "type": "risk",
+      "description": "Způsob využití parcely je v katastru prázdný (land_register.land.land_use = null), přestože je zdroj zkontrolován, a nelze tedy vyloučit, že jde o jiný než zemědělský režim."
+    }
+  ]
+}

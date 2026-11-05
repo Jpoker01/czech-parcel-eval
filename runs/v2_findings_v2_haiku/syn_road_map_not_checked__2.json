@@ -1,0 +1,27 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_use = silnice"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "map.adjacent_roads",
+      "impact": "could_reduce_value"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 ani krok 1 neodhalil překážku a krok 2 nenašel žádný flag povinné nabídky ani souhlasu, protože zdroje ochrany přírody a územního plánu jsou zkontrolované a bez relevantního nálezu. Parcela s využitím silnice může jít kraji jako obecný typ prodeje road, ale třída silnice není známa, protože mapa nebyla otevřena. Kupec kraj není ve vstupu jmenován, proto buyer zůstává null a krok 6 vede k výsledku CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Pozemek s využitím silnice je zapsán na fyzickou osobu (land_register.owners[0].name = Osoba A), což může znamenat nesoulad mezi využitím a vlastnictvím, který je třeba ověřit."
+    }
+  ]
+}

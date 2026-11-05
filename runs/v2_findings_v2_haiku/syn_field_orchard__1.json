@@ -1,0 +1,17 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_orchard",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].user_name = Osoba B"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 prošel, protože katastr je zkontrolován a parcela má výměru 20200 m2, typ ovocný sad a jednoho vlastníka. Krok 1 nenašel žádný bloker, krok 2 nenašel žádný flag offer ani consent, protože chráněné území, stavba, předkupní právo, § 101 ani pozemkové úpravy nejsou ve vstupu. Jediná možnost prodeje je ovocný sad s uživatelem z LPIS, který je jmenovaně uveden, a nevylučuje ji žádný krok 4, takže výsledek je BUY_CANDIDATE.",
+  "other_findings": []
+}

@@ -1,0 +1,15 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "insufficiently_identified_owner",
+      "evidence": "land_register.owners[0].insufficiently_identified = true"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 je splněn, protože parcela je zkontrolovaná, má druh pozemku a výměru a vlastníci jsou vidět. Krok 1 ale rozhodl o blokaci, protože vlastník Osoba A (podíl 1/12) je v katastru nedostatečně identifikován (land_register.owners[0].insufficiently_identified = true). Blokace platí pro kteréhokoli vlastníka, takže hodnocení končí bez dalšího prodeje.",
+  "other_findings": []
+}

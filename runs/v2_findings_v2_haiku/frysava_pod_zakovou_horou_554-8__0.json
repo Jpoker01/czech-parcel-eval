@@ -1,0 +1,43 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": true,
+      "exclusion_reason": "no_access",
+      "evidence": "map.access_type = bez viditelného přístupu"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": "Osoba C",
+      "excluded": true,
+      "exclusion_reason": "no_access",
+      "evidence": "map.access_type = bez viditelného přístupu"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": "AGRO - Měřín, a.s.",
+      "excluded": true,
+      "exclusion_reason": "no_access",
+      "evidence": "map.access_type = bez viditelného přístupu"
+    },
+    {
+      "resale_type": "forest",
+      "buyer": "Lesy ČR",
+      "excluded": true,
+      "exclusion_reason": "no_access",
+      "evidence": "map.access_type = bez viditelného přístupu"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 ani krok 1 neodhalily chybějící data ani bloker, parcela je lesní pozemek s jedním zápisem vlastnictví (SJM). Zdroje nature_protection a zoning nejsou otevřené, ale krok 4 už rozhodl, protože jediná možnost dalšího prodeje, lesní pozemek se sousedy, je vyloučena pro bez viditelného přístupu (map.access_type). Všechny možnosti dalšího prodeje jsou vyloučeny, proto je verdikt NOT_WORTH_IT.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Sousední parcely 554/19 a 2109 patří Lesům ČR (map.neighbouring_parcels[].owner), ověřte, zda přes ně nevede přístup, který by mohl vyřadit vyloučení no_access."
+    }
+  ]
+}

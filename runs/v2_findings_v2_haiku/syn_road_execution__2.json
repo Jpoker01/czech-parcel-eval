@@ -1,0 +1,24 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "execution",
+      "evidence": "land_register.restrictions[0].type = Exekuční příkaz k prodeji nemovitosti"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 rozhodl: v zápisu LV 404 je v omezeních vedený exekuční příkaz k prodeji nemovitosti, což je exekuce a blokuje parcelu. Hodnocení proto končí výsledkem BLOCKED a možnosti dalšího prodeje se nevypisují. Ostatní zdroje nejsou pro verdikt rozhodující.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela je vedena jako silnice (land_register.land.land_use = silnice) a sousedí se silnicí III. třídy III/29317 (map.adjacent_roads[0]), takže případný budoucí prodej by byl omezen na kraj jako kupce."
+    },
+    {
+      "type": "opportunity",
+      "description": "Po zrušení exekučního příkazu by parcela mohla být znovu posouzena, protože map.status je checked a zdroje pro ostatní kontroly jsou k dispozici (nature_protection, zoning)."
+    }
+  ]
+}

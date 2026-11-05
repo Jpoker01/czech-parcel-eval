@@ -1,0 +1,23 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "state_nature_protection_61",
+      "evidence": "nature_protection.large_protected_area.type = NP; zoning.built_up_status = nezastavěné území"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 je splněn, parcela má vlastníka a výměru a v katastru nejsou žádné blokující záznamy (krok 1). Parcela leží v Krkonošském národním parku (NP) a není zastavěné území, proto vzniká předkupní právo státu podle § 61 (krok 2) a výsledek nemůže být BUY_CANDIDATE. Jediná možnost dalšího prodeje je kraj jako vlastník silnice III. třídy, nevyloučená v kroku 4, ale jméno kupce ve vstupu není, takže zůstává null.",
+  "other_findings": []
+}

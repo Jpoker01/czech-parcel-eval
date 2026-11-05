@@ -1,0 +1,20 @@
+{
+  "decision": "BLOCKED",
+  "legal_flags": [
+    {
+      "type": "block",
+      "code": "alienation_ban",
+      "evidence": "land_register.restrictions[0].type = Zákaz zcizení a zatížení"
+    }
+  ],
+  "resale_options": [],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 je splněn, protože katastr je zkontrolován, výměra je 1416 m2 a vlastník je uveden. Krok 1 však zachytil zákaz zcizení v omezeních katastru (land_register.restrictions[0].type), což je bloker. Parcela je proto BLOCKED a možnosti dalšího prodeje se nevypisují.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela má druh využití silnice (land_register.land.land_use), ale je vedena na soukromou osobu Osoba A (land_register.owners[0].name), což může znamenat nesoulad mezi evidencí a skutečným využitím."
+    }
+  ]
+}

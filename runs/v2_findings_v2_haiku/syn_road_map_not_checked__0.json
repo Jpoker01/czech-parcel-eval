@@ -1,0 +1,22 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_use = silnice"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "map.adjacent_roads",
+      "impact": "could_reduce_value"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 i krok 1 prošly bez nálezu, parcela nemá plombu, omezení ani blokující záznam a vlastník je jediný. Krok 2 nenašel žádný flag nabídky ani souhlasu, protože nature_protection i zoning jsou zkontrolované a nic nevymezují. Jediná možnost dalšího prodeje je silnice, ale mapa nebyla otevřena, takže třída silnice je neznámá a kraj není ve vstupu jmenován, proto krok 6 vrací CONDITIONAL.",
+  "other_findings": []
+}

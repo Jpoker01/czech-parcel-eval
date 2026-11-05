@@ -1,0 +1,22 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = orná půda"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "lpis",
+      "impact": "could_exclude_resale"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 i krok 1 prošly bez nálezu, parcela je v katastru zapsána jednomu vlastníkovi a bez plomby, omezení a zápisů. Krok 2 nenašel žádný flag offer ani consent, protože ochrana přírody, zóna, stavba i předkupní právo jsou zkontrolovány a nic z nich neplatí. Zdroj LPIS nebyl otevřen, takže nelze vyloučit ani potvrdit pronajímatele orné půdy jako kupce a krok 5 vede k výsledku CONDITIONAL.",
+  "other_findings": []
+}

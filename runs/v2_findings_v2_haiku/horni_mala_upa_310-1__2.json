@@ -1,0 +1,52 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [
+    {
+      "type": "offer",
+      "code": "state_nature_protection_61",
+      "evidence": "nature_protection.large_protected_area.type = NP"
+    }
+  ],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = lesní pozemek"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[0].name = Osoba A"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "map.orthophoto_land_cover",
+      "impact": "could_exclude_resale"
+    },
+    {
+      "field": "map.access_type",
+      "impact": "could_exclude_resale"
+    },
+    {
+      "field": "map.neighbouring_parcels",
+      "impact": "could_reduce_value"
+    },
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 ani krok 1 nenašly žádný bloker, parcela má zapsané vlastnické právo dvou osob a není plombovaná ani zatížená omezeními. Krok 2 našel nabídku podle § 61 ochrany přírody, protože parcela leží v Krkonošském národním parku (nature_protection.large_protected_area.type = NP) a zoning ji eviduje jako nezastavěné území. Možnosti prodeje (les a spoluvlastníci) nelze bez otevřené mapy a seller_facts vyloučit ani potvrdit, takže výsledek je CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Osoba A drží podíl 5/6 (land_register.owners[0].share = 5/6), takže je přirozeným zájemcem o zbylý podíl Osoby B (land_register.owners[1].share = 1/6)."
+    }
+  ]
+}

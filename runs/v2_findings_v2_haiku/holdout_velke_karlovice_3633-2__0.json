@@ -1,0 +1,30 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = lesní pozemek"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "medium",
+  "reasoning": "Krok 0 prošel, protože katastr je zkontrolovaný, výměra 18792 m2 a vlastník je jeden. Krok 1 nenašel žádný bloker, plomba, omezení ani nejistého vlastníka. Krok 2 nenašel žádnou povinnou nabídku ani souhlas, CHKO Beskydy nezakládá právo podle § 61. Jediná možnost prodeje je lesní pozemek, kterou krok 4 nevylučuje, ale žádný soused v datech nelze jednoznačně určit jako kupce, takže výsledek je CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Pátá lesní a.s. vlastní čtyři sousední parcely (map.neighbouring_parcels[1], [2], [3], [5]), což z ní činí možného zájemce o parcelu, ale žádný z dat jednoznačně neplyne."
+    },
+    {
+      "type": "opportunity",
+      "description": "Osoba D vlastní tři sousední parcely 3633/11, 3633/12 a 3633/13 (map.neighbouring_parcels[7], [8], [9]), což může být vhodný kupec z hlediska sousedství."
+    },
+    {
+      "type": "risk",
+      "description": "Parcela leží v CHKO Beskydy (nature_protection.large_protected_area.name = Beskydy), které může omezit hospodaření v lese, ale rozsah omezení ve vstupu není uveden."
+    }
+  ]
+}

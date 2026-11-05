@@ -1,0 +1,17 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": null,
+      "excluded": true,
+      "exclusion_reason": "clearcut",
+      "evidence": "map.orthophoto_land_cover = holina"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 ani krok 1 neodhalil překážku: katastr je zkontrolovaný, bez plomby, omezení a záznamů a vlastník je jediný a jednoznačně identifikovaný. Krok 2 nenašel žádný flag offer ani consent, protože všechny relevantní zdroje jsou zkontrolované a nulové. Jediná možnost dalšího prodeje je prodej lesnímu sousedovi, který je vyloučen holinou na ortofotu (map.orthophoto_land_cover = holina), takže parcela je podle kroku 4 NOT_WORTH_IT.",
+  "other_findings": []
+}

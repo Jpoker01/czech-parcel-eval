@@ -1,0 +1,17 @@
+{
+  "decision": "NOT_WORTH_IT",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": "Liberecký kraj",
+      "excluded": true,
+      "exclusion_reason": "owner_is_buyer",
+      "evidence": "land_register.owners[0].name = Liberecký kraj"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 i krok 1 prošly bez nálezu: parcela má vyplněný druh pozemku a výměru, bez plomby, omezení a záznamů a vlastník je plně identifikován. Krok 2 nenašel žádný flag offer ani consent, protože parcela neleží v chráněném území, nemá stavbu ani předkupní právo a je jediný vlastník. V kroku 3 vychází jediná možnost prodeje, silnice III. třídy kraji, ale v kroku 4 je vyloučena, protože vlastníkem je sám kraj, a proto je verdikt NOT_WORTH_IT.",
+  "other_findings": []
+}

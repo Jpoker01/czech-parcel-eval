@@ -1,0 +1,27 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "road_class_3",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_use = silnice; map.adjacent_roads[0].road_class = III. třída"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "nature_protection",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 0 i krok 1 prošly bez nálezu, parcela má jediného vlastníka bez zápisů v omezeních a plomby. Zdroj nature_protection není otevřen, takže nelze vyloučit povinnou nabídku podle § 61 a výsledek nemůže být BUY_CANDIDATE. Jediná možnost dalšího prodeje je třídy III. (road_class_3) a kraj jako kupec není ve vstupu pojmenován, proto zůstává buyer null a hodnocení končí jako CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela je evidována jako silnice (land_register.land.land_use = silnice), ale druh pozemku je ostatní plocha a jediným vlastníkem je fyzická osoba (land_register.owners[0].name = Osoba A), což může signalizovat nejasný právní režim pozemní komunikace a je třeba ho ověřit."
+    }
+  ]
+}
