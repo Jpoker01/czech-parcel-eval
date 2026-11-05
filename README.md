@@ -60,7 +60,7 @@ v1 → v2: the § 1124 rule now counts owner entries, with SJM as one entry (the
 
 ## Decisions and assumptions
 
-- **Evaluation, not a decision** - the agent identifies potentially valuable parcels for a human. Every `BUY_CANDIDATE` and `CONDITIONAL` still goes to a person who opens the LV.
+- **Evaluation, not a decision** - the agent identifies potentially valuable parcels for a human. Every `BUY_CANDIDATE` and `CONDITIONAL` still goes to a person who opens the LV (list vlastnictví).
 - **Unchecked is not empty** - a `not_checked` source never counts as "nothing found". If it could change the result, the model has to list it in `missing_data` and the verdict is at most `CONDITIONAL`.
 - **Evidence for every conclusion** - each flag and resale option carries `evidence` in the form `input.path = value` (e.g. `land_register.owners[0].name = Liberecký kraj`). The evaluation resolves the path in the input and compares the value, so an invented restriction or buyer is caught automatically.
 - **Whole parcel or nothing** - an execution or insolvency of ANY co-owner blocks the parcel, even though legally it only affects that owner's share. The profit comes from selling the whole parcel, which such a share complicates.
