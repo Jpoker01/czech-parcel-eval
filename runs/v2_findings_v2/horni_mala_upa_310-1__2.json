@@ -9,18 +9,18 @@
   ],
   "resale_options": [
     {
-      "resale_type": "co_owners",
-      "buyer": "ostatní spoluvlastníci",
-      "excluded": false,
-      "exclusion_reason": null,
-      "evidence": "land_register.owners[1].share = 1/6"
-    },
-    {
       "resale_type": "forest",
       "buyer": null,
       "excluded": false,
       "exclusion_reason": null,
       "evidence": "land_register.land.land_type = lesní pozemek"
+    },
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].share = 1/6"
     }
   ],
   "missing_data": [
@@ -38,15 +38,11 @@
     }
   ],
   "confidence": "medium",
-  "reasoning": "Krok 1 nenašel žádný bloker. Parcela leží v Krkonošském národním parku mimo zastavěné území, což zakládá povinnou nabídku státu podle § 61, takže je maximum CONDITIONAL. Dále chybí kontrola mapy (holina, přístup) a údaje o dědictví u spoluvlastníků (§ 1124), a u lesa není znám kupec.",
+  "reasoning": "Žádný bloker v kroku 1 nenalezen. Parcela leží v Krkonošském národním parku mimo zastavěné území, takže vzniká povinná nabídka státu podle § 61 (krok 2). Zdroje map a seller_facts nejsou zkontrolovány, takže nelze vyloučit holinu, chybějící přístup ani nabídku spoluvlastníkům podle § 1124. Výsledek je proto CONDITIONAL.",
   "other_findings": [
     {
       "type": "risk",
-      "description": "Pozemek je veden jako les jiný než hospodářský (land_register.land.land_use) v národním parku, což může omezovat využití a zájem kupců."
-    },
-    {
-      "type": "risk",
-      "description": "Parcela je ve spoluvlastnictví 5/6 a 1/6 (land_register.owners[].share), takže koupě podílu hrozí soudním zrušením spoluvlastnictví a ztíží další prodej."
+      "description": "Způsob využití „les jiný než hospodářský“ (land_register.land.land_use) může omezovat lesnické využití a zájem kupců."
     }
   ]
 }

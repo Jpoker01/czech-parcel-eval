@@ -12,6 +12,6 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 0 až 2 neodhalily žádný bloker ani povinnou nabídku. V kroku 3 vychází jediná možnost dalšího prodeje, silnice III. třídy pro kraj. V kroku 4 je vyloučena, protože vlastníkem parcely je už Liberecký kraj, takže žádný kupec nezůstává a výsledek je NOT_WORTH_IT.",
+  "reasoning": "Krok 1 ani krok 2 nenašly žádný bloker, nabídku ani souhlas. V kroku 3 je jediná možnost dalšího prodeje silnice III. třídy kraji. V kroku 4 ji vylučuje to, že parcelu už vlastní Liberecký kraj (owner_is_buyer), takže žádný kupec nezbývá a výsledek je NOT_WORTH_IT.",
   "other_findings": []
 }

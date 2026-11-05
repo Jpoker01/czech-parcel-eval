@@ -10,21 +10,30 @@
   "resale_options": [
     {
       "resale_type": "co_owners",
-      "buyer": "ostatní spoluvlastníci",
+      "buyer": null,
       "excluded": false,
       "exclusion_reason": null,
-      "evidence": "land_register.owners[4].name = Osoba E"
+      "evidence": "land_register.owners[0].share = 1/12"
     },
     {
       "resale_type": "field_vineyard",
       "buyer": "Osoba F",
       "excluded": false,
       "exclusion_reason": null,
-      "evidence": "lpis.dpb_items[0].user_name = Osoba F"
+      "evidence": "lpis.dpb_items[0].culture = vinice"
     }
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Žádný bloker v kroku 1 nenalezen. Dědictví z 2026-09-01 je mladší než 6 měsíců a parcela má pět spoluvlastníků, takže vzniká povinná nabídka spoluvlastníkům podle § 1124 a výsledek je nejvýš CONDITIONAL. Existuje nevyloučený kupec, vinař Osoba F z LPIS, ale flag z kroku 2 brání BUY_CANDIDATE.",
-  "other_findings": []
+  "reasoning": "Krok 1 nenašel žádný bloker. Dědictví z 2026-09-01 je mladší než 6 měsíců a parcela má více spoluvlastníků, takže vzniká povinná nabídka podle § 1124 (krok 2). Existuje nevyloučený kupec vinice (Osoba F z LPIS), ale kvůli povinné nabídce je výsledek nejvýš CONDITIONAL (krok 6).",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela je rozdělena mezi pět spoluvlastníků s podíly 1/12 až 1/2, takže koupě malého podílu nedává kontrolu nad hospodařením (land_register.owners[].share)."
+    },
+    {
+      "type": "opportunity",
+      "description": "Vinice je v LPIS užívána osobou, která není uvedena mezi vlastníky, takže může mít zájem o odkup podílů (lpis.dpb_items[0].user_name)."
+    }
+  ]
 }

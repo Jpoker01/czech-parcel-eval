@@ -12,6 +12,6 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Základní data jsou úplná a žádný bloker v kroku 1 se nenašel. Jediná možnost dalšího prodeje je silnice (mapa není otevřena, třída neznámá), kde by kupcem byl kraj. Kraj je ale již jediným vlastníkem parcely, takže ji krok 4 vylučuje (owner_is_buyer) a zbývá NOT_WORTH_IT.",
+  "reasoning": "V kroku 1 nebyl nalezen žádný bloker. V kroku 3 je jediná možnost dalšího prodeje silnice (mapa není otevřena, třída neznámá) s kupcem krajem. Parcelu už celou vlastní Liberecký kraj, takže ji krok 4 vylučuje jako owner_is_buyer a zbývá NOT_WORTH_IT.",
   "other_findings": []
 }

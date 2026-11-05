@@ -17,6 +17,6 @@
     }
   ],
   "confidence": "medium",
-  "reasoning": "Krok 0 a 1 prošly: základní data jsou úplná, žádný bloker a žádná povinná nabídka ani souhlas nebyly nalezeny. Parcela je orná půda, takže přichází v úvahu prodej zemědělci (field_arable), ale LPIS nebyl zkontrolován, takže uživatel (kupec) není znám a nelze vyloučit absenci uživatele v LPIS. Podle kroku 5 je výsledek CONDITIONAL.",
+  "reasoning": "Kroky 0 až 2 neodhalily žádný bloker ani povinnou nabídku: jediný vlastník, bez omezení, plomby a stavby, ochrana přírody i územní plán jsou zkontrolované. Jediná možnost dalšího prodeje je zemědělec (orná půda), ale LPIS nebyl zkontrolován, takže nelze potvrdit uživatele ani vyloučit prodej. Podle kroku 5 je výsledek CONDITIONAL.",
   "other_findings": []
 }

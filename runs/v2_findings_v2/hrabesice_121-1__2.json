@@ -12,19 +12,15 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "V krocích 0 a 1 nebyl nalezen žádný bloker: zástavní práva ze správního rozhodnutí a od zdravotní pojišťovny nejsou exekuce ani insolvence. Krok 2 nenašel žádnou povinnou nabídku ani souhlas a SJM je jedna položka, takže § 1124 se neřeší. Parcela je v LPIS s uživatelem Osoba C, takže existuje nevyloučený kupec pro travní porost, a výsledkem je BUY_CANDIDATE.",
+  "reasoning": "Krok 1 nenašel bloker: zástavní práva správního orgánu a zdravotní pojišťovny nejsou exekuce, insolvence ani zákaz zcizení a plomba není vyznačena. Krok 2 nenašel žádnou povinnou nabídku ani souhlas, vlastník je jeden (SJM). Podle kroku 3 lze parcelu dále prodat uživateli LPIS Osobě C jako travní porost, parcela je v LPIS, takže ji krok 4 nevylučuje, a proto krok 7 vrací BUY_CANDIDATE.",
   "other_findings": [
     {
       "type": "risk",
-      "description": "Na parcele vázne zástavní právo z rozhodnutí správního orgánu a zástavní právo z rozhodnutí zdravotní pojišťovny (land_register.restrictions), které ukazují na dluhy vlastníků a mohou vést k pozdější exekuci či dražbě."
+      "description": "Na parcele vázne zástavní právo z rozhodnutí správního orgánu a zástavní právo z rozhodnutí zdravotní pojišťovny (land_register.restrictions), které může vést k výkonu rozhodnutí a před koupí je třeba ověřit jejich výši a postup vymáhání."
     },
     {
       "type": "risk",
-      "description": "V Jiných zápisech jsou závazky neumožnit zápis nového zástavního práva namísto starého a nezajistit nový dluh ve výhodnějším pořadí (land_register.other_records), což může omezit nakládání s parcelou a je třeba ověřit jejich dopad na převod."
-    },
-    {
-      "type": "opportunity",
-      "description": "Parcela má velkou výměru 13687 m² (land_register.land.area_m2) a je veden uživatel v LPIS (lpis.dpb_items[0].user_name), což usnadňuje prodej zemědělci."
+      "description": "V Jiných zápisech jsou závazky neumožnit zápis nového zástavního práva namísto starého a nezajistit nový dluh ve výhodnějším pořadí (land_register.other_records), které mohou omezit nakládání s parcelou."
     }
   ]
 }

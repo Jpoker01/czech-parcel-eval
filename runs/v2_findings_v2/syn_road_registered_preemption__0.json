@@ -18,11 +18,6 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 1 nenašel žádný bloker. Krok 2 našel zapsané předkupní právo, takže parcelu je nutné nejdřív nabídnout oprávněnému a výsledek může být nejvýš CONDITIONAL. Krok 3 určil jako kupce kraj (silnice III. třídy), krok 4 ho nevyloučil, ale kvůli kroku 6 zůstává výsledek CONDITIONAL.",
-  "other_findings": [
-    {
-      "type": "risk",
-      "description": "Oprávněný z předkupního práva ani jeho rozsah nejsou ve vstupu uvedeny (land_register.restrictions[0].type), je potřeba je dohledat v listině."
-    }
-  ]
+  "reasoning": "Krok 1 nenašel žádný bloker a parcela je silnice s přilehlou silnicí III. třídy, takže existuje nevyloučená možnost dalšího prodeje kraji. Krok 2 ale nalezl zapsané předkupní právo, které vyžaduje nabídku oprávněnému. Podle kroku 6 je proto nejlepším možným výsledkem CONDITIONAL.",
+  "other_findings": []
 }

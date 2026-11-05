@@ -12,11 +12,15 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "V krocích 1 a 2 se nenašel žádný bloker, povinná nabídka ani souhlas, protože parcela má jediného vlastníka a žádné stavby, omezení ani ochranu. Podle LPIS (trvalý travní porost) je možný prodej uživateli Osobě B jako field_grassland a parcela v LPIS je, takže možnost není vyloučená. Kupec je jmenovitě uveden, proto vychází BUY_CANDIDATE.",
+  "reasoning": "Krok 0 až 2 neodhalily žádný bloker, nabídku ani souhlas (jediný vlastník, ochrana přírody a územní plán zkontrolovány). V kroku 3 je podle LPIS kultury možný prodej uživateli Osoba B jako travní porost a krok 4 ho nevylučuje, protože parcela v LPIS je. Kroky 5 a 6 nic nezměnily, výsledek je BUY_CANDIDATE.",
   "other_findings": [
     {
       "type": "risk",
-      "description": "Druh pozemku v katastru je orná půda (land_register.land.land_type), ale LPIS vede kulturu trvalý travní porost (lpis.dpb_items[0].culture), tento nesoulad může ovlivnit využití i hodnotu pozemku a stojí za ověření."
+      "description": "Katastr vede druh pozemku jako orná půda (land_register.land.land_type), zatímco LPIS eviduje trvalý travní porost (lpis.dpb_items[0].culture), tento nesoulad může ovlivnit využití i přijatelnost kupce."
+    },
+    {
+      "type": "risk",
+      "description": "Uživatel v LPIS (lpis.dpb_items[0].user_name = Osoba B) není vlastníkem (land_register.owners[0].name = Osoba A), proto je nutné ověřit, zda jde o nájemce a na základě jaké smlouvy parcelu užívá."
     }
   ]
 }

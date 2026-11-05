@@ -4,7 +4,7 @@
   "resale_options": [
     {
       "resale_type": "forest",
-      "buyer": "Osoba B",
+      "buyer": "Lesy ČR",
       "excluded": true,
       "exclusion_reason": "clearcut",
       "evidence": "map.orthophoto_land_cover = holina"
@@ -12,6 +12,6 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 0 a 1 prošly bez blokerů a krok 2 nenašel žádnou povinnou nabídku ani souhlas. Jediná možnost dalšího prodeje je lesní pozemek sousedovi, ale ortofoto ukazuje holinu, takže ji krok 4 vyloučil. Žádná nevyloučená možnost nezůstala, výsledkem je NOT_WORTH_IT.",
+  "reasoning": "Krok 1 ani krok 2 nenašly žádný bloker, nabídku ani souhlas. Jediná možnost dalšího prodeje je lesní pozemek se sousedem jako kupcem, ale v kroku 4 ji vylučuje holina na ortofotu. Přístup je zajištěn polní cestou, takže důvodem je jen holina. Protože nezbývá žádná nevyloučená možnost, výsledek je NOT_WORTH_IT.",
   "other_findings": []
 }

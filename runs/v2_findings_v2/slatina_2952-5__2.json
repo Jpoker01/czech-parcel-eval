@@ -27,15 +27,19 @@
     }
   ],
   "confidence": "medium",
-  "reasoning": "Krok 1 nenašel žádný bloker. Na parcele je stavba jiného vlastníka na jiném LV, což zakládá povinnou nabídku podle § 3056 a jedinou možnost dalšího prodeje (vlastník stavby), jehož jméno ve vstupu chybí. Zdroje nature_protection a zoning nebyly otevřeny a mohly by přidat další povinnou nabídku (§ 61, § 101), proto je výsledek nejvýš CONDITIONAL.",
+  "reasoning": "Krok 1 nenašel žádný bloker. Krok 2 přidal povinnou nabídku vlastníku stavby (§ 3056) a jediná možnost dalšího prodeje je prodej vlastníku stavby, jehož jméno ve vstupu chybí. Nezkontrolované zdroje nature_protection a zoning by mohly přidat další nabídku (§ 61, § 101), proto je výsledek CONDITIONAL.",
   "other_findings": [
     {
       "type": "risk",
-      "description": "Vlastníkem parcely je Statutární město Brno (land_register.owners[0].name), takže koupě podílu či parcely závisí na rozhodnutí orgánů města a vlastník stavby je přirozeným kupcem."
+      "description": "Vlastníkem parcely je Statutární město Brno (land_register.owners[0].name), takže prodej podléhá schvalování orgány města a nemusí jít přímo ani rychle."
     },
     {
       "type": "risk",
-      "description": "V jiných zápisech je poznamenána změna výměr obnovou operátu (land_register.other_records[0].type), je vhodné ověřit, že výměra 1202 m2 je aktuální."
+      "description": "Vlastník stavby není ve vstupu jmenován a stavba je na jiném LV (land_register.building.on_different_lv), takže kupce je nutné dohledat."
+    },
+    {
+      "type": "risk",
+      "description": "V katastru je zapsána změna výměr obnovou operátu (land_register.other_records[0].type), výměra 1202 m2 se proto může lišit od dřívějších údajů."
     }
   ]
 }

@@ -12,6 +12,6 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 0 a 1 neprokázaly žádný bloker a krok 2 nenašel žádnou povinnou nabídku ani souhlas. Jediná možnost dalšího prodeje je lesní pozemek sousedovi (forest). Ortofoto ale ukazuje holinu, proto ji krok 4 vyloučil a žádná použitelná možnost nezbyla.",
+  "reasoning": "Krok 0 a 1 prošly bez blokerů a krok 2 nenašel žádnou povinnou nabídku ani souhlas. Jediná možnost dalšího prodeje je lesní pozemek soudu sousedovi, ale ortofoto ukazuje holinu, takže je podle kroku 4 vyloučena. Parcela má jediného vlastníka a není zemědělská, proto další kupci nejsou a výsledek je NOT_WORTH_IT.",
   "other_findings": []
 }

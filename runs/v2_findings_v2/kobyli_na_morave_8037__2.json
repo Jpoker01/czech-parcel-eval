@@ -7,7 +7,7 @@
       "buyer": "ostatní spoluvlastníci",
       "excluded": false,
       "exclusion_reason": null,
-      "evidence": "land_register.owners[0].name = Osoba A"
+      "evidence": "land_register.owners[4].name = Osoba E"
     },
     {
       "resale_type": "field_vineyard",
@@ -24,6 +24,15 @@
     }
   ],
   "confidence": "medium",
-  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 žádnou povinnou nabídku ani souhlas. Parcela má pět spoluvlastníků, takže § 1124 závisí na datu dědictví, a zdroj seller_facts nebyl zkontrolován. Kvůli tomu rozhodl krok 5 a výsledek je CONDITIONAL, přestože existuje nevyloučený kupec (vinař podle LPIS).",
-  "other_findings": []
+  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 žádnou povinnou nabídku ani souhlas u zkontrolovaných zdrojů. Parcela má pět spoluvlastníků, ale zdroj seller_facts nebyl zkontrolován, takže nelze vyloučit nabídku podle § 1124. Proto je podle kroku 5 výsledek CONDITIONAL. Možnosti dalšího prodeje jsou spoluvlastníkům a vinaři z LPIS, žádná není vyloučená.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela má pět spoluvlastníků a podíly jsou malé (např. 1/12 u land_register.owners[0].share), takže hrozí obtížná realizace a soudní zrušení spoluvlastnictví."
+    },
+    {
+      "type": "opportunity",
+      "description": "Uživatel vinice v LPIS (lpis.dpb_items[0].user_name = Osoba F) je konkrétní potenciální kupec nebo nájemce, jehož vztah k vlastníkům ve vstupu není popsán."
+    }
+  ]
 }

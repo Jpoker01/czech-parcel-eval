@@ -12,11 +12,11 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 0 a 1: základní data jsou úplná a žádný bloker se nenašel. V kroku 3 je jediným možným kupcem zemědělec u orné půdy, ale parcela není v LPIS, takže v kroku 4 odpadá (no_lpis_user). Jediný vlastník, žádná stavba, silnice ani les, takže žádná použitelná možnost dalšího prodeje nezbývá.",
+  "reasoning": "Krok 0 a 1 prošly: data jsou úplná a žádný bloker se nenašel. Jediná možnost dalšího prodeje je orná půda pro zemědělce, ale parcela není v LPIS, takže v kroku 4 odpadá žádný uživatel a všechny možnosti jsou vyloučené. Výsledkem je NOT_WORTH_IT.",
   "other_findings": [
     {
       "type": "risk",
-      "description": "Pozemek leží v dobývacím prostoru (land_register.other_records[0].type), což může omezovat jeho využití a zájem kupců."
+      "description": "Pozemek leží v dobývacím prostoru (land_register.other_records[0].type) a vlastní ho MND a.s., což může omezovat využití parcely i okruh kupců."
     }
   ]
 }

@@ -114,3 +114,22 @@ Výsledek na dev sadě (`runs/v2_findings_v2/`, prompt v2 + doplněk `other_find
 
 Plné skóre na dev sadě po iteraci samo o sobě nic nedokazuje: prompt i dva expected výstupy byly upravené podle chyb, které tato sada ukázala. Proto jde v2 jako finální verze na holdout a po holdoutu se už nemění.
 
+## Holdout (2026-11-05)
+
+Jeden běh v2 + doplněk `other_findings` v2 (`runs/v2_findings_v2/`, 44 case × 3, sha `88feb1bd34bd`), dev sada a holdout dohromady. Prompt byl před během commitnutý (`7eb5e96`) a po běhu se nemění.
+
+Holdout (4 reálné parcely sebrané až po ladění promptu, 12 běhů):
+- Decision 12/12, legal flags 12/12, risky missing data 12/12, konzistence 4/4 unanimous, 0 rule violations, 0 evidence errors.
+- BUY_CANDIDATE precision a recall 100 % (9/9).
+- Resale options 10/12 podle původních labelů, 11/12 po opravě labelu.
+
+Oprava labelu po holdoutu: u `holdout_velke_karlovice_4568-1` (TTP mimo LPIS, čtyři spoluvlastníci) model ve dvou bězích vypsal `field_grassland` s `excluded = true` a `no_lpis_user`. To odpovídá kroku 3 ("vypiš i ty, které vyloučíš") i konvenci, která v dev sadě platila už předtím (`uhrice_u_kyjova_2020-5`, orná půda mimo LPIS, má vyloučený `field_arable`). V holdout expected výstupu tato položka chyběla, model měl ve dvou bězích pravdu. Expected byl opraven, prompt ne. Původní report je v `runs/v2_findings_v2/report_before_label_fix.md`.
+
+Dev část téhož běhu: decision, legal flags a risky missing data 120/120, resale options 119/120 (`uhrice_u_kyjova_2020-5` 2/3).
+
+Zbývající slabina pro další verzi: vyloučenou možnost dalšího prodeje model v jednom běhu ze tří vynechá (`uhrice_u_kyjova_2020-5`, `holdout_velke_karlovice_4568-1`). Verdikt to nemění, protože vyloučená možnost na výsledek nemá vliv, ale člověk pak nevidí, proč parcela nejde prodat zemědělci.
+
+Nálezy `other_findings` u holdoutu nepřinesly nový kandidát na taxonomii: věcné břemeno s neznámým rozsahem je už v backlogu, CHKO a "parcela mimo LPIS" opakují vstup nebo vyloučení.
+
+Omezení holdoutu: čtyři parcely, tři BUY_CANDIDATE a jedna CONDITIONAL. Holdout neobsahuje BLOCKED, NOT_WORTH_IT ani národní park (H5 se nepodařilo sebrat), takže tyto verdikty ověřuje jen dev sada.
+

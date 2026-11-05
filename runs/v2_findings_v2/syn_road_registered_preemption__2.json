@@ -18,11 +18,11 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 1 nenašel žádný bloker. Krok 2 našel zapsané předkupní právo, takže je parcelu nutné nejdřív nabídnout oprávněnému a výsledek je nejvýš CONDITIONAL. Parcela je silnice III. třídy, kterou lze dále prodat kraji, a vlastník Osoba A není kraj ani stát, takže možnost není vyloučená.",
+  "reasoning": "Žádný bloker v kroku 1 nenalezen, vlastníkem je fyzická osoba, takže kraj může být kupcem silnice III. třídy. Krok 2 ale zjistil zapsané předkupní právo, které je nutné parcelu nejdříve nabídnout oprávněnému, proto nejlepší možný výsledek je CONDITIONAL.",
   "other_findings": [
     {
       "type": "risk",
-      "description": "Oprávněný z předkupního práva není z vlastního pole land_register.restrictions[0].type zřejmý, je potřeba ho dohledat v katastru, aby bylo jasné, komu nabídku učinit."
+      "description": "V katastru je zapsáno předkupní právo, ale jeho oprávněný ani rozsah ve vstupu nejsou uvedeny (land_register.restrictions[0].type), je třeba je dohledat v LV."
     }
   ]
 }

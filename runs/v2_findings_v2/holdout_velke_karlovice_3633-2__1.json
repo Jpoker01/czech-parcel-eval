@@ -1,0 +1,26 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Pátá lesní a.s.",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.land.land_type = lesní pozemek"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 0 i krok 1 prošly, protože žádný bloker není a vlastník je jediný. V kroku 2 CHKO Beskydy nezakládá žádnou povinnou nabídku, stavba ani předkupní právo tam nejsou. Lesní pozemek lze v kroku 3 prodat sousedním lesním vlastníkům a krok 4 ho nevylučuje (les, přístup lesní cestou). Výsledkem je BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Sousední parcela 3629 patří stejnému vlastníku (Osoba A) a v sousedství je víc lesních vlastníků (map.neighbouring_parcels), takže je možné vyjednávat s více zájemci."
+    },
+    {
+      "type": "risk",
+      "description": "Parcela leží v CHKO Beskydy (nature_protection.large_protected_area.type = CHKO), což může omezovat hospodaření v lese, rozsah omezení ale ze vstupu neplyne."
+    }
+  ]
+}

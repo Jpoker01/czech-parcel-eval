@@ -10,6 +10,11 @@
   "resale_options": [],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 1 rozhodl: v omezeních na LV je zapsán exekuční příkaz k prodeji nemovitosti, což je bloker. Hodnocení tím končí a další kroky se neprovádějí.",
-  "other_findings": []
+  "reasoning": "Krok 1 rozhodl: v omezeních na LV je zapsán exekuční příkaz k prodeji nemovitosti, což je bloker a hodnocení tím končí. Další kroky se neprovádějí.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela je vedena jako silnice a sousedí se silnicí III/29317 (map.adjacent_roads[0].road_number), ale vlastníkem je soukromá osoba (land_register.owners[0].name = Osoba A), takže jde o neobvyklý stav, který by měl člověk prověřit."
+    }
+  ]
 }

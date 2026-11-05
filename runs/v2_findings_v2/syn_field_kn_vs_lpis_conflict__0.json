@@ -12,15 +12,11 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 0 až 2 nenašly žádný bloker, povinnou nabídku ani souhlas (jediný vlastník, zkontrolovaná ochrana přírody a územní plán). V kroku 3 vychází jediná možnost dalšího prodeje: pozemek jako travní porost pro uživatele z LPIS, Osobu B. Parcela v LPIS je, takže ji krok 4 nevylučuje, kupec je jmenovaný a krok 7 vrací BUY_CANDIDATE.",
+  "reasoning": "Krok 0 až 2 neodhalily žádný bloker, povinnou nabídku ani souhlas: jediný vlastník, bez omezení, plomby a stavby, ochrana přírody ani § 101 se neuplatňují. V kroku 3 je parcela v LPIS vedena jako trvalý travní porost s uživatelem Osoba B, takže existuje nevyloučená možnost dalšího prodeje s konkrétním kupcem. Kroky 5 a 6 nic nezměnily, výsledek je BUY_CANDIDATE.",
   "other_findings": [
     {
       "type": "risk",
-      "description": "Druh pozemku v katastru je orná půda (land_register.land.land_type), ale LPIS vede kulturu trvalý travní porost (lpis.dpb_items[0].culture), takže skutečné využití se liší od zápisu v KN."
-    },
-    {
-      "type": "opportunity",
-      "description": "Parcelu už eviduje v LPIS jiný uživatel než vlastník (lpis.dpb_items[0].user_name = Osoba B), takže existuje konkrétní zemědělec, který pozemek reálně užívá a může být kupcem."
+      "description": "Druh pozemku v katastru je orná půda (land_register.land.land_type), ale LPIS eviduje trvalý travní porost (lpis.dpb_items[0].culture), takže je nutné ověřit skutečné využití a případný dopad na hodnotu."
     }
   ]
 }

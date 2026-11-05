@@ -2,13 +2,13 @@
   "decision": "INSUFFICIENT_DATA",
   "legal_flags": [],
   "resale_options": [],
-  "missing_data": [
-    {
-      "field": "land_register.land.area_m2",
-      "impact": "could_reduce_value"
-    }
-  ],
+  "missing_data": [],
   "confidence": "high",
-  "reasoning": "Hodnocení skončilo už v kroku 0, protože výměra parcely v katastru je 0 m², tedy není větší než nula. Bez věrohodné výměry nelze parcelu dál posuzovat, proto je výsledek INSUFFICIENT_DATA. Údaj o výměře je potřeba ověřit v katastru.",
-  "other_findings": []
+  "reasoning": "Krok 0: výměra parcely v katastru je 0 m² (land_register.land.area_m2), což je neplatný údaj, takže hodnocení končí jako INSUFFICIENT_DATA. Další kroky se neprovádějí.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Výměra parcely je v katastru uvedena jako 0 m² (land_register.land.area_m2), údaj je nutné ověřit u zdroje nebo v aktuálním výpisu z KN."
+    }
+  ]
 }

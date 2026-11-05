@@ -12,6 +12,6 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 0 až 2 neodhalil žádný bloker, nabídku ani souhlas: katastr, ochrana přírody i územní plán jsou zkontrolované a bez nálezu, jediný vlastník nepotřebuje seller_facts. V kroku 3 je jako kupec orné půdy uživatel LPIS Osoba B a krok 4 ho nevylučuje, protože parcela v LPIS je. Zbývá tedy krok 7, BUY_CANDIDATE.",
+  "reasoning": "Krok 0 až 2 nenašly žádný bloker, povinnou nabídku ani souhlas (jediný vlastník, bez plomby, omezení a zápisů, bez stavby, zdroje ochrany přírody a územního plánu jsou zkontrolované). Parcela je orná půda s uživatelem v LPIS (Osoba B), takže existuje nevyloučený kupec `field_arable` s vyplněným jménem. Nechybí žádná data, která by mohla změnit výsledek, proto BUY_CANDIDATE.",
   "other_findings": []
 }

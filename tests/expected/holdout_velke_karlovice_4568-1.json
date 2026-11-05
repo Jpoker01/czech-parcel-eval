@@ -8,6 +8,13 @@
       "excluded": false,
       "exclusion_reason": null,
       "evidence": "land_register.owners[1].share = 1/4"
+    },
+    {
+      "resale_type": "field_grassland",
+      "buyer": null,
+      "excluded": true,
+      "exclusion_reason": "no_lpis_user",
+      "evidence": "lpis.parcel_in_lpis = false"
     }
   ],
   "missing_data": [
@@ -17,5 +24,5 @@
     }
   ],
   "confidence": "medium",
-  "reasoning": "LV je čistý, parcelu drží čtyři spoluvlastníci po 1/4. Trvalý travní porost není v LPIS, takže jediná možnost dalšího prodeje jsou ostatní spoluvlastníci bez konkrétního kupce. CHKO Beskydy verdikt nemění. Bez údajů od prodávajícího nelze vyloučit povinnou nabídku spoluvlastníkům podle § 1124, proto CONDITIONAL."
+  "reasoning": "LV je čistý, parcelu drží čtyři spoluvlastníci po 1/4. Trvalý travní porost není v LPIS, takže prodej zemědělci je vyloučený a jediná možnost dalšího prodeje jsou ostatní spoluvlastníci bez konkrétního kupce. CHKO Beskydy verdikt nemění. Bez údajů od prodávajícího nelze vyloučit povinnou nabídku spoluvlastníkům podle § 1124, proto CONDITIONAL."
 }

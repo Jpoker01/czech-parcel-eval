@@ -14,7 +14,7 @@
   "other_findings": [
     {
       "type": "risk",
-      "description": "Parcela je podle land_register.land.land_use silnice a podle map.adjacent_roads sousedí se silnicí III. třídy, takže by se po případném odblokování řešil prodej kraji, ale to nyní nelze zhodnotit."
+      "description": "Parcela je podle land_register.land.land_use silnice a podle map.adjacent_roads navazuje na silnici III. třídy, takže případný prodej kraji by byl možný až po vyřešení exekuce (land_register.restrictions[0].type)."
     }
   ]
 }

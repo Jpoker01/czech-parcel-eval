@@ -12,6 +12,6 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Základní data jsou úplná (krok 0) a nebyl nalezen žádný bloker (krok 1) ani povinná nabídka či souhlas (krok 2). Jediný vlastník, na parcele není stavba a nejsou zapsána žádná omezení. Parcela je v LPIS užívána chmelařem Osobou B, takže existuje nevyloučený konkrétní kupec (field_hopfield), a výsledek je proto BUY_CANDIDATE.",
+  "reasoning": "Krok 0 až 2 neodhalily žádný bloker, povinnou nabídku ani souhlas (jediný vlastník, bez omezení a plomby, bez ochrany přírody, stavby či § 101). Parcela je v LPIS s kulturou chmelnice a uživatelem Osoba B, takže existuje nevyloučený kupec (chmelař). Krok 7 tedy vrací BUY_CANDIDATE.",
   "other_findings": []
 }

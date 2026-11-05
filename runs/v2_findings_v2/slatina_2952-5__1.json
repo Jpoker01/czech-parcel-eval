@@ -22,28 +22,20 @@
       "impact": "could_require_offer"
     },
     {
-      "field": "zoning.built_up_status",
-      "impact": "could_require_offer"
-    },
-    {
-      "field": "zoning.preemption_right_101_holder",
+      "field": "zoning",
       "impact": "could_require_offer"
     }
   ],
   "confidence": "medium",
-  "reasoning": "Krok 0 a 1 nenašly žádný bloker. Na parcele stojí cizí stavba, takže vzniká povinná nabídka vlastníkovi stavby (§ 3056) a jediným kupcem je vlastník stavby. Zdroje nature_protection a zoning nebyly otevřeny a mohou přidat další povinnou nabídku, proto je výsledek nejvýš CONDITIONAL.",
+  "reasoning": "Krok 1 nenašel žádný bloker. Krok 2 zjistil povinnou nabídku vlastníku stavby na parcele (§ 3056) a jediná možnost dalšího prodeje je vlastník stavby, jehož jméno ve vstupu chybí. Nekontrolované zdroje nature_protection a zoning by mohly přidat další povinnou nabídku (§ 61, § 101), proto výsledek je CONDITIONAL.",
   "other_findings": [
     {
       "type": "risk",
-      "description": "Vlastník stavby není ve vstupu jmenován, protože stavba je na jiném LV (land_register.building.on_different_lv), a kupce je třeba dohledat."
+      "description": "Jediným vlastníkem je Statutární město Brno (land_register.owners[0].name), takže prodej podléhá rozhodnutí orgánů města a vlastník stavby může mít na odkup přednostní zájem."
     },
     {
       "type": "risk",
-      "description": "Parcelu vlastní Statutární město Brno (land_register.owners[0].name), takže nákup obvykle podléhá schválení orgánů města a nemusí být možný."
-    },
-    {
-      "type": "risk",
-      "description": "V jiných zápisech je Změna výměr obnovou operátu (land_register.other_records[0].type), a výměra parcely se tak mohla změnit."
+      "description": "V jiných zápisech je poznamenána změna výměr obnovou operátu (land_register.other_records[0].type), takže výměra parcely se může lišit od původní."
     }
   ]
 }

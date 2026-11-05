@@ -12,6 +12,6 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Základní data jsou úplná a v krocích 1 a 2 nebyl nalezen žádný bloker ani povinná nabídka. Jediný vlastník, žádná stavba, žádné omezení a žádná ochrana přírody. Parcela je v LPIS u uživatele Osoba B jako standardní orná půda, takže existuje nevyloučený kupec (krok 7).",
+  "reasoning": "Základní data jsou úplná (krok 0) a nenašel se žádný bloker (krok 1) ani povinná nabídka či souhlas (krok 2). Parcela je orná půda s uživatelem v LPIS (Osoba B), takže existuje nevyloučený kupce s uvedeným jménem (kroky 3 a 4). Žádná chybějící data výsledek nemění, proto BUY_CANDIDATE.",
   "other_findings": []
 }

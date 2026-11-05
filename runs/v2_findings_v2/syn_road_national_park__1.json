@@ -18,6 +18,6 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 1 nenašel žádný bloker. V kroku 2 parcela leží v národním parku a zároveň v nezastavěném území, vzniká tedy povinná nabídka státu podle § 61. Možnost dalšího prodeje kraji jako silnice III. třídy není vyloučená, ale kvůli povinné nabídce je nejlepším možným výsledkem CONDITIONAL.",
+  "reasoning": "Žádný bloker v kroku 1 nenalezen. Parcela leží v národním parku a v nezastavěném území, vzniká tedy povinná nabídka státu podle § 61 a výsledek je nejvýš CONDITIONAL. Možnost dalšího prodeje kraji jako silnice III. třídy zůstává, vlastníkem je soukromá osoba.",
   "other_findings": []
 }

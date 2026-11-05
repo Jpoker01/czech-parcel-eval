@@ -24,6 +24,6 @@
     }
   ],
   "confidence": "medium",
-  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 žádnou povinnou nabídku ani souhlas. Parcela je silnice III. třídy, kterou lze prodat kraji, a vlastníky jsou fyzické osoby, takže žádná možnost prodeje není vyloučená. Parcela má dva spoluvlastníky a zdroj seller_facts nebyl zkontrolován, takže nelze vyloučit nabídku podle § 1124 a výsledkem je podle kroku 5 CONDITIONAL.",
+  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 žádnou povinnou nabídku ani souhlas. Parcela je silnice III. třídy, takže ji lze dále prodat kraji, a žádná možnost prodeje není vyloučena. Parcela má dva spoluvlastníky a zdroj seller_facts nebyl zkontrolován, takže nelze vyloučit nabídku podle § 1124 a výsledek je podle kroku 5 CONDITIONAL.",
   "other_findings": []
 }

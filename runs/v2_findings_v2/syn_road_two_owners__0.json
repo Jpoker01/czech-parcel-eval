@@ -11,7 +11,7 @@
     },
     {
       "resale_type": "co_owners",
-      "buyer": null,
+      "buyer": "ostatní spoluvlastníci",
       "excluded": false,
       "exclusion_reason": null,
       "evidence": "land_register.owners[1].name = Osoba B"
@@ -24,11 +24,11 @@
     }
   ],
   "confidence": "medium",
-  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 žádnou povinnou nabídku ani souhlas. Parcela je silnice III. třídy s kraj jako možným kupcem, který není vlastníkem, takže existuje nevyloučená možnost dalšího prodeje. Parcela má dva spoluvlastníky a zdroj seller_facts nebyl otevřen, proto nelze vyloučit nabídku podle § 1124 a výsledek je podle kroku 5 CONDITIONAL.",
+  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 žádnou povinnou nabídku ani souhlas. Parcela je silnice III. třídy s otevřenou mapou, takže existuje nevyloučená možnost prodeje kraji. Parcela má dva spoluvlastníky a zdroj seller_facts nebyl otevřen, nelze tedy vyloučit § 1124 (krok 5), proto je výsledek CONDITIONAL.",
   "other_findings": [
     {
       "type": "risk",
-      "description": "Parcela je ve spoluvlastnictví dvou osob po 1/2 (land_register.owners[0].share), takže koupě jen jednoho podílu nemusí kraji umožnit převod celé silnice."
+      "description": "Parcela je spoluvlastněná dvěma osobami po 1/2 (land_register.owners[0].share), takže kraj může mít o koupi pouze podílu menší zájem než o celou parcelu."
     }
   ]
 }

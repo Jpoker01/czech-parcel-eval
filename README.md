@@ -17,14 +17,20 @@ The model does the first pass over each parcel, so a person only reviews the can
 
 ## Results
 
-Each case runs 3 times and the scores are counted per run. Holdout still pending.
+Each case runs 3 times and the scores are counted per run. The dev set (40 cases) was used to iterate the prompt. The holdout set (4 real parcels collected after the prompt was tuned) ran once, with the final prompt, and the prompt was not changed afterwards.
 
 | Prompt | Model | Decision | Legal flags | Resale options | Risky missing data | Consistency | Rule violations | BUY_CANDIDATE precision | BUY_CANDIDATE recall |
 |---|---|---|---|---|---|---|---|---|---|
 | v0 | claude-sonnet-5-5 | 81 % | 100 % | 97 % | 70 % | 35/40 unanimous | 0 | 100 % | 23 % |
 | v1 | claude-sonnet-5-5 | 99 % | 100 % | 98 % | 92 % | 39/40 unanimous | 0 | 100 % | 97 % |
+| v2 + findings v2 | claude-sonnet-5-5 | 100 % | 100 % | 99 % | 100 % | 40/40 unanimous | 0 | 100 % | 100 % |
+| **v2 + findings v2, holdout** | claude-sonnet-5-5 | **100 %** | **100 %** | **92 %** | **100 %** | **4/4 unanimous** | **0** | **100 %** | **100 %** |
 
-v0 → v1: one prompt line rewritten so that `null` in a `checked` source means "verified, empty" rather than "not found". Full rationale in `prompts/iterations.md`.
+v0 → v1: one prompt line rewritten so that `null` in a `checked` source means "verified, empty" rather than "not found".
+
+v1 → v2: the § 1124 rule now counts owner entries, with SJM as one entry (the model treated a married couple as two co-owners), and `missing_data` lists every unchecked source that could add an offer obligation, even when the verdict is already `CONDITIONAL`. Two expected outputs were corrected to that rule. v0 and v1 are scored against the original expected outputs. v2 runs with the optional `other_findings` add-on (see Decisions and assumptions).
+
+Holdout: the one miss is a resale option the model lists only in 2 of 3 runs (an excluded `field_grassland` on grassland outside LPIS). The holdout expected output first lacked that option, and the model was right in those 2 runs. The label was corrected after the run (10/12 before, 11/12 after), because the same convention already existed in the dev set (Úhřice 2020/5). The original report is kept in `runs/v2_findings_v2/report_before_label_fix.md`. Listing excluded resale options inconsistently is the one weakness left for a next version. Full rationale in `prompts/iterations.md`.
 
 ## Tech Stack
 
@@ -143,7 +149,7 @@ uv run python tests/check_expected.py
 * **/prompts** - Versioned prompts
   * **v0.md** - First version, derived from the decision table
   * **v1.md** - Second version, `null` in a checked source means verified empty
-  * **v2.md** - Third version, § 1124 needs more than one owner entry (SJM counts as one)
+  * **v2.md** - Third and final version, § 1124 needs more than one owner entry (SJM counts as one)
   * **/addons/other_findings_vN.md** - Versioned instructions appended with `--other-findings vN`
   * **iterations.md** - What changed between versions and why
 * **/input**

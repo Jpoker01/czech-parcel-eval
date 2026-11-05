@@ -12,6 +12,6 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 1 nenašel žádný bloker a parcela má jediného vlastníka (SJM), takže není ani možnost co_owners. Jediná možnost dalšího prodeje je lesní pozemek sousedům, ale podle mapy k němu vede přístup bez viditelné cesty. V kroku 4 se proto vylučuje a zbývá NOT_WORTH_IT.",
+  "reasoning": "Krok 0 a 1 prošly bez blokerů, parcela má jediného vlastníka (SJM) a je lesním pozemkem. Jediná možnost dalšího prodeje je lesní soused (Lesy ČR), ale podle kroku 4 je vyloučena, protože parcela nemá viditelný přístup. Žádný další kupec se nenabízí, proto NOT_WORTH_IT.",
   "other_findings": []
 }

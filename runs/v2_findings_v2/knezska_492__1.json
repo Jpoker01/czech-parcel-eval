@@ -7,20 +7,20 @@
       "buyer": "Lesy ČR",
       "excluded": false,
       "exclusion_reason": null,
-      "evidence": "map.neighbouring_parcels[1].owner = Lesy ČR"
+      "evidence": "land_register.land.land_type = lesní pozemek"
     }
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 0 až 2 neodhalil žádný bloker, povinnou nabídku ani souhlas (jediný vlastník, bez stavby, bez ochrany přírody, bez § 101). Jako možnost dalšího prodeje vychází lesní pozemek se sousedem jako kupcem. Přístup je polní cestou a ortofoto ukazuje les, takže prodej nic nevylučuje a výsledek je BUY_CANDIDATE.",
+  "reasoning": "Základní data jsou úplná (krok 0) a žádný bloker ani povinná nabídka či souhlas se nenašly (kroky 1 a 2). Jediná možnost dalšího prodeje je lesní pozemek se sousedem jako kupcem. Není vyloučena, protože ortofoto ukazuje les a přístup je po polní cestě (krok 4). Chybějící LPIS ani seller_facts výsledek nemění, takže zbývá BUY_CANDIDATE.",
   "other_findings": [
     {
       "type": "opportunity",
-      "description": "Sousední parcelu 302/2 vlastní stejná Osoba A jako parcelu 492 (map.neighbouring_parcels[0].owner), takže lze zvážit společný prodej sousedních pozemků."
+      "description": "Soused Osoba B vlastní dvě sousední parcely (map.neighbouring_parcels[3] a [4]) a je dalším možným kupcem lesa."
     },
     {
-      "type": "risk",
-      "description": "Přístup k lesnímu pozemku vede pouze po polní cestě (map.access_type = polní cesta), právní zajištění přístupu přes cizí pozemky není ve vstupu ověřeno."
+      "type": "opportunity",
+      "description": "Sousední parcely vlastní také Obec Šlapanov (map.neighbouring_parcels[2] a [5]), což může být další možný kupec."
     }
   ]
 }

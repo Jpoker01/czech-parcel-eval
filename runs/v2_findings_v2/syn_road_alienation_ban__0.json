@@ -10,6 +10,6 @@
   "resale_options": [],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 1 rozhodl: v omezeních je zapsán „Zákaz zcizení a zatížení“, což je bloker alienation_ban. Hodnocení tím končí a další kroky se neposuzují.",
+  "reasoning": "Krok 1: v omezeních je zapsán „Zákaz zcizení a zatížení“, což je bloker a hodnocení tím končí. Parcelu nelze koupit, ostatní kroky se již nehodnotí.",
   "other_findings": []
 }

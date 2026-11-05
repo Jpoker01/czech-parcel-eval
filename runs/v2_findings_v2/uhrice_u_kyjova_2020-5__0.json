@@ -12,11 +12,15 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 0 a 1 prošly bez blokerů a jediný vlastník není kraj, obec ani stát. Parcela je orná půda, ale v LPIS není evidována (žádný uživatel), takže jediná možnost dalšího prodeje (zemědělec) je vyloučená v kroku 4. Nezbývá žádný nevyloučený kupec, proto NOT_WORTH_IT.",
+  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 se u jediného vlastníka bez dalších signálů neuplatňuje. Parcela je orná půda, ale není v LPIS, takže chybí zemědělec jako kupec a jediná možnost dalšího prodeje (field_arable) je v kroku 4 vyloučena. Žádná jiná možnost prodeje neexistuje, výsledek je NOT_WORTH_IT.",
   "other_findings": [
     {
       "type": "risk",
-      "description": "Pozemek se nachází v dobývacím prostoru (land_register.other_records[0].type) a vlastníkem je těžební společnost MND a.s. (land_register.owners[0].name), což může omezit využití i prodejnost parcely."
+      "description": "Pozemek leží v dobývacím prostoru (land_register.other_records[0].type), což může omezovat využití parcely a dopad na další prodej není ze vstupu znám."
+    },
+    {
+      "type": "opportunity",
+      "description": "Vlastníkem je MND a.s. (land_register.owners[0].name), společnost spojená s těžbou, která by mohla mít zájem o odkup, ale ze vstupu to není potvrzeno a posoudí to člověk."
     }
   ]
 }

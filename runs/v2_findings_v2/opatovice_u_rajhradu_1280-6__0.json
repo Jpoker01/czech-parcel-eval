@@ -13,14 +13,14 @@
       "buyer": "ostatní spoluvlastníci",
       "excluded": false,
       "exclusion_reason": null,
-      "evidence": "land_register.owners[1].name = Osoba B"
+      "evidence": "land_register.owners[0].name = Osoba A"
     },
     {
       "resale_type": "field_arable",
       "buyer": "Osoba H",
       "excluded": false,
       "exclusion_reason": null,
-      "evidence": "lpis.dpb_items[0].user_name = Osoba H"
+      "evidence": "lpis.dpb_items[0].culture = standardní orná půda"
     }
   ],
   "missing_data": [
@@ -30,15 +30,6 @@
     }
   ],
   "confidence": "medium",
-  "reasoning": "V kroku 1 nebyl nalezen žádný bloker. Krok 2 zjistil souhlas kvůli zahájeným pozemkovým úpravám, takže BUY_CANDIDATE není možný. Parcela má dva nevyloučené kupce (spoluvlastníci a uživatel LPIS Osoba H), ale u sedmi spoluvlastníků není zkontrolováno datum dědictví (§ 1124), proto CONDITIONAL.",
-  "other_findings": [
-    {
-      "type": "risk",
-      "description": "Parcela má sedm spoluvlastníků s podíly 1/12 až 1/6 (land_register.owners), takže koupě podílu může vést ke složitému vypořádání nebo soudnímu zrušení spoluvlastnictví."
-    },
-    {
-      "type": "opportunity",
-      "description": "Parcela je v LPIS užívána Osobou H jako standardní orná půda (lpis.dpb_items[0]), což ukazuje na aktivního zemědělského uživatele jako možného kupce."
-    }
-  ]
+  "reasoning": "Žádný bloker v kroku 1 nenalezen. Krok 2 přidal souhlas kvůli zahájeným pozemkovým úpravám a zároveň chybí seller_facts, který je nutný pro ověření § 1124, protože parcela má víc spoluvlastníků. Možnosti dalšího prodeje existují (spoluvlastníci, uživatel LPIS), ale chybějící rizikový údaj a souhlas vedou na CONDITIONAL.",
+  "other_findings": []
 }

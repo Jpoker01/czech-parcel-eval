@@ -14,7 +14,7 @@
       "buyer": null,
       "excluded": false,
       "exclusion_reason": null,
-      "evidence": "land_register.owners[1].share = 1/2"
+      "evidence": "land_register.owners[1].name = Osoba B"
     }
   ],
   "missing_data": [
@@ -24,15 +24,11 @@
     }
   ],
   "confidence": "medium",
-  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 žádnou povinnou nabídku ani souhlas. Možnosti dalšího prodeje jsou obec Plumlov (místní komunikace, vlastníky jsou fyzické osoby) a spoluvlastníci. Parcela má dva spoluvlastníky a zdroj seller_facts nebyl zkontrolován, takže nelze vyloučit nabídku podle § 1124, a výsledek je proto CONDITIONAL (krok 5).",
+  "reasoning": "V kroku 1 nebyl nalezen žádný bloker a krok 2 nenašel žádnou povinnou nabídku ani souhlas. Možnosti dalšího prodeje jsou obec Plumlov (místní komunikace) a spoluvlastníci, žádná není vyloučená. Parcela má dva spoluvlastníky a seller_facts nebyl zkontrolován, proto nelze vyloučit nabídku podle § 1124 a výsledek je CONDITIONAL (krok 5).",
   "other_findings": [
     {
       "type": "risk",
-      "description": "Ortofoto ukazuje na parcele louku, ačkoli je v katastru vedena jako ostatní komunikace (map.orthophoto_land_cover = louka), skutečná existence komunikace tedy není potvrzena."
-    },
-    {
-      "type": "risk",
-      "description": "Přístup k parcele vede jen po polní cestě (map.access_type = polní cesta) a u sousedních parcel není znám vlastník (map.neighbouring_parcels[].owner = null), což může omezit další prodej."
+      "description": "Parcela je v katastru vedena jako ostatní komunikace, ale ortofoto ukazuje louku a přístup je po polní cestě (map.orthophoto_land_cover, map.access_type), takže skutečný stav nemusí odpovídat způsobu využití a zájem obce o odkup je nejistý."
     }
   ]
 }

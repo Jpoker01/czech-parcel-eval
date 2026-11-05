@@ -16,7 +16,7 @@
       "impact": "could_reduce_value"
     }
   ],
-  "confidence": "medium",
-  "reasoning": "Krok 1 ani krok 2 nenašly žádný bloker, nabídku ani souhlas (katastr, ochrana přírody a územní plán jsou zkontrolované, jediný vlastník). Parcela je silnice a mapa není otevřená, takže platí obecný typ road s krajem jako kupcem, kterého vlastník (Osoba A) nevylučuje. Třída silnice zůstává neznámá, ale výsledek nemění, proto BUY_CANDIDATE.",
+  "confidence": "high",
+  "reasoning": "Krok 1 ani krok 2 nenašly žádný bloker, nabídku ani souhlas (jediný vlastník, ochrana přírody a územní plán zkontrolovány). Parcela je silnice a mapa není otevřena, proto platí obecný `road` s krajem jako kupcem, kterého nevylučuje žádný vlastník z veřejného sektoru. Chybí jen třída silnice, která ovlivní hodnotu, ale ne verdikt, takže výsledek je BUY_CANDIDATE.",
   "other_findings": []
 }

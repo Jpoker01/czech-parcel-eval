@@ -12,15 +12,6 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Základní data jsou úplná a v krocích 1 a 2 nebyl nalezen bloker ani povinná nabídka. Parcela je silnice sousedící s komunikací III. třídy, takže ji lze dále prodat kraji. Vlastníkem je soukromá osoba, výjimka owner_is_buyer tedy neplatí, a výsledkem je BUY_CANDIDATE.",
-  "other_findings": [
-    {
-      "type": "risk",
-      "description": "Kraj jako kupec plyne z obce Studenec a katastrálního území Zálesní Lhota (land_register.identification), vstup kraj výslovně neuvádí."
-    },
-    {
-      "type": "opportunity",
-      "description": "Parcela je v ortofotu skutečně silnicí a přiléhá k silnici III/29317 (map.orthophoto_land_cover, map.adjacent_roads[0].road_number), takže je využití pro kraj potvrzené."
-    }
-  ]
+  "reasoning": "Kroky 0 až 2 neodhalily žádný bloker, povinnou nabídku ani souhlas, protože všechny relevantní zdroje jsou zkontrolované a parcela má jediného soukromého vlastníka. Parcela je silnice III. třídy, takže ji lze dále prodat kraji, a vlastník není kupec, proto žádná možnost nebyla vyloučena. Krok 7 tak vrací BUY_CANDIDATE.",
+  "other_findings": []
 }

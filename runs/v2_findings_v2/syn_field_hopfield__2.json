@@ -12,6 +12,6 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Základní data jsou úplná a v krocích 1 a 2 se nenašel žádný bloker, nabídka ani souhlas. Parcela má jediného vlastníka a v LPIS ji užívá Osoba B jako chmelnici, takže je tu potvrzený kupec pro field_hopfield. Parcela v LPIS je, takže možnost prodeje nic nevylučuje, a výsledkem je BUY_CANDIDATE.",
+  "reasoning": "Krok 1 ani krok 2 nenašly žádný bloker, nabídku ani souhlas, parcela má jediného vlastníka a zdroje potřebné pro pravidla jsou zkontrolované. Podle kroku 3 je možný další prodej chmelaři Osobě B, který je v LPIS uveden jako uživatel chmelnice. Krok 4 ho nevylučuje, protože parcela v LPIS je, a proto platí krok 7.",
   "other_findings": []
 }

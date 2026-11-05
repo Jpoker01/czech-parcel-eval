@@ -4,14 +4,19 @@
   "resale_options": [
     {
       "resale_type": "forest",
-      "buyer": "Osoba B",
+      "buyer": "Lesy ČR",
       "excluded": false,
       "exclusion_reason": null,
-      "evidence": "land_register.land.land_type = lesní pozemek"
+      "evidence": "map.neighbouring_parcels[1].owner = Lesy ČR"
     }
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 0 až 2 neodhalily žádný bloker ani povinnou nabídku či souhlas, parcela má jediného vlastníka a ochrana přírody i územní plán jsou zkontrolované. Jde o lesní pozemek s možným prodejem sousedovi, který není vyloučen (les, přístup po polní cestě). Žádná chybějící data výsledek nemění, proto BUY_CANDIDATE.",
-  "other_findings": []
+  "reasoning": "Krok 0 až 2 neodhalily žádný bloker ani povinnou nabídku či souhlas (bez plomby, omezení, stavby, ochrany přírody, § 101 a jediný vlastník). Parcela je lesní pozemek s možností prodeje sousedovi Lesy ČR. Ortofoto ukazuje les, ne holinu, a přístup je po polní cestě, takže žádná vylučující podmínka neplatí. Výsledek je BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Stejný vlastník (Osoba A) vlastní i sousední parcelu 302/2 (map.neighbouring_parcels[0].owner), takže lze zvážit společný nákup nebo prodej navazujících pozemků."
+    }
+  ]
 }

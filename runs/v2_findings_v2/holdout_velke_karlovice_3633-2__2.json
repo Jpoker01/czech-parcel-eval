@@ -1,0 +1,26 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "forest",
+      "buyer": "Pátá lesní a.s.",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "map.neighbouring_parcels[1].owner = Pátá lesní a.s."
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 žádnou povinnou nabídku ani souhlas (CHKO Beskydy předkupní právo státu nezakládá). Jde o lesní pozemek s možným kupcem mezi sousedy. Mapa ukazuje les s lesní cestou, takže žádné vyloučení neplatí. Výsledek je tedy BUY_CANDIDATE.",
+  "other_findings": [
+    {
+      "type": "opportunity",
+      "description": "Parcela sousedí s několika parcelami téhož vlastníka Pátá lesní a.s. (map.neighbouring_parcels[1].owner), což z něj dělá pravděpodobného zájemce o odkup."
+    },
+    {
+      "type": "risk",
+      "description": "Parcela leží v CHKO Beskydy (nature_protection.large_protected_area.name), takže hospodaření v lese může být omezeno ochranářskými podmínkami."
+    }
+  ]
+}

@@ -10,17 +10,17 @@
   "resale_options": [
     {
       "resale_type": "co_owners",
-      "buyer": null,
+      "buyer": "ostatní spoluvlastníci",
       "excluded": false,
       "exclusion_reason": null,
-      "evidence": "land_register.owners[0].name = Osoba A"
+      "evidence": "land_register.owners[1].name = Osoba B"
     },
     {
       "resale_type": "field_arable",
       "buyer": "Osoba H",
       "excluded": false,
       "exclusion_reason": null,
-      "evidence": "lpis.dpb_items[0].user_name = Osoba H"
+      "evidence": "lpis.dpb_items[0].culture = standardní orná půda"
     }
   ],
   "missing_data": [
@@ -30,6 +30,6 @@
     }
   ],
   "confidence": "medium",
-  "reasoning": "Žádný bloker (krok 1) nebyl nalezen, ale zápis o zahájených pozemkových úpravách zakládá flag consent, takže výsledek je nejvýš CONDITIONAL (kroky 2 a 6). Parcela má víc spoluvlastníků a seller_facts není zkontrolován, takže nelze vyloučit povinnou nabídku podle § 1124 (krok 5). Jako kupec pro další prodej je k dispozici uživatel LPIS u orné půdy.",
+  "reasoning": "Žádný bloker v kroku 1 nenalezen, ale zahájené pozemkové úpravy zakládají flag consent. Parcela má víc spoluvlastníků a zdroj seller_facts nebyl zkontrolován, takže nelze vyloučit povinnou nabídku podle § 1124. Možnosti dalšího prodeje existují (spoluvlastníci a uživatel LPIS), výsledek je kvůli flagu a chybějícím datům CONDITIONAL.",
   "other_findings": []
 }

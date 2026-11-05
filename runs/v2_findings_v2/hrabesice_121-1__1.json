@@ -12,15 +12,15 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Základní data jsou úplná a žádný bloker z kroku 1 se nevyskytuje, protože zástavní práva ani závazky v Jiných zápisech nejsou exekuce, insolvence ani zákaz zcizení. Krok 2 nenašel žádnou povinnou nabídku ani souhlas, vlastník je jediný (SJM), takže § 1124 se neuplatní. Parcela je v LPIS s uživatelem Osoba C, takže existuje nevyloučený kupec pro trvalý travní porost, a výsledek je BUY_CANDIDATE.",
+  "reasoning": "Krok 1 nenašel žádný bloker, zástavní práva nejsou exekuce ani insolvence. Krok 2 nenašel žádnou povinnou nabídku ani souhlas: jediný vlastník (SJM), ochrana přírody a územní plán jsou zkontrolované. Parcela je v LPIS s uživatelem Osoba C, takže existuje nevyloučený kupce pro travní porost a výsledek je BUY_CANDIDATE.",
   "other_findings": [
     {
       "type": "risk",
-      "description": "Na parcele vázne zástavní právo z rozhodnutí správního orgánu a zástavní právo z rozhodnutí zdravotní pojišťovny (land_register.restrictions), které po koupi zůstávají na pozemku a signalizují dluhy vlastníků, takže je vhodné ověřit jejich výši a možnost výmazu."
+      "description": "Na parcele vázne zástavní právo z rozhodnutí správního orgánu a zástavní právo z rozhodnutí zdravotní pojišťovny (land_register.restrictions), což ukazuje na dluhy vlastníků a možné budoucí vymáhání, proto je vhodné ověřit jejich výši a podmínky výmazu."
     },
     {
       "type": "risk",
-      "description": "Závazky neumožnit zápis nového zástavního práva namísto starého a nezajistit v lepším pořadí nový dluh (land_register.other_records) omezují nakládání se zástavními právy a může jít o předzvěst budoucí exekuce."
+      "description": "Zapsané závazky neumožnit zápis nového zástavního práva namísto starého a nezajistit v lepším pořadí nový dluh (land_register.other_records) omezují nakládání se zástavními právy, jejich dopad na převod je třeba posoudit."
     }
   ]
 }

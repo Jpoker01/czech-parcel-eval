@@ -10,7 +10,7 @@
   "resale_options": [],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 1 rozhodl: všichni vlastníci parcely mají typ vztahu Vlastnictví jednotek, což je bloker units_ownership. Hodnocení tím končí a další kroky se neprovádějí.",
+  "reasoning": "Krok 1: všichni vlastníci parcely jsou zapsáni jako \"Vlastnictví jednotek\", což je bloker units_ownership. Hodnocení tím končí a další kroky se neposuzují.",
   "other_findings": [
     {
       "type": "risk",
@@ -18,7 +18,7 @@
     },
     {
       "type": "risk",
-      "description": "Parcela je zastavěná budovou, jejíž součástí jsou jednotky ve vlastnictví osob, a existuje společenství vlastníků (land_register.other_records[0].type), takže podíl na pozemku je navázán na vlastnictví jednotek."
+      "description": "V katastru je zapsáno společenství vlastníků podle § 1200 obč. zák. (land_register.other_records[0].type), takže parcela je součástí domu s vlastnictvím jednotek."
     }
   ]
 }

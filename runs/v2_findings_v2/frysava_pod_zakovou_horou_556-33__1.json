@@ -7,14 +7,14 @@
       "buyer": "ostatní spoluvlastníci",
       "excluded": false,
       "exclusion_reason": null,
-      "evidence": "land_register.owners[2].name = Osoba A; Osoba B"
+      "evidence": "land_register.owners[0].name = AGRO - Měřín, a.s."
     },
     {
       "resale_type": "field_arable",
       "buyer": "AGRO - Měřín, a.s.",
       "excluded": false,
       "exclusion_reason": null,
-      "evidence": "lpis.dpb_items[0].culture = standardní orná půda"
+      "evidence": "lpis.dpb_items[0].user_name = AGRO - Měřín, a.s."
     }
   ],
   "missing_data": [
@@ -24,15 +24,19 @@
     }
   ],
   "confidence": "medium",
-  "reasoning": "Krok 0 a 1 prošly bez blokerů a krok 2 nenašel žádnou povinnou nabídku (CHKO § 61 nezakládá). Možnosti dalšího prodeje jsou spoluvlastníci a zemědělec AGRO - Měřín, a.s. jako uživatel v LPIS. Zdroj seller_facts není zkontrolován a při více spoluvlastnících by případné nedávné dědictví mohlo založit nabídku podle § 1124, proto je výsledek CONDITIONAL (krok 5).",
+  "reasoning": "Krok 1 nenašel žádný bloker a v kroku 2 nevznikla žádná povinná nabídka (CHKO právo podle § 61 nezakládá). Parcela má dva možné další prodeje, spoluvlastníky a zemědělce AGRO - Měřín, a.s. z LPIS, a žádný z nich není vyloučen. Parcela má ale víc spoluvlastníků a zdroj seller_facts nebyl zkontrolován, takže nelze vyloučit nabídku spoluvlastníkům podle § 1124 a výsledek je v kroku 5 CONDITIONAL.",
   "other_findings": [
     {
       "type": "opportunity",
-      "description": "Uživatel LPIS AGRO - Měřín, a.s. je zároveň spoluvlastníkem podílu 3/17 (land_register.owners[0]), takže může mít zájem o dokoupení dalších podílů."
+      "description": "Uživatel LPIS AGRO - Měřín, a.s. je zároveň spoluvlastníkem s největším podílem (land_register.owners[0].share = 3/17), takže může mít zájem o sjednocení podílů."
     },
     {
       "type": "risk",
-      "description": "Parcela má deset spoluvlastnických položek včetně České republiky (land_register.owners[1].name), takže koupě podílu může znamenat složité vypořádání se spoluvlastníky."
+      "description": "Jedním ze spoluvlastníků je Česká republika (land_register.owners[1].name = Česká republika), takže případné jednání o podílech může být zdlouhavější."
+    },
+    {
+      "type": "risk",
+      "description": "Parcela je silně roztříštěná mezi deset spoluvlastnických záznamů (land_register.owners), což ztěžuje dohodu o společném prodeji."
     }
   ]
 }

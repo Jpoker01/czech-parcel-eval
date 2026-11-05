@@ -1,0 +1,27 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": "ostatní spoluvlastníci",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[0].share = 1/4"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Základní data jsou úplná a žádný bloker z kroku 1 se nevyskytuje. CHKO Beskydy předkupní právo státu podle § 61 nezakládá a stavba ani § 101 se neuplatňují. Jediná možnost dalšího prodeje jsou spoluvlastníci a u čtyř spoluvlastníků není zkontrolováno datum dědictví (§ 1124), proto je výsledek CONDITIONAL.",
+  "other_findings": [
+    {
+      "type": "risk",
+      "description": "Parcela není v LPIS (lpis.parcel_in_lpis = false), takže není zřejmý zemědělský uživatel, který by byl kupcem."
+    }
+  ]
+}

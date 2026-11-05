@@ -10,11 +10,6 @@
   "resale_options": [],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 1 rozhodl: v Jiných zápisech je exekuční příkaz k prodeji podílu spoluvlastníka (Osoba A). Bloker platí pro kteréhokoli vlastníka parcely, proto je výsledek BLOCKED a hodnocení zde končí.",
-  "other_findings": [
-    {
-      "type": "risk",
-      "description": "Parcela je ve spoluvlastnictví pěti osob s podíly 1/12, 1/12, 1/12, 1/4 a 1/2 (land_register.owners), což by po odblokování komplikovalo nakládání s ní."
-    }
-  ]
+  "reasoning": "Krok 1: v Jiných zápisech je exekuční příkaz k prodeji podílu u spoluvlastníka (Osoba A). Bloker platí pro kteréhokoli vlastníka parcely, proto je výsledek BLOCKED a hodnocení končí.",
+  "other_findings": []
 }

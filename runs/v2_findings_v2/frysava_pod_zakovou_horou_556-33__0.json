@@ -7,7 +7,7 @@
       "buyer": "ostatní spoluvlastníci",
       "excluded": false,
       "exclusion_reason": null,
-      "evidence": "land_register.owners[1].name = Česká republika"
+      "evidence": "land_register.owners[0].share = 3/17"
     },
     {
       "resale_type": "field_arable",
@@ -24,15 +24,19 @@
     }
   ],
   "confidence": "medium",
-  "reasoning": "Krok 1 nenašel žádný bloker a CHKO nezakládá nabídku podle § 61, takže žádný flag offer ani consent nevznikl. Existují dvě možnosti dalšího prodeje (spoluvlastníci a zemědělec AGRO - Měřín jako uživatel v LPIS), žádná není vyloučena. Parcela má víc spoluvlastníků a zdroj seller_facts nebyl zkontrolován, takže nelze vyloučit povinnou nabídku podle § 1124. Podle kroku 5 je výsledek CONDITIONAL.",
+  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 nenašel žádnou povinnou nabídku (CHKO § 61 nezakládá). Existují dva kupci, spoluvlastníci a uživatel LPIS AGRO - Měřín, a.s., a ani jeden není vyloučen. Parcela má ale víc spoluvlastníků a zdroj seller_facts nebyl zkontrolován, takže nelze vyloučit povinnou nabídku podle § 1124. Podle kroku 5 proto vychází CONDITIONAL.",
   "other_findings": [
     {
       "type": "opportunity",
-      "description": "AGRO - Měřín, a.s. je zároveň spoluvlastníkem a uživatelem v LPIS, takže může mít zájem o odkup dalšího podílu (land_register.owners[0].name, lpis.dpb_items[0].user_name)."
+      "description": "AGRO - Měřín, a.s. je zároveň spoluvlastník a uživatel v LPIS (land_register.owners[0].name, lpis.dpb_items[0].user_name), takže je nejpravděpodobnějším kupcem podílu."
     },
     {
       "type": "risk",
-      "description": "Parcela je silně rozdrobená mezi deset vlastnických položek včetně státu, což může zkomplikovat jednání se spoluvlastníky (land_register.owners)."
+      "description": "Jedním ze spoluvlastníků je Česká republika (land_register.owners[1].name), takže případné jednání o podílu nebo o zrušení spoluvlastnictví může být administrativně náročnější."
+    },
+    {
+      "type": "risk",
+      "description": "Parcela je silně rozdrobená mezi deset spoluvlastnických podílů (land_register.owners), takže získání většiny nebo dohoda o společném prodeji bude obtížná."
     }
   ]
 }

@@ -12,11 +12,15 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 1 nenašel žádný bloker (bez plomby, exekuce, insolvence i zákazu zcizení, jediný vlastník je dostatečně identifikovaný). Krok 2 nenašel povinnou nabídku ani souhlas. V kroku 3 je jediný kupec uživatel LPIS (Osoba B) pro trvalý travní porost, parcela je v LPIS, takže není vyloučena. Výsledkem je BUY_CANDIDATE.",
+  "reasoning": "Krok 0 až 2 neodhalily žádný bloker, povinnou nabídku ani souhlas (zdroje nature_protection a zoning jsou zkontrolované, vlastník je jediný). V kroku 3 vychází jediná možnost dalšího prodeje, a to travní porost s uživatelem z LPIS, a krok 4 ji nevylučuje, protože parcela v LPIS je. Kupec je ve vstupu pojmenovaný, proto krok 7 vrací BUY_CANDIDATE.",
   "other_findings": [
     {
       "type": "risk",
-      "description": "V jiných zápisech je vedena změna číslování parcel (land_register.other_records[0].type), je vhodné ověřit, že se číslo parcely 298/2 shoduje s aktuálním stavem v katastru."
+      "description": "Uživatelem v LPIS je Osoba B, nikoli vlastník AGRO D.U., s.r.o. (lpis.dpb_items[0].user_name), takže může jít o nájemce a nájemní vztah není ve vstupu doložen."
+    },
+    {
+      "type": "risk",
+      "description": "V Jiných zápisech je vedena Změna číslování parcel (land_register.other_records[0].type), takže je vhodné ověřit, že parcelní číslo 298/2 odpovídá aktuálnímu stavu v katastru."
     }
   ]
 }

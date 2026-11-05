@@ -10,11 +10,11 @@
   "resale_options": [],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 1: v katastru je vyznačena plomba (seal_present = true), což je bloker. Hodnocení tím končí výsledkem BLOCKED, další kroky se neprovádějí.",
+  "reasoning": "Krok 1: v katastru je u parcely vyznačena plomba (seal_present = true), která signalizuje probíhající řízení mohoucí změnit práva k parcele. Hodnocení tím končí výsledkem BLOCKED, další kroky se neprovádějí.",
   "other_findings": [
     {
       "type": "risk",
-      "description": "Parcela je silnice navazující na silnici III. třídy (map.adjacent_roads[0].road_number = III/29317), po zrušení plomby by stálo za to ověřit, zda je jako komunikace skutečně využívána."
+      "description": "Parcela je evidována jako silnice na LV, kde vlastníkem je soukromá osoba (land_register.owners[0].name = Osoba A), a sousedí se silnicí III. třídy III/29317 (map.adjacent_roads[0].road_number), takže po skončení řízení u plomby by mohl být případný odkup krajem zajímavý, což posoudí člověk."
     }
   ]
 }

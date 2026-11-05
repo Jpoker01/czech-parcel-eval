@@ -11,7 +11,7 @@
     },
     {
       "resale_type": "co_owners",
-      "buyer": "ostatní spoluvlastníci",
+      "buyer": null,
       "excluded": false,
       "exclusion_reason": null,
       "evidence": "land_register.owners[1].name = Osoba B"
@@ -24,11 +24,15 @@
     }
   ],
   "confidence": "medium",
-  "reasoning": "Krok 0 a 1 prošly, žádný bloker ani zjištěná povinná nabídka. Parcela má dvě možnosti dalšího prodeje (obec Plumlov jako místní komunikace a spoluvlastníci), žádná není vyloučena. Parcela má dva spoluvlastníky a zdroj seller_facts nebyl zkontrolován, takže nelze vyloučit nabídku podle § 1124, a proto výsledek CONDITIONAL v kroku 5.",
+  "reasoning": "Krok 0 a 1 prošly, žádný bloker ani povinná nabídka se z ověřených zdrojů nenašly. Možnosti dalšího prodeje jsou obec (místní komunikace) a spoluvlastníci, žádná není vyloučena, protože vlastníky jsou fyzické osoby. Parcela má dva spoluvlastníky a zdroj seller_facts nebyl zkontrolován, takže nelze vyloučit povinnou nabídku podle § 1124 a výsledek je CONDITIONAL (krok 5).",
   "other_findings": [
     {
+      "type": "opportunity",
+      "description": "Ortofoto ukazuje louku a přístup je polní cesta (map.orthophoto_land_cover = louka), takže parcela může být využívána zemědělcem, to by ale ověřil až LPIS (lpis.status = not_checked)."
+    },
+    {
       "type": "risk",
-      "description": "Parcela je vedena jako ostatní komunikace, ale ortofoto ukazuje louku a přístup je polní cesta (map.orthophoto_land_cover, map.access_type), takže skutečný stav nemusí odpovídat zápisu v katastru a zájem obce může být nižší."
+      "description": "Druh pozemku ostatní plocha s využitím ostatní komunikace nesouhlasí s tím, že ortofoto ukazuje louku (land_register.land.land_use, map.orthophoto_land_cover), takže skutečný stav a zájem obce o odkup je nutné ověřit."
     }
   ]
 }

@@ -1,0 +1,17 @@
+{
+  "decision": "BUY_CANDIDATE",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "field_arable",
+      "buyer": "Osoba B",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "lpis.dpb_items[0].culture = standardní orná půda"
+    }
+  ],
+  "missing_data": [],
+  "confidence": "high",
+  "reasoning": "Základní data jsou úplná (krok 0) a žádný bloker v kroku 1 nenastal. Krok 2 nenašel žádnou povinnou nabídku ani souhlas: jeden vlastník, bez stavby, bez omezení, mimo chráněná území a bez práva z § 101. Parcela je v LPIS a uživatel Osoba B je potenciální kupec, takže výsledkem je BUY_CANDIDATE.",
+  "other_findings": []
+}

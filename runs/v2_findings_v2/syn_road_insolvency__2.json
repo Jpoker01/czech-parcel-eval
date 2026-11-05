@@ -10,6 +10,6 @@
   "resale_options": [],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 1 rozhodl: v omezeních je zapsáno zahájení insolvenčního řízení, což je bloker (insolvence) platný pro vlastníka parcely. Hodnocení tím končí a další kroky se nevyhodnocují.",
+  "reasoning": "Krok 1 rozhodl: v omezeních je zapsáno zahájení insolvenčního řízení, které je blokerem (insolvence). Hodnocení tím končí a další kroky se nevyhodnocují.",
   "other_findings": []
 }

@@ -12,6 +12,6 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Základní data jsou v pořádku a v katastru není žádný bloker. Jediná možnost dalšího prodeje je lesní pozemek sousedovi, ale parcela je bez viditelného přístupu, takže ji krok 4 vylučuje. Žádná jiná možnost dalšího prodeje neexistuje, výsledek je tedy NOT_WORTH_IT.",
+  "reasoning": "Krok 0 a krok 1 neodhalily žádný bloker, jediný vlastník je SJM (jedna položka), takže spoluvlastníci jako kupci nepřipadají v úvahu. Jedinou možností dalšího prodeje je lesní pozemek se sousedem jako kupcem, ale parcela je podle mapy bez viditelného přístupu. Krok 4 proto vyloučil všechny možnosti dalšího prodeje a výsledkem je NOT_WORTH_IT.",
   "other_findings": []
 }

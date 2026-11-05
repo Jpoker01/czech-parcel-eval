@@ -17,6 +17,6 @@
     }
   ],
   "confidence": "high",
-  "reasoning": "Krok 0 a 1 prošly bez blokerů a krok 2 nenašel žádnou povinnou nabídku ani souhlas (jediný vlastník, zdroje nature_protection a zoning jsou zkontrolované). Parcela je silnice a mapa není otevřená, proto je použit obecný typ road s krajem jako kupcem, kterého vlastník Osoba A nevylučuje. Chybějící třída silnice může jen snížit hodnotu, ne změnit verdikt, proto BUY_CANDIDATE.",
+  "reasoning": "Krok 0 až 2 neodhalily žádný bloker, povinnou nabídku ani souhlas (vlastník je jediný, zdroje KN, ochrana přírody i územní plán jsou zkontrolované). Parcela je silnice a mapa není otevřená, proto je použit obecný prodej kraji, který není vyloučen, protože vlastníkem je soukromá osoba. Chybějící třída silnice může jen ovlivnit hodnotu, ne verdikt, takže výsledkem je BUY_CANDIDATE.",
   "other_findings": []
 }

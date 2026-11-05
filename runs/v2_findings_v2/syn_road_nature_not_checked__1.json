@@ -17,6 +17,6 @@
     }
   ],
   "confidence": "medium",
-  "reasoning": "Krok 0 a 1 nenašly žádný bloker a parcela je silnice III. třídy, takže existuje nevyloučený kupec (kraj). Zdroj nature_protection ale nebyl zkontrolován a parcela leží v nezastavěném území, takže by mohla vzniknout povinná nabídka státu podle § 61. Proto podle kroku 5 vychází CONDITIONAL.",
+  "reasoning": "Krok 0 a 1 prošly, bez blokerů, vlastníkem je jediná fyzická osoba. Parcela je silnice sousedící se silnicí III. třídy, takže kupcem je kraj a nic ho nevylučuje (krok 3 a 4). Zdroj nature_protection nebyl zkontrolován a při nezastavěném území by mohl založit nabídku státu podle § 61, proto krok 5 vrací CONDITIONAL.",
   "other_findings": []
 }

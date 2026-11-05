@@ -12,6 +12,6 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 0 až 1: základní data jsou úplná a nenašel se žádný bloker. Krok 2: nevznikla žádná povinná nabídka ani souhlas, protože jediný vlastník, žádná stavba, bez omezení, bez ochrany přírody a bez § 101. Krok 3 až 4: LPIS uvádí uživatele Osoba B s kulturou ovocný sad a parcela je v LPIS, takže prodej sadaři není vyloučen. Krok 7: BUY_CANDIDATE.",
+  "reasoning": "V krocích 0 a 1 nebyl nalezen žádný bloker, základní data jsou úplná. Krok 2 nenašel žádnou povinnou nabídku ani souhlas, protože parcela nemá stavbu, omezení ani ochranu přírody a u jediného vlastníka se § 1124 neuplatní. Parcela je v LPIS a uživatel Osoba B (ovocný sad) je potvrzený kupec, takže výsledek je BUY_CANDIDATE.",
   "other_findings": []
 }

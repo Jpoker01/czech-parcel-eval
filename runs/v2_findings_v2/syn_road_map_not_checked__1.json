@@ -17,6 +17,6 @@
     }
   ],
   "confidence": "high",
-  "reasoning": "Krok 0 a 1 prošly: data jsou úplná a žádný bloker se nevyskytuje. Krok 2 nenašel žádnou povinnou nabídku ani souhlas, protože zdroje nature_protection a zoning jsou zkontrolované a bez nálezu, a vlastník je jediný. Parcela je silnice a mapa není otevřená, proto platí obecný `road` s kupcem kraj, vlastníkem je soukromá osoba, takže se nevylučuje. Krok 7: BUY_CANDIDATE.",
+  "reasoning": "Krok 1 ani krok 2 nenašel žádný bloker, povinnou nabídku ani souhlas (jediný vlastník, katastr, ochrana přírody a územní plán jsou zkontrolované). Parcela je silnice a mapa není otevřená, proto je možnost dalšího prodeje obecná `road` s kupcem kraj, kterého nevylučuje žádné pravidlo (vlastník je Osoba A). Chybějící třída silnice může jen změnit hodnotu, ne verdikt, takže výsledek je BUY_CANDIDATE.",
   "other_findings": []
 }

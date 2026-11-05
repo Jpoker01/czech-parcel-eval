@@ -1,0 +1,29 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": null,
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[0].share = 1/4"
+    },
+    {
+      "resale_type": "field_grassland",
+      "buyer": null,
+      "excluded": true,
+      "exclusion_reason": "no_lpis_user",
+      "evidence": "lpis.parcel_in_lpis = false"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 1 nenašel žádný bloker a v kroku 2 žádný flag nevznikl, protože CHKO Beskydy předkupní právo státu nezakládá. Jediná nevyloučená možnost dalšího prodeje jsou spoluvlastníci (parcela má čtyři vlastníky), protože travní porost není v LPIS. Zdroj seller_facts nebyl zkontrolován a u více vlastníků může jít o povinnou nabídku podle § 1124, proto CONDITIONAL.",
+  "other_findings": []
+}

@@ -12,6 +12,6 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 1 ani krok 2 nenašly žádný bloker, nabídku ani souhlas a jediný vlastník je soukromá osoba. Parcela je silnice sousedící se silnicí III. třídy, takže ji lze dále prodat kraji (krok 3) a krok 4 tuto možnost nevylučuje. Nechybí žádný zdroj, který by mohl výsledek změnit (LPIS ani seller_facts se zde nepoužívají), takže platí krok 7.",
+  "reasoning": "Krok 1 nenašel žádný bloker (bez plomby, exekuce, insolvence, zákazu zcizení) a krok 2 nenašel žádnou povinnou nabídku ani souhlas. Parcela je silnice sousedící se silnicí III. třídy a vlastníkem je soukromá osoba, takže kraj jako kupec není vyloučen. Žádná data nechybí, takže krok 7 vrací BUY_CANDIDATE.",
   "other_findings": []
 }

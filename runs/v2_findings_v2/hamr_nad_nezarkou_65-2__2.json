@@ -10,19 +10,15 @@
   "resale_options": [],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 1 rozhodl: v Jiných zápisech je vyznačen exekuční příkaz k prodeji nemovitosti a zahájení exekuce u jediného vlastníka. Parcela je proto BLOCKED a další kroky se neprovádějí.",
+  "reasoning": "Krok 1 rozhodl: v Jiných zápisech je exekuční příkaz k prodeji nemovitosti a zahájení exekuce vůči jedinému vlastníkovi. Jde o bloker, proto je výsledek BLOCKED a další kroky se neprovádějí.",
   "other_findings": [
     {
       "type": "risk",
-      "description": "V Jiných zápisech je zapsána dražební vyhláška, parcela tedy může být v blízké době vydražena (land_register.other_records[0].type)."
+      "description": "V katastru je zapsána dražební vyhláška (land_register.other_records[0].type), parcela tedy může být v dohledné době prodána v dražbě a prodávající už nemusí být schopen nakládat s pozemkem."
     },
     {
       "type": "risk",
-      "description": "Na parcele vázne zástavní právo z rozhodnutí správního orgánu, které by přešlo na nabyvatele (land_register.restrictions[0].type)."
-    },
-    {
-      "type": "risk",
-      "description": "Zapsané závazky neumožnit nové zástavní právo namísto starého a nezajistit nový dluh ve výhodnějším pořadí svědčí o existující zástavě s omezujícími podmínkami (land_register.other_records[3].type)."
+      "description": "Na parcele vázne zástavní právo z rozhodnutí správního orgánu (land_register.restrictions[0].type), které by v případě dražby mohlo ovlivnit pořadí uspokojení pohledávek."
     }
   ]
 }

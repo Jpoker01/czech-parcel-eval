@@ -12,6 +12,6 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "V krocích 0 a 1 nebyla zjištěna žádná chyba v datech ani bloker a krok 2 nenašel žádnou povinnou nabídku ani souhlas. Parcela je silnice s otevřenou mapou, která uvádí sousední silnici II. třídy, takže je možný prodej kraji. Vlastníkem je fyzická osoba, takže možnost není vyloučena, a výsledkem je BUY_CANDIDATE.",
+  "reasoning": "V krocích 0 a 1 nebyl nalezen žádný bloker ani chybějící základní data a krok 2 nenašel žádnou povinnou nabídku ani souhlas. Parcela je silnice sousedící s II/293 (II. třída), takže ji lze dále prodat kraji, který není vlastníkem, a možnost není vyloučena. Chybějící LPIS a seller_facts výsledek nemění, protože jde o silnici s jediným vlastníkem, proto BUY_CANDIDATE.",
   "other_findings": []
 }

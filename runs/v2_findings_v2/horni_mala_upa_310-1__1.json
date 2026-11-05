@@ -9,18 +9,18 @@
   ],
   "resale_options": [
     {
+      "resale_type": "co_owners",
+      "buyer": "ostatní spoluvlastníci",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Osoba B"
+    },
+    {
       "resale_type": "forest",
       "buyer": null,
       "excluded": false,
       "exclusion_reason": null,
       "evidence": "land_register.land.land_type = lesní pozemek"
-    },
-    {
-      "resale_type": "co_owners",
-      "buyer": null,
-      "excluded": false,
-      "exclusion_reason": null,
-      "evidence": "land_register.owners[1].share = 1/6"
     }
   ],
   "missing_data": [
@@ -38,15 +38,15 @@
     }
   ],
   "confidence": "medium",
-  "reasoning": "Žádný bloker v kroku 1 nenalezen. Parcela leží v národním parku v nezastavěném území, takže vzniká povinná nabídka státu podle § 61 a výsledek nemůže být BUY_CANDIDATE. Chybí mapa (holina, přístup) a údaje o dědění pro § 1124 u dvou spoluvlastníků, proto CONDITIONAL.",
+  "reasoning": "Žádný bloker v kroku 1 se nenašel. Parcela leží v Krkonošském národním parku v nezastavěném území, což zakládá povinnou nabídku státu podle § 61, takže výsledek je nejvýš CONDITIONAL. Mapa ani seller_facts nebyly zkontrolovány (holina, přístup, dědění u více vlastníků), proto zůstává CONDITIONAL a kupec lesa není znám.",
   "other_findings": [
     {
       "type": "risk",
-      "description": "Les leží v Krkonošském národním parku (nature_protection.large_protected_area.name), což může omezovat hospodaření a hodnotu při dalším prodeji."
+      "description": "Parcela je lesní pozemek s využitím „les jiný než hospodářský“ (land_register.land.land_use), což může omezovat hospodaření a hodnotu pro lesního kupce."
     },
     {
       "type": "risk",
-      "description": "Využití je les jiný než hospodářský (land_register.land.land_use), což může zúžit okruh zájemců o koupi."
+      "description": "Podíl 1/6 nebo 5/6 na pozemku se dvěma vlastníky (land_register.owners) znamená, že koupě jen podílu vede ke spoluvlastnictví s druhým vlastníkem."
     }
   ]
 }

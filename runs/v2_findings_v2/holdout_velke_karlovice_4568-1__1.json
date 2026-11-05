@@ -1,0 +1,29 @@
+{
+  "decision": "CONDITIONAL",
+  "legal_flags": [],
+  "resale_options": [
+    {
+      "resale_type": "co_owners",
+      "buyer": "ostatní spoluvlastníci",
+      "excluded": false,
+      "exclusion_reason": null,
+      "evidence": "land_register.owners[1].name = Osoba B"
+    },
+    {
+      "resale_type": "field_grassland",
+      "buyer": null,
+      "excluded": true,
+      "exclusion_reason": "no_lpis_user",
+      "evidence": "lpis.parcel_in_lpis = false"
+    }
+  ],
+  "missing_data": [
+    {
+      "field": "seller_facts.inheritance_date",
+      "impact": "could_require_offer"
+    }
+  ],
+  "confidence": "medium",
+  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 žádnou povinnou nabídku (CHKO Beskydy předkupní právo státu nezakládá). Jediná nevyloučená možnost dalšího prodeje jsou spoluvlastníci, protože parcela není v LPIS. Parcela má čtyři spoluvlastníky a seller_facts nebyl zkontrolován, takže nelze vyloučit povinnou nabídku podle § 1124. Výsledek je proto CONDITIONAL.",
+  "other_findings": []
+}

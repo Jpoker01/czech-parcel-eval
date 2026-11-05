@@ -13,7 +13,7 @@
       "buyer": null,
       "excluded": false,
       "exclusion_reason": null,
-      "evidence": "land_register.building.relation = Stavba na parcele"
+      "evidence": "land_register.building.on_different_lv = true"
     }
   ],
   "missing_data": [
@@ -27,15 +27,15 @@
     }
   ],
   "confidence": "medium",
-  "reasoning": "Krok 0 a 1 prošly, bez blokerů. Krok 2 našel povinnou nabídku vlastníku stavby (§ 3056), protože na parcele stojí stavba jiného vlastníka. Jediný kupec je vlastník stavby, který ve vstupu není jmenovaný. Nezkontrolovaná ochrana přírody a územní plán mohou přidat další povinné nabídky (§ 61, § 101), takže výsledek je CONDITIONAL.",
+  "reasoning": "Žádný bloker v kroku 1 nenalezen. Na parcele stojí stavba na jiném LV, takže vzniká povinná nabídka vlastníkovi stavby (§ 3056) a jediná možnost dalšího prodeje je vlastník stavby, jehož jméno ve vstupu není. Zdroje nature_protection a zoning nebyly otevřeny, mohou přidat další povinnou nabídku (§ 61, § 101), proto výsledek CONDITIONAL.",
   "other_findings": [
     {
       "type": "risk",
-      "description": "Vlastníkem parcely je Statutární město Brno (land_register.owners[0].name), takže nákup závisí na ochotě města prodat a na schvalování prodeje orgány města."
+      "description": "Jediným vlastníkem je Statutární město Brno (land_register.owners[0].name), takže může jít o prodej veřejným subjektem s omezeními nakládání s majetkem a dalšími schvalovacími kroky."
     },
     {
       "type": "risk",
-      "description": "V jiných zápisech je uvedena změna výměr obnovou operátu (land_register.other_records[0].type), je proto vhodné ověřit, že výměra 1202 m2 odpovídá aktuálnímu stavu."
+      "description": "V katastru je zapsána změna výměr obnovou operátu (land_register.other_records[0].type), takže se výměra parcely může lišit od uvedené."
     }
   ]
 }

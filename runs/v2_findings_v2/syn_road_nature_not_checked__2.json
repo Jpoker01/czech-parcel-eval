@@ -17,6 +17,6 @@
     }
   ],
   "confidence": "medium",
-  "reasoning": "Krok 0 a 1 prošly bez blokerů a parcela je silnice III. třídy, kterou lze dále prodat kraji. Vlastník je soukromá osoba, takže nic nevylučuje dalšího kupce. Parcela leží v nezastavěném území a zdroj nature_protection nebyl otevřen, proto nelze vyloučit povinnou nabídku státu podle § 61, a výsledek je podle kroku 5 CONDITIONAL.",
+  "reasoning": "Krok 0 a 1 prošly bez blokerů, parcela má jediného vlastníka a zoning je zkontrolovaný bez práva dle § 101. Možnost dalšího prodeje je kraji jako silnice III. třídy a vlastníkem je soukromá osoba, takže není vyloučena. Zdroj nature_protection nebyl otevřen a parcela leží v nezastavěném území, takže může vzniknout nabídka státu dle § 61, proto podle kroku 5 vychází CONDITIONAL.",
   "other_findings": []
 }

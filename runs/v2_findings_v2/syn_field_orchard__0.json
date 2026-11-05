@@ -12,15 +12,11 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 0 až 1: základní data jsou úplná a žádný bloker se nevyskytuje. Krok 2: nebyla zjištěna žádná povinná nabídka ani souhlas (jediný vlastník, bez stavby, bez ochrany přírody, bez předkupního práva). Krok 3 až 4: parcela vede v LPIS jako ovocný sad s uživatelem Osoba B, takže je zde nevyloučený kupec. Krok 7: BUY_CANDIDATE.",
+  "reasoning": "V krocích 0 a 1 nebyla zjištěna žádná překážka ani bloker a krok 2 nenašel žádnou povinnou nabídku ani souhlas. Parcela je v LPIS s kulturou ovocný sad a uživatelem Osoba B, takže existuje nevyloučená možnost dalšího prodeje s konkrétním kupcem. Vlastník je jediný a nechybí žádný zdroj, který by výsledek mohl změnit, proto BUY_CANDIDATE.",
   "other_findings": [
     {
-      "type": "risk",
-      "description": "Uživatel v LPIS (lpis.dpb_items[0].user_name = Osoba B) je odlišný od vlastníka, může jít o nájemní vztah, jehož podmínky ve vstupu nejsou."
-    },
-    {
       "type": "opportunity",
-      "description": "Parcela má velkou výměru (land_register.land.area_m2 = 20200) a jednoho vlastníka (land_register.owners), takže prodej bude jednodušší než u podílů."
+      "description": "Uživatel v LPIS (lpis.dpb_items[0].user_name = Osoba B) je odlišný od vlastníka (land_register.owners[0].name = Osoba A), takže parcelu už zřejmě obhospodařuje jiný subjekt, který může být motivovaným kupcem."
     }
   ]
 }

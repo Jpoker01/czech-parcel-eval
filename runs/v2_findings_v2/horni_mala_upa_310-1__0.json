@@ -10,10 +10,10 @@
   "resale_options": [
     {
       "resale_type": "co_owners",
-      "buyer": null,
+      "buyer": "Osoba B",
       "excluded": false,
       "exclusion_reason": null,
-      "evidence": "land_register.owners[0].share = 5/6"
+      "evidence": "land_register.owners[1].name = Osoba B"
     },
     {
       "resale_type": "forest",
@@ -38,11 +38,11 @@
     }
   ],
   "confidence": "medium",
-  "reasoning": "Krok 1 nenašel žádný bloker. Parcela leží v Krkonošském národním parku v nezastavěném území, což zakládá povinnou nabídku státu podle § 61, takže je maximum CONDITIONAL. Mapa ani seller_facts nebyly zkontrolovány, takže nelze vyloučit holinu či chybějící přístup u lesa ani povinnou nabídku spoluvlastníkům podle § 1124. Žádná nevyloučená možnost dalšího prodeje navíc nemá potvrzeného kupce.",
+  "reasoning": "Žádný bloker v kroku 1 nenalezen. Parcela leží v Krkonošském národním parku v nezastavěném území, což zakládá povinnou nabídku státu podle § 61, takže výsledek je nejvýš CONDITIONAL. Parcela má dva spoluvlastníky, ale nezkontrolovaná jsou data o dědictví (§ 1124) a mapa (holina, přístup), která by mohla vyloučit prodej jako les.",
   "other_findings": [
     {
       "type": "risk",
-      "description": "Parcela má dva spoluvlastníky (5/6 a 1/6) a ze vstupu nelze poznat, který podíl se kupuje, přičemž menšinový podíl je hůře prodejný (land_register.owners)."
+      "description": "Parcela je spoluvlastněná v poměru 5/6 a 1/6 (land_register.owners[].share), při koupi menšinového podílu hrozí obtížný další prodej a soudní zrušení spoluvlastnictví."
     }
   ]
 }

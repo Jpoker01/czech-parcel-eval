@@ -12,6 +12,6 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Žádný bloker ani povinná nabídka či souhlas nebyly nalezeny (kroky 1 a 2). Parcela je silnice sousedící se silnicí II. třídy (II/293), takže ji lze dále prodat kraji. Vlastníkem je soukromá osoba, proto možnost prodeje není vyloučena a verdikt je BUY_CANDIDATE.",
+  "reasoning": "V krocích 0 a 1 nebyl nalezen žádný bloker ani chybějící základní údaj a krok 2 nenašel žádnou povinnou nabídku ani souhlas. Parcela je silnice sousedící se silnicí II. třídy (II/293), takže ji lze dále prodat kraji. Vlastníkem je soukromá osoba, kupec tedy není vyloučen (krok 4), a proto je výsledek BUY_CANDIDATE.",
   "other_findings": []
 }

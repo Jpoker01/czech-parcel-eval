@@ -7,20 +7,20 @@
       "buyer": "Osoba B",
       "excluded": false,
       "exclusion_reason": null,
-      "evidence": "land_register.land.land_type = lesní pozemek"
+      "evidence": "map.neighbouring_parcels[3].owner = Osoba B"
     }
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Základní data jsou úplná a žádný bloker z kroku 1 se nevyskytuje. Krok 2 nenašel žádnou povinnou nabídku ani souhlas, protože parcela nemá stavbu ani omezení a ochrana přírody ani § 101 se nevymezují. Lesní pozemek lze dále prodat sousedovi a není vyloučen, protože ortofoto ukazuje les a přístup je po polní cestě. Platí krok 7.",
+  "reasoning": "Krok 0 prošel, v kroku 1 nejsou žádné blokery a krok 2 nenašel žádnou povinnou nabídku ani souhlas. Pozemek je lesní, takže má možnost dalšího prodeje `forest` se sousedem Osoba B. Ten není vyloučený (přístup je po polní cestě a ortofoto ukazuje les). Žádný relevantní zdroj nechybí, výsledek je proto BUY_CANDIDATE.",
   "other_findings": [
     {
       "type": "opportunity",
-      "description": "Vlastník parcely je stejný jako vlastník sousední parcely 302/2 (map.neighbouring_parcels[0].owner), takže by šlo řešit odkup obou parcel najednou."
+      "description": "Sousední parcela 302/2 patří stejnému vlastníkovi jako prodávaná parcela (map.neighbouring_parcels[0].owner = Osoba A), takže lze zvážit koupi i této parcely a prodej většího celku."
     },
     {
-      "type": "risk",
-      "description": "Sousedem je i Lesy ČR a Obec Šlapanov (map.neighbouring_parcels[1].owner, map.neighbouring_parcels[2].owner), takže skutečný zájemce o koupi lesa není potvrzen a vybraný soused je jen možný kupec."
+      "type": "opportunity",
+      "description": "Dalšími sousedy jsou Lesy ČR a Obec Šlapanov (map.neighbouring_parcels[1].owner = Lesy ČR, map.neighbouring_parcels[2].owner = Obec Šlapanov), kteří mohou být alternativními zájemci o lesní pozemek."
     }
   ]
 }

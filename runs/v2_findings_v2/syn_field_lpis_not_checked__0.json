@@ -17,6 +17,6 @@
     }
   ],
   "confidence": "medium",
-  "reasoning": "Krok 1 ani krok 2 nenašly žádný bloker, povinnou nabídku ani souhlas. Jediná možnost dalšího prodeje je zemědělec na orné půdě, ale LPIS nebyl otevřen, takže není znám uživatel ani to, zda je parcela v LPIS. Podle kroku 5 je výsledek CONDITIONAL, a to i proto, že žádná možnost nemá vyplněného kupce.",
+  "reasoning": "Krok 0 až 2 neodhalily žádný bloker ani povinnou nabídku, parcela má jediného vlastníka a ochrana přírody i územní plán jsou zkontrolované. Jediná možnost dalšího prodeje je zemědělec (orná půda), ale LPIS nebyl otevřen, takže uživatele ani možné vyloučení neznáme. Podle kroku 5 je výsledek CONDITIONAL.",
   "other_findings": []
 }

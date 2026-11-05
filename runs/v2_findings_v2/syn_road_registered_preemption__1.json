@@ -18,11 +18,11 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 1 nenašel žádný bloker. V kroku 2 je na parcele zapsané předkupní právo, takže je nutná nabídka oprávněnému a výsledek může být nejvýš CONDITIONAL. Parcela je silnice III. třídy, kterou lze dále prodat kraji, a vlastníkem není kraj ani obec, takže možnost není vyloučená. Krok 6 proto vrací CONDITIONAL.",
+  "reasoning": "Krok 1 nenašel žádný bloker a vlastník je jediný, takže seller_facts se pro § 1124 nepotřebuje. Krok 2 našel zapsané předkupní právo, proto je parcelu nejdřív nutné nabídnout oprávněnému a výsledek nemůže být BUY_CANDIDATE. Možnost dalšího prodeje kraji jako silnice III. třídy existuje a není vyloučená, ale kvůli povinné nabídce z kroku 6 je výsledek CONDITIONAL.",
   "other_findings": [
     {
       "type": "risk",
-      "description": "Oprávněný z předkupního práva ani jeho rozsah nejsou ve vstupu uvedeny (land_register.restrictions[0].type), je potřeba je dohledat v katastru."
+      "description": "Z vstupu není zřejmé, kdo je oprávněným z předkupního práva ani jeho rozsah (land_register.restrictions[0].type), takže je nutné ověřit to v listu vlastnictví."
     }
   ]
 }

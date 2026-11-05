@@ -12,6 +12,6 @@
   ],
   "missing_data": [],
   "confidence": "high",
-  "reasoning": "Krok 0 až 2 nenašly žádný bloker, povinnou nabídku ani souhlas: vlastník je jeden, ochrana přírody i územní plán jsou zkontrolované a bez nálezu. Podle kroku 3 je parcela s využitím silnice sousedící s komunikací II. třídy určená k prodeji kraji. Kupce nic nevylučuje, vlastník je soukromá osoba, proto krok 7 dává BUY_CANDIDATE.",
+  "reasoning": "Krok 0 a 1 prošly bez blokerů a krok 2 nenašel žádnou povinnou nabídku ani souhlas. Parcela je silnice sousedící se silnicí II. třídy, takže ji lze dále prodat kraji. Vlastníkem je soukromá osoba, proto možnost prodeje není vyloučena a výsledek je BUY_CANDIDATE.",
   "other_findings": []
 }

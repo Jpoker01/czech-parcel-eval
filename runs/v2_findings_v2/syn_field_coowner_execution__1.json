@@ -14,7 +14,7 @@
   "other_findings": [
     {
       "type": "risk",
-      "description": "Parcela je ve spoluvlastnictví pěti osob s drobnými podíly (land_register.owners), což by po odblokování komplikovalo dispozici s podílem."
+      "description": "Parcela je ve vlastnictví pěti spoluvlastníků s tříštěnými podíly (land_register.owners), což by po případném odblokování komplikovalo další prodej."
     }
   ]
 }

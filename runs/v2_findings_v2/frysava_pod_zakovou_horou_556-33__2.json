@@ -14,7 +14,7 @@
       "buyer": "AGRO - Měřín, a.s.",
       "excluded": false,
       "exclusion_reason": null,
-      "evidence": "lpis.dpb_items[0].user_name = AGRO - Měřín, a.s."
+      "evidence": "lpis.dpb_items[0].culture = standardní orná půda"
     }
   ],
   "missing_data": [
@@ -24,15 +24,19 @@
     }
   ],
   "confidence": "medium",
-  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 žádnou povinnou nabídku (CHKO § 61 nezakládá). Existují dvě možnosti dalšího prodeje, spoluvlastníci a zemědělec z LPIS, a žádná není vyloučená. Na parcele je ale více vlastníků a zdroj seller_facts nebyl zkontrolován, takže nelze vyloučit nabídku podle § 1124. Proto je výsledek CONDITIONAL (krok 5).",
+  "reasoning": "Krok 1 nenašel žádný bloker a krok 2 žádnou povinnou nabídku ani souhlas (CHKO § 61 nezakládá). Možnosti dalšího prodeje jsou spoluvlastníci a zemědělec AGRO - Měřín, a.s. z LPIS, žádná není vyloučená. Parcela má deset spoluvlastníků a zdroj seller_facts není zkontrolován, takže nelze vyloučit nabídku podle § 1124 a výsledek je nejvýš CONDITIONAL (krok 5).",
   "other_findings": [
     {
+      "type": "risk",
+      "description": "Jedním ze spoluvlastníků je Česká republika (land_register.owners[1].name), je třeba ověřit, zda stát při prodeji podílu nemá zvláštní postup nebo omezení."
+    },
+    {
       "type": "opportunity",
-      "description": "Uživatel LPIS AGRO - Měřín, a.s. je zároveň spoluvlastníkem parcely (land_register.owners[0].name), takže může mít zájem o odkup dalšího podílu."
+      "description": "Uživatel v LPIS AGRO - Měřín, a.s. (lpis.dpb_items[0].user_name) je zároveň spoluvlastníkem s největším podílem (land_register.owners[0].share), takže je přirozeným kupcem podílu."
     },
     {
       "type": "risk",
-      "description": "Parcelu vlastní deset vlastníků s drobnými podíly včetně státu (land_register.owners[1].name = Česká republika), což může komplikovat další prodej či zrušení spoluvlastnictví."
+      "description": "Parcela je podílové spoluvlastnictví s mnoha vlastníky (land_register.owners), což komplikuje nakládání s parcelou i její další prodej."
     }
   ]
 }

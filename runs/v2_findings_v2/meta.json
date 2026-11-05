@@ -10,6 +10,10 @@
     "frysava_pod_zakovou_horou_554-8",
     "frysava_pod_zakovou_horou_556-33",
     "hamr_nad_nezarkou_65-2",
+    "holdout_predmerice_nad_jizerou_304-4",
+    "holdout_predmerice_nad_jizerou_510",
+    "holdout_velke_karlovice_3633-2",
+    "holdout_velke_karlovice_4568-1",
     "horni_mala_upa_310-1",
     "hrabesice_121-1",
     "hustopece_u_brna_4813-68",
@@ -46,5 +50,5 @@
     "uhrice_u_kyjova_2020-5",
     "zalesni_lhota_1292-2"
   ],
-  "run_at": "2026-11-04T23:17:38+01:00"
+  "run_at": "2026-11-05T00:52:32+01:00"
 }
