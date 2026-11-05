@@ -30,8 +30,6 @@ v0 → v1: one prompt line rewritten so that `null` in a `checked` source means 
 
 v1 → v2: the § 1124 rule now counts owner entries, with SJM as one entry (the model treated a married couple as two co-owners), and `missing_data` lists every unchecked source that could add an offer obligation, even when the verdict is already `CONDITIONAL`. Two expected outputs were corrected to that rule. v0 and v1 are scored against the original expected outputs. v2 runs with the optional `other_findings` add-on (see Decisions and assumptions).
 
-Holdout: the one miss is a resale option the model lists only in 2 of 3 runs (an excluded `field_grassland` on grassland outside LPIS). The holdout expected output first lacked that option, and the model was right in those 2 runs. The label was corrected after the run (10/12 before, 11/12 after), because the same convention already existed in the dev set (Úhřice 2020/5). The original report is kept in `runs/v2_findings_v2/report_before_label_fix.md`. Listing excluded resale options inconsistently is the one weakness left for a next version. The holdout has three `BUY_CANDIDATE` parcels and one `CONDITIONAL`, so `BLOCKED`, `NOT_WORTH_IT` and the national park rule are covered only by the dev set. Full rationale in `prompts/iterations.md`.
-
 ## Tech Stack
 
 - **Language** - Python 3.11+
