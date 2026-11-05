@@ -133,3 +133,25 @@ Nálezy `other_findings` u holdoutu nepřinesly nový kandidát na taxonomii: v�
 
 Omezení holdoutu: čtyři parcely, tři BUY_CANDIDATE a jedna CONDITIONAL. Holdout neobsahuje BLOCKED, NOT_WORTH_IT ani národní park (H5 se nepodařilo sebrat), takže tyto verdikty ověřuje jen dev sada.
 
+## Srovnání modelů (2026-11-05)
+
+Stejný prompt v2 a doplněk `other_findings` v2 (sha `88feb1bd34bd`) na `claude-haiku-5-5`, dev sada i holdout, 3 opakování (`runs/v2_findings_v2_haiku/`, `run.py --run-name`). Liší se jen model.
+
+| | Sonnet dev | Haiku dev | Sonnet holdout | Haiku holdout |
+|---|---|---|---|---|
+| decision | 120/120 | 113/120 | 12/12 | 11/12 |
+| legal flags | 120/120 | 120/120 | 12/12 | 12/12 |
+| resale options | 119/120 | 119/120 | 11/12 | 11/12 |
+| risky missing data | 120/120 | 114/120 | 12/12 | 12/12 |
+| BUY_CANDIDATE recall | 30/30 | 26/30 | 9/9 | 8/9 |
+| rule violations | 0 | 10 | 0 | 0 |
+
+Haiku nikdy nevrátí falešný BUY_CANDIDATE (precision 100 %) a chytí všechny blokery. Všech 9 špatných verdiktů je posun na CONDITIONAL, tři vzorce:
+- `could_reduce_value` bere jako rizikový dopad (`syn_road_map_not_checked`, 3/3). Neotevřená mapa jen snižuje hodnotu, verdikt nemění.
+- Nedrží pořadí kroků (`zalesni_lhota_1292-2`, 3/3). Kraj je vlastníkem i jediným kupcem, takže NOT_WORTH_IT, ale Haiku dál řeší neověřené zdroje a vrátí CONDITIONAL.
+- Nepojmenuje souseda jako kupce lesa (`knezska_492` a `holdout_velke_karlovice_3633-2`, po 1/3), `buyer = null` vede na CONDITIONAL.
+
+Všech 10 porušení je `evidence` s několika poli v jednom řetězci (`chmelnice; lpis.dpb_items[0].user_name = Osoba B`). Kontrola evidence je chytila, ochranný mechanismus funguje i u slabšího modelu.
+
+Závěr: výchozím modelem zůstává Sonnet. Falešný CONDITIONAL znamená, že člověk otevírá LV parcely, která šla koupit, a to je práce, kterou má nástroj ušetřit. Cenu nelze porovnat, `run.py` neukládá spotřebu tokenů (`response.usage`). Pokud by Haiku měl běžet ve velkém, prvním krokem je logovat spotřebu a druhým zpřísnit tři pravidla výše.
+

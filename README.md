@@ -32,6 +32,8 @@ v0 → v1: one prompt line rewritten so that `null` in a `checked` source means 
 
 v1 → v2: the § 1124 rule now counts owner entries, with SJM as one entry (the model treated a married couple as two co-owners), and `missing_data` lists every unchecked source that could add an offer obligation, even when the verdict is already `CONDITIONAL`. Two expected outputs were corrected to that rule. v0 and v1 are scored against the original expected outputs. v2 runs with the optional `other_findings` add-on (see Decisions and assumptions).
 
+Haiku vs Sonnet: the same prompt and add-on on `claude-haiku-5-5` (`runs/v2_findings_v2_haiku/`) never returns a false `BUY_CANDIDATE` and catches every blocker, but all 9 wrong verdicts fall back to `CONDITIONAL` - it treats `could_reduce_value` as a risk, keeps checking sources after the parcel is already `NOT_WORTH_IT`, and leaves the forest neighbour unnamed. All 10 rule violations are evidence strings with several fields in one, which the evidence check catches. Sonnet stays the default, because a false `CONDITIONAL` sends a person to open the LV of a parcel that could have been bought. Token usage is not logged, so the cost difference is not measured.
+
 ## Tech Stack
 
 - **Language** - Python 3.11+
