@@ -10,7 +10,7 @@ import logging
 from collections import Counter, defaultdict
 
 from parcel_eval.cases import load_expected, load_input, load_json
-from parcel_eval.checks import SCORED_PARTS, check_output, compare_with_expected
+from parcel_eval.checks import SCORED_PARTS, check_output, compare_with_expected, validate_schema
 from parcel_eval.findings import OTHER_FINDINGS_FIELD, add_other_findings
 from parcel_eval.metrics import build_confusion_matrix, compute_decision_scores, format_decision_metrics
 from parcel_eval.paths import (
@@ -19,6 +19,7 @@ from parcel_eval.paths import (
     RUN_METADATA_FILE_NAME,
     RUNS_DIR,
     SCHEMA_PATH,
+    parse_output_file_name,
 )
 
 logger = logging.getLogger(__name__)
@@ -57,7 +58,7 @@ def format_metadata(metadata: dict | None) -> list[str]:
 def format_other_findings(
     findings_by_case: dict[str, list[str]],
     decision_misses: Counter,
-    runs_by_case: Counter,
+    outputs_by_case: dict[str, list],
 ) -> list[str]:
     """List every other_finding by case, marking cases where the decision missed the expected one.
 
@@ -66,7 +67,7 @@ def format_other_findings(
     Args:
         findings_by_case: Formatted finding lines per case.
         decision_misses: Runs per case where the decision differed from the expected one.
-        runs_by_case: Number of runs per case.
+        outputs_by_case: Outputs per case, for the number of runs.
 
     Returns:
         Markdown lines of the "Other findings" section.
@@ -85,7 +86,7 @@ def format_other_findings(
     for case_id, finding_lines in findings_by_case.items():
         title = f"### {case_id}"
         if decision_misses[case_id]:
-            title += f" (decision missed in {decision_misses[case_id]}/{runs_by_case[case_id]} runs)"
+            title += f" (decision missed in {decision_misses[case_id]}/{len(outputs_by_case[case_id])} runs)"
         lines += [title, "", *finding_lines, ""]
     return lines
 
@@ -108,8 +109,8 @@ def build_report(prompt_version: str) -> str:
     run_dir = RUNS_DIR / prompt_version
     outputs_by_case = defaultdict(list)
     for output_path in sorted(run_dir.glob(OUTPUT_FILE_GLOB)):
-        case_id, repeat = output_path.stem.rsplit("__", 1)
-        outputs_by_case[case_id].append((int(repeat), load_json(output_path)))
+        case_id, repeat = parse_output_file_name(output_path)
+        outputs_by_case[case_id].append((repeat, load_json(output_path)))
 
     header = "| Case | Expected | Got | " + " | ".join(SCORED_PARTS) + " | Consistency | Errors |"
     rows = [header, "|" + "---|" * (len(SCORED_PARTS) + 5)]
@@ -121,7 +122,6 @@ def build_report(prompt_version: str) -> str:
     modal_count_sum = 0
     findings_by_case = defaultdict(list)
     decision_misses = Counter()
-    runs_by_case = Counter()
     for case_id, outputs in outputs_by_case.items():
         parcel_input = load_input(case_id)
         expected = load_expected(case_id)
@@ -135,16 +135,19 @@ def build_report(prompt_version: str) -> str:
         case_error_count = 0
         for repeat, output in outputs:
             decision_pairs.append((expected["decision"], output.get("decision")))
-            for finding in output.get(OTHER_FINDINGS_FIELD, []):
-                findings_by_case[case_id].append(f"- #{repeat} {finding['type']}: {finding['description']}")
             errors = check_output(output, parcel_input, schema)
             case_error_count += len(errors)
             error_lines += [f"- `{case_id}` #{repeat}: {error}" for error in errors]
+            # Scoring and the findings read required fields, so an output with a broken shape
+            # counts as a miss on every part and its findings are skipped
+            if validate_schema(output, schema):
+                continue
+            for finding in output.get(OTHER_FINDINGS_FIELD, []):
+                findings_by_case[case_id].append(f"- #{repeat} {finding['type']}: {finding['description']}")
             for part, matched in compare_with_expected(output, expected).items():
                 case_scores[part] += matched
 
         totals.update(case_scores)
-        runs_by_case[case_id] = len(outputs)
         decision_misses[case_id] = len(outputs) - case_scores["decision"]
         scores = " | ".join(f"{case_scores[part]}/{len(outputs)}" for part in SCORED_PARTS)
         rows.append(
@@ -153,7 +156,7 @@ def build_report(prompt_version: str) -> str:
         )
 
     # Across the whole run: cases that agreed on every repeat (strict) and the average modal rate (lenient)
-    total_runs = len(decision_pairs)
+    total_runs = sum(len(outputs) for outputs in outputs_by_case.values())
     total_scores = " | ".join(f"{totals[part]}/{total_runs}" for part in SCORED_PARTS)
     case_count = len(outputs_by_case)
     total_consistency = "-"
@@ -181,7 +184,7 @@ def build_report(prompt_version: str) -> str:
         *(error_lines or ["None."]),
     ]
     if other_findings_enabled:
-        report += ["", *format_other_findings(findings_by_case, decision_misses, runs_by_case)]
+        report += ["", *format_other_findings(findings_by_case, decision_misses, outputs_by_case)]
     return "\n".join(report).rstrip() + "\n"
 
 

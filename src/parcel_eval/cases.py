@@ -9,7 +9,7 @@ import copy
 import json
 from pathlib import Path
 
-from parcel_eval.checks import split_path
+from parcel_eval.field_paths import set_path
 from parcel_eval.paths import CASES_DIR, EXPECTED_DIR, INPUTS_DIR
 
 
@@ -33,24 +33,14 @@ def synthetic_case_ids() -> set[str]:
     return {path.stem for path in CASES_DIR.glob("*.json")}
 
 
+def expected_case_ids() -> set[str]:
+    """Return the IDs of the hand-written expected outputs in tests/expected/."""
+    return {path.stem for path in EXPECTED_DIR.glob("*.json")}
+
+
 def list_case_ids() -> list[str]:
     """Return the IDs of all real and synthetic cases, sorted."""
     return sorted(real_case_ids() | synthetic_case_ids())
-
-
-def set_path(data: dict, path: str, value: object) -> None:
-    """Write a value into nested input by a path like land_register.owners[0].name.
-
-    Args:
-        data: Parcel input, changed in place.
-        path: Dot path with [index] for list items.
-        value: New value of the field.
-    """
-    *parent_keys, last_key = split_path(path)
-    target: object = data
-    for key in parent_keys:
-        target = target[key]
-    target[last_key] = value
 
 
 def load_input(case_id: str) -> dict:

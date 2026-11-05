@@ -29,6 +29,7 @@ from parcel_eval.paths import (
     RUN_METADATA_FILE_NAME,
     RUNS_DIR,
     SCHEMA_PATH,
+    output_file_name,
 )
 
 load_dotenv()
@@ -172,7 +173,7 @@ def main() -> None:
                 parcel_input=parcel_input,
                 today=reference_date(parcel_input),
             )
-            write_json(run_dir / f"{case_id}__{repeat}.json", output)
+            write_json(run_dir / output_file_name(case_id, repeat), output)
             logger.info(f"{case_id} #{repeat}: {output.get('decision')}")
 
 

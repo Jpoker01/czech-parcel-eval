@@ -12,7 +12,7 @@ import logging
 import sys
 
 from parcel_eval.cases import (
-    list_case_ids,
+    expected_case_ids,
     load_expected,
     load_input,
     load_json,
@@ -20,7 +20,7 @@ from parcel_eval.cases import (
     synthetic_case_ids,
 )
 from parcel_eval.checks import check_output
-from parcel_eval.paths import EXPECTED_DIR, SCHEMA_PATH
+from parcel_eval.paths import SCHEMA_PATH
 
 logger = logging.getLogger(__name__)
 
@@ -29,14 +29,14 @@ def find_errors() -> list[str]:
     """Return every problem found in the test cases, empty when all are fine."""
     schema = load_json(SCHEMA_PATH)
     real_ids = real_case_ids()
-    expected_ids = {path.stem for path in EXPECTED_DIR.glob("*.json")}
+    expected_ids = expected_case_ids()
     synthetic_ids = synthetic_case_ids()
 
     errors = [f"{case_id}: input has no expected output" for case_id in sorted(real_ids - expected_ids)]
     errors += [f"{case_id}: expected output has no input" for case_id in sorted(expected_ids - real_ids)]
     errors += [f"{case_id}: both a real and a synthetic case" for case_id in sorted(real_ids & synthetic_ids)]
 
-    for case_id in list_case_ids():
+    for case_id in sorted(real_ids | synthetic_ids):
         try:
             parcel_input = load_input(case_id)
             expected = load_expected(case_id)

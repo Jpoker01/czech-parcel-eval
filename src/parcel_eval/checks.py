@@ -1,14 +1,12 @@
 """Schema, consistency and evidence checks shared by the eval and the test-data check."""
 
 import json
-import re
 
 import jsonschema
 
+from parcel_eval.field_paths import resolve_path
+
 RISKY_IMPACTS = {"could_require_offer", "could_exclude_resale"}
-PATH_PART_PATTERN = re.compile(r"[^.\[\]]+")
-# Keys of the dict returned by compare_with_expected, in report column order
-SCORED_PARTS = ["decision", "legal_flags", "resale_options", "risky_missing_data"]
 
 
 def validate_schema(output: dict, schema: dict) -> list[str]:
@@ -23,30 +21,6 @@ def validate_schema(output: dict, schema: dict) -> list[str]:
     """
     validator = jsonschema.Draft202012Validator(schema)
     return [f"schema: {error.message}" for error in validator.iter_errors(output)]
-
-
-def split_path(path: str) -> list[str | int]:
-    """Split a path like land_register.owners[0].name into keys: ["land_register", "owners", 0, "name"]."""
-    return [int(part) if part.isdigit() else part for part in PATH_PART_PATTERN.findall(path)]
-
-
-def resolve_path(data: dict, path: str) -> object:
-    """Read a value from nested input by a path like land_register.owners[0].name.
-
-    Args:
-        data: Parcel input.
-        path: Dot path with [index] for list items.
-
-    Returns:
-        The value at the path.
-
-    Raises:
-        KeyError, IndexError, TypeError: If the path does not exist.
-    """
-    value: object = data
-    for key in split_path(path):
-        value = value[key]
-    return value
 
 
 def check_evidence(output: dict, parcel_input: dict) -> list[str]:
@@ -130,18 +104,11 @@ def check_consistency(output: dict, parcel_input: dict) -> list[str]:
     # Rule 3: BUY_CANDIDATE needs someone to sell to and no risky missing data
     if decision == "BUY_CANDIDATE":
         # Is at least one resale option still open and has a buyer filled in (not null or empty)?
-        has_open_option_with_buyer = False
-        for resale_option in resale_options:
-            if not resale_option["excluded"] and resale_option["buyer"]:
-                has_open_option_with_buyer = True
-                break
-
+        has_open_option_with_buyer = any(
+            not resale_option["excluded"] and resale_option["buyer"] for resale_option in resale_options
+        )
         # Is any of the missing data risky, e.g. could_require_offer?
-        has_risky_missing_data = False
-        for impact in impacts:
-            if impact in RISKY_IMPACTS:
-                has_risky_missing_data = True
-                break
+        has_risky_missing_data = bool(impacts & RISKY_IMPACTS)
 
         if not has_open_option_with_buyer or has_risky_missing_data:
             errors.append("rule 3: BUY_CANDIDATE needs a live named resale option and no risky missing data")
@@ -149,11 +116,7 @@ def check_consistency(output: dict, parcel_input: dict) -> list[str]:
     # Rule 4: NOT_WORTH_IT means there is nobody left to sell to
     if decision == "NOT_WORTH_IT":
         # Is at least one resale option still open?
-        has_open_option = False
-        for resale_option in resale_options:
-            if not resale_option["excluded"]:
-                has_open_option = True
-                break
+        has_open_option = any(not resale_option["excluded"] for resale_option in resale_options)
 
         # Does the model itself say missing data could still exclude a resale?
         exclusion_is_uncertain = "could_exclude_resale" in impacts
@@ -203,52 +166,52 @@ def check_output(output: dict, parcel_input: dict, schema: dict) -> list[str]:
     return check_consistency(output, parcel_input) + check_evidence(output, parcel_input)
 
 
+def _decision(data: dict) -> str | None:
+    """Return the decision, e.g. "BLOCKED"."""
+    return data.get("decision")
+
+
+def _flag_set(data: dict) -> set[tuple[str, str]]:
+    """Reduce each legal flag to (type, code), e.g. ("block", "seal")."""
+    return {(flag["type"], flag["code"]) for flag in data.get("legal_flags", [])}
+
+
+def _resale_option_set(data: dict) -> set[tuple[str, bool]]:
+    """Reduce each resale option to (resale_type, excluded), e.g. ("co_owners", False)."""
+    return {
+        (resale_option["resale_type"], resale_option["excluded"])
+        for resale_option in data.get("resale_options", [])
+    }
+
+
+def _risky_set(data: dict) -> set[str]:
+    """Collect the impacts of missing data that are risky, e.g. {"could_require_offer"}."""
+    return {item["impact"] for item in data.get("missing_data", []) if item["impact"] in RISKY_IMPACTS}
+
+
+# Each scored part and the reduction it is compared by, in report column order.
+# Sets ignore order, so the model may list flags and options in any order.
+_SCORED_PART_KEYS = {
+    "decision": _decision,
+    "legal_flags": _flag_set,
+    "resale_options": _resale_option_set,
+    "risky_missing_data": _risky_set,
+}
+SCORED_PARTS = list(_SCORED_PART_KEYS)
+
+
 def compare_with_expected(output: dict, expected: dict) -> dict[str, bool]:
     """Compare the parts of the output that the eval scores.
 
     missing_data field paths are not scored, only their impact, because the
-    model may name the same gap at a different path depth.
+    model may name the same gap at a different path depth. Each part matches
+    only when it is exactly the same, there is no partial credit.
 
     Args:
-        output: Model output.
+        output: Model output, valid against the output schema.
         expected: Hand-written expected output.
 
     Returns:
-        Match flags for decision, legal_flags, resale_options and risky missing data.
+        Match flag per part in SCORED_PARTS.
     """
-
-    def flag_set(data: dict) -> set[tuple[str, str]]:
-        """Reduce each legal flag to (type, code), e.g. ("block", "seal")."""
-        flags = set()
-        for flag in data.get("legal_flags", []):
-            flags.add((flag["type"], flag["code"]))
-        return flags
-
-    def resale_option_set(data: dict) -> set[tuple[str, bool]]:
-        """Reduce each resale option to (resale_type, excluded), e.g. ("co_owners", False)."""
-        resale_options = set()
-        for resale_option in data.get("resale_options", []):
-            resale_options.add((resale_option["resale_type"], resale_option["excluded"]))
-        return resale_options
-
-    def risky_set(data: dict) -> set[str]:
-        """Collect the impacts of missing data that are risky, e.g. {"could_require_offer"}."""
-        risky_impacts = set()
-        for item in data.get("missing_data", []):
-            if item["impact"] in RISKY_IMPACTS:
-                risky_impacts.add(item["impact"])
-        return risky_impacts
-
-    # Each part matches only when it is exactly the same, there is no partial credit.
-    # Sets ignore order, so the model may list flags and options in any order.
-    decision_matches = output.get("decision") == expected.get("decision")
-    flags_match = flag_set(output) == flag_set(expected)
-    resale_options_match = resale_option_set(output) == resale_option_set(expected)
-    risky_missing_data_matches = risky_set(output) == risky_set(expected)
-
-    return {
-        "decision": decision_matches,
-        "legal_flags": flags_match,
-        "resale_options": resale_options_match,
-        "risky_missing_data": risky_missing_data_matches,
-    }
+    return {part: key(output) == key(expected) for part, key in _SCORED_PART_KEYS.items()}
