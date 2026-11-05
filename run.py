@@ -6,6 +6,7 @@ Usage:
     uv run python run.py --prompt v0 --force   # replace an existing run of the same version
     uv run python run.py --prompt v0 --include-holdout   # final run, holdout parcels included
     uv run python run.py --prompt v1 --other-findings v2   # add-on v2, saved to runs/v1_findings_v2/
+    uv run python run.py --prompt v2 --model claude-haiku-5-5 --run-name v2_haiku   # saved to runs/v2_haiku/
 """
 
 import argparse
@@ -57,6 +58,10 @@ def parse_args() -> argparse.Namespace:
         "--other-findings",
         metavar="VERSION",
         help="Add-on version, e.g. v2: ask for other_findings (outside the enums, never scored)",
+    )
+    parser.add_argument(
+        "--run-name",
+        help="Folder under runs/, e.g. v2_haiku when comparing models. Default is derived from the versions",
     )
     return parser.parse_args()
 
@@ -133,7 +138,8 @@ def prepare_run_dir(run_dir: Path, force: bool) -> None:
     previous_files = [path for path in previous_files if path.exists()]
     if previous_files and not force:
         raise FileExistsError(
-            f"{run_dir} already has results. Use a new --prompt version or pass --force to replace them."
+            f"{run_dir} already has results. "
+            "Use a new --prompt version or --run-name, or pass --force to replace them."
         )
     for path in previous_files:
         path.unlink()
@@ -152,7 +158,7 @@ def main() -> None:
         output_schema = add_other_findings(output_schema)
     case_ids = select_case_ids(args)
 
-    run_dir = RUNS_DIR / run_dir_name(args.prompt, args.other_findings)
+    run_dir = RUNS_DIR / (args.run_name or run_dir_name(args.prompt, args.other_findings))
     try:
         prepare_run_dir(run_dir, args.force)
     except FileExistsError as error:
