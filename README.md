@@ -125,20 +125,7 @@ The report in `runs/PROMPT/report.md` shows per-case match rates (decision, lega
 
 ### CI
 
-GitHub Actions (`.github/workflows/ci.yml`) runs on every push to `main` and every pull request. It does not call the API, so model runs stay manual. It checks that:
-
-* the code passes `ruff check` and `ruff format --check`
-* `uv.lock` matches `pyproject.toml`
-* every expected output passes the same schema, consistency and evidence checks as a model output, and every input has one
-* every synthetic case can be built from its base case
-
-To run the same checks locally:
-
-```bash
-uv run ruff check .
-uv run ruff format --check .
-uv run python tests/check_expected.py
-```
+GitHub Actions runs lint, format and `tests/check_expected.py` on every push and pull request, without calling the API. The check holds every hand-written expected output to the same schema, consistency and evidence rules as a model output, so a broken label fails the build instead of silently skewing the scores.
 
 ## Project structure
 
