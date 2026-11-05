@@ -62,7 +62,7 @@ v1 → v2: the § 1124 rule now counts owner entries, with SJM as one entry (the
 
 ## Decisions and assumptions
 
-- **Evaluation, not a decision** - the agent identifies potentially valuable parcels for a human. Every `BUY_CANDIDATE` and `CONDITIONAL` still goes to a person who opens the LV.
+- **Evaluation, not a decision** - the agent identifies potentially valuable parcels for a human. Every `BUY_CANDIDATE` and `CONDITIONAL` still goes to a person who opens the LV (list vlastnictví).
 - **Unchecked is not empty** - a `not_checked` source never counts as "nothing found". If it could change the result, the model has to list it in `missing_data` and the verdict is at most `CONDITIONAL`.
 - **Evidence for every conclusion** - each flag and resale option carries `evidence` in the form `input.path = value` (e.g. `land_register.owners[0].name = Liberecký kraj`). The evaluation resolves the path in the input and compares the value, so an invented restriction or buyer is caught automatically.
 - **Whole parcel or nothing** - an execution or insolvency of ANY co-owner blocks the parcel, even though legally it only affects that owner's share. The profit comes from selling the whole parcel, which such a share complicates.
@@ -127,57 +127,19 @@ The report in `runs/PROMPT/report.md` shows per-case match rates (decision, lega
 
 ### CI
 
-GitHub Actions (`.github/workflows/ci.yml`) runs on every push to `main` and every pull request. It does not call the API, so model runs stay manual. It checks that:
-
-* the code passes `ruff check` and `ruff format --check`
-* `uv.lock` matches `pyproject.toml`
-* every expected output passes the same schema, consistency and evidence checks as a model output, and every input has one
-* every synthetic case can be built from its base case
-
-To run the same checks locally:
-
-```bash
-uv run ruff check .
-uv run ruff format --check .
-uv run python tests/check_expected.py
-```
+GitHub Actions runs lint, format and `tests/check_expected.py` on every push and pull request, without calling the API. The check holds every hand-written expected output to the same schema, consistency and evidence rules as a model output, so a broken label fails the build instead of silently skewing the scores.
 
 ## Project structure
 
-* **run.py** - Runs a prompt version on the test cases
-* **evaluate.py** - Scores the runs against the expected outputs
-* **/prompts** - Versioned prompts
-  * **v0.md** - First version, derived from the decision table
-  * **v1.md** - Second version, `null` in a checked source means verified empty
-  * **v2.md** - Third and final version, § 1124 needs more than one owner entry (SJM counts as one)
-  * **/addons/other_findings_vN.md** - Versioned instructions appended with `--other-findings vN`
-  * **iterations.md** - What changed between versions and why
-* **/input**
-  * **schema.json** - Empty input form, one section per source
-  * **/examples** - Filled inputs of the real parcels
-* **/output**
-  * **schema.json** - Output JSON schema, passed to the API as the structured output format
-* **/tests**
-  * **/expected** - Hand-written expected outputs of the real parcels
-  * **/cases** - Synthetic cases, each with a base case, the changed input fields and the expected output
-  * **check_expected.py** - Validates the expected outputs against their inputs (run in CI)
-* **/src/parcel_eval** - Importable package
-  * **llm.py** - API call with the output schema as a structured output format
-  * **checks.py** - Schema, consistency and evidence checks
-  * **metrics.py** - Decision confusion matrix, precision and recall
-  * **findings.py** - Optional `other_findings` field: schema, versioned prompt add-on, run folder name
-  * **cases.py** - Loading real and synthetic test cases
-  * **field_paths.py** - Reading and writing input fields by a path like `land_register.owners[0].name`
-  * **paths.py** - Project paths
-* **/docs**
-  * **decision_table.md** - Order of steps, and the source, field and code of every signal the prompt is built from
-  * **input_schema.md** - Where each input value is found in the source and which values are allowed
-  * **output_schema.md** - Output fields and consistency rules
-  * **adding_test_cases.md** - How a real parcel is collected and turned into a test case
-  * **/images** - Decision flow and evaluation pipeline diagrams
-* **/runs** - Raw model outputs, `meta.json`, and `report.md` for each prompt version and add-on version
-* **/.github/workflows**
-  * **ci.yml** - Lint, format and test-data checks on push and pull request
+* **run.py** - Runs a prompt version on the test cases and saves the raw outputs
+* **evaluate.py** - Scores a run against the expected outputs and writes the report
+* **/prompts** - Versioned prompts (`v0` to `v2`, final `v2.md`), the optional `other_findings` add-on in `/addons`, and `iterations.md` with what changed between versions and why
+* **/input** - Empty input form (`schema.json`) and the filled real parcels (`/examples`)
+* **/output** - Output JSON schema, passed to the API as the structured output format
+* **/tests** - Expected outputs of the real parcels (`/expected`), synthetic cases (`/cases`) and `check_expected.py`, which validates them in CI
+* **/src/parcel_eval** - API call, schema / consistency / evidence checks, metrics and case loading
+* **/docs** - Decision table the prompt is built from, input and output schema, how to add a test case, diagrams
+* **/runs** - Raw outputs, `meta.json` and `report.md` of every evaluated run
 
 ## Disclaimer
 
