@@ -10,12 +10,16 @@ import logging
 from collections import Counter, defaultdict
 
 from parcel_eval.cases import load_expected, load_input, load_json
-from parcel_eval.checks import check_output, compare_with_expected
+from parcel_eval.checks import SCORED_PARTS, check_output, compare_with_expected
 from parcel_eval.findings import OTHER_FINDINGS_FIELD, add_other_findings
 from parcel_eval.metrics import build_confusion_matrix, compute_decision_scores, format_decision_metrics
-from parcel_eval.paths import RUN_METADATA_FILE_NAME, RUNS_DIR, SCHEMA_PATH
-
-SCORED_PARTS = ["decision", "legal_flags", "resale_options", "risky_missing_data"]
+from parcel_eval.paths import (
+    OUTPUT_FILE_GLOB,
+    REPORT_FILE_NAME,
+    RUN_METADATA_FILE_NAME,
+    RUNS_DIR,
+    SCHEMA_PATH,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -103,7 +107,7 @@ def build_report(prompt_version: str) -> str:
         schema = add_other_findings(schema)
     run_dir = RUNS_DIR / prompt_version
     outputs_by_case = defaultdict(list)
-    for output_path in sorted(run_dir.glob("*__*.json")):
+    for output_path in sorted(run_dir.glob(OUTPUT_FILE_GLOB)):
         case_id, repeat = output_path.stem.rsplit("__", 1)
         outputs_by_case[case_id].append((int(repeat), load_json(output_path)))
 
@@ -112,7 +116,6 @@ def build_report(prompt_version: str) -> str:
     error_lines = []
     decision_pairs = []
     totals = Counter()
-    total_runs = 0
 
     unanimous_cases = 0
     modal_count_sum = 0
@@ -132,9 +135,6 @@ def build_report(prompt_version: str) -> str:
         case_error_count = 0
         for repeat, output in outputs:
             decision_pairs.append((expected["decision"], output.get("decision")))
-            runs_by_case[case_id] += 1
-            if output.get("decision") != expected["decision"]:
-                decision_misses[case_id] += 1
             for finding in output.get(OTHER_FINDINGS_FIELD, []):
                 findings_by_case[case_id].append(f"- #{repeat} {finding['type']}: {finding['description']}")
             errors = check_output(output, parcel_input, schema)
@@ -144,7 +144,8 @@ def build_report(prompt_version: str) -> str:
                 case_scores[part] += matched
 
         totals.update(case_scores)
-        total_runs += len(outputs)
+        runs_by_case[case_id] = len(outputs)
+        decision_misses[case_id] = len(outputs) - case_scores["decision"]
         scores = " | ".join(f"{case_scores[part]}/{len(outputs)}" for part in SCORED_PARTS)
         rows.append(
             f"| {case_id} | {expected['decision']} | {modal_decision} | {scores} "
@@ -152,6 +153,7 @@ def build_report(prompt_version: str) -> str:
         )
 
     # Across the whole run: cases that agreed on every repeat (strict) and the average modal rate (lenient)
+    total_runs = len(decision_pairs)
     total_scores = " | ".join(f"{totals[part]}/{total_runs}" for part in SCORED_PARTS)
     case_count = len(outputs_by_case)
     total_consistency = "-"
@@ -191,7 +193,7 @@ def main() -> None:
     args = parser.parse_args()
 
     report = build_report(args.prompt)
-    (RUNS_DIR / args.prompt / "report.md").write_text(report, encoding="utf-8")
+    (RUNS_DIR / args.prompt / REPORT_FILE_NAME).write_text(report, encoding="utf-8")
     logger.info(report)
 
 

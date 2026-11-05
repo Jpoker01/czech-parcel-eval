@@ -7,6 +7,8 @@ import jsonschema
 
 RISKY_IMPACTS = {"could_require_offer", "could_exclude_resale"}
 PATH_PART_PATTERN = re.compile(r"[^.\[\]]+")
+# Keys of the dict returned by compare_with_expected, in report column order
+SCORED_PARTS = ["decision", "legal_flags", "resale_options", "risky_missing_data"]
 
 
 def validate_schema(output: dict, schema: dict) -> list[str]:
@@ -23,6 +25,11 @@ def validate_schema(output: dict, schema: dict) -> list[str]:
     return [f"schema: {error.message}" for error in validator.iter_errors(output)]
 
 
+def split_path(path: str) -> list[str | int]:
+    """Split a path like land_register.owners[0].name into keys: ["land_register", "owners", 0, "name"]."""
+    return [int(part) if part.isdigit() else part for part in PATH_PART_PATTERN.findall(path)]
+
+
 def resolve_path(data: dict, path: str) -> object:
     """Read a value from nested input by a path like land_register.owners[0].name.
 
@@ -37,8 +44,8 @@ def resolve_path(data: dict, path: str) -> object:
         KeyError, IndexError, TypeError: If the path does not exist.
     """
     value: object = data
-    for part in PATH_PART_PATTERN.findall(path):
-        value = value[int(part)] if part.isdigit() else value[part]
+    for key in split_path(path):
+        value = value[key]
     return value
 
 
@@ -127,12 +134,14 @@ def check_consistency(output: dict, parcel_input: dict) -> list[str]:
         for resale_option in resale_options:
             if not resale_option["excluded"] and resale_option["buyer"]:
                 has_open_option_with_buyer = True
+                break
 
         # Is any of the missing data risky, e.g. could_require_offer?
         has_risky_missing_data = False
         for impact in impacts:
             if impact in RISKY_IMPACTS:
                 has_risky_missing_data = True
+                break
 
         if not has_open_option_with_buyer or has_risky_missing_data:
             errors.append("rule 3: BUY_CANDIDATE needs a live named resale option and no risky missing data")
@@ -144,6 +153,7 @@ def check_consistency(output: dict, parcel_input: dict) -> list[str]:
         for resale_option in resale_options:
             if not resale_option["excluded"]:
                 has_open_option = True
+                break
 
         # Does the model itself say missing data could still exclude a resale?
         exclusion_is_uncertain = "could_exclude_resale" in impacts

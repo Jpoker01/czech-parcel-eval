@@ -9,7 +9,7 @@ import copy
 import json
 from pathlib import Path
 
-from parcel_eval.checks import PATH_PART_PATTERN
+from parcel_eval.checks import split_path
 from parcel_eval.paths import CASES_DIR, EXPECTED_DIR, INPUTS_DIR
 
 
@@ -18,11 +18,24 @@ def load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def write_json(path: Path, data: dict) -> None:
+    """Write a UTF-8 JSON file, indented and with Czech characters kept readable."""
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def real_case_ids() -> set[str]:
+    """Return the IDs of the real cases in input/examples/."""
+    return {path.stem for path in INPUTS_DIR.glob("*.json")}
+
+
+def synthetic_case_ids() -> set[str]:
+    """Return the IDs of the synthetic cases in tests/cases/."""
+    return {path.stem for path in CASES_DIR.glob("*.json")}
+
+
 def list_case_ids() -> list[str]:
     """Return the IDs of all real and synthetic cases, sorted."""
-    real_ids = {path.stem for path in INPUTS_DIR.glob("*.json")}
-    synthetic_ids = {path.stem for path in CASES_DIR.glob("*.json")}
-    return sorted(real_ids | synthetic_ids)
+    return sorted(real_case_ids() | synthetic_case_ids())
 
 
 def set_path(data: dict, path: str, value: object) -> None:
@@ -33,12 +46,11 @@ def set_path(data: dict, path: str, value: object) -> None:
         path: Dot path with [index] for list items.
         value: New value of the field.
     """
-    parts = PATH_PART_PATTERN.findall(path)
+    *parent_keys, last_key = split_path(path)
     target: object = data
-    for part in parts[:-1]:
-        target = target[int(part)] if part.isdigit() else target[part]
-    last_part = parts[-1]
-    target[int(last_part) if last_part.isdigit() else last_part] = value
+    for key in parent_keys:
+        target = target[key]
+    target[last_key] = value
 
 
 def load_input(case_id: str) -> dict:

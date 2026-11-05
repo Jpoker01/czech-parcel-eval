@@ -11,4 +11,7 @@ CASES_DIR = PROJECT_ROOT / "tests" / "cases"
 RUNS_DIR = PROJECT_ROOT / "runs"
 SCHEMA_PATH = PROJECT_ROOT / "output" / "schema.json"
 RUN_METADATA_FILE_NAME = "meta.json"
+REPORT_FILE_NAME = "report.md"
+# Model outputs in a run folder are named <case_id>__<repeat>.json
+OUTPUT_FILE_GLOB = "*__*.json"
 HOLDOUT_PREFIX = "holdout_"

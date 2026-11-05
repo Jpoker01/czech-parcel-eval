@@ -10,7 +10,6 @@ Usage:
 
 import argparse
 import hashlib
-import json
 import logging
 import os
 from datetime import date, datetime
@@ -19,12 +18,14 @@ from pathlib import Path
 import anthropic
 from dotenv import load_dotenv
 
-from parcel_eval.cases import list_case_ids, load_input
+from parcel_eval.cases import list_case_ids, load_input, load_json, write_json
 from parcel_eval.findings import add_other_findings, add_other_findings_prompt, run_dir_name
 from parcel_eval.llm import evaluate_parcel
 from parcel_eval.paths import (
     HOLDOUT_PREFIX,
+    OUTPUT_FILE_GLOB,
     PROMPTS_DIR,
+    REPORT_FILE_NAME,
     RUN_METADATA_FILE_NAME,
     RUNS_DIR,
     SCHEMA_PATH,
@@ -124,9 +125,9 @@ def prepare_run_dir(run_dir: Path, force: bool) -> None:
         FileExistsError: If the folder already has results and force is False.
     """
     previous_files = [
-        *run_dir.glob("*__*.json"),
+        *run_dir.glob(OUTPUT_FILE_GLOB),
         run_dir / RUN_METADATA_FILE_NAME,
-        run_dir / "report.md",
+        run_dir / REPORT_FILE_NAME,
     ]
     previous_files = [path for path in previous_files if path.exists()]
     if previous_files and not force:
@@ -144,7 +145,7 @@ def main() -> None:
     args = parse_args()
 
     system_prompt = (PROMPTS_DIR / f"{args.prompt}.md").read_text(encoding="utf-8")
-    output_schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
+    output_schema = load_json(SCHEMA_PATH)
     if args.other_findings:
         system_prompt = add_other_findings_prompt(system_prompt, args.other_findings)
         output_schema = add_other_findings(output_schema)
@@ -157,10 +158,7 @@ def main() -> None:
         raise SystemExit(str(error)) from error
 
     metadata = build_run_metadata(args, case_ids, system_prompt)
-    (run_dir / RUN_METADATA_FILE_NAME).write_text(
-        json.dumps(metadata, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
+    write_json(run_dir / RUN_METADATA_FILE_NAME, metadata)
     client = anthropic.Anthropic()
 
     for case_id in case_ids:
@@ -174,8 +172,7 @@ def main() -> None:
                 parcel_input=parcel_input,
                 today=reference_date(parcel_input),
             )
-            output_path = run_dir / f"{case_id}__{repeat}.json"
-            output_path.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            write_json(run_dir / f"{case_id}__{repeat}.json", output)
             logger.info(f"{case_id} #{repeat}: {output.get('decision')}")
 
 
