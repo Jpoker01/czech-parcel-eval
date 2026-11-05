@@ -129,40 +129,15 @@ GitHub Actions runs lint, format and `tests/check_expected.py` on every push and
 
 ## Project structure
 
-* **run.py** - Runs a prompt version on the test cases
-* **evaluate.py** - Scores the runs against the expected outputs
-* **/prompts** - Versioned prompts
-  * **v0.md** - First version, derived from the decision table
-  * **v1.md** - Second version, `null` in a checked source means verified empty
-  * **v2.md** - Third and final version, § 1124 needs more than one owner entry (SJM counts as one)
-  * **/addons/other_findings_vN.md** - Versioned instructions appended with `--other-findings vN`
-  * **iterations.md** - What changed between versions and why
-* **/input**
-  * **schema.json** - Empty input form, one section per source
-  * **/examples** - Filled inputs of the real parcels
-* **/output**
-  * **schema.json** - Output JSON schema, passed to the API as the structured output format
-* **/tests**
-  * **/expected** - Hand-written expected outputs of the real parcels
-  * **/cases** - Synthetic cases, each with a base case, the changed input fields and the expected output
-  * **check_expected.py** - Validates the expected outputs against their inputs (run in CI)
-* **/src/parcel_eval** - Importable package
-  * **llm.py** - API call with the output schema as a structured output format
-  * **checks.py** - Schema, consistency and evidence checks
-  * **metrics.py** - Decision confusion matrix, precision and recall
-  * **findings.py** - Optional `other_findings` field: schema, versioned prompt add-on, run folder name
-  * **cases.py** - Loading real and synthetic test cases
-  * **field_paths.py** - Reading and writing input fields by a path like `land_register.owners[0].name`
-  * **paths.py** - Project paths
-* **/docs**
-  * **decision_table.md** - Order of steps, and the source, field and code of every signal the prompt is built from
-  * **input_schema.md** - Where each input value is found in the source and which values are allowed
-  * **output_schema.md** - Output fields and consistency rules
-  * **adding_test_cases.md** - How a real parcel is collected and turned into a test case
-  * **/images** - Decision flow and evaluation pipeline diagrams
-* **/runs** - Raw model outputs, `meta.json`, and `report.md` for each prompt version and add-on version
-* **/.github/workflows**
-  * **ci.yml** - Lint, format and test-data checks on push and pull request
+* **run.py** - Runs a prompt version on the test cases and saves the raw outputs
+* **evaluate.py** - Scores a run against the expected outputs and writes the report
+* **/prompts** - Versioned prompts (`v0` to `v2`, final `v2.md`), the optional `other_findings` add-on in `/addons`, and `iterations.md` with what changed between versions and why
+* **/input** - Empty input form (`schema.json`) and the filled real parcels (`/examples`)
+* **/output** - Output JSON schema, passed to the API as the structured output format
+* **/tests** - Expected outputs of the real parcels (`/expected`), synthetic cases (`/cases`) and `check_expected.py`, which validates them in CI
+* **/src/parcel_eval** - API call, schema / consistency / evidence checks, metrics and case loading
+* **/docs** - Decision table the prompt is built from, input and output schema, how to add a test case, diagrams
+* **/runs** - Raw outputs, `meta.json` and `report.md` of every evaluated run
 
 ## Disclaimer
 
