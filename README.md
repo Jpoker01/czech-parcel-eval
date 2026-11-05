@@ -180,3 +180,10 @@ uv run python tests/check_expected.py
 ## Disclaimer
 
 Not legal advice. Data from Nahlížení do KN is informative only, and a current LV extract is needed before any purchase.
+
+- The free ČÚZK REST API (API KN) does NOT provide owner data, only the LV number.
+- Owners and shares are available only through the paid Dálkový přístup / WSDP services, or manually through Nahlížení do KN.
+- In this prototype, owners and shares are therefore entered manually from the LV.
+- Most of the decision follows from structured LV data, which a rule-based flow handles deterministically and at almost no cost.
+- The LLM output varies between runs (hence `--repeats 3`), and every call costs tokens, which makes it unsuitable for logic that can be written in code.
+- An LLM is useful ONLY for unstructured inputs, such as documents from the sbírka listin, ideally as a narrow step next to the rules.
