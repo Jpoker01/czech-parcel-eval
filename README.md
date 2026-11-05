@@ -3,7 +3,7 @@
 An LLM prompt and eval harness that evaluates Czech land parcels before a buyout.
 The model gets data about one parcel copied from public registries (KN, LPIS, AOPK, zoning plans) and returns a structured verdict - whether the parcel can be bought, who would buy it afterwards, and what data is missing to be sure.
 
-**Built as a technical assignment. Work in progress - prompt v0 has not been evaluated yet**
+**Built as a technical assignment.**
 
 ## The problem
 
@@ -30,7 +30,7 @@ v0 → v1: one prompt line rewritten so that `null` in a `checked` source means 
 
 v1 → v2: the § 1124 rule now counts owner entries, with SJM as one entry (the model treated a married couple as two co-owners), and `missing_data` lists every unchecked source that could add an offer obligation, even when the verdict is already `CONDITIONAL`. Two expected outputs were corrected to that rule. v0 and v1 are scored against the original expected outputs. v2 runs with the optional `other_findings` add-on (see Decisions and assumptions).
 
-Holdout: the one miss is a resale option the model lists only in 2 of 3 runs (an excluded `field_grassland` on grassland outside LPIS). The holdout expected output first lacked that option, and the model was right in those 2 runs. The label was corrected after the run (10/12 before, 11/12 after), because the same convention already existed in the dev set (Úhřice 2020/5). The original report is kept in `runs/v2_findings_v2/report_before_label_fix.md`. Listing excluded resale options inconsistently is the one weakness left for a next version. Full rationale in `prompts/iterations.md`.
+Holdout: the one miss is a resale option the model lists only in 2 of 3 runs (an excluded `field_grassland` on grassland outside LPIS). The holdout expected output first lacked that option, and the model was right in those 2 runs. The label was corrected after the run (10/12 before, 11/12 after), because the same convention already existed in the dev set (Úhřice 2020/5). The original report is kept in `runs/v2_findings_v2/report_before_label_fix.md`. Listing excluded resale options inconsistently is the one weakness left for a next version. The holdout has three `BUY_CANDIDATE` parcels and one `CONDITIONAL`, so `BLOCKED`, `NOT_WORTH_IT` and the national park rule are covered only by the dev set. Full rationale in `prompts/iterations.md`.
 
 ## Tech Stack
 
@@ -44,7 +44,7 @@ Holdout: the one miss is a resale option the model lists only in 2 of 3 runs (an
 ## How it works
 
 1. **Input (`input/schema.json`)** - one JSON per parcel, with a section for each source. Every section has a `status` (`checked`, `not_checked` or `not_available`), so the model can tell "verified, nothing found" from "nobody looked". Values are copied verbatim from the Czech sources.
-2. **Prompt (`prompts/v0.md`)** - walks the parcel through a fixed order of steps taken from `docs/decision_table.md`:
+2. **Prompt (`prompts/v2.md`, final)** - walks the parcel through a fixed order of steps taken from `docs/decision_table.md`:
     * **Data** - missing basic land register data ends with `INSUFFICIENT_DATA`.
     * **Blockers** - a seal (plomba), seizure of property (exekuce), insolvency, alienation ban etc. ends with `BLOCKED`.
     * **Pre-emption and consent** - a statutory offer (§ 61 of 114/1992 Sb., § 3056 and § 1124 NOZ) or an authority consent caps the result at `CONDITIONAL`.
@@ -55,7 +55,7 @@ Holdout: the one miss is a resale option the model lists only in 2 of 3 runs (an
     ![Decision flow](docs/images/decision_flow.png)
 
 3. **Output (`output/schema.json`)** - six fields (`decision`, `legal_flags`, `resale_options`, `missing_data`, `confidence`, `reasoning`). Codes are enums, so runs can be compared as sets. An optional seventh field, `other_findings`, is described under Decisions and assumptions.
-4. **Run (`run.py`)** - sends each test case to the model N times and saves the raw outputs and a `meta.json` (model, prompt hash, date) to `runs/PROMPT/`.
+4. **Run (`run.py`)** - sends each test case to the model N times and saves the raw outputs and a `meta.json` (model, prompt hash, add-on version, date) to `runs/PROMPT/`, or `runs/PROMPT_findings_ADDON/` with the `other_findings` add-on.
 5. **Evaluation (`evaluate.py`)** - validates every output against the schema, checks the 7 consistency rules (including the evidence), compares it with the hand-written expected output and writes `runs/PROMPT/report.md`. The report also has a confusion matrix of expected vs returned decisions with precision and recall per decision, because the two mistakes cost different things - a false `BUY_CANDIDATE` wastes a person's time, a false `NOT_WORTH_IT` loses a parcel.
 
 ![Evaluation pipeline](docs/images/eval_pipeline.png)  
@@ -69,7 +69,7 @@ Holdout: the one miss is a resale option the model lists only in 2 of 3 runs (an
 - **No prices in the model** - the model only names the resale option (`road_class_3`, `field_vineyard`, `building_owner` etc.) and never estimates a price, since a price from the model's memory would be invented. Specialty cultures (vineyard, orchard, hopfield) have their own resale types, because the buyer, the price per m² and the market are different from arable land.
 - **Value-lowering factors are left out** - mortgages, leases or a flood zone do not change the verdict, and the person checking a candidate sees them on the LV anyway.
 - **Manual input** - Nahlížení do KN shows owners only after login and does not allow automated scraping. Bulk use would need the paid land register web services (WSDP) and WMS/WFS layers for LPIS and AOPK.
-- **The taxonomy is not complete, and the project has a way to extend it** - with `run.py --other-findings v2` the model also lists every risk or opportunity that no enum covers (`other_findings`, e.g. an easement of unknown scope). These findings never change the verdict and are never scored, so the metrics stay deterministic and a correct observation outside the categories is not counted as a failure. The report lists them by case and marks the cases where the decision missed, because a finding there may point to a missing code rather than a model error. Findings that repeat become new codes in the decision table, the prompt and the expected outputs.
+- **The taxonomy is not complete, and the project has a way to extend it** - with `run.py --other-findings v2` the model also lists every risk or opportunity that no enum covers (`other_findings`, e.g. an easement of unknown scope). These findings never change the verdict and are never scored, so the metrics stay deterministic and a correct observation outside the categories is not counted as a failure. The report lists them by case and marks the cases where the decision missed, because a finding there may point to a missing code rather than a model error. Findings that repeat become new codes in the decision table, the prompt and the expected outputs. The first runs surfaced a municipality as the seller (a sale needs a council decision under § 39 of the Municipalities Act), sources that contradict each other (an orthophoto showing a meadow on a local road) and a pre-emption right with an unknown beneficiary, listed as a backlog in `prompts/iterations.md`. Adding the field is measured like any prompt change - the first add-on version made the model list resale options on `BLOCKED` parcels (resale options 106/120 vs 117/120), so add-on v2 restates that `BLOCKED` ends the evaluation.
 - **Known blind spots** - statutory pre-emption rights are not always visible in the land register, and consent with public use of a road (Constitutional Court I. ÚS 2541/25) cannot be detected from any source. Facts only the seller knows go to `seller_facts`.
 
 ## Quickstart guide
@@ -167,6 +167,7 @@ uv run python tests/check_expected.py
   * **metrics.py** - Decision confusion matrix, precision and recall
   * **findings.py** - Optional `other_findings` field: schema, versioned prompt add-on, run folder name
   * **cases.py** - Loading real and synthetic test cases
+  * **field_paths.py** - Reading and writing input fields by a path like `land_register.owners[0].name`
   * **paths.py** - Project paths
 * **/docs**
   * **decision_table.md** - Order of steps, and the source, field and code of every signal the prompt is built from
@@ -174,7 +175,7 @@ uv run python tests/check_expected.py
   * **output_schema.md** - Output fields and consistency rules
   * **adding_test_cases.md** - How a real parcel is collected and turned into a test case
   * **/images** - Decision flow and evaluation pipeline diagrams
-* **/runs** - Raw model outputs, `meta.json`, and `report.md` for each prompt version
+* **/runs** - Raw model outputs, `meta.json`, and `report.md` for each prompt version and add-on version
 * **/.github/workflows**
   * **ci.yml** - Lint, format and test-data checks on push and pull request
 
